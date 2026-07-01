@@ -1,0 +1,1475 @@
+#+TITLE: Web Development Notes
+
+If I forget anything whilst doing a task:
+
+   1. Add this to the Recap List (if not already there)
+   2. Go back through entire Recap List for that sub-header
+
+   *Add many comments to task submissions*
+   
+* HTML 
+
+** Recap List
+
+1. How to open Live Server in VS Code
+2. Difference between Non-Semantic & Semantic elements
+3. What does this line mean in the <head> -> <meta charset="UTF-8">
+4. What does this line mean in the <head> -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+5. Create a line break or a horizontal line break
+6. Add a link which opens in a new page
+7. How do you do <nav> & where does it go
+   
+** Recap Answers
+
+1. You need Chrome installed
+   Click Go Live at the bottom of VS Code
+   Or, paste this into google: http://127.0.0.1:5500/
+   
+2. Non-Semantic is putting all of the sections into <div> over and over
+   Semantic is separating them by: <header>, <nav>, <main>, <footer>, etc...
+   Each word makes it clear what this section will contain
+   Within <main> different sections should be separated by <section> or <article>
+   
+3. meta stands for metadata
+   The character encoder, it tells the browser that the document is encoded using UTF-8
+   This allows text from other languages to display correctly
+
+4. Controls how the page is displayed on mobile devices
+   Content sets the width to match the devices width & scale sets zoom to 100% when page first loads
+   
+5. <br>
+   <hr> -> break with a horizontal line in the web page
+
+6. <a href="https://google.com target="_blank">Google Link</a>
+
+7. Within the <header>
+   <nav aria-label="primary navigation">
+      <a href="#main-section">main title</a> |
+      <a href="#additional-section">section title</a> |
+      <a href="#content">Contact Info</a>
+
+      Then add the id="main-section" tag to the <section> or <footer>
+
+
+** Introduction
+
+! & RET on VS Code will open the default syntax for a web page
+
+The <!DOCTYPE html> Tells the browser what type of document to expect
+<html lang="en">    Tells the browser what language this web page is written in
+<head>              Contains the title (in window), favicon (window image) & links (to CSS, Bootstrap, JS)
+<body>              Contains the rest of the web page, headings, articles, footer, etc...
+
+<h1>                First header tag, largest, use this one only for the title (h2 - h6 decrease in size, reuse as much as you want)
+<p>                 Contains text as a paragraph
+<a>                 Add a link to a website
+<img src=".png">    Image tag
+
+<br>                Add a line break
+<hr>                Add a line break & add a horizontal line across the page
+<pre>               Paragraph, but will copy whatever format you have the text in (in <p> tabs or manually line breaks are ignored)
+
+<!-- -->            Comments (& multi-line comments)
+
+** Useful Tags
+
+<p title="geoff">man</p>
+When you hover your mouse over the word 'man' on the page it will reveal the word 'geoff'
+
+<img src
+
+<a href="https://google.com" target="_blank">Go to Google<a/>
+This opens the link in a new tab, instead of redirecting
+
+<link rel="icon" href="shrek.jpg">
+Adds the favicon to the window
+
+** Useful Elements
+
+*** Text formatting & emphasis
+
+| Syntax  | Explanation                                  |
+|         |                                              |
+| <b>     | Bold                                         |
+| <i>     | Italic                                       |
+| <mark>  | Highlight                                    |
+| <del>   | Put a line through the middle                |
+| <ins>   | Underline                                    |
+| <small> | Make the text smaller                        |
+| <sub>   | Makes the text appear like a chemical symbol |
+| <sup>   | Makes the text appear like a squared number  |
+
+*** Tables & Lists
+
+*Tables*
+
+<table>           Create the table
+   <tr>           Create a table row, within here add the headers (as it's the first row)
+      <th>        Add in the name of a header
+      <th>        Second table header
+   </tr>
+   <tr>
+      <td>        Table data (i.e. what goes under the header here)
+      <td>        
+   </tr>
+
+*Lists*
+
+<ul>              Bullet pointed list
+   <li>           List item
+   <li>
+</ul>
+
+<ol>              Numbered list
+   <li>           List item
+   <li>
+</ol> 
+
+** Semantic Elements
+
+These are elements that clearly define their role & structure
+
+<header> contains the title & the nav links to redirect to elsewhere on the page
+<main>   contain nearly all elements of the web page
+<footer> contain all the information that's stored at the bottom of the page
+
+Within *header*
+<nav>    create links to redirect to separate pages on the site
+         <a href="#id-link">Sign Up</a> |
+         Then, in the section, div or other element, give it the id="id-link" to connect it to the nav
+
+Within *main*
+<section>  A standalone section of the page, always give it a heading
+<article>  Intended for content such as a forum post, newspaper article, etc...
+<aside>    A portion of the page, where the content is indirectly related to the main content (additional bit of info or a comment)
+
+*others*
+<details>  Small bit of information which is visible when the widget is toggled open
+   <summary> Specifies a summary or caption for a <details> element
+   
+<figure>   Represents self-contained content, like an illustration, diagram or photo
+   <figcaption> A caption describing the content of the parent <figure>
+
+<cite>     Defines the title of a creative work (name of movie, author, etc...)
+
+** Forms
+
+Forms allow users to submit information
+
+<form>
+   <label>First name:</label>
+   <input type="text" />
+
+   <label>Age:</label>
+   <input type="number />
+   
+   <select>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+   </select>
+</form>
+
+A label, needs to be followed by an input, which tells html what type of information is expected
+Select, gives a drop box which allows for multiple chooses
+
+** Search Engine Optimisation
+
+These are rules for web design which a web browsers wants, if followed, they push the web page higher on search results
+
+1. The html tag should provide the language <html lang="em">
+2. There should only be 1 h1 tag throughout the whole document
+3. Have an alt tag for every image
+4. Use semantic elements instead of non-semantic
+  
+
+* CSS
+
+** Recap List
+
+1. Link a html file to a css one
+2. Name each of the below elements:
+   h1 {
+        text-align: center;
+        font-size: 50px;
+    }
+3. Center a div horizontally & vertically using CSS
+4. What's the difference between margin & padding
+5. 
+6. How do you make a website layout responsive
+7. Create a hover animation for a button
+8. Whats the difference between position: relative & position: absolute
+
+** Recap Answers
+
+1. <link rel="stylesheet" href="style.css">
+
+2. h1                     -> selector
+   text-align & font-size -> properties
+   center & 50px          -> values
+
+3. .container {
+      display: flex;
+      justify-content: center;    # centers horizontally
+      align-items: center;        # centers vertically
+      height: 100vh;              # take up 100% of viewport height (allowing align-item to work)
+   }
+
+4. Margin  = space outside an element
+   Padding = space inside an element, between content & border
+
+5. Rules that let you apply different styles depending on screen/device size
+
+6. Use flexible units & media queries
+
+   .card {
+      width: 80%;                 # this element takes up 80% of it's parents container width (i.e. screen width)
+   }
+
+   @media (max-width: 600px) {    # run this code if the screen is 600px or smaller
+      .card {
+         width: 100%;             # the card element becomes 100% width (instead of 80) on small devices
+      }
+   }
+
+7. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
+      background: blue;           # button background is blue
+      transition: 0.3s;           # when a property changes, animate it over 0.3 seconds
+   }
+
+   button: hover {                # apply this code when the mouse is over the button
+      background: red;            # change the colour from blue to red
+      transform: scale(1.1);      # scale the button to 110% it's size
+   }
+
+   # this creates a smooth hover effect on a button
+
+8. Relative = element stays in normal flow but can be moved
+   Absolute = removed from normal flow & positioned relative to the nearest parent
+   
+
+** Introduction
+
+This styles the html text (font, colour, aligning text, etc...)
+
+You add the selector, curly bracket, the declarations
+Declaration include a property then a value
+
+Example:
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+The h1 is the selector
+text-align & font-size are the properties
+center & 50px are the values
+
+** The Box Model
+
+The browser creates a rectangle for each element in the html document
+It can be used to size the elements, go to page inspect (F12) to see a visual of the box model
+
+You can use the labels: margin, border, padding & content as properties
+i.e. border: 5px solid gray;
+
+You can be more specific: padding-top, margin-right, border-bottom, etc...
+
+** Cascade
+
+CSS stands for Cascading Style Sheets
+Cascading is to do with how these rules are applied (i.e. the order of them)
+
+1. html styling will be prioritised first (I shouldn't be using these)
+2. Then ID (class is ignored)
+3. Then class (class styling only appears if there's no inline style or ID
+
+
+* Responsive Design
+
+** Recap List
+
+1. What is responsive design
+2. What is a media query
+3. What's the difference between fixed, fluid & responsive layouts
+4. When would you use Flexbox vs Grid & how do they work
+5. How do you set up an element to be Flexbox & make items go down in columns
+6. How do you set up an element to be Grid, 2 equal horizontal elements & a gap between each column
+
+** Recap Answers
+
+1. Making a website adapt to different screen sizes (PC, laptop, tablet & mobile)
+
+2. Lets you apply CSS code only when a certain screen condition is true (i.e. a breakpoint)
+
+3. Fixed             -> Uses set sizes, doesn't change with screen size
+   Fluid             -> Uses flexible sizes
+   Responsive layout -> Combines flexible size & media queries
+   
+4. Flexbox -> Arrange items in 1 direction
+   Grid    -> Arrange items vertically & horizontally
+
+   Flexbox would be used if you wanted an item in 1 column going down the page (i.e. a product, then below that another product, etc...)
+   Grid would be used if you wanted those products to also sit next to each other
+   i.e. a product, next to another, then down to 2 more products
+
+5. .container {
+      display: flex;             # creates Flexbox container
+      flex-direction: column;    # changes the direction to columns
+      justify-content: center;   # centers items in the container horizontally
+      align-items: center;       # centers items in the container vertically
+   }
+
+6. .container {
+      display: grid;                           # creates Grid container
+      grid-template-columns: repeat(2, 1fr);   # 2 items next to each other, each taking up 1 fraction of space (equal)
+      gap: 20px;                               # 20 pixel gap between columns (i.e. 2 items next to each other, 20 pixels, 2 items, etc...)
+   }
+
+
+** Introduction
+
+Responsive Design is when you make it so a web page can dynamically change size to fit the screen
+For example, whether your looking at a web page on a PC or an iPhone
+
+You can use units, 15vh -> as you change size of the screen the box will dynamically always be 15 pixels away from the top of the screen
+
+** Tags & Units
+
+*Tags*
+
+.element {
+          position: static;
+}
+
+position can have the values: static, relative, absolute & fixed
+static -> elements are positioned to normal document flow
+relative -> elements are positioned relative to original position
+absolute -> elements are positioned relative to their nearest ancestor
+fixed -> elements are positioned relative to the viewport
+
+*Units*
+
+vw = vertical width (in percent, i.e 70vh will mean the element always takes up 70% of the viewport height)
+vh = vertical height (in percent)
+
+em = relative unit based on the font size of the parent
+rem = relative unit based on the font size of the root
+
+** Breakpoint
+
+Setting elements so if the page goes too large or too small, they will adjust their size
+
+You can add a minimum, maximum & optimum size that the element should adhere to
+
+** Flexbox & Grid
+
+These are built-in CSS layout systems
+
+Flexbox -> 1D, works with a row or a column but not both
+Grid    -> 2D, lets you control both directions at the same time
+
+*Flexbox*
+
+Use Flexbox when you are arranging items in 1 direction (for example, a logo next to a link next to a button)
+
+.container {
+            display: flex;
+            flex-direction: column;
+}
+
+All elements above with the class "container" will be horizontally in order & centered
+
+Result:
+
+    | Item 1 |
+    | Item 2 |
+    | Item 3 |
+
+*Grid*
+
+Use Grid for arranging items that need to sit next to each other & go vertically down the page (i.e. product sale)
+
+.products {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 20;
+}
+
+All items with the class "products" will be organised 3 horizontally, with each item getting 1 fraction of space (equal)
+
+Result:
+
+| Item | Item | Item |
+| Item | Item | Item |
+
+
+* Accessibility 
+
+** Recap List
+
+1. What is accessibility in web development
+2. What can you add to an image that a screen reader can use
+3. What tag can you add to an input to make it clear this is for a form
+
+** Recap Answers
+
+1. Designing websites so that screen readers can understand them
+2. An alt tag with a simple description of what the image is
+3. required aria-required="true" -> lets screen readers know this needs to be filled in
+
+** Introduction
+
+Adding tags to semantic html to improve structure & navigation for screen readers
+
+ARIA (Accessible Rich Internet Applications) -> an attribute you add to an element for screen readers
+For example -> adding alt to an <img> which screen readers can read out
+
+The majority of 'Accessibility' in html is just using Semantic elements
+But sometimes adding ARIA tags in specific places is useful
+
+** Examples
+
+1. <nav aria-label="Primary navigation">
+Gives the navigation a name, makes it easier for a screen reader
+
+2. <img src="cartoon_computer.jpg" alt="cartoon image of a desktop PC">
+The screen reader can read out the description of the image
+
+3. <figure> 
+      <img...>
+   </figure>
+Groups an image with related content
+
+4. <input required aria-required="true">
+   Tells a screen reader this needs to be filled in (i.e. it's a requirement of this form)
+
+
+* Bootstrap
+
+** Recap List
+
+1. What is npm
+2. Summarise Bootstrap
+3. What's the difference between a library & a framework
+4. What are the 3 classes that create a bootstrap structure
+5. Difference between col-sm-4, col-md-4 & col-xl-4
+6. How do you tell HTML to use Bootstrap
+7. How do you add margin below a row
+8. How do you make an image responsive
+9. How do you create buttons
+10. What does form-control do and where does it go
+11. In a form, how do you align a label
+   
+** Recap Answers
+
+1. Node Package Manager -> used to install & manage JavaScript packages
+   
+2. A framework for CSS used for responsive design
+   
+3. A library is a collection of functions that you call
+   A framework is provides a structure for building an application & it calls your code
+   It defines the architecture, rules & structure, you just fill in the details it requires
+   
+4. class="container" -> creates correct margins & spacing for the whole document (assuming this goes in <body>)
+   Within container: class="row" -> creates the horizontal single row
+   Within row: class="col-md-6" -> creates a column - medium size - 6 columns of 12
+   
+5. Each, before the breakpoint will take up 4 of the 12 columns of space available in the row
+   sm (small) -> designed for phones, on every device, 4 of 12 columns will be used
+   md (medium) -> designed for tablets, on a tablet or larger 4 of 12 columns will be used, on a phone 12 columns of space will be used
+   xl (extra large) -> only on a very large screen will 4 columns be used, any other size 12 columns will be used
+
+   This is a hard line, even with col-md-1, on a phone (i.e. after the breakpoint), all 12 columns will be used
+   
+6. Add the <link> in the <head> but make sure it's before the link to the style.css
+   You can also add the Bootstrap JS file (placed just before </body>) if you're using the interactive Bootstrap components
+   
+7. You can add <div class="row mb-4">
+   Or <div class="col-md-4 mb-4">
+   Stands for margin border 4 (size goes from 1 (small) to 5 (very large))
+
+   Adding it to a row, it will add the border between rows
+   Adding it to the column, also means the border is between the rows, but it means if the screen goes to narrow & the columns are stacked, it'll add the border between them as well
+   So, for <main> add it to the column but for <form> add it to the row (as each item should be on it's own row)
+   
+8. What is in a column class, use the following class within the <img>
+   class="img-fluid"
+   
+9. Within a <div class="col-md-4">
+   <button class="btn btn-danger">Buy</button>
+   btn specifies this is a button, btn-danger is the colour (red for this specific label)
+    
+10. In a <form>, add form-control within an <input> to ensure the input is aligned in Bootstraps standard format (centered correctly)
+    
+11. class="col-form-label" -> ensures labels align nicely inside Bootstraps grid forms
+
+
+** Introduction
+
+*Summary*
+
+Bootstrap is a framework for CSS
+It's primarily used for _responsive design_
+
+It divides the page by 12 columns going down horizontally & uses this for it's calculations/functions
+It doesn't use rows, as a web page can keep going down infinitely
+
+*How to use*
+
+Create a <div> in html & give it the tag class="row" or class="col-md"
+
+row -> sets up the container in it's own grid row
+col-md-4 -> column-medium_screens-4_of_12_grid_columns
+            So, col-md-4 means a column for medium screens which takes up 4/12 width of the screen
+
+If you overlap the 12 columns it will move the row down to accommodate
+But as a rule, don't do more than 12 widths
+
+** Grid System
+
+As there are 12 columns in Bootstrap, if I add 1 element, it will take up the whole page width ways
+If I had 6 elements, they would each take up 2 of the 12 columns
+
+As the page is resized, this elements will always be resized to remain to be 2/12 width or 6/12 width of the page
+
+Bootstrap allows us to select what data will be displayed based on the screen size provided
+
+| Class    | Screen Size | Grid Behaviour               | Container Width | Suitable For       |
+|          |             |                              |                 |                    |
+| .col-    | Extra small | Horizontal at all times      | None (auto)     | Portrait phones    |
+| .col-sm  | Small       | Collapsed to start           | 540px           | Landscape phones   |
+|          |             | Horizontal above breakpoints |                 |                    |
+| .col-md- | Medium      | " "                          | 720px           | Tablets            |
+| .col-lg- | Large       | " "                          | 960px           | Laptops            |
+| .col-xl- | Extra Large | " "                          | 1140px          | Laptops & Desktops |
+
+** Key Concepts
+
+1. *Col*
+   Keyword stands for "column"
+   This is how Bootstrap identifies elements as part of the grid structure
+2. *sm/md/lg/xl*
+   These define screen size breakpoints
+   This allows the layout to adapt to different devices
+3. ***
+   Represents the number of columns a block spans (out of 12)
+   12 = full-width
+   6 = half the row
+   3 = a quarter of the row
+   
+   Although the columns are limited to 12, there can be an unlimited number of rows (as a web page can go down indefinitely)
+   I.e. you can make infinite number of elements that work down a page but 1 row is 1 section of the page horizontally, split vertically 12 times
+   
+** Structure
+
+Bootstrap doesn't care what HTML element has the class
+So, container, row & column can be added to any element (body, section, div, etc...)
+
+<div class="container">
+   <div class="row">
+
+      <div class="col-md-4">
+         <code for what goes in this row for the first 1/3 of the horizontal row
+      </div>
+         
+      <div class="col-md-8">
+         <code for the next 2/3>
+      </div>
+
+   </div>
+</div>
+
+** Buttons
+
+Except for .btn-link -> these don't effect anything other than the colour
+
+| Class          | Description                                        |
+|                |                                                    |
+| .btn           | Basic styling to a button                          |
+| .btn-danger    | Red                                                |
+| .bnt-dark      | Black                                              |
+| .btn-info      | Light Blue                                         |
+| .btn-light     | Light grey                                         |
+| .btn-primary   | Blue                                               |
+| .btn-secondary | Grey                                               |
+| .btn-warning   | Yellow                                             |
+
+| .btn-link      | Makes a button look like a link                    |
+
+** HTML format
+
+You need to add the link to the Bootstrap website in the <head> but before the CSS linker
+Otherwise, Bootstrap gets confused & can't read the CSS
+
+You also need a linker line at the bottom of the page before the end of <body>
+
+The <link> (one in the <head>) loads a stylesheet which gives the page Bootstrap's pre-made CSS rules
+The <script> (one at the end of <body>) tells the browser to load & run this JS file, which points to Bootstraps JS library
+
+An alternative to this is to download Bootstrap into your project, next to the index.html & style.css
+
+** Summary
+
+1. *container*
+   Creates a centered page wrapper with responsive widths
+
+2. *row*
+   Goes within a container
+   Creates a horizontal group of 12 columns
+
+3. *col-md-6*
+   Goes within a row
+   Create a column, apply this rule at medium screens, take up 6 of 12 grid spaces
+
+4. *mb-4*
+   Margin bottom with spacing 4 (0 = no spacing, 3 = medium & 5 = largest)
+   Goes after col-md-6 to signify, after this column add x spacing below
+
+5. *img-fluid*
+   Makes images responsive
+   Goes with <img>
+
+6. *btn*
+   Activates Bootstrap button styling
+   Goes within <button>
+   btn-primary or -warning or -info don't change anything other than the colour
+   btn-link makes it look like a link instead of a button
+
+7. *form-control*
+   Adds better sizing, padding, border styling, etc... within a form
+   Used within <input>
+   
+8. *col-form-label*
+   Makes labels align nicely inside grid forms, by formatting it next to the input
+   Used within <label>
+
+
+* JavaScript
+
+** Recap List (ADD EXERCISM QUESTIONS)
+
+*** Introduction Syntax Question List
+
+1. What is Node.js
+2. What goes before a variable
+3. Create a user input
+4. Print a variable
+5. Print text & a variable
+6. Create a pop alert of your name
+7. Link a html & JavaScript file
+8. Difference between double & triple equals signs
+9. or & and in an if statement
+10. Write a simple if statement to check if a value is above 6 & below 9
+11. Check type of data
+12. Convert number_variable to a string
+    
+*** Loops List
+
+1. Create a loop to print a every 3rd number up to 20
+2. To the same loop, add a break when i is 12
+3. Create a while loop that counts to 10
+4. When should you use switch statements & when should you use if statements
+5. What is a Do While loop
+6. Loop through & print all values in an array
+7. Return the index of a value in the array
+8. Use 2 different for loops to return every value in the array
+9. The same as above but use forEach
+10. Create a while loops that flips the order of a given string
+
+*** Further Syntax
+
+1. Create an array, add 2 items to the start & 1 to the end
+2. Remove the last item of the array & then the first
+3. Sort array in alphabetical order & then reverse order of the whole array
+4. Add an item at index 1, & delete 2 items at index 1 in one line
+5. Check index of an item
+6. Create a string, convert it to uppercase & lowercase
+7. Return the 3rd - 9th characters of the string
+8. Convert the string to an array of words
+9. Convert the array back to a string
+10. Check if a word is within a string
+11. Create a map & add a key:value pair to the map
+12. Loop through the map & return the key & value pair
+13. Syntax to loop through the keys & values
+
+*** Functions
+
+1. Difference between function expression & declaration
+2. What is a top level function
+3. What is a closure
+4. How would you call pass values & call this function:
+   
+    function multiplier(x) {
+        function inside(y) {
+            return x * y;
+        }
+        return inside;
+    }
+
+*** OOP
+
+1. What is the difference between a class & an object
+2. Create a basic inheritance using Dog & Animal classes
+3. What are getters & setters
+
+*** Exerism Questions
+
+
+** Recap Answers
+
+*** Introduction Syntax Answers
+
+1. A program that allows you to run JS code outside of a browser
+2. let
+3. let myName = prompt("enter your name: ")
+4. console.log(variable_name)
+5. console.log(`your name is: ${myName}`)
+6. alert(`your name is: ${myName}`) -> the tilda keys are only required because I'm including a variable (otherwise use speech marks)
+7. Before the </body> element add:
+   <script src="variables_and_data_types.js"></script>
+8. double -> converts data type (if needed) to compare the 2 inputs (converts string "5" to a number, compares to 5 & returns true)
+   triple -> doesn't convert data type (compares string "5", to number 5 & returns false)
+9. || -> or
+   && -> and
+10. let x = 7
+
+    if (x > 6 && x < 9) {
+    console.log("x is between 6 & 9")
+    }
+    else {
+    console.log("x is outside 6 & 9")
+    }
+11. typeof(variable)
+12. String(number_variable)
+
+*** Loop Answers
+
+1. for (let i = 1; i < 20; i+=3) {
+     console.log(i)
+   }
+   
+2. for (let i = 1; i < 20; i+=3) {
+     console.log(i)
+     if (i ===== 12) {
+     break
+     }
+   }
+
+3. let counter = 10
+
+   while (counter <= 10) {
+       console.log(counter)
+       counter++
+   } 
+
+4. Switch -> when I variable against many exact values
+
+   *Example*
+
+   let variable day = Tuesday
+
+   switch (day) {
+       case "Monday":
+           console.log("work")
+           break
+       case "Tuesday":
+           console.log("dentist")
+           break
+       etc...
+
+   If statements -> When conditions are more complex then checking equality
+
+   *Example*
+
+   let age = 15
+
+   if (age >= 18) {
+       console.log("Adult")
+   }
+
+5. It's the same functionally as a while loop, but the condition is checked at the end so it's code is carried out at least once
+
+6. let colors = ["green", "blue", "purple"]
+
+   for (let color of colors) {
+       console.log(color)
+   }
+
+7. console.log(colors.indexOf("blue"))
+
+8. 
+
+for (let i = 0; i < arrayLength; i++) {
+    console.log(colors[i]);
+}
+
+for (let value of colors) {
+    console.log(value);
+}
+
+9.
+
+colors.forEach(function (element) {
+    console.log(element);
+})
+
+10.
+
+let userInput = prompt("enter a word: ");
+let reversedInput = "";
+
+let counter = userInput.length - 1;
+
+while (counter >= 0) {
+    reversedInput += userInput[counter];
+    counter --;
+}
+
+console.log(reversedInput, userInput)
+
+*** Further Syntax Answers
+
+1. let movies = ["Harry Potter"];
+   movies.push("Star Wars");               # adds to the end
+   movies.unshift("Spiderman", "Shrek");   # adds to the start
+
+2. let lastMovie = movies.pop();
+   let firstMovie = movies.shift();
+
+3. movies.sort();
+   movies.reverse();
+
+4. movies.splice(1, 2, "batman");          # places "batman" at index 1, overwrites 1 item & deletes the item at [2] 
+
+5. let index = movies.indexOf("batman");   # can also use indexOf("input letters") to get the index (letter count) of a string
+
+6. let greeting = "Hello, World!";
+   let upper = greeting.toUpperCase();
+   let lower = greeting.toLowerCase();
+
+7. let stringSlice = greeting.slice(2, 11); #2nd index (3rd character) to the 10th index (9th character) 
+
+8. let words = greeting.split(" ");
+   console.log(words);                      # returns -> ["Hello,", "World!"]
+
+9. let sentence = words.join(" ");
+   console.logs(sentence);                  # returns -> Hello, World!
+
+10. let wordCheck = sentence.includes("Hello")
+    console.log(wordCheck);                 # returns -> true ("Hello" is within sentence)
+
+11. let myMap = new Map();
+    myMap.set("show", "peep show");
+    myMap.set("man", "geoff");
+
+12. for (let [key, value] of myMap) {
+        console.log(key + " = " + value)
+    }
+
+13. for (let value of myMap.values())
+    for (let key of myMap.keys())
+
+*** Functions Answers
+
+1. A declaration is a normal function which can be called from anywhere in the code -> function hello()
+   An expression is when you create a variable & assign an anonymous function to it -> let hello = function ()
+   You can an expression by
+   Both are called in the same way 'hello()' but the expression can only be called after it was created (code wise)
+2. A function that's on it's own & can be accessed from anywhere in the code (not nested inside another one)
+3. A closure is when a nested function (inner function) can store the value of a variable (encapsulation)
+4. const multiplyByThree = multiplier(3);
+   console.log(multiplyByThree(5));    
+
+*** OOP Answers
+
+1. You create a class called 'person' & then create the object from the class
+
+2. class Animal {
+      constructor(name) {
+         this.name = name;
+      }
+      speak() {
+         console.log(`${this.name} makes a sound`);
+      }
+   }
+
+   class Dog extends Animal {
+      bark() {
+         console.log(`${this.name} barks1);
+      }
+   }
+
+   let dog1 = new Dog("buddy");
+   dog1.speak();     returns -> buddy makes a sound
+   dog1.bark();      returns -> buddy barks
+
+3. Using getters & setters allows you to isolate a variable (from within a class) so you can change or modify them
+   You can make it so this value can't be changed, if it is changed it will return a statement to the terminal, etc...
+
+*** Exerism Answers
+
+
+** Introduction
+
+
+JavaScript was originally created to run inside web browsers
+Therefore, JavaScript can't be executed in the terminal in the same way as other languages, it requires a browser
+
+Node.js is a program that lets you run JS outside of a browser
+So, in the terminal you run node test.js
+Same as you run python3 myfile.py (python3 is the CPython interpreter)
+
+Certain commands, such as prompt() are specific to web browsers, can can't be interpreted by Node.js
+
+
+*Writing JS code*
+
+1. Go to https://blank.org
+2. Go to inspect (F12)
+3. Go to console & paste any code here
+   
+** Syntax
+
+*Variables*
+All variables must start with the keyword 'let'
+
+*User Input*
+~let myName = prompt("Please enter your name: ")~
+prompt() -> prompts user for an input
+
+*Print*
+console.log(variable_name)
+
+*F-string alternative*
+console.log(`your name is: ${myName}`)
+
+You have to place the text within tilda keys if you're using a variable
+& you use the dollar sign, to signify a variable/data
+
+*Alert*
+alert() -> same as console.log() except it will give a 'warning' pop up box with the information
+
+*End of a line*
+Add a semi-colon at the end of every line;
+This is not required but preferred
+
+*let & const*
+let = create a variable & this variable can be changed
+const = this variable can't be changed
+
+Once the variable is created, you no longer need let or const
+
+*Double equal sign (==)*
+Comparison, but converts data types
+"4" == 4 -> return true
+  0 == false -> return true
+
+*Triple equal sign (=====)*
+Comparison, but doesn't convert data types
+i.e. "4" ===== 4 -> returns false
+       0 ===== false -> returns false
+
+*!=*
+Does not equal to
+       
+*Type*
+typeof <variable name> is how you get the type of data (i.e. string, bool, number, etc...)
+       
+*Conversions*
+
+| Syntax    | Explanation          |
+|           |                      |
+| Number()  | Convert to a number  |
+| String()  | Convert to a string  |
+| Boolean() | Convert to a boolean |
+
+** JavaScript file
+
+You link a JS file to HTML by adding the link in the html file before the </body>
+<script src="variables_and_data_types.js"></script>
+
+** For & While Loops
+
+*For loop*
+
+// loop starts at 1, go up by 1 each time (i++), until i is 20 -> i.e. loop 1 through 20 (up to 20)
+for (let i = 1; i < ages; i++) {
+    console.log(i)
+    if (i === 12) {
+        break    
+    }
+}
+
+To make it jump 3 each time, change i++ to i+=3
+
+
+*While loop*
+
+let counter = 0
+
+while (counter <= 10) {
+    console.log(counter)
+    counter++   
+}
+
+counter++ -> add 1 to counter each time
+
+
+*Further while loop*
+
+while(true) {
+    let userInput = prompt("please enter a name: ")
+    let stopLoop = false
+
+    switch (userInput) {
+        case "bob":
+            console.log("you are close but that's the wrong name")
+            break
+        case "sam":
+            console.log("you entered the correct name")
+            stopLoop = true
+            break
+    }
+
+    if(stopLoop) {
+        break
+    }
+}
+
+// Will keep looping until "sam" is entered, as it will flip stopLoop to true, then it breaks out of the while loop
+// switch -> same as an if, else if, else if, etc... statement but can be cleaner (no need for curly brackets '{}')
+
+
+*When switch is better (syntax wise)*
+
+When you're comparing one variable against many exact values.
+
+switch (day) {
+    case "Monday":
+        console.log("Work")
+        break
+    case "Saturday":
+    case "Sunday":
+        console.log("Weekend")
+        break
+}
+
+*This is often cleaner than:*
+
+if (day === "Monday") {
+    console.log("Work")
+}
+else if (day === "Saturday" || day === "Sunday") {
+    console.log("Weekend")
+}
+
+
+*Do while loop*
+
+Same as a while loop, but the condition is checked at the end, so it carries out the code at least once
+
+*Example*
+
+    // Initialise the variable with a value of -10​
+let counter = -10;​
+​
+    // Output message until the condition is met​
+do {​
+console.log("I have run at least once!");​
+counter++; // Increment the counter by 1​
+} while (counter <= 1); // Loop will repeat as long as the counter is <= 1​
+​
+    // Outputs the value of the counter once the loop ends​
+console.log("The result of the counter is " + counter);
+
+** Data Structures
+
+*Arrays*
+let studentMarks = [10, 40, 80, 99];
+let arrayLength = studentMarks.length;
+
+for (let i = 0; i < arrayLength; i++) {
+    console.log(studentMarks[i]);               // returns each value in the array, on a separate line
+}
+
+for (let value of numbers) {
+    console.log(value);                         // exactly the same as the above
+}
+
+
+*For Each*
+studentMarks.forEach(function (element) {       // exactly the same as above
+    console.log(element);
+})
+
+
+*Manipulating arrays*
+let movies = ["Harry Potter"];
+movies.push("Star Wars", "Shrek");               // adds these to the end of the array
+
+movies.unshift("Avatar", "Spiderman")            // adds these to the start of the array
+
+let lastMovie = movies.pop();
+console.log(lastMovie);                          // returns -> Shrek
+
+let firstMovie = movies.shift();
+console.log(firstMovie);                         // returns -> Harry Potter
+
+movies.sort();                                   // puts array in alphabetical order
+
+movies.reverse();                                // inverses order of the array
+
+movies.splice(1, 2);                             // start at index 1, remove 2 elements of the array
+
+movies.splice(1, 0, "batman", "the flash");      // insert these items at index 1, 0 -> no movies are overwritten
+
+movies.splice(2, 1, "alien", "star trek");       // insert these items at index 2, remove 1 of the item from this index
+
+movies.splice(2, 3, "django", "pulp fiction");   // insert these items at index 2, remove 3 of the items from this index
+
+
+*Strings*
+let greeting = "Hello, World!";
+
+let upperCaseGreeting = greeting.toUpperCase();
+console.log(upperCaseGreeting);                  // output -> HELLO, WORLD!
+
+let lowerCase = greeting.toLowerCase();          // lowercase all letters
+
+let stringSlice = greeting.slice(4, 11);
+console.log(stringSlice);                        // output -> o, worl (0 is first index & 11th index is ignored)
+
+
+*Further Strings*
+// split() takes a string & breaks it into an array using a separator
+// join() does the opposite & combines items together
+const shoppingList = "chocolate juice popcorn";
+const newList = shoppingList.split(" "). join("\n"); 
+console.log(newList)                             // output -> each item on a new line
+
+const moviesArray = ["star wars", "avatar", "harry potter"];
+let movieIndex = moviesArray.indexOf("avatar");
+console.log(movieIndex);                         // output -> 1
+
+let string = "the spiderman";
+let wordIndex = string.indexOf("man");
+console.log(wordIndex);                          // output -> 10 (the m in 'man' starts at index 10)
+
+if (movieArray.includes("harry potter")) {
+   console.log("this movie is in the array");
+} else {
+   console.log("this movie is not in the array");
+}
+
+let string = "shrek the third"
+let wordIndex = string.includes("cat")
+console.log(wordIndex);                         // output -> false
+
+
+*Maps (i.e. a dictionary)*
+let myMap = new Map();                          // creates map/dictionary
+myMap.set(0, "zero");                           
+myMap.set(1, "one");                            // add key:value pair
+for (let [key, value] of myMap) {
+    console.log(key + " = " + value);           // output -> 0 = zero
+}                                                            1 = one
+
+for (let value of myMap.values()) {
+    console.log(value);                         // output -> zero
+}                                                            one
+
+for (let key of myMap.keys()) {
+    console.log(key)                            // output -> 0
+}                                                            1
+
+** Functions
+
+Built in functions -> functions that are already defined by JS (toLowerCase())
+
+Use toLowerCase() when checking (if statements) for strings from a user input
+i.e. the user could type a mixture of upper & lower case, this allows for a mixture as it forces it all lower case
+
+*Defining my own functions*
+function addition(num1, num2) {          // function, declares this is a function; addition -> name of function
+    let calc = num1 + num2
+    return calc
+}
+
+let myTotal = addition(15, 7)
+console.log(myTotal)
+
+
+*Scope*
+Global scope variables -> Variables declared outside of functions (can be used anywhere in my code)
+Local scope variables  -> Variables declared inside of a function
+
+*Parameter vs Argument*
+Parameter -> Used when defining the function (i.e. num1, string, input, etc...)
+Argument  -> What's passed into the function (i.e. 16, "hello", etc...)
+
+** map(), filter() & reduce()
+
+function doubleValues() {
+   const originalValues = [1, 2, 3, 4];
+
+   const multiply = (item) => item * 2;
+   const doubled = originalValues.map(multiply);
+   return doubled;
+}
+
+** Closures
+
+*Function declaration vs expression*
+
+Declaration = normal function
+              function hello () {
+                  console.log('hello');
+              }
+
+Expression = creating a variable
+             let hello = function () {
+                 console.log('hello');
+             }
+
+             You can also write this, this way (they're functionally similar but there are slight differences in how they work)
+
+             let hello = () => {} 
+
+
+An expression uses an anonymous function
+
+A declared function can be called from above where the function was created
+The compiler always puts functions at the start, so they can be used anywhere
+    A function expression can't be called anywhere, it's an anonymous function inside a variable
+
+    
+*Closures*
+
+~A variable that's created within a function, then an embedded function can store the data of the variable,~
+~after the outer function is called~
+
+function createCounter() {
+    let counter = 0;
+
+    return function () {
+        counter += 1;
+        return counter;
+    };
+}
+
+const add = createCounter();
+
+console.log(add()); returns -> 1
+console.log(add()); returns -> 2
+console.log(add()); returns -> 3
+
+~In the above, the inner function stores the value of counter, so calling the function again doesn't reset the counter value~
+
+
+*Calling the function*
+
+~For a nested function, you'd call it in a specific way~
+
+function multiplier(x) {
+   function inside(y) {
+      return x * y;
+   }
+   return inside;
+}
+
+const multiplyByThree = multiplier(3); // calling multiplier passing the value of 3 to the inside function, stores it as y
+console.log(multiplyByThree(5));       // calling multiplyByThree object & passing the value of 5, which becomes x
+
+
+*Uses of closures*
+
+1. Create private variables
+2. Factory functions (a design pattern where a function creates & returns other functions or objects, tailed with specific properties)
+3. Managing state across function calls
+4. Using closures for timed operations
+
+
+*Arrow head functions*
+
+~Shorthand function expressions~
+
+let add = (a, b) => a + b;
+console.log(add(1, 2);        // output -> 3
+
+Arrow heads have no 'this' binding (JavaScript's way of referring the self)
+So, they don't work as objects
+
+** Object Oriented Programming
+
+Prototype = A special type of function used to set up a blueprint for new objects
+            allowing them to inherit properties & methods from the prototype
+
+*Creating defined objects*
+
+_Method 1: Using object literals_
+
+let car = {
+   // object properties
+   brand: "tesla",
+   model: "model s",
+   year: 2023,
+
+   // object methods
+   howOld() {
+      return `the car was made in the year ${this.year}`;
+   },
+}
+
+In the above, the function howOld() doesn't require the 'function' keyword as you can define methods within objects without the keyword
+
+
+_Method 2: Using object constructors_
+
+function carDescription(brand, model, year) {
+   // object properties
+   this.brand = brand;                  // this is JS equivalent to self from Python -> referring to the object being created
+   this.model = model;
+   this.year = year;
+}
+
+// creating objects of the carDescription class
+let car1 = new carDescription("tesla", "model s", 2023);
+let car2 = new carDescription("audi", "e-tron", 2022);
+
+The function carDescription is the constructor (the blueprint)
+
+console.log(car1.brand); // returns -> tesla
+
+
+*Getters & Setters*
+
+Getters -> methods that get & return the properties of an object
+Setters -> methods that changes the values of existing properties within an object
+
+In the below code, anyone can change the name (i.e. person.name = "Bob")
+
+
+    class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    }
+
+    const person = new Person("Alice");
+
+    console.log(person.name);   // Alice
+
+    person.name = "Bob";
+
+    console.log(person.name);   // Bob
+
+
+Getters & Setters allow you to add functionality to properties
+
+    class Person {
+    constructor(name) {
+        this._name = name;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(value) {
+        if (value.length < 2) {
+        console.log("Name must be at least 2 characters.");
+        return;
+        }
+
+        this._name = value;
+    }
+    }
+
+    const person = new Person("Alice");
+
+    console.log(person.name);
+
+    person.name = "B";
+
+    console.log(person.name);
+
+    person.name = "Bob";
+
+    console.log(person.name);
+
+    Output
+
+    Alice
+    Name must be at least 2 characters.
+    Alice
+    Bob
+
+    
+In the above, you can add an if statement, to check if the input would work
+View this more as adding safety precautions to code, so I don't screw things up
+Or, if someone else is looking at my code, this other person can't change properties I don't want them to change
+
+Creating a getter & setter for a variable stops mistakes
+    
+** DOM Manipulation (ADD TODOS FOR THIS SECTION)
+
+DOM -> Document Object Model
+
+This is a way to modify a web page using JavaScript
+
+
+*querySelector*
+
+    let gettingByClass = document.querySelector(".big-paragraph")
+    console.log(gettingByClass) // returns the query with class="bigparagraph"
+
+    let firstParagraph = document.querySelector("p")
+    console.log(firstParagraph) // returns the 1st instance of <p>
+
+    let firstParaWithClass = document.querySelector("p.big-paragraph")
+    console.log(firstParaWithClass) // returns the 1 instance of <p class="big-paragraph">
+
+    let byID = document.querySelector("#nested-list")
+    console.log(byID) // returns the element with id="nested-list"
+
+    let listOrderedParent = document.querySelector("ol > li")
+    console.log(listOrderedParent) // returns the first item of the ordered list
+
+    let thirdItem = document.querySelector("ol > li:nth-child(3)")
+    console.log(thirdItem) // returns the 3rd item of <li> in <ol>
+
+    
+*querySelectorAll*
+
+    let paragraphs = document.querySelectorAll("p")
+    console.log(paragraphs) // returns a nodelist all the elements with <p>
+
+    output -> NodeList(3) [p, p.big-paragraph, p.big-paragraph] // there were 3 elements with <p> tags in the example
+
+    Array.from(paragraphs).forEach(function (paragraph) {
+        console.log(paragraph)
+    })
+
+    The above will allow you to return all the instances of <p> in the NodeList to the console
+
+    
+*createElement*
+
+    let list1 = document.querySelector("#list-1")
+    let listItem = document.createElement("li")
+    listItem.textContent = "hello again"
+    list1.appendChild(listItem)
+
+    // start by selecting the unordered list using it's ID (id="list-1")
+    // A new list item <li> is created & stored in the variable listItem
+    // Set the text inside this <li> to be "hello again" using .textContent
+    // Finally, append this with the unordered list using .appendChild
+
+* Developer Tools (F12) - (FILL PLZ)
+
+** Recap List
+** Recap Answers
+
+** Introduction
+

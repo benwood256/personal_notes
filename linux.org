@@ -1,0 +1,389 @@
+#+TITLE: Linux Notes
+
+* To Do List
+
+1. After moving to Arch -> manually create a boot application folder (i.e. boot these applications on startup)
+2. Make a plan for Hyprland (i.e. in terms of tile layouts -> tile 1 = Emacs, tile 2 = safari, etc...)
+3. Make colour theme for Ricing, i.e. based on Dune poster
+4. Learn how file system mounting works in Linux
+5. Learn how to use systemd to create real permanent network mounts instead of using fstab.
+   Then also learn how to set up any program you want as a background service, again with systemd
+
+
+* Terminal Commands (TRANSFER NOTES OVER)
+
+** Recap List (ADD MORE, ASK CHATGPT)
+
+1. Do (6 * 5) / 2 in the shell & return the answer
+2. Search for the word 'dog' in sample.txt
+3. Search how many lines of text are in the file linux.org
+4. Show the first 10 lines of a linux.org & the same but the last 10
+5. How do you find all the files ending in .txt in the current directory (& it's subdirectories)
+6. How do you change permissions of script.sh so the owner can execute it
+7. Check the last 20 commands you ran
+8. Check where Python is located
+9. Find the PID of the terminal
+10. Kill the terminal (ensure I save Emacs first, as if I opened it through the shell it will also close)
+11. How do you stop ALL processes with the name firefox
+12. Find all occurrences of the word "linux" in linux.org (ignore case sensitivity)
+   
+** Recap Answers
+
+1. echo $(((6 * 5) / 2))  -> double brackets tells the shell to perform an arithmetic evaluation
+
+2. grep "dog" sample.txt
+
+3. wc -l linux.org
+
+4. head linux.org
+   tail linux.org
+
+5. find . -name "*.txt"
+   find    -> searches for files & directories
+   .       -> search current directory
+   -name   -> search by file or directory name
+   "*.txt" -> match anything that ends with .txt
+
+6. chmod u+x script.sh
+
+7. history | tail -20
+
+8. which python3
+
+9. ps aux | grep terminal
+
+10. kill 4567 (or whatever the number is after john-doe)
+
+11. pkill firefox
+
+12. grep -ci "linux" linux.org
+    -c -> count
+    -i -> ignore case sensitivity
+   
+
+** Installations, Updates & Executing Scripts
+** File System and Input & Output
+** Labex Extras
+
+| Syntax  | Explanation                                                                     |
+|         |                                                                                 |
+| xargs   | reads data coming from stdin (the pipe) & converts it to a single line argument |
+| declare | create a variable (declare x=10), no spaces between the variable & data         |
+|         |                                                                                 |
+
+
+* Bash (TRANSFER NOTES & YOUTUBE & SORT)
+
+** Recap List
+
+1. Create a counter, assign 10 to it, then increment it by 5, return the number to the terminal
+2. Create a message, append text to it & return it to the terminal
+
+** Recap Answers
+
+1. declare count=10
+   count=$((count + 5))
+   echo $count
+
+2. declare message="Hello World!"
+   message="$ Have a great day!"
+   echo $message
+
+
+** Introduction
+** Syntax
+
+*Variable*
+Variables are made using: declare variable_name=12
+You can't have any spaces between the equals & the data/unit
+
+*Increment a value*
+declare count=10
+count=$((count + 5))
+count is now -> 15
+
+*Concatenate a sting*
+declare message="Hello, World!"
+message="$ Have a great day!"
+message is now -> Hello, World! Have a great day!
+
+** Extra Syntax
+** If Statements & Loops
+
+
+* Applications
+
+** Recap List
+** Recap Answers
+
+
+** Booting applications
+
+I can save files (in a specific way) in ~/.config/autostart/ so they are opened on boot
+
+The standard format is (below example is for Emacs):
+
+[Desktop Entry]
+Type=Application
+Name=Emacs
+Exec=emacs
+Terminal=false
+X-GNOME-Autostart-enabled=true
+
+*** ~[Desktop Entry]~
+
+- Starts a desktop entry file
+- Required header
+
+*** Type=Application
+
+- Says this launches a program
+- Other types do exist (Link, Directory, etc...)
+
+*** Name=Emacs
+
+- The human-readable name
+- This is what appears in startup app lists (i.e. Startup Application I used to have)
+
+*** Exec=emacs
+
+- The command GNOME runs after login
+- It must be a command that works from the terminal
+
+*** Terminal=false
+
+- Do not open a terminal window for it
+- GUI apps should normally use this
+
+*** X-GNOME-Autostart-enabled=true
+
+- Tells GNOME to run it
+- If set to false, it is ignored
+  
+  
+* Bandit Game (OverTheWire Wargames)
+
+** Recap List
+
+1. Explain the ssh command
+2. Why can't you open a file beginning with '-'
+3. Why can't you cd into a file with spaces
+4. Command to check file type
+5. What does ./* mean
+6. Command to search for files & directories
+7. Command to search by word
+8. Command to sort data alphabetically
+9. Command to print only human-readable letters
+10. What is base64 & why would you use it
+11. Command to character remap
+12. 
+
+** Recap Answers
+
+1. ssh command runs secure shell client which lets you log into a remote machine
+   You need to specific the port (ssh uses port 22 but the Bandit game runs on port 2220)
+
+   ssh username@hostname -p 2220
+
+2. Linux treats - as a special argument instead of a filename
+   Use ./-<file name> so Linux knows this is a file
+
+3. Linux treats spaces as separators between arguments
+   Use " " as this tells the shell to treat everything as 1 argument
+
+4. file <filename>
+
+5. find <filename> <flags>
+
+6. grep <word> <filename>
+
+7. sort <filename>
+   
+   sorts data by line alphabetically
+
+8. strings <filename>
+
+9. Every file/directory in the current directory
+
+10. base64 is a way of converting binary numbers to text
+    You'd use it if the data was required to be in plain-text format
+    For example, an image is made up of bytes, but email is a text-only system
+    You'd encode the bytes to text, then when you receive your email, the system would encode the letters back to bytes
+
+11. tr 'characters to replace' 'characters to replace them with'
+
+12. 
+
+
+** Level Notes
+
+*** Level 0
+ssh = Runs the Secure Shell client, which lets you log in & interact with a remote machine
+bandit0 = The username you want to log in as
+@ = Separate the username from the hostname
+bandit.labs.overthewire.org = The hostname (service address) that I'm connecting to
+-p 2220 = 'p' for port & 2220 is the specific port (SSH normally uses port 22, but I've specified 2220)
+
+A port = numbered endpoint that tells a computer which program or service should receive incoming network traffic
+An IP address is the street address of the apartment block
+The port number is the apartment number
+
+In the above I don't need to specific IP address, but putting in the hostname, my computer requests the IP address
+
+*** Level 0-1
+I must exit as bandit0 to access level 1
+Do this by typing 'exit' into the terminal
+
+Then -> ssh bandit1@bandit.labs.overthewire.org -p 2220
+
+*** Level 1-2
+Linux commands treat - as a special arguments instead of a file name
+cat - -> read from stdin instead of a file (hence why it doesn't work)
+
+./ tells the terminal to read in the current directory
+
+*** Level 2-3
+2 issues with this file name, there are spaces & it begins with '--' (which commands can interpret as an option marker)
+./ -> tells cat that this is a file in the current directory, not a command-line option
+" " -> tells the shell to treat everything as one single argument
+
+'--' is a flag for cat meaning 'stopped giving flag options'
+I.e. if a file was named -n, -n is actually a flag, so Linux would be confused if I put cat -n & ask for a filename
+But if I put cat -- -n, Linux would know I'm finished giving flags & read the file '-n'
+
+*** Level 3-4
+No issues -> use -a flag to reveal hidden files
+
+*** Level 4-5
+You can cat into every file
+But, you can use: ~file ./*~
+This checks the type of file for all files, file07 is ASCII text -> so this must be the plain text password file
+
+*** Level 5-6
+Knowing the fill is exactly 1033bytes in size is the give away
+Use -> find . -type f -size 1033c
+
+find        = Command to search for files & directories that match certain conditions
+.           = Start searching in the current directory
+-type f     = This restricts the search to files (f = regular file, d = directory & l = symbolic link)
+-size 1033c = Find files that are exactly 1033 bytes long (c means bytes or characters
+
+This reveals: ./maybehere07/.file2
+
+*Check answers with other properties*
+
+To check it's human-readable, do -> file ./maybehere07/.file2
+It reveals it's ASCII text, so that's correct
+
+To check it's not executable, do -> ls -l ./maybehere07/.file2
+This reveals it's not executable & you can also see it's 1033 bytes
+
+*** Level 6-7
+Find owner, group & size all in one command (doing them one at a time returns hundreds of files, for each command)
+find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+
+find        = Search for files that match certain conditions
+/           = Search everywhere (i.e. from root)
+-type f     = Search only files
+-user       = File owner must be bandit7
+-group      = Group must be bandit6
+-size 33c   = Size exactly 33bytes
+2>/dev/null = Hide permission errors -> I'm searching through the entire system, I would be getting a lot of permission denied
+                                        (as I don't have permission to see them) for many files, this hides these errors 
+
+*** Level 7-8
+
+grep millionth data.txt
+
+grep      = prints any line that contains the search term
+millionth = the line after the word 'millionth' is returned
+
+*** Level 8-9
+
+sort data.txt | uniq -u
+
+sort data.txt = sorts all the lines alphabetically & puts identical lines next to each other
+uniq -u       = Only prints lines that appear once
+
+*** Level 9-10
+
+strings data.txt | grep "="
+
+strings data.txt -> Same as cat but only returns readable text from the file
+grep "="          -> Will show only lines containing "=="
+
+*** Level 10-11
+
+base64 -d data.txt
+
+base64 -d -> Decode data
+
+base64 is a way on converting binary to text
+If you wanted to send an image through email, which is a text-only system
+Images are actually bytes, so you'd convert them via base64 to text, then once receiving the email, is would decode the base64
+
+*** Level 11-12
+
+All letters have been rotated by 13 positions means:
+
+a (1st letter) -> n (14th letter)
+b              -> o
+c              -> p
+
+& all these vice versa (i.e. n -> a)
+
+*Solution*
+
+tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt
+
+tr             -> Translate
+'A-Za-z'       -> Include all letters
+'N-ZA-Mn-za-m' -> ROT13 mapping
+< data.txt     -> input redirection (take all content of data.txt & give it to the command as input)
+
+*Remapping*
+
+N-ZA-M -> Means, start the alphabet at N go to Z, then carry on at A & go to M
+          Then, the same but for lowercase
+
+*** Level 12-13
+
+*** Level 13-14
+
+*** Level 14-15 
+
+*** Level 15-16
+
+*** Level 16-17 
+
+*** Level 17-18
+
+*** Level 18-19 
+
+*** Level 19-20
+
+** Passwords
+
+Level 0 = ssh bandit0@bandit.labs.overthewire.org -p 2220
+Level 0-1 = ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+Level 1-2 = 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+Level 2-3 = MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+Level 3-4 = 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+Level 4-5 = 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+Level 5-6 = HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+Level 6-7 = morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+Level 7-8 = dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEcy
+Level 8-9 = 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+Level 9-10 = FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+Level 10-11 = dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+Level 11-12 = 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+Level 12-13 = 
+Level 13-14 =
+Level 14-15 =
+Level 15-16 =
+Level 16-17 =
+Level 17-18 =
+Level 18-19 =
+Level 19-20 = 
+
+** 

@@ -1,0 +1,62 @@
+#+TITLE: Python Notes
+
+* Recap List's (SORT ALL PLZ)
+
+** Mini Problems
+*** Recap List
+*** Recap Answers
+** Lists
+*** Recap List
+*** Recap Answers
+** Tuples, Sets & Dictionaries
+*** Recap List
+*** Recap Answers
+** Conversions
+*** Recap List
+*** Recap Answers
+** Functions
+*** Recap List
+*** Recap Answers
+** Wordy Questions
+*** Recap List
+*** Recap Answers
+
+
+* Data Structures (COPY NOTES OVER)
+
+** Recap List
+** Recap Answers
+** Introduction
+** Lists, Tuples, Sets & Dictionaries
+
+* Extras (COPY NOTES OVER)
+
+** Recap List
+** Recap Answers
+** Tips & Tricks
+** Common Bugs
+** Best Practises
+
+* Object Oriented Programming (YOUTUBE & SORT)
+
+** Recap List
+** Recap Answers
+** Introduction
+** Classes
+** Magic Methods
+
+*** def ~__init__(self):~
+*** def ~__str__(self):~
+*** def ~__repr__(self):~
+
+* Design Patterns (YOUTUBE & SORT)
+
+** Recap List
+** Recap Answers
+** Introductions
+
+* Pygame (COPY NOTES OVER & FINISH)
+
+** Recap List
+** Recap Answers
+** Introduction

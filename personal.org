@@ -1,0 +1,22 @@
+#+TITLE: Personal Notes
+
+* Coding Skills to Learn
+
+1. .json file, how it works (create my own)
+   https://www.youtube.com/watch?v=yy-RPsffuKk&list=PLUDwpEzHYYLs6I6jA_USsP3UWfS7EKCf2
+
+2. Precompiler & Compiler -> comprehensive understanding
+
+3. Kanban Workflow & Gantt charts 
+
+4. Unified Modelling Language (class diagram for OOP)
+   https://www.youtube.com/watch?time_continue=2&v=WnMQ8HlmeXc&embeds_widget_referrer=https%3A%2F%2Fzakruti.com%2Fitech%2Ffreecodecamp%2Fvideo-5090&embeds_referring_euri=https%3A%2F%2Fzakruti.com%2F&embeds_referring_origin=https%3A%2F%2Fzakruti.com&source_ve_path=Mjg2NjY
+
+5. Coding Methodologies
+   https://www.geeksforgeeks.org/software-engineering/5-most-commonly-used-software-development-methodologies/
+
+6. Debugging & test driven development
+
+7. Persistence (files & directories)
+
+8. Creating executable files & converting code to an application
