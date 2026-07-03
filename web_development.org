@@ -1467,10 +1467,47 @@ This is a way to modify a web page using JavaScript
     // Finally, append this with the unordered list using .appendChild
 
 
-* Event Handling
+* Event Handling (REGO THROUGH -> confusing)
 
 ** Recap List
+
+1. What is inline events & how do you use them
+2. How do you create an alert for using an ID in main.js 
+3. Have do you select 1 element or multiple
+4. How would you create a <li> element
+5. Add a class name to this element
+6. Add text to this element
+7. How would you check a function is working properly in the web page
+
 ** Recap Answers
+
+
+1. This is where you put the tag next to the element in HTML & assign it an outcome
+
+        <div id="box" onclick('hey dude')"></div>
+
+    However, don't use this method as it's very limited & you can't do a whole lot (stick to creating the elements in JavaScript)
+
+2. let boxDiv = document.getElementById("box");
+   boxDiv.addEventListener("click", function(e) {
+       alert("hey dude");
+   })
+
+   This has the exact same effect as the <div> code in the example above
+   
+3. querySelector("#name")   -> select the first element, name can be element, ID or class name
+   querySelectorAll("#name") -> select all elements -> will need to be followed by a forEach loop
+
+4. let listItem = document.createElement("li");
+   Document refers to the HTML script & "li" creates <li>
+
+5. listItem.className = "list-item";  // list-item can be used in CSS (.list-item { )
+
+6. listItem.textContent = "shrek";    // the word shrek will be in the web page now
+
+7. In JavaScript, after the function is created, add a console.log("<function name> is called")
+   Then, after the action (i.e. a button is clicked), in the console it'll show if the function has actually been called or not
+
 
 ** Introduction
 
@@ -1483,6 +1520,47 @@ i.e. do this when -> clicking, mouse hovering, on the web page loading, submitti
     onMouseOut  -> When the mouse moves out of an element
     onLoad      -> When the web page loads
 
+*Button clicked*
+
+You can assign a variable & then a function to output different results if a key is pressed
+
+    let button = document.querySelector("#genericButton");
+    button.addEventListener("click", function (e) {
+        if (e.shiftKey) {
+            console.log("the shift key was pressed");
+        } else {
+            console.log("the shift key was not pressed");
+        }
+    });
+
+
+1. *Inline HTML events*
+
+<div id="box" onclick('hey dude')"></div>
+This is written in HTML & it simply means, when you click this element, 'hey dude' will pop up
+
+There is also a few others (onmouseover, onmouseout, etc...)
+
+_These are very limited as your locked in on HTML, so the better option is to put the code in main.js & handle the events there_
+
+
+2. *addEventListener*
+
+Alternative to the inline events where you write in the code in main.js
+
+    let boxDiv = document.getElementById("box");
+    boxDiv.addEventListener("click", function(e) {     // e is selecting the event object -> in this example it's not used so I could leave
+        alert("hey dude");                             // leave it blank, but in other example I can use it (i.e. console.log(e.target))
+    })
+
+This example does the same as the Inline HTML event but I can use the variable now
+
+    let boxDiv = document.getElementByID("box");
+    function handleBoxClick(e) {
+        alert("hey dude");
+    boxDiv.addEventListener("click", handleBoxClick);
+
+The above code is identical to the other example, just an alternative way of writing it -> helps show what the function is doing
 
 
 * Developer Tools (F12) - (FILL PLZ)

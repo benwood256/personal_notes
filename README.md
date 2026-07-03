@@ -1,4 +1,6 @@
-**emacs.org
+# All personal notes
+
+## emacs.org
 
 Contains all notes on Emacs:
 
@@ -8,7 +10,7 @@ Contains all notes on Emacs:
    4. Functionality
    5. Packages
 
-**general_computing.org
+## general_computing.org
 
 Contains all notes on general computing concepts
 
@@ -18,7 +20,7 @@ Contains all notes on general computing concepts
    4. Leetcode
    5. Assembly
 
-**linux.org
+## linux.org
 
 Contains all notes on Linux
 
@@ -27,13 +29,13 @@ Contains all notes on Linux
    3. Applications
    4. Bandit Game
 
-**personal.org
+## personal.org
 
 Contains all of my personal notes
 
    1. Coding skills to learn
 
-**python.org
+## python.org
 
 Contains all notes on Python & introduction to OOP
 
@@ -43,7 +45,7 @@ Contains all notes on Python & introduction to OOP
    4. Design Patterns
    5. Pygame
 
-**web_development.org
+## web_development.org
 
 Contains all notes relating to Web Development
 

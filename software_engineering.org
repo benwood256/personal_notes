@@ -1,0 +1,96 @@
+#+TITLE: Software Engineering Notes
+
+* System Architecture
+
+** Recap List
+
+** Recap Answers
+
+** Introduction
+
+What is Architectural Design:
+
+1. Decisions by the organisation
+2. Choosing structural elements
+3. Interaction & combination of structures
+4. Overarching style
+5. Nonfunctional requirements
+
+In a gist it's the way you link together all your systems & track them to stay organised
+Often, a piece of document explaining what documents & software the company uses & how they use them
+
+But often, it's the plan of how you're going to create the organisation (digitally) & what will link together
+
+** Architecture Types
+
+1. *Monolithic*
+   All components of an application are combined into a single self contained unit
+
+2. *Microservices*
+   An application is broken down into smaller, independent components that can be developed & deployed separately
+   An issue with this is: if one component fails it can ripple to the rest of the system
+
+3. *Service-oriented*
+   An application is composed of independent services that communicate with each other
+
+** Layered Architecture
+
+Separate components into layers where each layer only accesses the one below
+
+1. *Presentation*
+   The user interface
+   
+2. *Business*
+   User authentication & authorisation
+
+3. *Persistence*
+   Functional components
+
+4. *Database*
+   Back-end components that contains the database
+
+** Real World Examples
+
+*Layered Architecture*
+
+_Microsoft Outlook_ has a user interface (emails & calendar) then a layer which handles email management, then a data access layer
+& finally a layer to store emails, contacts, etc... in the form of data
+
+Most appropriate use -> desktop applications, as they are heavily centered on user interface & then work backwards from there
+Why this is most appropriate -> Outlook builds on a database up to a main focus on user interface
+
+
+*Repository Architecture*
+
+_Git_ uses a central repository which contains all the data for the software
+
+Most appropriate use -> perfect for systems that have multiple components which need to access data, so having a centralised data bank is perfect
+Why this is most appropriate -> used for version control, where data is stored centrally & can be retrieved when requested through a centralised data bank
+
+
+*Client-server Architecture*
+
+_Meta_ has apps & websites which are used by many customers, they then rely on a large server of data to provide the functionality to the applications
+
+Most appropriate use -> social media as you require a heavy focus on user interface, but a requirement for a large amount of data
+Why this is most appropriate -> when a user post's on Instagram, it sends a request to the server to store this data
+                                then, servers have to deal with interactions & manage this in the database
+
+
+*Pipe & Filter Architecture*
+
+_Unix_ system (or Linux) as data can manipulated in complex ways (or through many individual steps)
+
+Most appropriate use -> when each stage of the software/program performs 1 specific task before moving onto the next
+Why this is most appropriate -> commands are a necessity of Unix systems & these can be used to manipulate data in various ways
+
+
+*Systems combing 2 or more patterns*
+
+_Netflix_ uses Layered, Repository & Client-server Architecture
+strengths   -> scalable (Netflix is a growing business) & each layer can be independently updated
+limitations -> very complicated system requiring many people to manage also, this makes it very expensive
+
+_Spotify_ uses all 4
+strengths   -> allows for a very flexible system as it is so complex & this makes it very reliable as across many systems
+limitations -> also very expensive, can be very difficult to solve problems & debug as the system is so complex

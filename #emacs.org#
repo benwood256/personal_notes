@@ -61,7 +61,6 @@
    C-c C-b -> backwards same level
 
 8. 
-   
 
 ** Introduction
 
@@ -623,13 +622,3 @@ Vertico changes how this looks & behaves by:
 - Updates as I type
 - Navigation feels like a modern search UI
 
-
-
-
-* Dired Mode
-
-** Recap List
-
-** Recap Answers
-
-** Introduction
