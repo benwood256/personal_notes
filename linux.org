@@ -8,6 +8,7 @@
 4. Learn how file system mounting works in Linux
 5. Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
+6. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
 
 
 * Terminal Commands (TRANSFER NOTES OVER)
@@ -114,7 +115,7 @@ message is now -> Hello, World! Have a great day!
 * Applications
 
 ** Recap List
-** Recap Answers
+** Recap Answer
 
 
 ** Booting applications
@@ -159,8 +160,26 @@ X-GNOME-Autostart-enabled=true
 
 - Tells GNOME to run it
 - If set to false, it is ignored
-  
-  
+
+** GUI Toolkit
+
+This is a library that provides ready-made building blocks & the code to create & display graphical user interfaces
+
+All distros use GTK & Qt to build their desktop environment, with a few exceptions
+Most applications are built using these 2 as well
+
+Gnome -> GTK
+KDE   -> Qt
+
+KDE was built using Qt, but Emacs was installed & compiled with GTK, so it uses that
+
+
+*Difference between Wayland & GUI Toolkit*
+
+Wayland     -> handles communication between the display server & applications
+GUI Toolkit -> a software library that helps developers create GUIs within applications
+
+
 * Bandit Game (OverTheWire Wargames)
 
 ** Recap List
@@ -388,11 +407,77 @@ Level 19-20 =
 
 ** 
 
+
 * Arch
 
 ** Recap List
 
 ** Recap Answers
 
+
 ** Installation
+
+*** Download Steps
+
+1. .iso file
+    You need to download a .iso file specific to Arch (from the Arch wiki)
+    This is a single file that contains everything on a CD -> file system & folder structure
+    The Arch iso file contains enough to boot itself & then complete installing the OS system
+
+2. A tool to write an ISO to a USB so it’s bootable
+    The computer can’t boot from a file as the file is sitting in my Fedora environment, so on boot the computer can’t get access to this file as it needs to boot Fedora first
+    At boot, the UEFI looks for bootable disks (i.e. USB or SSD) or EFI bootloaders -> it doesn’t look for .iso files
+    Therefore, the ISO file needs to be placed on a USB, so then the UEFI can read the USB
+    Again though, the UEFI can’t read a file on a USB, the USB needs to be converted into a copy of a bootable disk
+    So, a tool will extract the data from the .iso file & convert it away from using files, it then writes this data to a USB & now the USB can act as a bootable disk drive
+
+3. Boot & select Arch
+
+*** Setting up the OS
+
+1. Connect to wifi
+
+2. Partition a disk
+    You need 3 partitions
+    EFI System partition -> reuse the one I created when I installed Fedora
+    Linux root partition -> creates the Arch file system 
+    Swap partition (optional) -> Linux uses as backup memory (RAM extension) when physical RAM is full
+
+3. Format the root partitions
+    Formatting a partition means to create a file system on it
+    So, the OS can know how to organise, store & retrieve files
+    Technically, partitioning a disk means to allocate an empty space of data for something, at this stage, it’s just an empty space allocated to a certain size
+    Then formatting, tells it to install x filesystem (i.e. the root)
+
+4. Encrypt the root partition
+
+5. Install LVM (Logical Volume Manager)
+    This is a software preinstalled on Linux
+    LVM will take a partition & break up the data into logical units, then if a certain unit needed more data, you can shrink the size of 1 to increase the size of another (move data around)
+    Often, in an Arch Linux system a root partition is made & a /home partition is made (/home is for personal files which sit in an entirely separate partition to system files (root)), this way, you can reinstall the OS without deleting personal files
+    LVM will create a shared pool of data for these 2 partitions, which, if down the line the /home directory uses all it’s data but the root still has a lot spare, you can transfer over data (there are other uses for LVM other than / & /home but this is the best beginner example)
+
+** Notes to sort when installed
+
+Key repeat -> decrease the delay & increase the rate
+              this will mean repeated keystrokes (i.e. holding down h, j, k & l) will move faster
+              get used to a fast rate of movement earlier so I'm more productive
+
+*Emacs*
+
+I need to install all packages with (require ‘evil)
+M-x package-install RET evil RET
+Then reload & Emacs should work as usual
+             
+** Information
+
+*archwiki*
+
+Extremely helpful for understanding Linux in general
+Read through all of this & make extensive notes
+
+*Notes on Arch*
+
+Arch is a rolling release distro, meaning it updates constantly -> things will break & will need to be fixed
+There is an easy install called “archinstall” -> but it doesn’t allow you to completely customise the system & defeats the purpose for me as I want to learn the system, not skip steps
 

@@ -4,7 +4,25 @@
 
 ** Recap List
 
+1. Give an example of Layered Architecture & why
+2. Give an example of Repository Architecture & why
+3. Give an example of Client-server Architecture & why
+4. Give an example of Pipe & Filter Architecture & why
+5. Give a 2 pros & cons for using multiple systems
+
 ** Recap Answers
+
+1. _Microsoft Outlook_ has a user interface (emails & calendar) then a layer which handles email management, then a data access layer
+   & finally a layer to store emails, contacts, etc... in the form of data
+
+2. _Git_ uses a central repository which contains all the data for the software
+
+3. _Meta_ has apps & websites which are used by many customers, they then rely on a large server of data to provide the functionality to the applications
+
+4. _Unix_ system (or Linux) as data can manipulated in complex ways (or through many individual steps)
+
+5. pros -> scalable & allows for a flexible system
+   cons -> very complicated system, therefore also expensive & difficult to maintain
 
 ** Introduction
 
@@ -14,7 +32,7 @@ What is Architectural Design:
 2. Choosing structural elements
 3. Interaction & combination of structures
 4. Overarching style
-5. Nonfunctional requirements
+5. Non-functional requirements
 
 In a gist it's the way you link together all your systems & track them to stay organised
 Often, a piece of document explaining what documents & software the company uses & how they use them
@@ -94,3 +112,446 @@ limitations -> very complicated system requiring many people to manage also, thi
 _Spotify_ uses all 4
 strengths   -> allows for a very flexible system as it is so complex & this makes it very reliable as across many systems
 limitations -> also very expensive, can be very difficult to solve problems & debug as the system is so complex
+
+
+* Network Protocols & HTTP messages
+
+** Recap List
+
+1. What is a network protocol
+2. What is TCP
+3. What is UDP
+4. What is DNS
+5. What is FTP used for
+6. What is SMTP
+7. What's the difference between a protocol & a port
+8. Give a simple summary the relationship between a client & server, when the client enters a URL
+9. How does https work to securely sends data
+10. What is a HTTP message
+11. Break down the 3 parts of a HTTP Request message
+12. Break down the 3 parts of a HTTP Response message
+13. Explain what each status code means (100s, 200s, 300s, 400s & 500s)
+14. 
+
+** Recap Answers
+
+1. A network protocol is a set of rules that define how data is transmitted and received between devices on a network
+
+2. TCP (Transmission Control Protocol) is a reliable protocol that ensures data is delivered accurately and in order
+
+3. UDP (User Datagram Protocol) is a faster but less reliable protocol that sends data without checking for errors or order
+
+4. DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses
+
+5. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
+
+6. SMTP (Simple Mail Transfer Protocol) is used to send emails between servers
+
+7. Protocol → rules for communication (e.g. HTTP, TCP)
+   Port → a numbered endpoint used to direct traffic (e.g. port 80 for HTTP)
+
+8. A client (your browser) wants to load a website
+   The browser asks DNS to translate the domain name (i.e. ~https://google.com~) into an IP address
+   DNS returns the server's IP address
+   Your browser connects to the server (hosting place of the website)
+   The server sends the website data back to your browser (DNS isn't needed as the server uses your IP address)
+
+9. Server gives you a public key (they send it with the certificate
+   it's a padlock anyone can close but only the server can open)
+   The browser generates a random secret key
+   You encrypt this secret key using the server's public key (meaning the server is the only one that can decrypt it)
+   So when the data is sent over, it's encrypted with the public key
+   The server receives this & decrypts it's own encryption with the public key to receive the secret key
+   Then they can decrypt the data using the secret key
+
+10. There's a Request HTTP message when a client requests data from a server
+    & a Response HTTP message when the server sends its reply
+
+11. The method -> GET, POST, DELETE, etc...
+    The path   -> the location of the data (i.e. /index.html)
+    The HTTP Version
+
+12. The HTTP version
+    The status code
+    The status message
+
+13. 100s -> the request is continuing
+    200s -> success codes
+    300s -> redirection codes
+    400s -> client error codes (there was a problem)
+    500s -> server error codes (the request was accepted but there was an error on the server side)
+
+14. GET    -> retrieve data from a server
+    POST   -> send data to input into the server
+    DELETE -> remove a resource
+    PUT    -> update or replace an existing source
+    PATCH  -> partially update a resource
+
+
+** Introduction
+
+Shared server host -> All the info of my website is shared on a server with other people
+                      Domain is hosted at the same server
+
+Domain Name System (DNS) -> If you create a website, you name it yourself (google.com)
+                             Your website is hosted on a server, this server has an IP address (192.184...)
+                             The DNS links these 2 together & translates for you
+                             This allows you to type out a https address rather the IP address
+                             
+A summary -> A client (your browser) wants to load a website
+             The browser asks DNS to translate the domain name (i.e. ~https://google.com~) into an IP address
+             DNS returns the server's IP address
+             Your browser connects to the server (hosting place of the website)
+             The server sends the website data back to your browser (DNS isn't needed as the server uses your IP address)
+
+** HTTP
+
+*Hyper Text Transfer Protocol*
+
+On the web, we can only transfer text (by text, it means code -> i.e. it can only read index.html, style.css, etc.. files)
+
+Adding an 's' -> https means _Secure_
+
+
+*Normal http*
+
+You    -> send me this website data
+server -> here you go
+
+The data is sent in plain text, so anyone on the same wifi can see it (including passwords & messages)
+
+
+*How https keeps you safe*
+
+1. You connect to a website
+2. The server sends a certificate to prove it's the website (this certificate is verified by trusted authorities)
+3. Encryption is set up (the browser & server agree on encryption keys & create a secure tunnel)
+4. Now all the data is encrypted
+
+   This is also known as Client-Server _Architecture_
+
+
+*Why anyone on the wifi can't use the encryption keys*
+
+1. Server gives you a public key (they send it with the certificate
+   it's a padlock anyone can close but only the server can open)
+2. The browser generates a random secret key
+3. You encrypt this secret key using the server's public key (meaning the server is the only one that can decrypt it)
+4. So when the data is sent over, it's encrypted with the public key
+5. The server receives this & decrypts it's own encryption with the public key to receive the secret key
+6. Then they can decrypt the data using the secret key
+   
+** Curl
+
+A command line utility that allows you to send requests to a web server & see the server's response
+You can use this to test & determine how your server will respond to certain scenarios
+
+** Request/Response Cycle
+
+A way to visualise the way information flows through the system
+
+1. A user gives a client a URL & a client builds the request for information
+2. The request is sent from the client to the server
+3. Once received by the server, it builds a response that contains the requested information
+
+** The HTTP message
+
+HTTP messages are used for the request & responses
+They are composed of ASCII text
+
+These aren't crafted by the programmer but by a software or web browser
+
+When your on a website, there are loads of these,
+the browser hides them for you in the 'Network' section of Developer Tools (F12)
+
+1. You send a 'get' request saying, give me index.html from example.com 
+2. Then you'll get a response in HTTP message format
+
+** Status Codes
+
+A number from the server your requesting the information from, telling you how the request went
+example: 404  -> page not found
+
+100s -> the request is continuing
+200s -> success codes
+300s -> redirection codes
+400s -> client error codes (there was a problem)
+500s -> server error codes (the request was accepted but there was an error on the server side)
+
+** Mime Types
+
+Multi-purpose Internet Mail Extension -> describes the content of a file based on its format
+Frequently called media types now
+
+This catalogue helps browsers open the file with the appropriate extension or plug-in
+
+** Enter Powershell in a terminal
+
+pwsh -> command to enter Powershell
+exit -> leave Powershell
+
+** Requests & Responses continued
+
+Requests  -> loading a web page
+Responses -> receiving that pages content
+
+*API*
+Application Programming Interface -> a bridge between systems that lets them safely exchange data
+
+Purpose   -> fetching weather data, updating profiles, integrating payment systems
+Endpoints -> specific URLs that represent a resource to the API - each one is designed to handle a specific request
+Request-response model -> APIs use this model where a client sends a request to an API server
+                          this server process the request & sends a response
+
+*HTTP request*
+
+1. Methods
+
+   GET    -> retrieves resources from a server
+   POST   -> modify the data on a server
+   DELETE -> remove a resource from a server
+
+   An endpoint is these methods (GET, POST, DELETE, etc...) as they each are doing 1 specific thing
+
+2. URL
+
+   Protocol  -> communication method (~http://~ or ~https://~)
+   Host-name -> domain name (example.com)
+   Path      -> the specific resource (/images/photo.jpg)
+
+_Optional_
+
+   Port number         -> the port to connect to the server (80 for http & 443 for https)
+   Query parameters    -> additional details passed to the server as key-value pairs, often used for searches
+   Fragment identifier -> pointing to a specific section or element on the page
+
+_Overall URL_
+
+   ~https://example.com:8080/products?page=2#reviews~
+
+3. Request Headers
+
+   Provide additional information about a client's request, helping the server process it
+
+   Host            -> specifies host name & port number
+   User-Agent      -> identify the client who's making the request
+   Accept          -> indicates the type of media the client accepts
+   Content-Type    -> indicates the type of media that can be included in the response body
+   Cookie          -> keeps information about the session
+   referrer        -> the page URL that directs the client to the resource
+   Accept-Language -> specifies how a client can accept a response
+   Authorisation   -> gives credentials to access private resources on the server
+
+4. Request Body
+
+   This is an optional part of a HTTP request
+   Used to send data from the client to the server (with methods like POST, PUT or HATCH)
+
+   It contains data in the format of forms, JSON objects or files
+
+   It's not needed for each request (GET requests don't require this)
+   It's required if you need to send user input, images or other resources
+
+   
+*HTTP requests*
+
+This is the message the server sends back to the client after processing a request
+
+1. Status Code
+
+   Consists of a brief description of the status & a 3 digit code indicating the status
+   Some of the codes:
+
+   100 -> continue, the server has received a part of the request & the client should send the rest
+   
+   200 -> success
+   201 -> success & something new was created (following a POST request)
+   204 -> success but there was no content
+
+   301 -> the resource requested has been moved
+   302 -> the resource requested was found in a different location
+   304 -> the resource has not been modified since it was last requested
+
+   400 -> bad request, there was an error on the client's side
+   401 -> the client needs authorisation to access the resources
+   404 -> not found
+
+   500 -> internal server error
+   503 -> the server is unavailable to process the request
+
+2. Response Headers
+
+   These are key-value pairs send by the server as a response to a request
+
+   Content-Type   -> information on the content type that's in the response body
+   Content-Length -> size of content in bytes
+   Set-Cookie     -> creates a cookie on the browser of the client
+   Last-Modified  -> the last time the resource had been modified
+   Expires        -> time when the response will expire
+   Server         -> the version of the software
+   Access-Control-Allow-Origin -> the origins of accessing a resource in case of cross-origin requests
+
+3. Response Body
+
+   This is optional
+   Can take various forms: XML, JSON objects, etc...
+
+** Structure of HTTP Requests & Responses
+
+1. Start line
+
+   The Method (i.e. GET)
+   The Path (the resource being requested)
+   The HTTP version 
+
+2. Headers
+
+   Host (domain name of the server i.e. example.com)
+   User-Agent (information on the client)
+   Accept (tells the server which format the client wants the response in)
+
+3. Blank line
+
+   This separates the headers from the body
+
+4. Body (optional)
+
+   In the case of a GET request, there will be no body
+   The body can contain data to be sent to the server (methods like POST, PUT or DELETE)
+
+
+HTTP Request Example
+
+    GET /api/users/123 HTTP/1.1​
+    Host: example.com​
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+    (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36​
+    Accept: application/json
+
+HTTP Response Example
+
+    HTTP/1.1 200 OK​
+    Content-Type: application/json​
+    Content-Length: 85​
+    ​
+    {​
+    "id": 123,​
+    "name": "John Doe",​
+    "email": "john.doe@example.com",​
+    "status": "active"​
+    }
+
+** Swagger UI Website
+
+1.​ What was the response when you sent a GET request to /pet/1?
+
+It returned a 404 error meaning the server couldn’t find the requested data
+
+2.​ What was the response code, and what does it mean?
+
+404 -> the pet could not be found (or the data at this location could not be found)
+           This will be because a pet with this ID doesn’t exist
+
+3.​ What fields were in the response body, and what do they mean?
+
+Code: 1                              -> API specific code
+Type: error                         -> what this API code means 
+Message: pet not found     -> explanation for code & code type
+
+4.​ When you sent a POST request to /pet, what did you put in the request body?
+
+I left ID to: 0
+I changed name to: billy
+I changed the status to: sold
+
+{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "billy",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "sold"
+}
+
+5.​ What was the response to the POST request?
+
+It returned to confirm my body was accepted (by returning the body I submitted)
+It returned response headers to confirm the format of the response
+
+6.​ What was the response code of the POST request, and what does it mean?
+
+200 -> meaning it was accepted & my body was added to the website
+
+7.​ Can you explain the purpose of the /pet/{petId} and /pet endpoints?
+
+There’s the method (i.e. GET, POST, etc…)
+/pet      -> The pet is the path (i.e. I want to look at, change, etc… this section of the data)
+{petId} -> I want to apply this method to this specific pet (by it’s ID)
+i.e. I want the data on it, I want to delete it, I want to modify it, etc…
+
+8.​ If the /pet/{petId} endpoint returned a 404 status code, what would that mean and what might cause it?
+
+The server can’t find any data at this path
+For this context, it would mean that the Id inputted doesn’t point to any data (as it doesn’t exist)
+i.e. there is nothing at this {petId} or there is no pet
+
+9.​ Choose one more endpoint from the Petstore API and explain its purpose and how you would use it.
+
+DELETE /pet/{petId}
+
+This would be used to remove a pet (using the DELETE method) by using its specific ID from the server
+You would pass the ID you want to delete & if the server returned a 200 in its HTTP response, then this pet was successfully deleted
+
+
+* JSON & Web Storage APIs
+
+** Recap List
+
+** Recap Answers
+
+** Introduction
+
+JSON -> JavaScript Object Notation
+Converts objects into strings so we can send it through a HTTP request
+One of the best ways of sending data between servers & clients
+
+Your programs internal data gets converted into JSON strings
+
+*What data can & can't be converted*
+
+JSON supports a limited number of data types (hash maps, arrays, strings, numbers, booleans & null)
+
+JSON can't convert: functions, classes, pointers, file handlers or closure
+
+*What JSON looks like*
+
+{
+  "name": "John",
+  "age": 25,
+  "isStudent": false,
+  "courses": ["math", "cs"]
+}
+
+*What languages support JSON*
+
+Almost every modern language has JSON support (Python, C/C++, Java, Elisp, etc...)
+
+*Using JSON Syntax*
+
+JSON is built into JavaScript -> so you can immediately start using JSON functions
+However, all other languages have a JSON library that needs to be imported at the start of the file
+
+Example   -> in Python, import json
+Example 2 -> in Elisp,  (require 'json)
+
+

@@ -5,6 +5,21 @@
 1. Make (complex) notes on how compiler & interpreters work & how they differ
 2. Make (complex) notes on hard drives & SSDs -> how they works, partitions, how partitions work, etc...
 
+* Project Workflow
+
+1. Create a file with a clear name & add all files needed (README.md, .gitignore, projects files & a .org file)
+2. In a markdown file (.md or .org) list what files there are
+3. Add descriptions of what each file is for & what it's doing
+4. In a subheader for a file (i.e. main.js) add notes to the markdown explaining what sections of code are doing
+5. Do this on top of comments within the code
+
+
+* Comparing language differences (Python, JavaScript, Bash & Elisp)
+
+** Making functions
+
+** Calling functions
+
 
 * Terms & Keywords 
 
@@ -15,8 +30,14 @@
 3. How do you maximise the focused window
 4. What is the difference between a compiled & interpreted language
 5. What's UEFI, Boot Manager & the Bootloader
+6. What is API
+7. What is TCP
+8. What is UDP
+9. What is DNS
+10. What is FTP
+11. What is SMTP
 
-** Recap Answers
+** General (including keywords & terms)
 
 1. Win + h
 
@@ -32,6 +53,19 @@
    Boot Manager -> Part of UEFI that decides which EFI program to start
    Bootloader   -> Loads the OS kernel (GRUB or Windows Boot Manager)
 
+6. API (Application Programming Interface) is a way for different software systems to communicate with each other
+
+7. TCP (Transmission Control Protocol) is a reliable protocol that ensures data is delivered accurately and in order
+
+8. UDP (User Datagram Protocol) is a faster but less reliable protocol that sends data without checking for errors or order
+
+9. DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses
+
+10. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
+
+11. SMTP (Simple Mail Transfer Protocol) is used to send emails between servers
+
+
 ** Computer Keywords
 
 | Term            | Meaning                                                                                                   |
@@ -46,20 +80,12 @@
 |                 | It tells the computer to turn on all the hardware (CPU, GPU, RAM, etc...) & link it                       |
 | BIOS            | Basic Input Output System -> legacy version of the booter                                                 |
 
-
 ** Random Definitions & Explanations
 
 
-* Git (ADD RECAP LIST)
-
-** Recap List
-
-1. Show the commit history in one line
-2. 
-
-** Recap Answers
 
 
+* Git
 
 ** Explained
 ** Commands
@@ -133,7 +159,7 @@ If I accidentally connected to github & it's requesting my username:
 ** Recap List
 ** Recap Answers
 
+
 ** Path to Learn (DELETE WHEN ORGANISED)
 ** 6502 Workflow
 ** Introduction
-

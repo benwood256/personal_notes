@@ -12,20 +12,55 @@
    Then also the task file -> so I can open the code while I reread my notes
    This way I won't need to rely on screenshots as I can see the code as I read
 7. [ ] Make notes on what are the buffers that are automatically opened when booting Emacs
-8. [ ] Is there a package to manage buffers better (i.e. one where I can have windows like in VS Code)
-9. [ ] Customize evil-undo system -> redo isn't working
-10. [ ] Create homepage that opens on boot
-11. [ ] Can I open specific buffers when I boot Emacs (init.el, Emacs notes -> here I will have links to all other notes)
-12. [ ] Package: org agenda -> Look into this, download, make notes on it
-13. [ ] Package: Consult -> look into it more, make notes & start using it's features in my workflow
-14. [ ] Look into many Emacs themes, find one I like, make notes on how themes work (are downloaded & remembered) update init.el file
-15. [ ] Package to get emails on Emacs
-16. [ ] Package: Magit (Git for Emacs)
-17. [ ] Package to get the file manager in Emacs (no longer need to use the file system/terminal)
-18. [ ] Add Python, Web Server, etc... environments, like the one's in VS Code
-19. [ ] Package so I can have mini windows in Emacs for managing multiple buffers (like in VS Code)
-20. [ ] include - & _ to be treated as words (i.e. web-to-day counts as 1 word) so shortcuts like w & dw include hyphens & underscores
-21. [ ] Are there shortcuts to jump to specific headings (i.e. 1.2, 2.7 etc...) in Org mode
+8. When I ignore a spellcheck -> where are these saved (if it's a file, I need to add it to my GitHub containing my
+   init.el file -> so I can replicate my Emacs on different machines Laptop and PC)
+9. [ ] Is there a package to manage buffers better (i.e. one where I can have windows like in VS Code)
+10. [ ] Customize evil-undo system -> redo isn't working
+11. [ ] Create homepage that opens on boot
+12. [ ] Can I open specific buffers when I boot Emacs (init.el, Emacs notes -> here I will have links to all other notes)
+13. [ ] Package: org agenda -> Look into this, download, make notes on it
+14. [ ] Package: Consult -> look into it more, make notes & start using it's features in my workflow
+15. [ ] Look into many Emacs themes, find one I like, make notes on how themes work (are downloaded & remembered) update init.el file
+16. [ ] Package to get emails on Emacs
+17. [ ] Package: Magit (Git for Emacs)
+18. [ ] Package to get the file manager in Emacs (no longer need to use the file system/terminal)
+19. [ ] Add Python, Web Server, etc... environments, like the one's in VS Code
+20. [ ] Package so I can have mini windows in Emacs for managing multiple buffers (like in VS Code)
+21. [ ] include - & _ to be treated as words (i.e. web-to-day counts as 1 word) so shortcuts like w & dw include hyphens & underscores
+22. [ ] Are there shortcuts to jump to specific headings (i.e. 1.2, 2.7 etc...) in Org mode
+
+
+* Packages to sort
+
+** org-modern 
+
+Makes things look nicer - purely cosmetic
+
+** org-roam
+
+Create a personalised wikipedia
+
+
+** orderless
+
+When searching, recommendations come up out of order
+i.e. typing 'org' wouldn't reveal agenda-org on vanilla, with orderless it would give that option in the mini-buffer
+
+** corfu
+
+auto-complete whilst I'm typing (similar to VSCode suggestions)
+
+** marginalia
+
+helpful annotations (usually M-x find-file, only find-file would be in the mini buffer
+with this, next to find-file would be 'command' & 'open a file'
+
+** embark
+
+context sensitive actions
+If I did C-x C-f for find file, & the minibuffer gave me options for files to open, usually all I can do is hit enter
+With this, I can use a shortcut to give me options to rename, delete, run grep, etc...
+Also works with M-x (functions) & C-x b (buffers) 
 
 
 * Org mode (ADD NOTES) 
@@ -39,7 +74,6 @@
 5. Promote & Demote header
 6. Jump to next heading & next heading but on the same priority
 7. Same as above but backwards
-8. 
 
 ** Recap Answers
 
@@ -60,17 +94,161 @@
 7. C-c C-p -> backwards to next header
    C-c C-b -> backwards same level
 
-8. 
-   
+
+* Elisp (COMPLETE & port to general_computing.org (Comparing language differences) when sorted)
+
+** Recap List
+
+1. How do you call a function in scratch buffer
+2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & num2' & code to add them together
+3. Call the function and pass 2 numbers to it
+4. What is true & false in Elisp
+5. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
+6. Create the variable 'y' & pass 10 to it
+7. Return to console y times 3
+8. What does the ' mean (give 3 examples)
+9. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
+10. Explain what a symbol is & how this line works -> (require 'evil)
+11. What another way to write -> #'flyspell-mode
+12. Create a function that adds a print("hello world") using the shortcut C-S-h
+13. How do Elisp if statements work
+14. Create an if statement to return 'true' or 'false'
+15. Do another one to check if a variable is greater than 10
+16. 
+
+** Recap Answers
+
+1. Go a line after the function is created -> C-x C-e
+   Go a line after the function call       -> C-x C-x
+
+2. (defun adding_together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
+      (+ num1 num2))
+
+3. (adding_together 23 12)
+
+4. true  -> t
+   false -> nil
+
+5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
+
+   (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
+
+6. (setq y 10)   ;; setq -> built-in function meaning 'set variable'
+
+7. (* y 3)       ;; C-x C-e on the variable & the same on this will return 10
+
+8. Don't evaluate this section -> known as *quote*
+
+   '(1 2 3) -> treats this as a list, the most common use of this key
+
+    x       -> returns: 10
+   'x       -> returns: x
+
+   '(+ 1 2) -> returns: (+ 1 2)
+
+9. (defun greet()
+       (interactive)          -> this has to be the first thing after the function is made
+       (message "hello"))
+
+   When you do M-x greet RET  -> returns: hello
+
+10. symbol -> a label that can point to things (variable, function, feature)
+
+    require -> load this feature
+    'evil   -> the quote means 'evil' is treated as a symbol not a variable (so it can be retrieved by require)
+
+11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+
+12. (defun print-hello-world ()
+        (interactive)                              -> you can call this function from M-x
+        (message "hello world"))
+    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function
+
+    You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
+
+13. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
+    (if CONDITION
+        THEN
+      ELSE)
+
+14. (if t                 -> if I swap this to nil it would return: it-was-false
+        'it-was-true      
+        'it-was-false)
+
+    Note -> anything other than nil is considered true, so I can swap the t for anything
+
+15. (setq x 15)
+    (if (> x 10)
+        "x is greater than 10"
+      "x is less than 10")
+
+16. 
+
+
 
 ** Introduction
 
-~ <code> ~ (without the spaces), this treats the <code> as code, so using underlines either side won't underline it
-For example ~__init__~ -> the _ should make the whole word underlined, but the ~ either side mean it's ignored
+*Running code*
 
-** Packages
+1. Go to the Scratch buffer
+2. Go a line after the function is created
+3. C-x C-e
+4. Go a line after the function is called
+5. C-x C-e
 
 
+*Simple function*
+
+    (defun my_add_function (num1 num2)
+        (+ num1 num2))
+
+    (my_add_function 23 12)
+
+defun       -> defines a function (followed by function name)
+num1 & num2 -> arguments
+
+You call the function by surrounding it by brackets
+
+
+*true & false*
+
+true  -> t
+false -> nil
+
+
+*Creating key-binding to function*
+
+    (global-set-key (kbd "C-S-s") 'insert-numbers)    ;; control shift s
+
+global-set-key  -> add new key-bindings
+kbd             -> converts a human readable key string (i.e. C-x) to Emacs key-binding format
+"C-S-s"         -> the key-bindings being created
+'insert-numbers -> the name of my variable which I created
+
+** Hooks (COMPLETE)
+
+A variable that holds a list of functions
+Emacs run these functions when a certain event happens
+
+When X happens, run X function(s)
+
+** If Statements (COMPLETE)
+
+
+** Loops (COMPLETE)
+
+*** For loops
+
+*** While loops
+
+
+** Data Structures (COMPLETE)
+
+*** Lists
+
+*** Arrays (vectors)
+
+*** Hash Tables
 
 
 * Key Functions
@@ -461,6 +639,7 @@ To make them persistent, I need to save them to a file which is reloaded upon st
 ** Recap List 
 ** Recap Answers
 
+
 ** Sources of packages
 
 There are 3 main sources for packages:
@@ -631,5 +810,6 @@ Vertico changes how this looks & behaves by:
 ** Recap List
 
 ** Recap Answers
+
 
 ** Introduction

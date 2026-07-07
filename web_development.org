@@ -5,8 +5,17 @@ If I forget anything whilst doing a task:
    1. Add this to the Recap List (if not already there)
    2. Go back through entire Recap List for that sub-header
 
-   *Add many comments to task submissions*
+    *Add many comments to task submissions*
    
+    The first day I'm doing the Capstone Project -> only do recap & sort recap lists (& redo tasks)
+   
+* Course Workflow
+
+1. Write code for a task using help from stack overflow, youtube & websites
+2. Do 1 section at a time
+3. Then if I get stuck, send AI that section of code & ask what went wrong (don't tell it the requirements)
+4. Extra -> find same projects & look at examples of their good code & see how mine compares
+
 * HTML 
 
 ** Recap List
@@ -1541,7 +1550,8 @@ This is written in HTML & it simply means, when you click this element, 'hey dud
 
 There is also a few others (onmouseover, onmouseout, etc...)
 
-_These are very limited as your locked in on HTML, so the better option is to put the code in main.js & handle the events there_
+_These are very limited as your locked in on HTML, so the better option is to put the code in main.js
+& handle the events there_
 
 
 2. *addEventListener*
@@ -1549,8 +1559,8 @@ _These are very limited as your locked in on HTML, so the better option is to pu
 Alternative to the inline events where you write in the code in main.js
 
     let boxDiv = document.getElementById("box");
-    boxDiv.addEventListener("click", function(e) {     // e is selecting the event object -> in this example it's not used so I could leave
-        alert("hey dude");                             // leave it blank, but in other example I can use it (i.e. console.log(e.target))
+    boxDiv.addEventListener("click", function(e) {    # e is selecting the event object -> in this example it's not used so I could leave
+        alert("hey dude");                            # leave it blank, but in other example I can use it (i.e. console.log(e.target))
     })
 
 This example does the same as the Inline HTML event but I can use the variable now
@@ -1561,6 +1571,7 @@ This example does the same as the Inline HTML event but I can use the variable n
     boxDiv.addEventListener("click", handleBoxClick);
 
 The above code is identical to the other example, just an alternative way of writing it -> helps show what the function is doing
+
 
 
 * Developer Tools (F12) - (FILL PLZ)
