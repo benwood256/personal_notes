@@ -2,62 +2,93 @@
 
 * To Do List
 
-1. After moving to Arch -> manually create a boot application folder (i.e. boot these applications on startup)
-2. Make a plan for Hyprland (i.e. in terms of tile layouts -> tile 1 = Emacs, tile 2 = safari, etc...)
-3. Make colour theme for Ricing, i.e. based on Dune poster
-4. Learn how file system mounting works in Linux
-5. Learn how to use systemd to create real permanent network mounts instead of using fstab.
+1. Rewrite the file system from root -> go into depth on what each file is used for (/usr, /bin, etc...) & create recap list
+2. After moving to Arch -> manually create a boot application folder (i.e. boot these applications on startup)
+3. Make a plan for Hyprland (i.e. in terms of tile layouts -> tile 1 = Emacs, tile 2 = safari, etc...)
+4. Make colour theme for Ricing, i.e. based on Dune poster
+5. Learn how file system mounting works in Linux
+6. Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
-6. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+7. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+8. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
+9. Look into popular aliases or clever ones people have made
+10. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
 
 
 * Terminal Commands (TRANSFER NOTES OVER)
 
 ** Recap List (ADD MORE, ASK CHATGPT)
 
-1. Do (6 * 5) / 2 in the shell & return the answer
-2. Search for the word 'dog' in sample.txt
-3. Search how many lines of text are in the file linux.org
-4. Show the first 10 lines of a linux.org & the same but the last 10
-5. How do you find all the files ending in .txt in the current directory (& it's subdirectories)
-6. How do you change permissions of script.sh so the owner can execute it
-7. Check the last 20 commands you ran
-8. Check where Python is located
-9. Find the PID of the terminal
-10. Kill the terminal (ensure I save Emacs first, as if I opened it through the shell it will also close)
-11. How do you stop ALL processes with the name firefox
-12. Find all occurrences of the word "linux" in linux.org (ignore case sensitivity)
+1. Clear terminal with a keyboard shortcut
+2. Clear current typed command
+3. Put cursor at the start of the command
+4. Put cursor at the end of the command
+5. Go to previous directory (after a cd)
+6. Rerun command as if I forgot to use sudo (i.e. apt upgrade)
+7. Rerun the 3rd command I used this session
+8. What's the difference between ; && and ||
+9. Do (6 * 5) / 2 in the shell & return the answer
+10. Search for the word 'dog' in sample.txt
+11. Search how many lines of text are in the file linux.org
+12. Show the first 10 lines of a linux.org & the same but the last 10
+13. How do you find all the files ending in .txt in the current directory (& it's subdirectories)
+14. How do you change permissions of script.sh so the owner can execute it
+15. Check the last 20 commands you ran
+16. Check where Python is located
+17. Find the PID of the terminal
+18. Kill the terminal (ensure I save Emacs first, as if I opened it through the shell it will also close)
+19. How do you stop ALL processes with the name firefox
+20. Find all occurrences of the word "linux" in linux.org (ignore case sensitivity)
    
 ** Recap Answers
 
-1. echo $(((6 * 5) / 2))  -> double brackets tells the shell to perform an arithmetic evaluation
+1. Ctrl + l
 
-2. grep "dog" sample.txt
+2. Ctrl + u
 
-3. wc -l linux.org
+3. Ctrl + a
 
-4. head linux.org
-   tail linux.org
+4. Ctrl + e
 
-5. find . -name "*.txt"
-   find    -> searches for files & directories
-   .       -> search current directory
-   -name   -> search by file or directory name
-   "*.txt" -> match anything that ends with .txt
+5. cd -
 
-6. chmod u+x script.sh
+6. sudo !!
 
-7. history | tail -20
+7. history
+   !3
 
-8. which python3
+8. ;  -> run 1st command then the 2nd command regardless of whether the first succeeded or not
+   && -> runs the 2nd command ONLY if the 1st succeeded
+   ~||~ -> runs the 2nd command ONLY if the 1st failed
 
-9. ps aux | grep terminal
+9. echo $(((6 * 5) / 2))  -> double brackets tells the shell to perform an arithmetic evaluation
 
-10. kill 4567 (or whatever the number is after john-doe)
+10. grep "dog" sample.txt
 
-11. pkill firefox
+11. wc -l linux.org
 
-12. grep -ci "linux" linux.org
+12. head linux.org
+    tail linux.org
+
+13. find . -name "*.txt"
+    find    -> searches for files & directories
+    .       -> search current directory
+    -name   -> search by file or directory name
+    "*.txt" -> match anything that ends with .txt
+
+14. chmod u+x script.sh
+
+15. history | tail -20
+
+16. which python3
+
+17. ps aux | grep terminal
+
+18. kill 4567 (or whatever the number is after john-doe)
+
+19. pkill firefox
+
+20. grep -ci "linux" linux.org
     -c -> count
     -i -> ignore case sensitivity
    

@@ -16,6 +16,7 @@ If I forget anything whilst doing a task:
 3. Then if I get stuck, send AI that section of code & ask what went wrong (don't tell it the requirements)
 4. Extra -> find same projects & look at examples of their good code & see how mine compares
 
+
 * HTML 
 
 ** Recap List
@@ -195,40 +196,45 @@ These are rules for web design which a web browsers wants, if followed, they pus
 
 ** Recap List
 
-1. Link a html file to a css one
-2. Name each of the below elements:
+1. What unit should I use to size fonts, padding, borders, etc...
+2. Link a html file to a css one
+3. Name each of the below elements:
    h1 {
         text-align: center;
         font-size: 50px;
     }
-3. Center a div horizontally & vertically using CSS
-4. What's the difference between margin & padding
-5. 
-6. How do you make a website layout responsive
-7. Create a hover animation for a button
-8. Whats the difference between position: relative & position: absolute
+4. Center a div horizontally & vertically using CSS
+5. What's the difference between margin & padding
+6. 
+7. How do you make a website layout responsive
+8. Create a hover animation for a button
+9. Whats the difference between position: relative & position: absolute
 
 ** Recap Answers
 
-1. <link rel="stylesheet" href="style.css">
+1. Everything should use rem, then it's all relative to one another & is also dynamically sized
+   rem = root em -> its based on the font size of the root element (which is <html>)
+   1 rem usually is equal to 16px
 
-2. h1                     -> selector
+2. <link rel="stylesheet" href="style.css">
+
+3. h1                     -> selector
    text-align & font-size -> properties
    center & 50px          -> values
 
-3. .container {
+4. .container {
       display: flex;
       justify-content: center;    # centers horizontally
       align-items: center;        # centers vertically
       height: 100vh;              # take up 100% of viewport height (allowing align-item to work)
    }
 
-4. Margin  = space outside an element
+5. Margin  = space outside an element
    Padding = space inside an element, between content & border
 
-5. Rules that let you apply different styles depending on screen/device size
+6. Rules that let you apply different styles depending on screen/device size
 
-6. Use flexible units & media queries
+7. Use flexible units & media queries
 
    .card {
       width: 80%;                 # this element takes up 80% of it's parents container width (i.e. screen width)
@@ -240,7 +246,7 @@ These are rules for web design which a web browsers wants, if followed, they pus
       }
    }
 
-7. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
+8. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
       background: blue;           # button background is blue
       transition: 0.3s;           # when a property changes, animate it over 0.3 seconds
    }
@@ -252,7 +258,7 @@ These are rules for web design which a web browsers wants, if followed, they pus
 
    # this creates a smooth hover effect on a button
 
-8. Relative = element stays in normal flow but can be moved
+9. Relative = element stays in normal flow but can be moved
    Absolute = removed from normal flow & positioned relative to the nearest parent
    
 
@@ -1572,6 +1578,109 @@ This example does the same as the Inline HTML event but I can use the variable n
 
 The above code is identical to the other example, just an alternative way of writing it -> helps show what the function is doing
 
+
+
+* Promise, Async & Await (ADD RECAP LIST)
+
+** Recap List
+
+
+** Recap Answers
+
+
+
+** Introduction
+
+Promises -> perform operations that may take time (i.e. an API retrieving data) without stopping the rest of the code from running
+API      -> Application Programming Interface (allows different programs to communicate with each other
+            when you search for a song on iTunes, the application sends a request to the server, the server then finds the song
+            in its database & returns it to you, after receiving it, you can save it to your favourites or delete it
+            each step is part of the process of connecting your request to the server
+            
+** Asynchronous vs Synchronous
+
+*Synchronous processing*
+Code runs line by line, each line waits for the previous to finish before running
+
+*Asynchronous processing*
+Multiple sets of code being run at the same time
+ONLY run an asynchronous function if no other code is dependent on it
+Promises are _asynchronous_ & run separately from normal code 
+
+** Promises
+
+A promise is a JavaScript object that represents a task that will finish later
+
+*fetch(url)*
+url -> the link to the url API you want to get data from
+
+*.then((response => response.json())*
+After then fetch function makes a request to retrieve the data, it returns a promise
+the .then() method is used for chaining action to the promise (i.e. what should happen once the promise is fulfilled)
+i.e. run this if the fetch() is successful
+
+(onResolved) => {
+   // a task on success
+},
+(onRejected) => {
+   // a task on failure
+}
+
+*Additional .then()*
+Waits for the previous .then() to complete, then the next .then()
+You don't technically need any .then()s but it's typical to have 2
+
+.then() can take up to 2 different parameters, one for handling successful promise (onResolved) & one for errors (onRejected)
+
+*.catch()*
+Used to handle errors that occur during a promise chain
+Unlike onRejected() -> this is its own method & is used at the end of the promise chain to catch errors that might occur at any point
+
+// the below will only run if something goes wrong during the fetch operation of in any of the .then() calls
+.catch((error) => {
+   // log the error to the console
+   console.log(error);
+});
+
+
+*Creating a promise*
+let myPromise = new Promise(function (resolve, reject) {
+// this creates a promise & defines the logic when the promise is executed
+// resolve -> this function will be run when the promise successfully _completes_
+// reject  -> this function will be run when the promise encounters an _error_
+
+You then need to call the promise
+myPromise().then(
+// within this function call, define code for if the promise succeeds or fails
+
+** Async
+
+Async -> lets you convert a function to an asynchronous one
+
+|                | Promise                                                        | Async                                                           |
+|                |                                                                |                                                                 |
+| Scope          | Only the original promise is asynchronous                      | The entire function is asynchronous                             |
+| Logic          | Anything synchronous can be performed inside the same callback | Anything synchronous can be performed inside the async function |
+| Error Handling | Can use .then(), .catch() & .finally()                         | Can use try/catch/finally                                       |
+
+Its a personal preference whether you use promises or async (there are specific uses for each case but I'll discover this as I work)
+
+However, as a rule, async is better for readability
+
+** Await
+
+Await -> used in an Async function, it tells functions to wait for something to complete before running
+
+Example:
+    const asyncArrowFunction = async () => {​
+        console.log("Waiting for the name..."); # Indicate waiting starts​
+        # Awaiting the result from the promise returned by returnName​
+        let myName = await returnName(); ​
+        console.log("Finished waiting!");       # Indicate waiting ends​
+        console.log(myName);                    # Prints "spinel" after the delay​
+    };​
+    ​
+    asyncArrowFunction();
 
 
 * Developer Tools (F12) - (FILL PLZ)

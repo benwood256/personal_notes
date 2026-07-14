@@ -513,12 +513,23 @@ This would be used to remove a pet (using the DELETE method) by using its specif
 You would pass the ID you want to delete & if the server returned a 200 in its HTTP response, then this pet was successfully deleted
 
 
-* JSON & Web Storage APIs
+* JSON & Web Storage APIs (ADD A LOT OF RECAPS BASED ON TASK 20)
 
 ** Recap List
 
+1. What does parse mean
+2. Why convert code to a JSON file
+3. Check what's stored in localStorage
+
 ** Recap Answers
 
+1. To take data in 1 format & convert it into a format that a program can understand
+2. So we can convert data between client & server in a standardised format
+   Everything that is transferred via the web uses HTTP, which can only transfer text
+   JSON file converts code to strings
+3. F12, Application, Storage, Local Storage
+
+   
 ** Introduction
 
 JSON -> JavaScript Object Notation
@@ -553,5 +564,204 @@ However, all other languages have a JSON library that needs to be imported at th
 
 Example   -> in Python, import json
 Example 2 -> in Elisp,  (require 'json)
+
+** Extensible Markup Language (XML)
+
+This is a markup language used to annotate text or add additional information
+It looks very similar to a .html file (HTML focuses on displaying data, XML just carries data)
+
+XML is an alternative to JSON
+
+** JSON Syntax Rules
+
+1. Data is in key-value pairs
+2. Property names must be in double-quotes strings
+3. Data is separated by commas
+4. Objects are held by curly braces -> { }
+5. Arrays are held by square brackets -> [ ]
+ 
+** JSON Methods
+
+*JSON.parse()* -> This converts .json text back to a JavaScript object
+Example      -> let obj = JSON.parse('{"name":"jason", "age":30, "city":"new york"}');
+Now you can access properties using dot notation: obj.name, obj.age & obj.city
+
+*JSON.stringify()* -> Converts a JavaScript object into a string
+Example          -> if you have the following JS object:
+                    let obj = { name:"jason", age:30, city:"new york"};
+                    let myJSON = JSON.stringify(obj);
+
+** Cookies
+
+Cookies -> Small files stored on a users browser by websites
+           Stores data like session IDs or user preferences
+
+Cookies are sent back to the server with every HTTP request -> they remember login sessions & track user preferences
+
+*Setting a cookie* 
+.
+
+*Retrieving a cookie*
+console.log(document.cookie);
+
+*Deleting a cookie*
+document.cookie = "username=JohnDoe; expires=Fri, 01 Jan 1970 00:00:00 GMT; path=/";
+You delete it by setting its expiration date in the past
+
+*Viewing cookies*
+You can check them in the browsers developer tools -> right click on the page, select inspect, go to the application or storage tab
+& select cookies to view all stored cookies
+
+Often Chrome has strict cookie settings, so when testing ensure I'm using live server not a normal browser
+Firefox & Edge are less restrictive
+
+*Privacy Considerations & Cookie Consent*
+
+Websites must notify users about cookie usage & contain consent due to privacy laws
+
+** Local Storage (persistent storage on the client)
+
+localStorage is a built-in JavaScript API for storing data directly on a users browser
+Unlike cookies, it doesn't send stored data to the server with every request (making it lightweight & efficient)
+
+Data in localStorage persists even after the user closes the browser as long as it's not manually deleted
+
+It's used for:
+
+1. Storing user settings (i.e. dark theme preference)
+2. Saving application state for quick retrieval
+3. Caching less sensitive data that doesn't require constant syncing with a server
+
+Features:
+
+1. Has a large capacity
+2. Stores data as key-value pairs in string format
+3. Has a long lifespan (remains until manually deleted)
+
+*Setting an item in localStorage*
+
+localStorage.setItem("theme", "dark");
+
+*Retrieving an item*
+
+let theme = localStorage.getItem("theme");
+console.log(theme);                           output -> dark
+
+*Removing an item*
+
+localStorage.removeItem("theme");
+
+** Cache (efficient data storage)
+
+Cache -> temporarily stores resources (images, scripts or data) to improve web performance
+         by storing frequently accessed resources locally, a cache reduces the need for repeated downloads
+
+Service workers -> JavaScript scripts that allow developers to control the caching process
+                   they work in the background, intercepting & managing network requests to serve files from the cache
+
+** Web Storage API: session storage
+
+So far, data has been stored entirely using variables
+The web server doesn't store information about each persons interaction with the website
+Instead, this type of information is stored on the browser using _cookies_ or _Web Storage API_
+
+Web Storage API -> stores data using key-value pairs, this mechanism has largely replaced the use of cookies
+
+*2 ways of storing data using Web Storage APIs*
+
+1. sessionStorage -> stores state information for each given origin as long as the browser is OPEN
+2. localStorage   -> stores state information for each given origin even when the browser is CLOSED
+
+** Practical use case for each
+
+Cookies        -> where you need to share data between the client & server (mainly store authentication tokens or user preferences) 
+sessionStorage -> storing temporary data that only needs to exist for the duration of a single session
+localStorage   -> data that need to remain after the browser is closed (main use is user preferences)
+Cache storage  -> used to enhance performance by storing resources such as images, CSS files & JavaScript in the browser
+                  so they can be accessed quickly without needing to re-download them from the server
+                  
+
+
+
+
+* Shell Scripting (ADD RECAP LIST)
+
+** Recap List
+
+** Recap Answers
+
+
+** Introduction
+
+*Variables*
+variable_name=value
+
+example: fact="Linux is awesome!"
+         echo "Fact:" $fact           // returns -> Fact: Linux is awesome!
+
+*Read*
+Assign user input to a variable
+
+echo "type in a fact:"
+read fact
+echo " Fact:" $fact
+// returns -> type in a fact (then prompts the user for input, example 'no')
+              Fact: no
+
+** Conditional Statements
+
+if statements format:
+
+if ~[[condition]]~; then
+   statement
+elif ~[[condition]]~; then
+   statement
+else ~[[condition]]~; then
+   statement
+fi
+
+Using double square brackets mean you don't need to quote variables (i.e.[ "$name" ] in single brackets becomes ~[[ $name ]]~ )
+
+*Operators*
+
+-gt -> greater than
+-lt -> less than
+-eq -> equal to
+-ge -> greater than or equal to
+-le -> less than or equal to
+
+-a  -> and (combine 2 statements, like && in JS)
+-o  -> or  (if 1 is true, like or in Python)
+
+
+* Git (ADD RECAP LIST)
+
+** Recap List
+
+** Recap Answers
+
+
+* Deployment of Static Websites
+
+** Recap List
+
+** Recap Answers
+
+** Summary
+
+*Static Web page*
+
+A website that shows the same content to every visitor
+Dynamic -> generate content on the spot
+Static  -> pre-built HTML & CSS files that displays the exact same web page every time
+
+This works best for websites that don't require frequent updates (personal portfolios, blogs, etc...)
+
+_Key characteristics_
+
+1. No back-end or server-side processing
+2. Faster to load (content is pre-rendered)
+3. Easier to host (you can use GitHub)
+4. Limited interactivity (no real-time updates)
 
 

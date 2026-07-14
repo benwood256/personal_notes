@@ -1,9 +1,13 @@
 #+TITLE: General Computing Notes
 
-* To Do's
+* To Do's (complete in any order)
 
 1. Make (complex) notes on how compiler & interpreters work & how they differ
 2. Make (complex) notes on hard drives & SSDs -> how they works, partitions, how partitions work, etc...
+3. How Tor works
+4. How a PC can be converted to a server
+5. Why do you need to mount partitions
+
 
 * Project Workflow
 
@@ -36,6 +40,7 @@
 9. What is DNS
 10. What is FTP
 11. What is SMTP
+12. What does parse mean
 
 ** General (including keywords & terms)
 
@@ -64,6 +69,8 @@
 10. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
 
 11. SMTP (Simple Mail Transfer Protocol) is used to send emails between servers
+
+12. To take data in 1 format & convert it into a format that a program can understand
 
 
 ** Computer Keywords

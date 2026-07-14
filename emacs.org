@@ -234,13 +234,11 @@ When X happens, run X function(s)
 
 ** If Statements (COMPLETE)
 
-
 ** Loops (COMPLETE)
 
 *** For loops
 
 *** While loops
-
 
 ** Data Structures (COMPLETE)
 
