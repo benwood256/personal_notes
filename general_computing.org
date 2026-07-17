@@ -18,13 +18,6 @@
 5. Do this on top of comments within the code
 
 
-* Comparing language differences (Python, JavaScript, Bash & Elisp)
-
-** Making functions
-
-** Calling functions
-
-
 * Terms & Keywords 
 
 ** Recap List

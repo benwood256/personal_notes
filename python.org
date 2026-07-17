@@ -1,27 +1,5 @@
 #+TITLE: Python Notes
 
-* Recap List's (SORT ALL PLZ)
-
-** Mini Problems
-*** Recap List
-*** Recap Answers
-** Lists
-*** Recap List
-*** Recap Answers
-** Tuples, Sets & Dictionaries
-*** Recap List
-*** Recap Answers
-** Conversions
-*** Recap List
-*** Recap Answers
-** Functions
-*** Recap List
-*** Recap Answers
-** Wordy Questions
-*** Recap List
-*** Recap Answers
-
-
 * Data Structures (COPY NOTES OVER)
 
 ** Recap List

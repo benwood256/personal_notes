@@ -24,6 +24,7 @@
 5. pros -> scalable & allows for a flexible system
    cons -> very complicated system, therefore also expensive & difficult to maintain
 
+   
 ** Introduction
 
 What is Architectural Design:
@@ -131,7 +132,7 @@ limitations -> also very expensive, can be very difficult to solve problems & de
 11. Break down the 3 parts of a HTTP Request message
 12. Break down the 3 parts of a HTTP Response message
 13. Explain what each status code means (100s, 200s, 300s, 400s & 500s)
-14. 
+14. Define -> GET, POST, DELETE, PUT & PATCH
 
 ** Recap Answers
 
@@ -513,23 +514,71 @@ This would be used to remove a pet (using the DELETE method) by using its specif
 You would pass the ID you want to delete & if the server returned a 200 in its HTTP response, then this pet was successfully deleted
 
 
-* JSON & Web Storage APIs (ADD A LOT OF RECAPS BASED ON TASK 20)
+* JSON & Web Storage APIs
 
 ** Recap List
 
 1. What does parse mean
 2. Why convert code to a JSON file
 3. Check what's stored in localStorage
+4. The functions to convert a JS object to a json string & the reverse
+5. Explain this line:
+   ~let settings = JSON.parse(localStorage.getItem("settings")) || {};~
+6. Create a cookie
+7. What is localStorage used for
+8. What's a data requirement of using localStorage
+9. Create an item in localStorage & retrieve the item
+10. What is cache used for
+11. How do you create a cache
+12. When would you use: cookies, sessionStorage, localStorage & cache storage
 
 ** Recap Answers
 
 1. To take data in 1 format & convert it into a format that a program can understand
+
 2. So we can convert data between client & server in a standardised format
    Everything that is transferred via the web uses HTTP, which can only transfer text
    JSON file converts code to strings
-3. F12, Application, Storage, Local Storage
 
+3. F12, Application, Storage, Local Storage
    
+4. ~JSON.stringify(json_object)~ -> JavaScript object to a string
+   ~JSON.parse(json_text)~       -> JSON string to JavaScript object
+
+5. Get the "settings" value from localStorage
+   Converts the JSON string to a JavaScript object
+   If no settings exists, create an empty object
+
+6. function cookieCreate(name) {
+       document.cookie = "username=" + name + ";max-age=86400;path=/";
+
+   document.cookie -> creates cookie
+   "username="     -> saves the name of the cookie (needs to be a key:value pair, so you can retrieve it)
+   max-age         -> creates length of time the cookie will be stored (in seconds)
+
+7. Its a built in JS API for storing data that persists after the browser is closed
+   Its used for storing user settings & saving application state
+
+8. It only stores strings so you have to convert JavaScript objects to JSON strings for it to be saved
+   & then convert them back again to use them in a script
+
+9. localStorage.setItem("theme", "dark");
+   let them = localStorage.getItem("theme");
+   console.log(theme);                       # output -> dark
+
+10. Temporarily storing resources (images, scripts or data)
+    to improve performance (things don't need to be re-downloaded)
+
+11. You use a service worker (create a sw.js file)
+    In this file you create function & event listeners that download files & reuse them when a web page is loaded
+
+12. Cookies        -> where you need to share data between the client & server (mainly store authentication tokens or user preferences) 
+    sessionStorage -> storing temporary data that only needs to exist for the duration of a single session
+    localStorage   -> data that need to remain after the browser is closed (main use is user preferences)
+    Cache storage  -> used to enhance performance by storing resources such as images, CSS files & JavaScript in the browser
+                      so they can be accessed quickly without needing to re-download them from the server
+   
+
 ** Introduction
 
 JSON -> JavaScript Object Notation
@@ -597,9 +646,6 @@ Cookies -> Small files stored on a users browser by websites
            Stores data like session IDs or user preferences
 
 Cookies are sent back to the server with every HTTP request -> they remember login sessions & track user preferences
-
-*Setting a cookie* 
-.
 
 *Retrieving a cookie*
 console.log(document.cookie);
@@ -681,15 +727,61 @@ Cache storage  -> used to enhance performance by storing resources such as image
                   so they can be accessed quickly without needing to re-download them from the server
                   
 
-
-
-
-* Shell Scripting (ADD RECAP LIST)
+* Shell Scripting
 
 ** Recap List
 
+1. What's the difference between $@ & $*
+2. Create a variable & print it to the terminal
+3. Create a user input & print it to the terminal
+4. Create basic layout of an if statement with an else if & else
+5. If statement conditions for equal to, greater than & less than or equal to
+6. & to combine 2 statement & or to say this condition or this condition
+7. What does 'exit 6' line mean
+8. What's used to define a variable in a function
+9. Create a function with 1 argument & call the function & pass an argument
+
 ** Recap Answers
 
+1. Both are command-line arguments
+    $@ -> keeps arguments separate               (i.e. apple banana orange would all be on thir own line)
+    $* -> combines all arguments into one string (i.e. apple banana orange next to each other)
+    
+2. fact="linux"
+   echo $fact    returns -> linux
+
+3. echo "type a number:"
+   read number
+   echo $number   returns -> (the number the user entered)
+
+4. ~if [[condition]]; then~
+       statement
+   ~elif [[condition]]; then~
+       statement
+   else
+       statement
+   fi
+
+5. -eq -> equal to
+   -gt -> greater than
+   -le -> less than or equal to
+
+6. -a  -> and
+   -o  -> or
+
+7. Exit out of the file & return the output 6 (indicting exit code 6)
+
+8. $1 -> first variable
+   $2 -> second variable (& so on)
+
+   So, in a function (echo "Hello there $1, you have $2 money in your account")
+
+9. greet() {
+      echo "Hello $1"  # $1 is the first argument passed, $2 would be number 2 & so on 
+   }
+
+   greet Alex          # output -> Hello Alex
+   
 
 ** Introduction
 
@@ -716,7 +808,7 @@ if ~[[condition]]~; then
    statement
 elif ~[[condition]]~; then
    statement
-else ~[[condition]]~; then
+else 
    statement
 fi
 
@@ -734,18 +826,7 @@ Using double square brackets mean you don't need to quote variables (i.e.[ "$nam
 -o  -> or  (if 1 is true, like or in Python)
 
 
-* Git (ADD RECAP LIST)
-
-** Recap List
-
-** Recap Answers
-
-
-* Deployment of Static Websites
-
-** Recap List
-
-** Recap Answers
+* Deployment of Static Websites (ADD RECAP LIST)
 
 ** Summary
 

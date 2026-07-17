@@ -1,5 +1,11 @@
 #+TITLE: Web Development Notes
 
+* To Do
+
+1. Big CSS Recap List -> cover loads of different properties, best practices, center text, etc...)
+
+
+
 If I forget anything whilst doing a task:
 
    1. Add this to the Recap List (if not already there)
@@ -9,56 +15,52 @@ If I forget anything whilst doing a task:
    
     The first day I'm doing the Capstone Project -> only do recap & sort recap lists (& redo tasks)
    
-* Course Workflow
+Course Workflow
 
-1. Write code for a task using help from stack overflow, youtube & websites
-2. Do 1 section at a time
-3. Then if I get stuck, send AI that section of code & ask what went wrong (don't tell it the requirements)
-4. Extra -> find same projects & look at examples of their good code & see how mine compares
+   1. Write code for a task using help from stack overflow, youtube & websites
+   2. Do 1 section at a time
+   3. Then if I get stuck, send AI that section of code & ask what went wrong (don't tell it the requirements)
+   4. Extra -> find same projects & look at examples of their good code & see how mine compares
 
 
 * HTML 
 
 ** Recap List
 
-1. How to open Live Server in VS Code
-2. Difference between Non-Semantic & Semantic elements
-3. What does this line mean in the <head> -> <meta charset="UTF-8">
-4. What does this line mean in the <head> -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-5. Create a line break or a horizontal line break
-6. Add a link which opens in a new page
-7. How do you do <nav> & where does it go
+1. What does this line mean in the <head> -> <meta charset="UTF-8">
+2. What does this line mean in the <head> -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+3. Create a line break or a horizontal line break
+4. Add a link which opens in a new page
+5. How do you do <nav> & where does it go
+6. What's <em> & <strong>
+7. Tags to create a collapsible section (i.e. Q & A)
    
 ** Recap Answers
 
-1. You need Chrome installed
-   Click Go Live at the bottom of VS Code
-   Or, paste this into google: http://127.0.0.1:5500/
-   
-2. Non-Semantic is putting all of the sections into <div> over and over
-   Semantic is separating them by: <header>, <nav>, <main>, <footer>, etc...
-   Each word makes it clear what this section will contain
-   Within <main> different sections should be separated by <section> or <article>
-   
-3. meta stands for metadata
+1. meta stands for metadata
    The character encoder, it tells the browser that the document is encoded using UTF-8
    This allows text from other languages to display correctly
 
-4. Controls how the page is displayed on mobile devices
+2. Controls how the page is displayed on mobile devices
    Content sets the width to match the devices width & scale sets zoom to 100% when page first loads
    
-5. <br>
+3. <br>
    <hr> -> break with a horizontal line in the web page
 
-6. <a href="https://google.com target="_blank">Google Link</a>
+4. <a href="https://google.com target="_blank">Google Link</a>
 
-7. Within the <header>
+5. Within the <header>
    <nav aria-label="primary navigation">
       <a href="#main-section">main title</a> |
       <a href="#additional-section">section title</a> |
       <a href="#content">Contact Info</a>
 
       Then add the id="main-section" tag to the <section> or <footer>
+
+6. <em>     -> italic
+   <strong> -> bold
+
+7. <details> with a <summary> inside
 
 
 ** Introduction
@@ -205,10 +207,10 @@ These are rules for web design which a web browsers wants, if followed, they pus
     }
 4. Center a div horizontally & vertically using CSS
 5. What's the difference between margin & padding
-6. 
-7. How do you make a website layout responsive
-8. Create a hover animation for a button
-9. Whats the difference between position: relative & position: absolute
+6. How do you make a website layout responsive
+7. Create a hover animation for a button
+8. Whats the difference between position: relative & position: absolute
+9. Whats the difference between position & display
 
 ** Recap Answers
 
@@ -232,9 +234,7 @@ These are rules for web design which a web browsers wants, if followed, they pus
 5. Margin  = space outside an element
    Padding = space inside an element, between content & border
 
-6. Rules that let you apply different styles depending on screen/device size
-
-7. Use flexible units & media queries
+6. Use flexible units & media queries
 
    .card {
       width: 80%;                 # this element takes up 80% of it's parents container width (i.e. screen width)
@@ -246,7 +246,7 @@ These are rules for web design which a web browsers wants, if followed, they pus
       }
    }
 
-8. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
+7. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
       background: blue;           # button background is blue
       transition: 0.3s;           # when a property changes, animate it over 0.3 seconds
    }
@@ -258,8 +258,11 @@ These are rules for web design which a web browsers wants, if followed, they pus
 
    # this creates a smooth hover effect on a button
 
-9. Relative = element stays in normal flow but can be moved
+8. Relative = element stays in normal flow but can be moved
    Absolute = removed from normal flow & positioned relative to the nearest parent
+
+9. Position -> how is the element positioned
+   Display  -> how does this element interact with surrounding elements (block, flex, grid & inline)
    
 
 ** Introduction
@@ -432,6 +435,7 @@ Result:
 1. Designing websites so that screen readers can understand them
 2. An alt tag with a simple description of what the image is
 3. required aria-required="true" -> lets screen readers know this needs to be filled in
+
 
 ** Introduction
 
@@ -669,15 +673,14 @@ An alternative to this is to download Bootstrap into your project, next to the i
 1. What is Node.js
 2. What goes before a variable
 3. Create a user input
-4. Print a variable
-5. Print text & a variable
-6. Create a pop alert of your name
-7. Link a html & JavaScript file
-8. Difference between double & triple equals signs
-9. or & and in an if statement
-10. Write a simple if statement to check if a value is above 6 & below 9
-11. Check type of data
-12. Convert number_variable to a string
+4. Print text & a variable
+5. Create a pop alert of your name
+6. Link a html & JavaScript file
+7. Difference between double & triple equals signs
+8. or & and in an if statement
+9. Write a simple if statement to check if a value is above 6 & below 9
+10. Check type of data
+11. Convert number_variable to a string
     
 *** Loops List
 
@@ -730,6 +733,7 @@ An alternative to this is to download Bootstrap into your project, next to the i
 
 *** Exerism Questions
 
+
 ** Recap Answers
 
 *** Introduction Syntax Answers
@@ -737,25 +741,24 @@ An alternative to this is to download Bootstrap into your project, next to the i
 1. A program that allows you to run JS code outside of a browser
 2. let
 3. let myName = prompt("enter your name: ")
-4. console.log(variable_name)
-5. console.log(`your name is: ${myName}`)
-6. alert(`your name is: ${myName}`) -> the tilda keys are only required because I'm including a variable (otherwise use speech marks)
-7. Before the </body> element add:
+4. console.log(`your name is: ${myName}`)
+5. alert(`your name is: ${myName}`) -> the tilda keys are only required because I'm including a variable (otherwise use speech marks)
+6. Before the </body> element add:
    <script src="variables_and_data_types.js"></script>
-8. double -> converts data type (if needed) to compare the 2 inputs (converts string "5" to a number, compares to 5 & returns true)
+7. double -> converts data type (if needed) to compare the 2 inputs (converts string "5" to a number, compares to 5 & returns true)
    triple -> doesn't convert data type (compares string "5", to number 5 & returns false)
-9. || -> or
+8. || -> or
    && -> and
-10. let x = 7
+9. let x = 7
 
-    if (x > 6 && x < 9) {
-    console.log("x is between 6 & 9")
-    }
-    else {
-    console.log("x is outside 6 & 9")
-    }
-11. typeof(variable)
-12. String(number_variable)
+   if (x > 6 && x < 9) {
+   console.log("x is between 6 & 9")
+   }
+   else {
+   console.log("x is outside 6 & 9")
+   }
+10. typeof(variable)
+11. String(number_variable)
 
 *** Loop Answers
 
@@ -766,18 +769,18 @@ An alternative to this is to download Bootstrap into your project, next to the i
 2. for (let i = 1; i < 20; i+=3) {
      console.log(i)
      if (i ===== 12) {
-     break
+        break
      }
    }
 
-3. let counter = 10
+3. let counter = 1
 
    while (counter <= 10) {
        console.log(counter)
        counter++
    } 
 
-4. Switch -> when I variable against many exact values
+4. Switch -> when I'm comparing against many exact values
 
    *Example*
 
@@ -1427,101 +1430,98 @@ Or, if someone else is looking at my code, this other person can't change proper
 Creating a getter & setter for a variable stops mistakes
     
 
-* DOM Manipulation (ADD TODOS FOR THIS SECTION)
-
-DOM -> Document Object Model
-
-This is a way to modify a web page using JavaScript
-
-
-*querySelector*
-
-    let gettingByClass = document.querySelector(".big-paragraph")
-    console.log(gettingByClass) // returns the query with class="bigparagraph"
-
-    let firstParagraph = document.querySelector("p")
-    console.log(firstParagraph) // returns the 1st instance of <p>
-
-    let firstParaWithClass = document.querySelector("p.big-paragraph")
-    console.log(firstParaWithClass) // returns the 1 instance of <p class="big-paragraph">
-
-    let byID = document.querySelector("#nested-list")
-    console.log(byID) // returns the element with id="nested-list"
-
-    let listOrderedParent = document.querySelector("ol > li")
-    console.log(listOrderedParent) // returns the first item of the ordered list
-
-    let thirdItem = document.querySelector("ol > li:nth-child(3)")
-    console.log(thirdItem) // returns the 3rd item of <li> in <ol>
-
-    
-*querySelectorAll*
-
-    let paragraphs = document.querySelectorAll("p")
-    console.log(paragraphs) // returns a nodelist all the elements with <p>
-
-    output -> NodeList(3) [p, p.big-paragraph, p.big-paragraph] // there were 3 elements with <p> tags in the example
-
-    Array.from(paragraphs).forEach(function (paragraph) {
-        console.log(paragraph)
-    })
-
-    The above will allow you to return all the instances of <p> in the NodeList to the console
-
-    
-*createElement*
-
-    let list1 = document.querySelector("#list-1")
-    let listItem = document.createElement("li")
-    listItem.textContent = "hello again"
-    list1.appendChild(listItem)
-
-    // start by selecting the unordered list using it's ID (id="list-1")
-    // A new list item <li> is created & stored in the variable listItem
-    // Set the text inside this <li> to be "hello again" using .textContent
-    // Finally, append this with the unordered list using .appendChild
-
-
-* Event Handling (REGO THROUGH -> confusing)
+* DOM Manipulation
 
 ** Recap List
 
-1. What is inline events & how do you use them
-2. How do you create an alert for using an ID in main.js 
-3. Have do you select 1 element or multiple
-4. How would you create a <li> element
-5. Add a class name to this element
-6. Add text to this element
-7. How would you check a function is working properly in the web page
+1. What does textContent() do
+2. Syntax to create a new DOM element
+3. What's the difference between getElementById() & querySelector()
+4. Give an element a class
+5. Add a list item to <ul id="ul-list">
+
+** Recap Answers
+
+1. Sets plain text when placing an element in the HTML file
+
+2. createElement()
+
+3. You can use them for the same thing
+
+   getElementById("ul-list") -> get items only from an ID
+   querySelector("#ul-list") -> get any CSS selector (i.e. classes, IDs & elements)
+
+4. ~const listItem = document.createElement("li");~
+   ~listItem.textContent = "new list item created";~
+   ~listItem.classList.add("new-class-created");         # classList.add()~
+
+5. ~const grabList = document.getElementById("ul-list);~
+   ~const listItem = document.createElement("li");~
+
+   ~listItem.textContent = "new list item created";~
+   ~grabList.appendChild("li");                          #appendChild()~
+
+
+* Event Handling
+
+** Recap List
+
+1. What's the difference between DOM Manipulation & Event Handling
+2. What is inline events & how do you use them
+3. How do you create an alert for if a box is clicked
+4. Have do you select 1 element or multiple
+5. How would you create a <li> element
+6. What's the difference between ~classList.add() & className =~
+7. Add a class name to this element
+8. Add text to this element
+9. How would you check a function is working properly in the web page
+10. Add an event which runs a function when you click 'Enter'
+11. What does ~element.innerHTML = "";~ do
 
 ** Recap Answers
 
 
-1. This is where you put the tag next to the element in HTML & assign it an outcome
+1. DOM Manipulation -> changing the structure, content or style of a web page
+   Event Handling   -> listening for user/browser actions & running code when they happen
+
+   addEventListener() is specific to Event Handling as this tracks an 'event'
+
+2. This is where you put the tag next to the element in HTML & assign it an outcome
 
         <div id="box" onclick('hey dude')"></div>
 
     However, don't use this method as it's very limited & you can't do a whole lot (stick to creating the elements in JavaScript)
 
-2. let boxDiv = document.getElementById("box");
+3. let boxDiv = document.getElementById("box");
    boxDiv.addEventListener("click", function(e) {
        alert("hey dude");
    })
 
    This has the exact same effect as the <div> code in the example above
    
-3. querySelector("#name")   -> select the first element, name can be element, ID or class name
+4. querySelector("#name")   -> select the first element, name can be element, ID or class name
    querySelectorAll("#name") -> select all elements -> will need to be followed by a forEach loop
 
-4. let listItem = document.createElement("li");
+5. let listItem = document.createElement("li");
    Document refers to the HTML script & "li" creates <li>
 
-5. listItem.className = "list-item";  // list-item can be used in CSS (.list-item { )
+6. ~classList.add() -> adds a class next to any other classes the element might have~
+   ~className       -> overwrites all classes with this~
 
-6. listItem.textContent = "shrek";    // the word shrek will be in the web page now
+7. listItem.className = "list-item";  // list-item can be used in CSS (.list-item { )
 
-7. In JavaScript, after the function is created, add a console.log("<function name> is called")
+8. listItem.textContent = "shrek";    // the word shrek will be in the web page now
+
+9. In JavaScript, after the function is created, add a console.log("<function name> is called")
    Then, after the action (i.e. a button is clicked), in the console it'll show if the function has actually been called or not
+
+10. ~document.addEventListener("keydown", function(e) {~
+
+    ~if (event.key ===== "Enter") {~
+        ~runFunction();                             # if Enter is clicked, run a function (i.e. add this text to a box)~
+
+11. Setting the elements contents & making it empty ("")
+        
 
 
 ** Introduction
@@ -1579,15 +1579,7 @@ This example does the same as the Inline HTML event but I can use the variable n
 The above code is identical to the other example, just an alternative way of writing it -> helps show what the function is doing
 
 
-
-* Promise, Async & Await (ADD RECAP LIST)
-
-** Recap List
-
-
-** Recap Answers
-
-
+* Promise, Async & Await
 
 ** Introduction
 

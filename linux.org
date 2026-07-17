@@ -148,7 +148,6 @@ message is now -> Hello, World! Have a great day!
 ** Recap List
 ** Recap Answer
 
-
 ** Booting applications
 
 I can save files (in a specific way) in ~/.config/autostart/ so they are opened on boot
@@ -268,6 +267,7 @@ GUI Toolkit -> a software library that helps developers create GUIs within appli
 ** Level Notes
 
 *** Level 0
+
 ssh = Runs the Secure Shell client, which lets you log in & interact with a remote machine
 bandit0 = The username you want to log in as
 @ = Separate the username from the hostname
@@ -281,6 +281,7 @@ The port number is the apartment number
 In the above I don't need to specific IP address, but putting in the hostname, my computer requests the IP address
 
 *** Level 0-1
+
 I must exit as bandit0 to access level 1
 Do this by typing 'exit' into the terminal
 
@@ -305,11 +306,13 @@ But if I put cat -- -n, Linux would know I'm finished giving flags & read the fi
 No issues -> use -a flag to reveal hidden files
 
 *** Level 4-5
+
 You can cat into every file
 But, you can use: ~file ./*~
 This checks the type of file for all files, file07 is ASCII text -> so this must be the plain text password file
 
 *** Level 5-6
+
 Knowing the fill is exactly 1033bytes in size is the give away
 Use -> find . -type f -size 1033c
 
@@ -329,6 +332,7 @@ To check it's not executable, do -> ls -l ./maybehere07/.file2
 This reveals it's not executable & you can also see it's 1033 bytes
 
 *** Level 6-7
+
 Find owner, group & size all in one command (doing them one at a time returns hundreds of files, for each command)
 find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 
@@ -398,6 +402,62 @@ N-ZA-M -> Means, start the alphabet at N go to Z, then carry on at A & go to M
 
 *** Level 12-13
 
+*Explanation*
+
+This is testing if I can identify a file format (gzip, bzip2 or tar) & reverse a chain of transformations
+The original file has been compressed many times with each format (gzip, bzip2 & tar)
+
+gzip, bzip2 & tar are Linux tools for compressing & packaging files
+
+gzip & bzip2 -> compress files (makes them smaller)
+tar          -> bundles files together (makes an archive)
+
+So, your checking what the file type is, if its not ASCII, converting the extension (gunzip, bunzip2 & tar -xf expect the correct extention)
+Then, use the decompress command for gzip & bzip2 (gunzip & bunzip2) or the extract command for tar (tar -xf)
+Then, rinse & repeat till you get the original ASCII file
+
+
+*Create a temporary file to work with*
+
+# creating this is so I have a temporary space to work with & to avoid clutter in my home directory
+# with all the data.gz, data.bz2 & data.tar files created during this process
+mktemp -d
+cd /tmp/tmp.abc123
+
+*Copy data.txt here*
+
+cp ~/data.txt .
+
+*Convert hexdump back to binary file*
+
+# this file is currently a hexadecimal presentation of binary data, it needs to be converted back to raw data
+xxd -r data.txt > data
+
+*check file type*
+
+file data
+
+
+*Options*
+
+It will either be gzip, bzip2 or tar
+
+*gzip*
+mv data data.gz
+gunzip data.gz
+file data
+
+*bzip2*
+mv data data.bz2
+bunzip2 data.bz2
+file data
+
+*tar*
+mv data data.tar
+tar -xf data.tar
+file data
+
+
 *** Level 13-14
 
 *** Level 14-15 
@@ -435,8 +495,6 @@ Level 16-17 =
 Level 17-18 =
 Level 18-19 =
 Level 19-20 = 
-
-** 
 
 
 * Arch
@@ -477,7 +535,8 @@ Level 19-20 =
 3. Format the root partitions
     Formatting a partition means to create a file system on it
     So, the OS can know how to organise, store & retrieve files
-    Technically, partitioning a disk means to allocate an empty space of data for something, at this stage, it’s just an empty space allocated to a certain size
+    Technically, partitioning a disk means to allocate an empty space of data for something,
+    at this stage, it’s just an empty space allocated to a certain size
     Then formatting, tells it to install x filesystem (i.e. the root)
 
 4. Encrypt the root partition
