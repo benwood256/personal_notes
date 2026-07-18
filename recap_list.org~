@@ -1,0 +1,1575 @@
+#+TITLE: Recap List Page
+
+* Web Development (CURRENT RECAP - DOM)
+
+** HTML
+
+*Recap List*
+
+1. What does this line mean in the <head> -> <meta charset="UTF-8">
+2. What does this line mean in the <head> -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+3. Create a line break or a horizontal line break
+4. Add a link which opens in a new page
+5. How do you do <nav> & where does it go
+6. What's <em> & <strong>
+7. Tags to create a collapsible section (i.e. Q & A)
+   
+
+*Recap Answers*
+
+1. meta stands for metadata
+   The character encoder, it tells the browser that the document is encoded using UTF-8
+   This allows text from other languages to display correctly
+
+2. Controls how the page is displayed on mobile devices
+   Content sets the width to match the devices width & scale sets zoom to 100% when page first loads
+   
+3. <br>
+   <hr> -> break with a horizontal line in the web page
+
+4. <a href="https://google.com target="_blank">Google Link</a>
+
+5. Within the <header>
+   <nav aria-label="primary navigation">
+      <a href="#main-section">main title</a> |
+      <a href="#additional-section">section title</a> |
+      <a href="#content">Contact Info</a>
+
+      Then add the id="main-section" tag to the <section> or <footer>
+
+6. <em>     -> italic
+   <strong> -> bold
+
+7. <details> with a <summary> inside
+   
+
+** CSS
+
+ *Recap List*
+
+1. What unit should I use to size fonts, padding, borders, etc...
+2. Link a html file to a css one
+3. Name each of the below elements:
+   h1 {
+        text-align: center;
+        font-size: 50px;
+    }
+4. Center a div horizontally & vertically using CSS
+5. What's the difference between margin & padding
+6. How do you make a website layout responsive
+7. Create a hover animation for a button
+8. Whats the difference between position: relative & position: absolute
+9. Whats the difference between position & display
+
+
+ *Recap Answers*
+
+1. Everything should use rem, then it's all relative to one another & is also dynamically sized
+   rem = root em -> its based on the font size of the root element (which is <html>)
+   1 rem usually is equal to 16px
+
+2. <link rel="stylesheet" href="style.css">
+
+3. h1                     -> selector
+   text-align & font-size -> properties
+   center & 50px          -> values
+
+4. .container {
+      display: flex;
+      justify-content: center;    # centers horizontally
+      align-items: center;        # centers vertically
+      height: 100vh;              # take up 100% of viewport height (allowing align-item to work)
+   }
+
+5. Margin  = space outside an element
+   Padding = space inside an element, between content & border
+
+6. Use flexible units & media queries
+
+   .card {
+      width: 80%;                 # this element takes up 80% of it's parents container width (i.e. screen width)
+   }
+
+   @media (max-width: 600px) {    # run this code if the screen is 600px or smaller
+      .card {
+         width: 100%;             # the card element becomes 100% width (instead of 80) on small devices
+      }
+   }
+
+7. button {                       # applies style to the button (i.e. when the mouse isn't hovered over it)
+      background: blue;           # button background is blue
+      transition: 0.3s;           # when a property changes, animate it over 0.3 seconds
+   }
+
+   button: hover {                # apply this code when the mouse is over the button
+      background: red;            # change the colour from blue to red
+      transform: scale(1.1);      # scale the button to 110% it's size
+   }
+
+   # this creates a smooth hover effect on a button
+
+8. Relative    -> element stays in normal flow but can be moved
+   Absolute    -> removed from normal flow & positioned relative to the nearest parent
+
+   Normal Flow -> the browser behaves as if the element isn't there (i.e. if a, b & c are horizontally in order & b is moved
+                  10 pixels to the right, in absolute, c would jump up & take its spot) 
+
+9. Position -> how is the element positioned
+   Display  -> how does this element interact with surrounding elements (block, flex, grid & inline)
+
+
+** Responsive Design (~***~ 3, 5 & 6)
+
+ *Recap List*
+
+1. What is responsive design
+2. What is a media query
+3. What's the difference between fixed, fluid & responsive layouts
+4. When would you use Flexbox vs Grid & how do they work
+5. How do you set up an element to be Flexbox & make items go down in columns
+6. How do you set up an element to be Grid, 2 equal horizontal elements & a gap between each column
+ 
+
+ *Recap Answers*
+
+1. Making a website adapt to different screen sizes (PC, laptop, tablet & mobile)
+
+2. Lets you apply CSS code only when a certain screen condition is true (i.e. a breakpoint)
+
+3. Fixed             -> Uses set sizes, doesn't change with screen size
+   Fluid             -> Uses flexible sizes
+   Responsive layout -> Combines flexible size & media queries
+   
+4. Flexbox -> Arrange items in 1 direction
+   Grid    -> Arrange items vertically & horizontally
+
+   Flexbox would be used if you wanted an item in 1 column going down the page (i.e. a product, then below that another product, etc...)
+   Grid would be used if you wanted those products to also sit next to each other
+   i.e. a product, next to another, then down to 2 more products
+
+5. .container {
+      display: flex;             # creates Flexbox container
+      flex-direction: column;    # changes the direction to columns
+      justify-content: center;   # centers items in the container horizontally
+      align-items: center;       # centers items in the container vertically
+   }
+
+6. .container {
+      display: grid;                           # creates Grid container
+      grid-template-columns: repeat(2, 1fr);   # 2 items next to each other, each taking up 1 fraction of space (equal)
+      gap: 20px;                               # 20 pixel gap between columns (i.e. 2 items next to each other, 20 pixels, 2 items, etc...)
+   }
+
+
+** Accessibility
+
+ *Recap List*
+
+1. What is accessibility in web development
+2. What can you add to an image that a screen reader can use
+3. What tag can you add to an input to make it clear this is for a form
+
+
+ *Recap Answers*
+
+1. Designing websites so that screen readers can understand them
+2. An alt tag with a simple description of what the image is
+3. required aria-required="true" -> lets screen readers know this needs to be filled in
+
+
+** Bootstrap (~***~ 7, 11)
+
+ *Recap List*
+
+1. What is npm
+2. Summarise Bootstrap
+3. What's the difference between a library & a framework
+4. What are the 3 classes that create a bootstrap structure
+5. Difference between col-sm-4, col-md-4 & col-xl-4
+6. How do you tell HTML to use Bootstrap
+7. How do you add margin below a row
+8. How do you make an image responsive
+9. How do you create buttons
+10. What does form-control do and where does it go
+11. In a form, how do you align a label
+   
+
+ *Recap Answers*
+
+1. Node Package Manager -> used to install & manage JavaScript packages
+   
+2. A framework for CSS used for responsive design
+   
+3. A library is a collection of functions that you call
+   A framework provides a structure for building an application & it calls your code
+   It defines the architecture, rules & structure, you just fill in the details it requires
+   
+4. class="container" -> creates correct margins & spacing for the whole document (assuming this goes in <body>)
+   Within container: class="row" -> creates the horizontal single row
+   Within row: class="col-md-6" -> creates a column - medium size - 6 columns of 12
+   
+5. Each, before the breakpoint will take up 4 of the 12 columns of space available in the row
+   sm (small) -> designed for phones, on every device, 4 of 12 columns will be used
+   md (medium) -> designed for tablets, on a tablet or larger 4 of 12 columns will be used, on a phone 12 columns of space will be used
+   xl (extra large) -> only on a very large screen will 4 columns be used, any other size 12 columns will be used
+
+   This is a hard line, even with col-md-1, on a phone (i.e. after the breakpoint), all 12 columns will be used
+   
+6. Add the <link> in the <head> but make sure it's before the link to the style.css
+   You can also add the Bootstrap JS file (placed just before </body>) if you're using the interactive Bootstrap components
+   
+7. You can add <div class="row mb-4">
+   Or <div class="col-md-4 mb-4">
+   Stands for margin border 4 (size goes from 1 (small) to 5 (very large))
+
+   Adding it to a row, it will add the border between rows
+   Adding it to the column, also means the border is between the rows, but it means if the screen goes to narrow & the columns are stacked, it'll add the border between them as well
+   So, for <main> add it to the column but for <form> add it to the row (as each item should be on it's own row)
+   
+8. What is in a column class, use the following class within the <img>
+   class="img-fluid"
+   
+9. Within a <div class="col-md-4">
+   <button class="btn btn-danger">Buy</button>
+   btn specifies this is a button, btn-danger is the colour (red for this specific label)
+    
+10. In a <form>, add form-control within an <input> to ensure the input is aligned in Bootstraps standard format (centered correctly)
+    
+11. class="col-form-label" -> ensures labels align nicely inside Bootstraps grid forms
+
+    
+** JavaScript Syntax (~***~ 4)
+
+ *Recap List*
+
+1. Create a user input
+2. Print text & a variable
+3. Create a pop alert of your name
+4. Link a html & JavaScript file
+5. Difference between double & triple equals signs
+6. or & and in an if statement
+7. Check type of data
+8. Convert number_variable to a string
+
+
+ *Recap Answers*
+
+1. let myName = prompt("enter your name: ")
+2. console.log(`your name is: ${myName}`)
+3. alert(`your name is: ${myName}`) -> the tilda keys are only required because I'm including a variable (otherwise use speech marks)
+4. Before the </body> element add:
+   ~<script type="text/javascript" src="main.js"></script>~
+5. double -> converts data type (if needed) to compare the 2 inputs (converts string "5" to a number, compares to 5 & returns true)
+   triple -> doesn't convert data type (compares string "5", to number 5 & returns false)
+6. || -> or
+   && -> and
+7. typeof(variable)
+8. String(number_variable)
+
+
+** JavaScript Loops (~***~ 1, 6, 7, 8, 9 & 10) 
+
+ *Recap List*
+
+1. Create a loop to print a every 3rd number up to 20
+2. To the same loop, add a break when i is 12
+3. Create a while loop that counts to 10
+4. When should you use switch statements & when should you use if statements
+5. What is a Do While loop
+6. Loop through & print all values in an array
+7. Return the index of a value in the array
+8. Use 2 different for loops to return every value in the array (use i & of)
+9. The same as above but use forEach
+10. Create a while loop that flips the order of a given string
+
+
+ *Recap Answers*
+
+1. for (let i = 1; i < 20; i+=3) {
+     console.log(i)
+   }
+   
+2. for (let i = 1; i < 20; i+=3) {
+     console.log(i)
+     if (i ===== 12) {
+        break
+     }
+   }
+
+3. let counter = 1
+
+   while (counter <= 10) {
+       console.log(counter)
+       counter++
+   } 
+
+4. Switch -> when I'm comparing against many exact values
+
+   *Example*
+
+   let variable day = "Tuesday"
+
+   switch (day) {
+       case "Monday":
+           console.log("work")
+           break
+       case "Tuesday":
+           console.log("dentist")
+           break
+       etc...
+
+   If statements -> When conditions are more complex than checking equality
+
+   *Example*
+
+   let age = 15
+
+   if (age >= 18) {
+       console.log("Adult")
+   }
+
+5. It's the same functionally as a while loop, but the condition is checked at the end so it's code is carried out at least once
+
+6. let colors = ["green", "blue", "purple"]
+
+   for (let color of colors) {
+       console.log(color)
+   }
+
+7. console.log(colors.indexOf("blue"))
+
+8. 
+
+for (let i = 0; i < arrayLength; i++) {
+    console.log(colors[i]);
+}
+
+for (let value of colors) {
+    console.log(value);
+}
+
+9.
+
+colors.forEach(function (element) {
+    console.log(element);
+})
+
+10.
+
+let userInput = prompt("enter a word: ");
+let reversedInput = "";
+
+let counter = userInput.length - 1;
+
+while (counter >= 0) {
+    reversedInput += userInput[counter];
+    counter --;
+}
+
+console.log(reversedInput, userInput)
+
+
+** JavaScript Functions (~***~ 3, 4)
+
+ *Recap List*
+
+1. Difference between function expression & declaration
+2. What is a top-level function
+3. What is a closure
+4. Call this function:
+   
+    function multiplier(x) {
+        function inside(y) {
+            return x * y;
+        }
+        return inside;
+    }
+
+
+ *Recap Answers*
+
+1. A declaration is a normal function which can be called from anywhere in the code -> function hello()
+   An expression is when you create a variable & assign an anonymous function to it -> let hello = function ()
+   Both are called in the same way 'hello()' but the expression can only be called after it was created (code wise)
+2. A function that's on it's own & can be accessed from anywhere in the code (not nested inside another one)
+3. A closure is when a nested function (inner function) can store the value of a variable (encapsulation)
+4. const multiplyByThree = multiplier(3);
+   console.log(multiplyByThree(5));    
+
+
+** JavaScript OOP (~***~ 2 & 3)
+
+ *Recap List*
+
+1. What is the difference between a class & an object
+2. Create a basic inheritance using Dog & Animal classes
+3. What are getters & setters
+
+
+ *Recap Answers*
+
+1. You create a class called 'person' & then create the object from the class
+
+2. class Animal {
+      constructor(name) {
+         this.name = name;
+      }
+      speak() {
+         console.log(`${this.name} makes a sound`);
+      }
+   }
+
+   class Dog extends Animal {
+      bark() {
+         console.log(`${this.name} barks');
+      }
+   }
+
+   let dog1 = new Dog("buddy");
+   dog1.speak();     returns -> buddy makes a sound
+   dog1.bark();      returns -> buddy barks
+
+3. Using getters & setters allows you to isolate a variable (from within a class) so you can change or modify them
+   You can make it so this value can't be changed, if it is changed it will return a statement to the terminal, etc...
+
+   
+** DOM Manipulation (CURRENT RECAP LIST)
+
+ *Recap List*
+
+1. What does textContent() do
+2. Syntax to create a new DOM element
+3. What's the difference between getElementById() & querySelector()
+4. Give an element a class
+5. Add a list item to <ul id="ul-list">
+
+
+ *Recap Answers*
+
+1. Sets plain text when placing an element in the HTML file
+
+2. createElement()
+
+3. You can use them for the same thing
+
+   getElementById("ul-list") -> get items only from an ID
+   querySelector("#ul-list") -> get any CSS selector (i.e. classes, IDs & elements)
+
+4. ~const listItem = document.createElement("li");~
+   ~listItem.textContent = "new list item created";~
+   ~listItem.classList.add("new-class-created");         # classList.add()~
+
+5. ~const grabList = document.getElementById("ul-list);~
+   ~const listItem = document.createElement("li");~
+
+   ~listItem.textContent = "new list item created";~
+   ~grabList.appendChild("li");                          #appendChild()~
+
+   
+** Event Handling
+
+ *Recap List*
+
+1. What's the difference between DOM Manipulation & Event Handling
+2. What is inline events & how do you use them
+3. How do you create an alert for if a box is clicked
+4. Have do you select 1 element or multiple
+5. How would you create a <li> element
+6. What's the difference between ~classList.add() & className =~
+7. Add a class name to this element
+8. Add text to this element
+9. How would you check a function is working properly in the web page
+10. Add an event which runs a function when you click 'Enter'
+11. What does ~element.innerHTML = "";~ do
+
+
+ *Recap Answers*
+
+1. DOM Manipulation -> changing the structure, content or style of a web page
+   Event Handling   -> listening for user/browser actions & running code when they happen
+
+   addEventListener() is specific to Event Handling as this tracks an 'event'
+
+2. This is where you put the tag next to the element in HTML & assign it an outcome
+
+        <div id="box" onclick('hey dude')"></div>
+
+    However, don't use this method as it's very limited & you can't do a whole lot (stick to creating the elements in JavaScript)
+
+3. let boxDiv = document.getElementById("box");
+   boxDiv.addEventListener("click", function(e) {
+       alert("hey dude");
+   })
+
+   This has the exact same effect as the <div> code in the example above
+   
+4. querySelector("#name")   -> select the first element, name can be element, ID or class name
+   querySelectorAll("#name") -> select all elements -> will need to be followed by a forEach loop
+
+5. let listItem = document.createElement("li");
+   Document refers to the HTML script & "li" creates <li>
+
+6. ~classList.add() -> adds a class next to any other classes the element might have~
+   ~className       -> overwrites all classes with this~
+
+7. listItem.className = "list-item";  // list-item can be used in CSS (.list-item { )
+
+8. listItem.textContent = "shrek";    // the word shrek will be in the web page now
+
+9. In JavaScript, after the function is created, add a console.log("<function name> is called")
+   Then, after the action (i.e. a button is clicked), in the console it'll show if the function has actually been called or not
+
+10. ~document.addEventListener("keydown", function(e) {~
+
+    ~if (event.key ===== "Enter") {~
+        ~runFunction();                             # if Enter is clicked, run a function (i.e. add this text to a box)~
+
+11. Setting the elements contents & making it empty ("")
+
+    
+** Promises, Async & Await
+
+ *Recap List*
+
+1. Difference between Promises & Async
+2. Functions involved in a promise
+
+
+ *Recap Answers*
+
+1. Both are a way of creating asynchronous functions
+
+   Promises -> calling to fetch a URL & using .then() & .catch() functions
+   Async    -> add this keyword to the start of a function to convert it to an asynchronous one
+               use the keyword await, this pauses execution & then waits until a promise is complete
+
+2. fetch(url)
+   .then()         -> can create multiple to occur one after the other
+   .catch(error()) -> print out any errors during the process
+
+
+* Software Engineering
+
+** System Architecture
+
+ *Recap List*
+
+1. Give an example of Layered Architecture & why
+2. Give an example of Repository Architecture & why
+3. Give an example of Client-server Architecture & why
+4. Give an example of Pipe & Filter Architecture & why
+5. Give a 2 pros & cons for using multiple systems
+
+
+ *Recap Answers*
+
+1. _Microsoft Outlook_ has a user interface (emails & calendar) then a layer which handles email management, then a data access layer
+   & finally a layer to store emails, contacts, etc... in the form of data
+
+2. _Git_ uses a central repository which contains all the data for the software
+
+3. _Meta_ has apps & websites which are used by many customers, they then rely on a large server of data to provide the functionality to the applications
+
+4. _Unix_ system (or Linux) as data can manipulated in complex ways (or through many individual steps)
+
+5. pros -> scalable & allows for a flexible system
+   cons -> very complicated system, therefore also expensive & difficult to maintain
+
+
+** Network Protocols & HTTP Messages
+
+ *Recap List*
+
+1. What is a network protocol
+2. What is TCP
+3. What is UDP
+4. What is DNS
+5. What is FTP used for
+6. What is SMTP
+7. What's the difference between a protocol & a port
+8. Give a simple summary the relationship between a client & server, when the client enters a URL
+9. How does https work to securely sends data
+10. What is a HTTP message
+11. Break down the 3 parts of a HTTP Request message
+12. Break down the 3 parts of a HTTP Response message
+13. Explain what each status code means (100s, 200s, 300s, 400s & 500s)
+14. Define -> GET, POST, DELETE, PUT & PATCH
+
+
+ *Recap Answers*
+
+1. A network protocol is a set of rules that define how data is transmitted and received between devices on a network
+
+2. TCP (Transmission Control Protocol) is a reliable protocol that ensures data is delivered accurately and in order
+
+3. UDP (User Datagram Protocol) is a faster but less reliable protocol that sends data without checking for errors or order
+
+4. DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses
+
+5. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
+
+6. SMTP (Simple Mail Transfer Protocol) is used to send emails between servers
+
+7. Protocol → rules for communication (e.g. HTTP, TCP)
+   Port → a numbered endpoint used to direct traffic (e.g. port 80 for HTTP)
+
+8. A client (your browser) wants to load a website
+   The browser asks DNS to translate the domain name (i.e. ~https://google.com~) into an IP address
+   DNS returns the server's IP address
+   Your browser connects to the server (hosting place of the website)
+   The server sends the website data back to your browser (DNS isn't needed as the server uses your IP address)
+
+9. Server gives you a public key (they send it with the certificate
+   it's a padlock anyone can close but only the server can open)
+   The browser generates a random secret key
+   You encrypt this secret key using the server's public key (meaning the server is the only one that can decrypt it)
+   So when the data is sent over, it's encrypted with the public key
+   The server receives this & decrypts it's own encryption with the public key to receive the secret key
+   Then they can decrypt the data using the secret key
+
+10. There's a Request HTTP message when a client requests data from a server
+    & a Response HTTP message when the server sends its reply
+
+11. The method -> GET, POST, DELETE, etc...
+    The path   -> the location of the data (i.e. /index.html)
+    The HTTP Version
+
+12. The HTTP version
+    The status code
+    The status message
+
+13. 100s -> the request is continuing
+    200s -> success codes
+    300s -> redirection codes
+    400s -> client error codes (there was a problem)
+    500s -> server error codes (the request was accepted but there was an error on the server side)
+
+14. GET    -> retrieve data from a server
+    POST   -> send data to input into the server
+    DELETE -> remove a resource
+    PUT    -> update or replace an existing source
+    PATCH  -> partially update a resource
+
+
+** JSON & Web Storage APIs
+
+ *Recap List*
+
+1. What does parse mean
+2. Why convert code to a JSON file
+3. Check what's stored in localStorage
+4. The functions to convert a JS object to a json string & the reverse
+5. Explain this line:
+   ~let settings = JSON.parse(localStorage.getItem("settings")) || {};~
+6. Create a cookie
+7. What is localStorage used for
+8. What's a data requirement of using localStorage
+9. Create an item in localStorage & retrieve the item
+10. What is cache used for
+11. How do you create a cache
+12. When would you use: cookies, sessionStorage, localStorage & cache storage
+
+
+ *Recap Answers*
+
+1. To take data in 1 format & convert it into a format that a program can understand
+
+2. So we can convert data between client & server in a standardised format
+   Everything that is transferred via the web uses HTTP, which can only transfer text
+   JSON file converts code to strings
+
+3. F12, Application, Storage, Local Storage
+   
+4. ~JSON.stringify(json_object)~ -> JavaScript object to a string
+   ~JSON.parse(json_text)~       -> JSON string to JavaScript object
+
+5. Get the "settings" value from localStorage
+   Converts the JSON string to a JavaScript object
+   If no settings exists, create an empty object
+
+6. function cookieCreate(name) {
+       document.cookie = "username=" + name + ";max-age=86400;path=/";
+
+   document.cookie -> creates cookie
+   "username="     -> saves the name of the cookie (needs to be a key:value pair, so you can retrieve it)
+   max-age         -> creates length of time the cookie will be stored (in seconds)
+
+7. Its a built in JS API for storing data that persists after the browser is closed
+   Its used for storing user settings & saving application state
+
+8. It only stores strings so you have to convert JavaScript objects to JSON strings for it to be saved
+   & then convert them back again to use them in a script
+
+9. localStorage.setItem("theme", "dark");
+   let them = localStorage.getItem("theme");
+   console.log(theme);                       # output -> dark
+
+10. Temporarily storing resources (images, scripts or data)
+    to improve performance (things don't need to be re-downloaded)
+
+11. You use a service worker (create a sw.js file)
+    In this file you create function & event listeners that download files & reuse them when a web page is loaded
+
+12. Cookies        -> where you need to share data between the client & server (mainly store authentication tokens or user preferences) 
+    sessionStorage -> storing temporary data that only needs to exist for the duration of a single session
+    localStorage   -> data that need to remain after the browser is closed (main use is user preferences)
+    Cache storage  -> used to enhance performance by storing resources such as images, CSS files & JavaScript in the browser
+                      so they can be accessed quickly without needing to re-download them from the server
+
+
+** Shell Scripting
+
+ *Recap List*
+
+1. What's the difference between $@ & $*
+2. Create a variable & print it to the terminal
+3. Create a user input & print it to the terminal
+4. Create basic layout of an if statement with an else if & else
+5. If statement conditions for equal to, greater than & less than or equal to
+6. & to combine 2 statement & or to say this condition or this condition
+7. What does 'exit 6' line mean
+8. What's used to define a variable in a function
+9. Create a function with 1 argument & call the function & pass an argument
+
+
+ *Recap Answers*
+
+1. Both are command-line arguments
+    $@ -> keeps arguments separate               (i.e. apple banana orange would all be on thir own line)
+    $* -> combines all arguments into one string (i.e. apple banana orange next to each other)
+    
+2. fact="linux"
+   echo $fact    returns -> linux
+
+3. echo "type a number:"
+   read number
+   echo $number   returns -> (the number the user entered)
+
+4. ~if [[condition]]; then~
+       statement
+   ~elif [[condition]]; then~
+       statement
+   else
+       statement
+   fi
+
+5. -eq -> equal to
+   -gt -> greater than
+   -le -> less than or equal to
+
+6. -a  -> and
+   -o  -> or
+
+7. Exit out of the file & return the output 6 (indicting exit code 6)
+
+8. $1 -> first variable
+   $2 -> second variable (& so on)
+
+   So, in a function (echo "Hello there $1, you have $2 money in your account")
+
+9. greet() {
+      echo "Hello $1"  # $1 is the first argument passed, $2 would be number 2 & so on 
+   }
+
+   greet Alex          # output -> Hello Alex
+
+
+
+
+* Elisp, Bash, JavaScript & Python (EVERYDAY)
+
+** Elisp (REWRITE SOME, CHECK ALL OF THEM)
+
+ *Recap List*
+
+1. How do you call a function in scratch buffer
+2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & 'num2' & code to add them together
+3. Call the function and pass 2 numbers to it
+4. What is true & false in Elisp
+5. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
+6. Create the variable 'y' & pass 10 to it
+7. Return to console y multiplied by 3
+8. What does the ' mean (give 3 examples)
+9. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
+10. Explain what a symbol is & how this line works -> (require 'evil)
+11. What another way to write -> #'flyspell-mode
+12. Create a function that adds a print("hello world") using the shortcut C-S-h
+13. How do Elisp if statements work
+14. Create an if statement to return 'true' or 'false'
+15. Do another one to check if a variable is greater than 10
+
+
+ *Recap Answers*
+
+1. Go a line after the function is created -> C-x C-e
+   Go a line after the function call       -> C-x C-x
+
+2. (defun adding_together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
+      (+ num1 num2))
+
+3. (adding_together 23 12)
+
+4. true  -> t
+   false -> nil
+
+5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
+
+   (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
+
+6. (setq y 10)   ;; setq -> built-in function meaning 'set variable'
+
+7. (* y 3)       ;; C-x C-e on the variable & the same on this will return 10
+
+8. Don't evaluate this section -> known as *quote*
+
+   '(1 2 3) -> treats this as a list, the most common use of this key
+
+    x       -> returns: 10
+   'x       -> returns: x
+
+   '(+ 1 2) -> returns: (+ 1 2)
+
+9. (defun greet()
+       (interactive)          -> this has to be the first thing after the function is made
+       (message "hello"))
+
+   When you do M-x greet RET  -> returns: hello
+
+10. symbol -> a label that can point to things (variable, function, feature)
+
+    require -> load this feature
+    'evil   -> this is treated as a symbol not a variable (so it can be retrieved by require)
+
+11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+
+12. (defun print-hello-world ()
+        (interactive)                              -> you can call this function from M-x
+        (message "hello world"))
+    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function
+
+    You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
+
+13. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
+    (if CONDITION
+        THEN
+      ELSE)
+
+14. (if t                 -> if I swap this to nil it would return: it-was-false
+        'it-was-true      
+        'it-was-false)
+
+    Note -> anything other than nil is considered true, so I can swap the t for anything
+
+15. (setq x 15)
+    (if (> x 10)
+        "x is greater than 10"
+      "x is less than 10")
+
+
+** Bash (~***~ 1, 2, 7, 13, 14, 15)
+
+ *Recap List*
+
+1. Create a counter, assign 10 to it, then increment it by 5, return the number to the terminal
+2. Create a message, append text to it & return it to the terminal
+3. What is env & how can you change a value there
+4. List a few environment variables
+5. Explain .bashrc
+6. Explain PATH
+7. Append a command to an output.txt
+   Redirect errors to errors.txt
+   Redirect everything to output.txt
+8. What does * do before a name & use an example
+9. Explain the difference between &&, || and ;
+10. Change permissions of a file to ~rwxrw-r--~
+    Change ownership of the same file to john-doe of group developers (how would change all subsequent files too)
+11. Find all lines containing the word 'error' in logfile.txt
+    Find the emacs PID
+12. Kill a process with its PID
+    Kill all process with the exact name 'firefox'
+    Kill all matching process with 'firefox' in their name
+13. Find all files ending in .txt
+    Find only files (& then only directories)
+    Find a file that is 1000 bytes in size
+    Search for a file with the name "emacs.org" from the root (make sure to ignore errors)
+14. Find all files ending with .txt & delete them in 1 command
+15. Sort the lines of file.txt alphabetically & count how many times a unique line appears 
+16. if statement, check if -> a file exists, directory exists, readable, writable, executable
+
+    
+ *Recap Answers*
+
+1. count=10 
+   count=$((count + 5))
+   echo $count
+
+2. declare message="Hello World!"
+   message="$ Have a great day!"
+   echo $message
+
+3. A command that displays the environment variables (specific to your current shell process)
+   The default commands are usually created when you log in (i.e. USER, HOME, SHELL, etc...)
+   export EDITOR=nano -> now echo $EDITOR will be 'nano'
+
+4. echo $SHELL -> will be saved as SHELL=/bin/bash in env
+   echo $USER  -> will be saved as USER="john-doe" in env
+   echo $HOME  -> will be saved as HOME=/home/john-doe in env
+
+5. Every time I open a terminal, this file is run -> essentially its the init.el file for the terminal
+
+   Within it, I can:
+   - add environment variables (export EDITOR=emacs)
+   - add aliases (i.e. shortcuts) -> alias ll="ls -lah"
+                                     now typing ll will be read as "ls -lah" 
+   - add extra locations to PATH
+
+6. When you run a command (i.e. ls), bash uses PATH to search for this command in its file paths
+   In PATH there are actually multiple file locations, & it will search until it finds a match
+
+   For the 'ls' example, it finds it in /usr/bin/ls & then runs it
+
+   So, you can add a path to a file where you have executables (i.e. ~/bash_script/)
+   Then, you can just do ./update_and_upgrade from anywhere, as bash will find this script in the path & then run it)
+
+7. Append              -> command >> output.txt
+   Redirect errors     -> command 2> errors.txt
+   Redirect everything -> command > output.txt 2>&1
+
+   2>&1 -> the 2 is stderr (errors), & your saying they should be directed to the same location as stdout (standard output)
+           stdout is already going to output.txt so errors now follow
+
+           the & is needed because the system could treat 1 as a file name, the & tells it to treat it as a file descriptor not a file name
+           this is needed as after a redirect, bash assumes it receiving a file (i.e. 2 > error_output.txt)
+
+8. It means, include all instance of this
+   rm *.txt -> would remove all instance of files in this path ending with .txt
+
+9. && -> run next only if successful
+   ~||~ -> run next when the 1st command failed
+   ;  -> run regardless
+
+10. chmod 764 script.sh
+    chown john-doe:developers script.sh (-R to include all files within a directory)
+
+11. grep error logfile.txt
+    pgrep emacs              (will return 1234 or 372 or another number)
+
+12. kill 123        -> process with PID of 123
+    ~pkill firefox~   -> kills all processes with the EXACT name 'firefox'
+    ~killall firefox~ -> kills all processes with the word 'firefox' in their name (e.g. firefox, firefox-helper)
+
+13. find . -name "*.txt"
+    find . -type f (for directory use 'd')
+    find . -type f -size 1000c
+    find / -name "emacs.org" -type f 2>/dev/null
+
+14. find . -name "*.txt" | xargs rm
+    xargs -> rm expects an argument but its being passed filenames, xargs converts it into a format rm can use to delete the files 
+
+15. sort file.txt | uniq -c
+
+16. if [ -f file.txt ]; then
+        echo "exits"
+    else
+        echo "missing"
+    fi
+
+    -f -> file exists
+    -d -> directory exits
+    -r -> readable
+    -w -> writable
+    -x -> executable
+   
+
+** JavaScript (~***~ 1, 3, 4)
+
+ *Recap List*
+
+1. Rewrite this as an arrow function
+    function add(a, b) {
+        return a + b;
+    }
+2. Call either function
+3. Create an array of numbers
+   Add a number
+   Remove index 2
+   Get the size of the array
+4. Create a hash map containing 2 pairs
+   Access a value
+   Add a value to the map
+5. 
+
+
+ *Recap Answers*
+
+1. const add = (a, b) => {
+       return a + b;
+   }
+
+2. add(2, 5)  # they are both called this way
+
+3. let numbers = [2, 6, 1, 4]
+   numbers.push(7)
+   numbers.splice(2, 1) # remove from index 2, remove 1 item
+   numbers.length
+
+4. let user = {
+      name: "john",
+      age: 25
+   }
+   user.name
+   user.email = ~"john@gmail.com"~
+
+5. 
+
+
+** Python (ADD AS I FORGET IN EXERCISM)
+
+
+** Terminal Commands (~***~ 4, 6, 9, 12, 13, 14, 15, 17, 18, 20)
+
+ *Recap List*
+
+1. Clear terminal with a keyboard shortcut
+2. Clear current typed command
+3. Put cursor at the start of the command
+4. Put cursor at the end of the command
+5. Go to previous directory (after a cd)
+6. Rerun command as if I forgot to use sudo (i.e. apt upgrade)
+7. Rerun the 3rd command I used this session
+8. What's the difference between ; && and ||
+9. Do (6 * 5) / 2 in the shell & return the answer
+10. Search for the word 'dog' in sample.txt
+11. Search how many lines of text are in the file linux.org
+12. Show the first 10 lines of a linux.org & the same but the last 10
+13. How do you find all the files ending in .txt in the current directory (& it's subdirectories)
+14. How do you change permissions of script.sh so the owner can execute it
+15. Check the last 20 commands you ran
+16. Check where Python is located
+17. Find the PID of the terminal
+18. Kill the terminal
+19. How do you stop ALL processes with the name firefox
+20. Find all occurrences of the word "linux" in linux.org (ignore case sensitivity)
+   
+
+ *Recap Answers*
+
+1. Ctrl + l
+
+2. Ctrl + u
+
+3. Ctrl + a
+
+4. Ctrl + e
+
+5. cd -
+
+6. sudo !!
+
+7. history
+   !3
+
+8. ;  -> run 1st command then the 2nd command regardless of whether the first succeeded or not
+   && -> runs the 2nd command ONLY if the 1st succeeded
+   ~||~ -> runs the 2nd command ONLY if the 1st failed
+
+9. echo $(((6 * 5) / 2))  -> double brackets tells the shell to perform an arithmetic evaluation
+
+10. grep "dog" sample.txt
+
+11. wc -l linux.org
+
+12. head -n 10 linux.org
+    tail -n 10 linux.org
+
+13. find . -name "*.txt"
+    find    -> searches for files & directories
+    .       -> search current directory
+    -name   -> search by file or directory name
+    "*.txt" -> match anything that ends with .txt
+
+14. chmod u+x script.sh
+
+15. history | tail -20
+
+16. which python3
+
+17. ps aux | grep terminal
+
+18. kill 4567 (or whatever the number is after john-doe)
+
+19. pkill firefox
+
+20. grep -ci "linux" linux.org
+    -c -> count
+    -i -> ignore case sensitivity
+
+
+* Linux (ARCH EVERYDAY)
+
+** Additional Syntax (COMPLETE)
+
+ *Recap List*
+
+
+
+ *Recap Answers*
+
+
+** Bandit Game
+
+ *Recap List*
+
+1. Explain the ssh command
+2. Why can't you open a file beginning with '-'
+3. Why can't you cd into a file with spaces
+4. Command to check file type
+5. What does ./* mean
+6. Command to search for files & directories
+7. Command to search by word
+8. Command to sort data alphabetically
+9. Command to print only human-readable letters
+10. What is base64 & why would you use it
+11. Command to character remap
+12. What are gzip, bzip2 & tar
+13. Unzip gzip, bzip2 & tar
+14. 
+
+
+ *Recap Answers*
+
+1. ssh command runs secure shell client which lets you log into a remote machine
+   You need to specific the port (ssh uses port 22 but the Bandit game runs on port 2220)
+
+   ssh username@hostname -p 2220
+
+2. Linux treats - as a special argument instead of a filename
+   Use ./-<file name> so Linux knows this is a file
+
+3. Linux treats spaces as separators between arguments
+   Use " " as this tells the shell to treat everything as 1 argument
+
+4. file <filename>
+
+5. find <filename> <flags>
+
+6. grep <word> <filename>
+
+7. sort <filename>
+   
+   sorts data by line alphabetically
+
+8. strings <filename>
+
+9. Every file/directory in the current directory
+
+10. base64 is a way of converting binary numbers to text
+    You'd use it if the data was required to be in plain-text format
+    For example, an image is made up of bytes, but email is a text-only system
+    You'd encode the bytes to text, then when you receive your email, the system would encode the letters back to bytes
+
+11. tr 'characters to replace' 'characters to replace them with'
+
+12. gzip & bzip2 -> compress files to make them smaller
+    tar          -> bundle files together to make an archive
+
+13. gunzip file.gz
+    bunzip2 file.bz2
+    tar -xf file.tar
+
+    The extensions on the file names has to be correct
+
+14. 
+
+
+** Arch
+
+ *Recap List*
+
+1. What are the 3 download steps for Arch
+2. Why do you need to write an .iso file to a USB
+3. Why do you have to format a root partition after creating it
+4. What does it mean to install the base system
+5. Order of things that occur so you go from turning power on to the log in screen
+6. Break down UEFI further
+7. What is a bootloader & why's it needed
+
+   
+  *Recap Answers*
+
+1. .iso file -> specific to arch which contains the file system & folder structure on a CD
+   A tool to write an ISO to a USB so its bootable
+   Boot & select Arch
+
+2. A computer can't boot from a file as the file is sitting in a distro file system
+   The computer has to boot to the file system to access this file
+
+   At boot, the UEFI looks for bootable disks -> the USB with a bootable .iso file can be found
+
+3. Formatting a partition only means you allocate it space/memory it can use
+   Then to format the root partition, you tell the system to install/format all of the files & its structure
+
+4. After your disk is prepared, you need to install software to have a working Linux installation
+   The base system includes: Linux kernel, GNU utilities (ls, cp, mv, etc...), Package manager (pacman)
+   System management tools (systemd), Libraries needed by programs, Firmware for hardware
+
+5. PC powers on -> UEFI firmware -> Bootloader (GRUB/systemd-boot) -> Linux kernel -> systemd -> login screen
+
+6. UEFI is started & looks at boot entries (i.e. Windows Boot Manager, Arch Linux, Ubuntu, etc...)
+   i.e. here are the OS I know how to start, when one is clicked, it goes to the next step
+   UEFI finds the EFI System Partition -> this is the area in the Arch Linux partition which contains the bootloader
+   Then, the bootloader (that I chose through Arch Linux) goes from there
+
+7. A bootloader is the program that starts when your computer loads Linux
+   This program knows how to start Linux by finding the Linux kernel, loading it to memory, passing settings & then starting it up
+   To configure the bootloader means, choosing one (GRUB or systemd-boot) -> then tell the bootloader where Arch's installed
+   which kernel to boot, what options to pass & whether other OS exist
+   
+
+
+* Emacs
+
+** Org Mode
+
+
+** Shortcuts
+
+
+** Functionality
+
+
+** Packages
+
+ *Recap List*
+
+1. What are the sources of packages in Emacs
+2. Where are the files located
+3. How do you search for & install a package
+4. What are the steps of Emacs downloading a package
+5. What does Consult package do
+6. What does Vertico package do
+
+
+ *Recap Answers*
+
+1. There are 3: built in (internal packages)
+             MELPA packages (technically still an external package but very common)
+             External packages (community made ones, i.e GNU ELPA)
+
+2. Built in -> /usr/share/emacs/29.3/lisp
+   MELPA    -> ~/.config/emacs/elpa
+   External -> almost always the same place as MELPA
+
+3. M-x package-install RET <name-of-package> RET
+
+4. You request a package -> M-x package-install
+   Emacs checks the local database (~/.config/emacs/elpa/archives) -> ensure package exists
+   Refresh the package list -> check for updates
+   Resolve package + dependencies -> Emacs finds the package, checks dependencies & builds an install plan
+   Download package files -> from the MELPA/GNU server, usually a .tar archive
+   Install into local directory -> extract the .tar
+   Add to load-path -> Emacs updates its internal search path so it can find the package quickly when requested
+   package.el creates autoload setup -> so Emacs doesn't load the entire package until requested
+   Then, you manually activate the package -> in config (require 'evil)
+   Emacs then searches the load-path, finds it & loads the package into memory
+
+5. Completion tools which gives you extra commands to help you search, navigate & select things
+
+6. Makes the mini-buffer better by giving suggestions & options to complete what you were typing out
+         
+             
+
+** Elisp
+
+ *Recap List*
+
+1. How do you call a function in scratch buffer
+2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & num2' & code to add them together
+3. Call the function and pass 2 numbers to it
+4. What is true & false in Elisp
+5. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
+6. Create the variable 'y' & pass 10 to it
+7. Return to console y times 3
+8. What does the ' mean (give 3 examples)
+9. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
+10. Explain what a symbol is & how this line works -> (require 'evil)
+11. What another way to write -> #'flyspell-mode
+12. Create a function that adds a print("hello world") using the shortcut C-S-h
+13. How do Elisp if statements work
+14. Create an if statement to return 'true' or 'false'
+15. Do another one to check if a variable is greater than 10
+
+
+ *Recap Answers*
+
+1. Go a line after the function is created -> C-x C-e
+   Go a line after the function call       -> C-x C-x
+
+2. (defun adding_together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
+      (+ num1 num2))
+
+3. (adding_together 23 12)
+
+4. true  -> t
+   false -> nil
+
+5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
+
+   (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
+
+6. (setq y 10)   ;; setq -> built-in function meaning 'set variable'
+
+7. (* y 3)       ;; C-x C-e on the variable & the same on this will return 10
+
+8. Don't evaluate this section -> known as *quote*
+
+   '(1 2 3) -> treats this as a list, the most common use of this key
+
+    x       -> returns: 10
+   'x       -> returns: x
+
+   '(+ 1 2) -> returns: (+ 1 2)
+
+9. (defun greet()
+       (interactive)          -> this has to be the first thing after the function is made
+       (message "hello"))
+
+   When you do M-x greet RET  -> returns: hello
+
+10. symbol -> a label that can point to things (variable, function, feature)
+
+    require -> load this feature
+    'evil   -> the quote means 'evil' is treated as a symbol not a variable (so it can be retrieved by require)
+
+11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+
+12. (defun print-hello-world ()
+        (interactive)                              -> you can call this function from M-x
+        (message "hello world"))
+    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function
+
+    You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
+
+13. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
+    (if CONDITION
+        THEN
+      ELSE)
+
+14. (if t                 -> if I swap this to nil it would return: it-was-false
+        'it-was-true      
+        'it-was-false)
+
+    Note -> anything other than nil is considered true, so I can swap the t for anything
+
+15. (setq x 15)
+    (if (> x 10)
+        "x is greater than 10"
+      "x is less than 10")
+
+
+
+* General Computing (COMPLETE EVERY SECTION)
+
+** Data Structures & Algorithms
+
+** Terms & Keywords
+
+** Git
+
+** GitHub
+
+
+* Python (COMPLETE PYGAME)
+
+** Mini Problems
+
+ *Recap List*
+
+1. Find all the factors (not including) of a number
+2. Filter a string to only get the letters
+3. Check if a string contains only numbers
+   
+
+ *Recap Answers*
+
+1. def factors(number):
+      all_factors = []
+      for value in range(1, number // 2 + 1):
+         if number % value == 0:
+            all_factors.append(value)
+      return all_factors
+
+2. def letter_string(string):
+      only_letters = ""
+      for letter in string:
+         if letter.isalpha():        # isalpha() returns true is if every character in a string is a letter
+            only_letters += letter
+      return only_letters
+
+3. def check_number(string):
+      return string.isdigit()        ## isdigit() returns true is every character in a string is a digit
+
+      
+** OOP
+
+ *Recap List*
+
+1. What is a method
+2. What are the 4 pillars of OOP
+3. What is abstraction with an example (& why is an _ needed before a variable name)
+4. What is encapsulation with an example
+5. What is inheritance with an example
+6. What is polymorphism with an example
+7. What's the difference between a class & an object
+8. What's the difference between a class attribute & instance attribute, with an example
+
+
+ *Recap Answers*
+
+
+1. A function that's embedded in a class
+
+2. Encapsulation, Abstraction, Inheritance & Polymorphism
+
+3. Using functions to change a variable, rather than directly changing it
+   Its typical to use an underscore before the variable name, to say -> don't directly change this value
+
+   class Thermostat:
+      def __init__(self):
+         self._temperature = 20
+
+      def increase(self):
+         self._temperature += 1
+
+      def check_temperature(self):
+         return self._temperature
+
+   thermostat = Thermostat()
+   thermostat.increase()
+   print(thermostat.check_temperature()) -> outputs 21
+
+   Notice, at no point do you do thermostat._temperature = 21 but you use the methods to interact with it
+
+4. If I created a game
+   while game_running:
+      enemy.take_damage()   -> this calls a method from the enemy class
+   This is abstraction, the alternative is writing the code there
+   i.e. health -= 30, an if loop to check if this means the player dies, call function to play death sound, etc...
+
+   To me, this is a fancy word for using methods & making complex classes & calling those classes & methods when needed
+   Rather than writing the code in order, when its required
+
+5. One class can reuse another classes functions
+
+   class Animal:
+      def speak(self):
+         print("hello there")
+
+   class Dog(Animal):
+      pass
+
+   # Dog has access to Animal's functions
+
+6. Classes can have the same name for functions, this can be used in a function that requires the name of a class
+
+   class Dog:
+      def speak(self):
+         return "woof"
+
+   class Cat:
+      def speak(self):
+         return "meow"
+
+   def make_noise(animal):
+      print(animal.speak())    # requires a class to be passed to it
+
+   dog = Dog()
+   cat = Cat()
+
+   make_noise(dog)             # output -> woof
+   make_noise(cat)             # output -> meow
+
+7. Class  -> the blueprint that can be used over and over
+   Object -> 1 instance of a class/blueprint
+
+8. Instance attribute is if you create the variable but have the object set it
+
+   class Player:
+      def __init__(self, name):
+         self.name = name
+
+   player1 = Player("max")            -> I created the name, so each time an object is made it will need to set a unique name
+
+   A class attribute is if the self.name = "max", so every object will have the same name
+
+
+** Magic Methods
+
+ *Recap List*
+
+1. Explain init & how it works
+2. Explain str & how it works, with an example
+3. Explain repr & how it works
+
+   
+ *Recap Answers*
+
+
+1. Called when the object is created (i.e. creating variables)
+
+2. Allows you to print what's stored in an object -> otherwise, Python would print the objects location
+
+   class Player:
+      def __init__(self, name):
+         self.name = name
+
+      def __str__(self):
+         return self.name
+
+   player = Player("Alice")
+   print(player)                  # output -> Alice
+
+3. repr is very similar to str, both allow you to print objects to the terminal
+   But, repr is used for debugging (i.e. used for programmers)
+   Think how I embed a console.log("this_function is working) in JavaScript, repr is like that but for a class, to check what's outputted 
+
+
+** Pygame
+
+ *Recap List*
+
+1. What's required at the start of the file, to start/setup each game
+2. Write out the main game function
+3. What goes in the main function, give examples
+4. Where should global variables go & what's the best practice
+5. Why do you need a game clock, where would you make the clock & show how to make it
+
+
+ *Recap Answers*
+
+
+1. import pygame
+   create the screen (dimensions) -> win = pygame.display.set_mode((2000, 2000))
+   give the screen a caption      -> pygame.display.set_caption("pong")            # this will appear at the top of the window
+   create a function (main()) to run the game & call this at the bottom of the page
+   within the main() function, create a while loop to check if the player tries to 'x' off the screen
+
+2. def main()
+      run = True
+
+      while run:
+         for event in pygame.event.get():
+            if event.type == pygame.QUIT:   # pygame.QUIT -> the 'x' button was clicked to exit the page
+               run = False
+               break                        # this will work without the break, the break is just a good habit
+
+      pygame.quit()                         # when run is False, the game quits
+
+3. Everything that can make things happen in the game (player moves, enemy moves, projectiles, etc...)
+
+4. Put them before the game loop & in _all caps_, so I know they are global
+
+5. Otherwise game speed is entirely linked to the PC output
+   It should be created before the main() -> CLOCK = pygame.time.Clock()
+   & then inside - while run: 
+                      clock.tick(60)      # game will now run at 60 FPS
