@@ -3,6 +3,9 @@
 * To Do
 
 1. Big CSS Recap List -> cover loads of different properties, best practices, center text, etc...)
+2. Checklist for CSS requirements on a web page (i.e. if there's a button have it change colour & hover when toggled over)
+3. Checklist for website requirements before starting (i.e. colour scheme, method of layout)
+   
 
 
 

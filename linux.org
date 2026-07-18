@@ -13,11 +13,14 @@
 8. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
 9. Look into popular aliases or clever ones people have made
 10. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
+11. What can go wrong after an update, why this has happened & what topics I need to know about my system to troubleshoot
+12. Troubleshoot order to fix Arch problems (after updates)
+13. Look into systemd, what is it? how does it work? what's it used for?
 
 
-* Terminal Commands (TRANSFER NOTES OVER)
+* Terminal Commands 
 
-** Recap List (ADD MORE, ASK CHATGPT)
+** Recap List 
 
 1. Clear terminal with a keyboard shortcut
 2. Clear current typed command
@@ -148,7 +151,7 @@ message is now -> Hello, World! Have a great day!
 ** Recap List
 ** Recap Answer
 
-** Booting applications
+** Booting applications (CONVERT TO recap_list.org)
 
 I can save files (in a specific way) in ~/.config/autostart/ so they are opened on boot
 
