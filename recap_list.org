@@ -584,7 +584,7 @@ console.log(reversedInput, userInput)
    cons -> very complicated system, therefore also expensive & difficult to maintain
 
 
-** Network Protocols & HTTP Messages
+** Network Protocols & HTTP Messages (STUDY)
 
  *Recap List*
 
@@ -659,7 +659,7 @@ console.log(reversedInput, userInput)
     PATCH  -> partially update a resource
 
 
-** JSON & Web Storage APIs
+** JSON & Web Storage APIs (STUDY)
 
  *Recap List*
 
@@ -1235,15 +1235,15 @@ console.log(reversedInput, userInput)
    
 
 
-* Emacs
+* Emacs (3 SECTIONS NEED RECAP LISTS)
 
-** Org Mode
-
-
-** Shortcuts
+** Org Mode (ADD)
 
 
-** Functionality
+** Shortcuts (ADD)
+
+
+** Functionality (ADD)
 
 
 ** Packages
