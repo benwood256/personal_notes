@@ -16,6 +16,10 @@
 11. What can go wrong after an update, why this has happened & what topics I need to know about my system to troubleshoot
 12. Troubleshoot order to fix Arch problems (after updates)
 13. Look into systemd, what is it? how does it work? what's it used for?
+14. More advanced understanding of package managers, how they work & Pac-Man specifically 
+    Also, alternative ways to install packages & how they work
+15. I've made a sub-header in Arch 'Debugging Arch issues' with sub-topics to learn for issues in Arch
+    Learn each section, make a new sub-header & fill with notes, then add to recap_list.org
 
 
 * Terminal Commands 
@@ -574,3 +578,35 @@ Read through all of this & make extensive notes
 Arch is a rolling release distro, meaning it updates constantly -> things will break & will need to be fixed
 There is an easy install called “archinstall” -> but it doesn’t allow you to completely customise the system & defeats the purpose for me as I want to learn the system, not skip steps
 
+** Debugging Arch Issues (ADD TO EACH SECTION FROM 2.)
+
+1. Read the Arch news before updates
+
+   Read the Arch news
+   Then run -> 'sudo pacman -Syu'
+   Then read any messages printed by pacman
+
+2. Understand systemd
+
+   Everything on Arch is managed through systemd
+
+3. Learn journalctl
+
+   This is a debugging tool
+
+4. Learn pacman well
+
+5. Learn how to inspect logs
+
+6. Learn boot troubleshooting (arch-chroot)
+
+7. Learn to read error messages
+
+8. Learn about AUR
+
+9. Learn recovery tools
+
+10. Keep backups
+
+11. Learn to isolate problems
+   

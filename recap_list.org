@@ -397,13 +397,14 @@ console.log(reversedInput, userInput)
    console.log(multiplyByThree(5));    
 
 
-** JavaScript OOP (~***~ 2 & 3 -> MAKE EXAMPLE FOR 3)
+** JavaScript OOP (~***~ 2, 3 & 4)
 
  *Recap List*
 
 1. What is the difference between a class & an object
 2. Create a basic inheritance using Dog & Animal classes
 3. What are getters & setters
+4. Create a simple example of a class Person, use a getter & setter for the name
 
 
  *Recap Answers*
@@ -429,8 +430,32 @@ console.log(reversedInput, userInput)
    dog1.speak();     returns -> buddy makes a sound
    dog1.bark();      returns -> buddy barks
 
-3. Using getters & setters allows you to isolate a variable (from within a class) so you can change or modify them
+3. They are a form of encapsulation, you need to create methods to retrieve the name (getter) or change the name (setter)
+
+   Using getters & setters allows you to isolate a variable (from within a class) so you can change or modify them
    You can make it so this value can't be changed, if it is changed it will return a statement to the terminal, etc...
+
+   After an object is made (from the blueprint/class), a variable can be changed to something invalid, i.e. person1.name = "";
+   getters & setters protect the variable from being changed, so it can only be changed in a protected/specific way
+
+4. class Person {
+      constructor(name) {
+         this._name = name;
+      }
+
+      get name() {
+         return this._name;
+      }
+
+      set name(newName) {
+         if (newName.length > 0) {
+            this._name = newName;
+         } else {
+            console.log("Invalid name");
+         }
+      }
+
+   the name can only be returned using the get method & the name can only be changed using the set method
 
    
 ** DOM Manipulation (~***~ 4 & 5)
@@ -535,25 +560,7 @@ console.log(reversedInput, userInput)
     <div><h1>hello</h1></div>
     
 
-** Promises, Async & Await (CURRENT RECAP LIST)
-
- *Recap List*
-
-1. Difference between Promises & Async
-2. Functions involved in a promise
-
-
- *Recap Answers*
-
-1. Both are a way of creating asynchronous functions
-
-   Promises -> calling to fetch a URL & using .then() & .catch() functions
-   Async    -> add this keyword to the start of a function to convert it to an asynchronous one
-               use the keyword await, this pauses execution & then waits until a promise is complete
-
-2. fetch(url)
-   .then()         -> can create multiple to occur one after the other
-   .catch(error()) -> print out any errors during the process
+** Promises, Async & Await
 
 
 * Software Engineering
@@ -612,7 +619,7 @@ console.log(reversedInput, userInput)
 
 3. UDP (User Datagram Protocol) is a faster but less reliable protocol that sends data without checking for errors or order
 
-4. DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses
+4. DNS (Domain Name System) translates website names (a url) into IP addresses
 
 5. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
 
@@ -627,8 +634,7 @@ console.log(reversedInput, userInput)
    Your browser connects to the server (hosting place of the website)
    The server sends the website data back to your browser (DNS isn't needed as the server uses your IP address)
 
-9. Server gives you a public key (they send it with the certificate
-   it's a padlock anyone can close but only the server can open)
+9. Server gives you a public key (they send it with the certificate it's a padlock anyone can close but only the server can open)
    The browser generates a random secret key
    You encrypt this secret key using the server's public key (meaning the server is the only one that can decrypt it)
    So when the data is sent over, it's encrypted with the public key
@@ -668,7 +674,7 @@ console.log(reversedInput, userInput)
 3. Check what's stored in localStorage
 4. The functions to convert a JS object to a json string & the reverse
 5. Explain this line:
-   ~let settings = JSON.parse(localStorage.getItem("settings")) || {};~
+   ~let storedItem = JSON.parse(localStorage.getItem("storedItem")) || {};~
 6. Create a cookie
 7. What is localStorage used for
 8. What's a data requirement of using localStorage
@@ -691,7 +697,7 @@ console.log(reversedInput, userInput)
 4. ~JSON.stringify(json_object)~ -> JavaScript object to a string
    ~JSON.parse(json_text)~       -> JSON string to JavaScript object
 
-5. Get the "settings" value from localStorage
+5. Get the "storedItem" value from localStorage
    Converts the JSON string to a JavaScript object
    If no settings exists, create an empty object
 
@@ -708,12 +714,11 @@ console.log(reversedInput, userInput)
 8. It only stores strings so you have to convert JavaScript objects to JSON strings for it to be saved
    & then convert them back again to use them in a script
 
-9. localStorage.setItem("theme", "dark");
-   let them = localStorage.getItem("theme");
-   console.log(theme);                       # output -> dark
+9. localStorage.setItem("theme", "dark");     # saves data to local storage as a key, value pair
+   let theme = localStorage.getItem("theme"); # retrieve the data using the key to get the value
+   console.log(theme);                        # output -> dark
 
-10. Temporarily storing resources (images, scripts or data)
-    to improve performance (things don't need to be re-downloaded)
+10. Temporarily storing resources (images, scripts or data to improve performance so files don't need to be re-downloaded)
 
 11. You use a service worker (create a sw.js file)
     In this file you create function & event listeners that download files & reuse them when a web page is loaded
@@ -810,32 +815,35 @@ console.log(reversedInput, userInput)
  *Recap Answers*
 
 1. Go a line after the function is created -> C-x C-e
-   Go a line after the function call       -> C-x C-x
+   Go a line after the function call       -> C-x C-e
 
-2. (defun adding_together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
+2. (defun adding-together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
       (+ num1 num2))
 
-3. (adding_together 23 12)
+3. (adding-together 23 12)
 
-4. true  -> t
+4. true  -> t (although technically, anything that is not nil is considered true but t is standard practice)
    false -> nil
 
 5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
 
    (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
 
-6. (setq y 10)   ;; setq -> built-in function meaning 'set variable'
+6. (setq num 10)   ;; setq -> built-in function meaning 'set variable'
 
-7. (* y 3)       ;; C-x C-e on the variable & the same on this will return 10
+7. (* num 3)       ;; C-x C-e on the variable & the same on this will return 10
 
 8. Don't evaluate this section -> known as *quote*
 
    '(1 2 3) -> treats this as a list, the most common use of this key
 
+   (setq x 10)
     x       -> returns: 10
    'x       -> returns: x
 
    '(+ 1 2) -> returns: (+ 1 2)
+
+   (keymap-global-set "C-S-h" 'my-function) -> without the ', Emacs would try to run the function immediately
 
 9. (defun greet()
        (interactive)          -> this has to be the first thing after the function is made
@@ -843,17 +851,18 @@ console.log(reversedInput, userInput)
 
    When you do M-x greet RET  -> returns: hello
 
-10. symbol -> a label that can point to things (variable, function, feature)
+10. symbol -> a variable of sorts that acts as a pointer to: variable, function or feature
 
-    require -> load this feature
-    'evil   -> this is treated as a symbol not a variable (so it can be retrieved by require)
+    require -> is a built in function which loads this 'feature'
+    'evil   -> this is treated as a symbol, not a variable (so it finds the feature named 'evil')
 
 11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
 
 12. (defun print-hello-world ()
         (interactive)                              -> you can call this function from M-x
         (message "hello world"))
-    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function
+        
+    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function (this is not in the function)
 
     You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
 
@@ -871,10 +880,12 @@ console.log(reversedInput, userInput)
 15. (setq x 15)
     (if (> x 10)
         "x is greater than 10"
-      "x is less than 10")
+        "x is equal to 10 or less")
 
 
 ** Bash (~***~ 1, 2, 7, 13, 14, 15)
+
+<<bash-link>>
 
  *Recap List*
 
@@ -1115,15 +1126,6 @@ console.log(reversedInput, userInput)
 
 * Linux (ARCH EVERYDAY)
 
-** Additional Syntax (COMPLETE -> ADD COMPLEX EXAMPLES, different to Bash list above)
-
- *Recap List*
-
-
-
- *Recap Answers*
-
-
 ** Bandit Game
 
  *Recap List*
@@ -1234,10 +1236,69 @@ console.log(reversedInput, userInput)
    which kernel to boot, what options to pass & whether other OS exist
    
 
+** The File System (ADD -> a question on what every directory from root does)
+
 
 * Emacs (3 SECTIONS NEED RECAP LISTS)
 
 ** Org Mode (ADD)
+
+ *Recap List*
+
+1. How have I set up my init.el to a init.org file & how does it work
+2. Use 'babel' to create a block where I can write Python code, just do a print function (babel is built in, no download required)
+3. What other languages can I use & what do I replace python with for each
+4. How do you make it so a language can run
+5. What is :results output for
+6. What's the shortcut to run this block (between begin & end) & where should the cursor be
+7. How do you move swap with the heading above & below
+8. How do you promote or demote a heading
+9. Syntax to make a link clickable
+10. How do you create & link internal Org links
+11. Click the link with a shortcut
+
+   
+ *Recap Answers*
+
+1. Have a init.el file with only a line to load my init.org file
+   The init.org file is located next to the init.el (~/.config/emacs/)
+   Then in the init.org, write whatever comments I want & embed the Elisp in #+begin_src emacs-lisp & #+end_src
+
+2. 
+    #+begin_src python :results output
+    print("hello me")
+    #+end_src
+
+3. I've set up Shell (Bash) & JavaScript in the init.el, Elisp is built in already
+   But most languages are supported, I just need to add them to the init.el file
+
+   shell
+   js
+   emacs-lisp
+
+4. I added python, js & shell in the init.el file so babel loads them into Emacs
+
+5. This tells Emacs to capture whatever the program write to stdout (as default it tries to run everything as a function)
+   i.e. it would treat print() as a function & return None
+
+6. C-c C-c
+   The cursor can be anywhere in the block
+
+7. M-UP
+   M-DOWN
+
+8. M-LEFT
+   M-RIGHT
+
+9. ~[[https://google.com][Google]]~ -> the only word that will appear is 'Google' underlined & blue 
+   [[https://google.com][Google]]                         -> test this to load Google
+
+10. ~<<jump-here>>~ -> this is where you jump to
+    ~[[jump-here]]~ -> this is clickable & allow you to jump
+    [[bash-link]]     -> test using this to jump to the bash recap list
+
+11. C-c C-o
+
 
 
 ** Shortcuts (ADD)
@@ -1245,7 +1306,19 @@ console.log(reversedInput, userInput)
 
 ** Functionality (ADD)
 
+ *Recap List*
 
+1. If I have split my screen, how do I swap windows (the left one is on the right & vice versa)
+2. What is package-vc-install
+
+   
+ *Recap Answers*
+
+1. M-x window-swap-states
+2. A function built into Emacs that clones packages from Git (i.e. through GitHub)
+   package-install -> installs a package from a package repository
+ 
+   
 ** Packages
 
  *Recap List*
@@ -1380,9 +1453,44 @@ console.log(reversedInput, userInput)
 
 ** Data Structures & Algorithms
 
+
 ** Terms & Keywords
 
+
 ** Git
+
+ *Recap List*
+
+1. What is the process of pushing a new git repository to GitHub
+2. After this, how do I push a repository going forward
+3. If I have a folder connect to a GitHub remote repository, how do I update the files
+4. What would I do if the local repository is connected to the wrong remote repository
+5. Explain 'git push -u origin main'
+
+   
+ *Recap Answers*
+
+1. git init                       -> initialise the repository (create the .git folder & its files)
+   git add .                      -> stage all of the files
+   git commit -m "initial commit" -> create a commit
+   git branch -M main             -> Git creates the first branch as master, but GitHub uses main (this changes the name of the branch)
+                                     the -M flag forces the rename
+   git remote add origin git@github.com:benwood256/<repository name>.git
+   git push -u origin main        ->  push local repository (main) to the remote one (origin)
+
+2. git push (everything was set up before, git knows where to send the local repository)
+   
+3. git pull
+
+4. git remote set-url origin git@github.com:benwood256/<repository name>.git
+
+5. git push -> push local commit to a remote repository
+   -u       -> remember that my local 'main' branch should track the remote called 'origin'
+               without this, I'd have to specify the destination every time (now I can use 'git push' each subsequent push)
+   origin   -> name of the remote repository
+   main     -> the local branch you're pushing
+
+ 
 
 ** GitHub
 
