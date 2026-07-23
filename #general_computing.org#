@@ -1,0 +1,174 @@
+#+TITLE: General Computing Notes
+
+* To Do's (complete in any order)
+
+1. Look into clever/fantastic software design (start on very simple programs & work up), then make a rule list based on the clever ways
+   they worked/designed the program -> so I have a cheat sheet for ordering my code/system
+2. Make a list of rules to follow for readability of code (i.e. avoid nesting where possible, split functions up if they're too complex, etc...)
+3. Make (complex) notes on how compiler & interpreters work & how they differ
+4. Make (complex) notes on hard drives & SSDs -> how they works, partitions, how partitions work, etc...
+5. How Tor works
+6. How a PC can be converted to a server
+7. Why do you need to mount partitions
+
+
+* Project Workflow
+
+1. Create a file with a clear name & add all files needed (README.md, .gitignore, projects files & a .org file)
+2. In a markdown file (.md or .org) list what files there are
+3. Add descriptions of what each file is for & what it's doing
+4. In a subheader for a file (i.e. main.js) add notes to the markdown explaining what sections of code are doing
+5. Do this on top of comments within the code
+
+
+* Terms & Keywords 
+
+** Recap List
+
+1. How do you minimise the focused window
+2. How do you close the focused window
+3. How do you maximise the focused window
+4. What is the difference between a compiled & interpreted language
+5. What's UEFI, Boot Manager & the Bootloader
+6. What is API
+7. What is TCP
+8. What is UDP
+9. What is DNS
+10. What is FTP
+11. What is SMTP
+12. What does parse mean
+
+** General (including keywords & terms)
+
+1. Win + h
+
+2. Alt + F4
+
+3. Win + up arrow
+
+4. Both are a way of converting human written code into binary, so it can executed
+   Compiled    -> translate the human written code into a binary code file
+   Interpreted -> the computer has a built in interpreter which translates the human written code line by line
+
+5. UEFI         -> Firmware that initialises hardware & launches EFI applications
+   Boot Manager -> Part of UEFI that decides which EFI program to start
+   Bootloader   -> Loads the OS kernel (GRUB or Windows Boot Manager)
+
+6. API (Application Programming Interface) is a way for different software systems to communicate with each other
+
+7. TCP (Transmission Control Protocol) is a reliable protocol that ensures data is delivered accurately and in order
+
+8. UDP (User Datagram Protocol) is a faster but less reliable protocol that sends data without checking for errors or order
+
+9. DNS (Domain Name System) translates human-readable domain names (like google.com) into IP addresses
+
+10. FTP (File Transfer Protocol) is used to transfer files between a client and a server over a network
+
+11. SMTP (Simple Mail Transfer Protocol) is used to send emails between servers
+
+12. To take data in 1 format & convert it into a format that a program can understand
+
+
+** Computer Keywords
+
+| Term            | Meaning                                                                                                   |
+|                 |                                                                                                           |
+| Repository      | Contains all files (known as packages) needed to install software                                         |
+| Compile         | Converting a high-level language to binary                                                                |
+| ssh             | Secure Shell Protocol                                                                                     |
+| Disk            | The Hard Drive or SSD                                                                                     |
+| Mount           | Referring to the Hard Drive, if it's mounted, the files can be accessed by the computer's file system     |
+| EFI System      | Used by computers to store & load files to start the OS                                                   |
+| UEFI            | Unified Extensible Firmware Interface -> small amount of code on the motherboard that is a read only file |
+|                 | It tells the computer to turn on all the hardware (CPU, GPU, RAM, etc...) & link it                       |
+| BIOS            | Basic Input Output System -> legacy version of the booter                                                 |
+
+** Random Definitions & Explanations
+
+
+
+
+* Git
+
+** Explained
+** Commands
+** .git Folder
+
+
+* GitHub
+
+** Explained
+
+A server to host local git repositories remotely
+
+Steps to push a repository to GitHub
+
+** GitHub Repository Options
+
+README     -> A text file to explain what the code is doing or is meant to do
+.gitignore -> Tells git which files shouldn't be track (i.e. ignore these files)
+              After creating it, you can go in and add more files (it's just a text file)
+
+** SSH to push git
+
+You need to authenticate yourself before sending something to GitHub
+
+You can create an SSH key, so GitHub recognizes you, then you can push your git
+
+Key saved to: /home/john-doe/.ssh/id_ed25519
+
+*Retrieving the password*
+Paste this into the terminal to reveal the key -> cat ~/.ssh/id_ed25519.pub
+From here copy the SSH key
+
+*Connection to GitHub*
+I now have an SSH key, which is linked to GitHub
+
+** Issues I had before
+
+When I create a repository on GitHub & added a README & or .gitignore (or ticked the boxes)
+Then when I went to push my git repository, it caused an error, because GitHub already had a few files in it (the empty README & or .gitignore)
+
+In future, don't add anything when creating the GitHub, add everything manually, locally
+Then push the repository
+
+** Commands to push a Repository
+
+1. git init
+2. git add .
+3. git commit -m "initial commit"
+4. git branch -M main
+5. git remote add origin git@github.com:benwood256/<enter repository name>.git
+6. git push -u origin main
+
+If I accidentally connected to github & it's requesting my username:
+
+   git remote set-url origin git@github.com:benwood256/<enter repository name>.git
+
+*git pull*
+
+After I've pushed the notes folder from the laptop to GitHub
+On my PC I use: _git pull_ -> this updates the folder (as both laptop & PC are connected to that specific GitHub page)
+This way I don't need to keep cloning repository
+
+
+* Leetcode
+
+** Recap List
+** Recap Answers
+
+** Data Structures & Algorithms
+** Method of Approach
+** Complex Problems
+** Tips & Tricks
+
+
+* Assembly (6502)
+
+** Recap List
+** Recap Answers
+
+
+** Path to Learn (DELETE WHEN ORGANISED)
+** 6502 Workflow
+** Introduction
