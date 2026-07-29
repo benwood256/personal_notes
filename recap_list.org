@@ -397,7 +397,7 @@ console.log(reversedInput, userInput)
    console.log(multiplyByThree(5));    
 
 
-** JavaScript OOP (~***~ 2, 3 & 4)
+** JavaScript OOP (~***~ 2, 3 & 4) -> ADD FUNCTIONS USED IN TASKS, EXPLAIN THEM, THEN RECREATE THEM
 
  *Recap List*
 
@@ -789,6 +789,101 @@ console.log(reversedInput, userInput)
 
 
 
+** Relational Databases
+
+ *Recap List*
+
+1. What is normalisation
+2. What are redundancies
+3. What is a primary key (& the alternative name) & a composite key
+4. What are dependencies
+5. Explain partial & transitive dependencies
+6. Use this table, convert it to first normal form (1NF)
+
+   | StudentID | StudentName | CourseID   | Courses       | InstructorNames      | InstructorPhones   |
+   |           |             |            |               |                      |                    |
+   |       101 | Alice       | C001, C003 | Math, History | Mr. Smith, Dr. Brown | 555-1234, 555-9876 |
+   |       102 | Bob         | C002       | Science       | Mrs. Jones           | 555-5678           |
+   
+7. What is the primary key
+8. Convert it further to second normal form (2NF)
+9. Convert it further third normal form (3NF)
+   
+
+   *Recap Answers*
+
+1. A way of reformatting a database in an attempt to reduce redundancies
+
+2. Duplicated data stored in many locations, then, as data is unorganised, when data is updated, it leaves the copies out of date
+
+3. The thing that uniquely identifies a row (an ID) -> also know as a prime attribute
+   Composite key -> multiple identifiers are needed
+
+4. A way of connecting attributes, i.e. StudentID is 6, so you know that StudentName is "Bob" (StudentName is dependent on StudentID)
+
+5. Partial    -> only occurs when the key is composite
+                 partial dependency is when 1 of the columns of the composite key, links to an attribute
+                 example: composite key is ProductID & NameID, but Product name can be found if you have the ProductID (partial dependency)
+
+   Transitive -> can occur if the key is simple or composite
+                 when a non-prime attribute depends on another non-prime attribute, which in turn depends on the primary key
+                 example: key is ProductID, ProductName is dependent on ProductID & ProductPrice is dependent on ProductName
+                          but you can't get the ProductPrice from the ProductID                 
+
+6. Split up cells into new rows which contain multiple items/values
+   
+   | StudentID | StudentName | CourseID | Courses | InstructorNames | InstructorPhones |
+   |           |             |          |         |                 |                  |
+   |       101 | Alice       | C001     | Math    | Mr. Smith       |         555-1234 |
+   |       101 | Alice       | C003     | History | Dr. Brown       |         555-9876 |
+   |       102 | Bob         | C002     | Science | Mrs. Jones      |         555-5678 |
+
+7. StudentID & CourseID
+
+8. Remove partial dependency by creating new tables
+
+   Students-Course Table:
+   | StudentID | StudentName | CourseID | 
+   |           |             |          |
+   |       101 | Alice       | C001     |
+   |       101 | Alice       | C003     |
+   |       102 | Bob         | C002     |
+
+   Courses-Instructors Table (instructor info depends on CourseID):
+   | CourseID | CourseName | Instructor | InstructorPhone |
+   |          |            |            |                 |
+   | C001     | Math       | Mr.Smith   |        555-1234 |
+   | C002     | Science    | Mrs. Jones |        555-5678 |
+   | C003     | History    | Dr. Brown  |        555-9876 |
+
+9. Remove transitive dependency
+   InstructorPhone -> Instructor -> CourseID
+   i.e. InstructorPhone depends on Instructor, which depends on CourseID
+
+   Students-Course Table, same as the above
+
+   Courses Table:
+   | CourseID | CourseName | InstructorID |
+   |          |            |              |
+   |        1 | Math       |            1 |
+   |        2 | History    |            2 |
+   |        3 | Science    |            3 |
+
+   Instructors Table:
+   | InstructorID | InstructorName | InstructorPhone |
+   |              |                |                 |
+   |            1 | Mr. Smith      |        555-1234 |
+   |            2 | Dr. Brown      |        555-9876 |
+   |            3 | Mrs. Jones     |        555-5678 |
+
+   StudentsCourses Table:
+   | StudentID | CourseID |
+   |           |          |
+   |       101 |        1 |
+   |       101 |        2 |
+   |       102 |        3 |
+
+
 * Elisp, Bash, JavaScript & Python (EVERYDAY)
 
 ** Elisp (REWRITE SOME, CHECK ALL OF THEM)
@@ -1124,7 +1219,10 @@ console.log(reversedInput, userInput)
     -i -> ignore case sensitivity
 
 
-* Linux (ARCH EVERYDAY)
+* Linux (ARCH EVERYDAY -> add the file system, my desktop environment & troubleshooting questions)
+
+** Troubleshooting (SORT WHOLE SECTION)
+
 
 ** Bandit Game
 
@@ -1192,56 +1290,294 @@ console.log(reversedInput, userInput)
 14. 
 
 
-** Arch
+** Arch Questions before Set Up
 
  *Recap List*
 
-1. What are the 3 download steps for Arch
-2. Why do you need to write an .iso file to a USB
-3. Why do you have to format a root partition after creating it
-4. What does it mean to install the base system
-5. Order of things that occur so you go from turning power on to the log in screen
-6. Break down UEFI further
-7. What is a bootloader & why's it needed
+1. What is the boot process
+2. What does the kernel do & give an example of the progress of typing out a command
+3. What is initramfs
+4. What does systemd do
+5. What is a bootloader & why's it needed
+6. Why choose systemd-boot (instead of GRUB) & how does it work
+
+7. What are the 3 download steps for so you have a bootable Arch environment
+8. What is on a .iso file specifically
+9. Why do you need to write an .iso file to a USB
+   
+10. What is gdisk & what is a partition
+11. What does it mean to format a partition
+12. What filesystem did I choose & why
+13. What does it mean to mount a partition
+14. What is a swap partition, where do I create one
+15. What is Linux LUKS & how does it work
+
+16. What does it mean to install the base system
+17. What is fstab & at what stage of boot is it used/interacted with
+18. Why is EFI stored in '/boot' if the root & EFI are different partitions
+19. What is mkinitcpio
 
    
   *Recap Answers*
 
-1. .iso file -> specific to arch which contains the file system & folder structure on a CD
+1. Power on                  -> power button is pressed
+   UEFI Firmware             -> initializes the hardware, does a test, reads its boot configuration & loads the bootloader from the EFI system partition
+   Bootloader (systemd-boot) -> displays a boot menu, lets you choose an OS, loads the Linux kernel & loads initramfs into RAM
+   Linux Kernel              -> mounts the temporary initramfs immediately, then brings the OS to live (initializes CPU features, detects hardware, etc...) 
+   initramfs                 -> this helps the kernel gain access to the root filesystem (so the kernel can have the OS files)
+   systemd                   -> mount remaining filesystems, start networking, start logging, start services (bluetooth, printing, etc..)
+   Login                     -> the display managers prompts you to log in
+
+2. The core of the Operating System -> over simplifying it, it deals with requests from programs
+   
+   When I type a command 'ls' into a terminal, the shell (bash or zsh or etc...) reads the command & starts the 'ls' program
+   The 'ls' program asks the kernel, open this directory & read its contents -> the kernel reads the filesystem of disk
+   Then the kernel returns the list of files, 'ls' formats the output & the terminal displays it
+
+3. This mounts the real root filesystem -> so the kernel can access it & then the kernel takes over
+
+   However, its a little more complicated:
+   it first detects my SSD, loads encryption modules, asks for LUKs passphrase, decrypts the root partition & then mounts the partition
+
+4. The first userspace process started by the kernel (PID 1)
+   PID 1 -> mounts remaining file systems
+            starts networking & logging
+            launches background services (daemons)
+            starts the login prompt 
+
+5. A bootloader is the program that starts when your computer loads Linux
+   This program knows how to start Linux by finding the Linux kernel, loading it to memory, passing settings & then starting it up
+   It also loads the initramfs
+   It can also optionally display a boot menu (GRUB or systemd-boot)
+   
+   To configure the bootloader means, choosing one (GRUB or systemd-boot) -> then tell the bootloader where Arch's installed,
+   which kernel to boot, what options to pass & whether other OS exist
+
+6. systemd-boot & GRUB are both bootloaders, they run immediately after the UEFI & before the OS starts
+   systemd-boot is intentionally minimal, whereas GRUB is feature-rich
+
+7. Download the Arch Linux .iso file
+   Verify the download (checksum/signature) -> ensure there's no corruption
    A tool to write an ISO to a USB so its bootable
-   Boot & select Arch
+   (plug in the USB & select Arch Linux medium at the boot page)
 
-2. A computer can't boot from a file as the file is sitting in a distro file system
+8. A Linux kernel
+   An initramfs
+   The Arch live environment
+   Utilities like pacman, gdisk, mkfs, mount, etc...
+
+9. A computer can't boot from a file as the file is sitting in a file system
    The computer has to boot to the file system to access this file
-
    At boot, the UEFI looks for bootable disks -> the USB with a bootable .iso file can be found
 
-3. Formatting a partition only means you allocate it space/memory it can use
-   Then to format the root partition, you tell the system to install/format all of the files & its structure
+10. gdisk -> a partition editor for GPT partition tables
+    It lets you create, delete & resize partitions
 
-4. After your disk is prepared, you need to install software to have a working Linux installation
-   The base system includes: Linux kernel, GNU utilities (ls, cp, mv, etc...), Package manager (pacman)
-   System management tools (systemd), Libraries needed by programs, Firmware for hardware
+    partition -> a reserved section of the disk (i.e. the SSD), where x amount of bytes is available for the EFI or Linux filesystem
 
-5. PC powers on -> UEFI firmware -> Bootloader (GRUB/systemd-boot) -> Linux kernel -> systemd -> login screen
+11. After creating a partition, this is just an empty space which is reserved on the disk -> it can't store files yet
+    To format a partition is to create a filesystem (ext4 or btrfs) inside that partition
 
-6. UEFI is started & looks at boot entries (i.e. Windows Boot Manager, Arch Linux, Ubuntu, etc...)
-   i.e. here are the OS I know how to start, when one is clicked, it goes to the next step
-   UEFI finds the EFI System Partition -> this is the area in the Arch Linux partition which contains the bootloader
-   Then, the bootloader (that I chose through Arch Linux) goes from there
+12. btrfs (instead of ext4) -> it allows you to divide the partition into sub-volumes to segment sections (i.e. root, home, swap & snapshots)
+    In ext4 you can't create sub-volumes, so you have to use LVM to divide up the partition
 
-7. A bootloader is the program that starts when your computer loads Linux
-   This program knows how to start Linux by finding the Linux kernel, loading it to memory, passing settings & then starting it up
-   To configure the bootloader means, choosing one (GRUB or systemd-boot) -> then tell the bootloader where Arch's installed
-   which kernel to boot, what options to pass & whether other OS exist
+    Also, btrfs offers snapshots -> which can save a snapshot of your OS files (in case you encounter any errors after an update)
+
+13. Mounting makes a filesystem accessible -> before, the system can't access the files
+
+14. Swap -> disk space used as additional virtual memory, to be used when RAM becomes full
+
+15. Linux Unified Key Setup (LUKS) -> a standard disk encryption system
+    So instead of having your SSD, then files, you have your files in a LUKS (encrypted) container
+
+    Without the passphrase, Linux can't mount the filesystem because it can't understand the encrypted data (because its meaningless)
+
+16. Copying the essential Arch Linux packages onto the new root filesystem
+
+    Using pacstrap command, these are installed:
+    Linux kernel
+    The tools needed to generate an initramfs (such as *mkinitcpio*)
+    systemd
+    shell (bash)
+    package manager (pacman)
+    essential utilities
+
+17. Filesystem Table (fstab) -> a configuration file that tells Linux which filesystems to mount automatically during boot
+    i.e. UUID = /boot         UUID = /
+                vfat                 btrfs
+
+    After installing the base system, you add the UUIDs of the filesystems to the fstab directory
+
+    On boot, during systemd -> it reads the /etc/fstab & this tells it to mount root & /boot with their UUIDs
+
+18. /boot is a mount point -> a mount point is like a pointer, saying from here display this file system
+    So, even though the tree (of files), makes it look like /boot sits in the file tree, it actually points to the EFI file system
+    i.e. clicking /boot, Linux knows is a mount point & shows you the contents of the EFI partition instead of files in a directory called 'boot'
+
+** Arch Set up
+
+*Recap List*
+
+1. Break down each section of Arch Linux setup
+2. What are the 15 steps of setting up Arch after I'm in the live environment
+3. First step once I'm in the live environment
+4. A workflow to make it easier setting up (avoid using small text in a terminal without google)
+5. For a simple set up, how many partitions are required
+6. What are the sub-volumes of the LUKS container & why
+7. Explain a snapshot further
+8. Make a mini diagram of the root, home, swap & .snapshots files & all the containers 
+9. What is arch-chroot
+10. What is mkinitcpio & how does it work
+
+*Recap Answers*
+
+1. Arch Linux Installation
+
+   1) Installation Media
+   ├── Arch ISO
+   ├── Verification
+   └── Bootable USB
+
+   1) Boot Process
+   ├── UEFI
+   ├── Bootloader (systemd-boot)
+   ├── Linux Kernel
+   ├── initramfs
+   └── systemd
+
+   1) Storage
+   ├── Physical disk (SSD/NVMe)
+   ├── GPT partition table
+   ├── Partitions
+   │   ├── EFI System Partition
+   │   └── Linux partition
+   ├── LUKS encryption (optional)
+   ├── Filesystem (Btrfs/ext4)
+   └── Btrfs subvolumes (if using Btrfs)
+
+   1) Mounting
+   ├── Root mounted at /
+   ├── EFI mounted at /boot
+   ├── Home mounted at /home
+   ├── Snapshots mounted at /.snapshots
+   ├── Swap (partition or file)
+   └── fstab
+
+   1) Base System
+   ├── pacstrap
+   ├── Linux kernel
+   ├── systemd
+   ├── bash
+   ├── pacman
+   └── Essential utilities
+
+   1) Boot Configuration
+   ├── mkinitcpio
+   ├── initramfs
+   ├── systemd-boot
+   └── Boot entries
+
+   1) System Configuration
+   ├── Timezone
+   ├── Locale
+   ├── Hostname
+   ├── Root password
+   ├── User account
+   ├── sudo
+   └── Networking
+
+   1) Desktop Environment
+   ├── Graphics drivers
+   ├── Display server (Wayland/X11)
+   ├── Desktop Environment / Window Manager
+   ├── Display manager
+   └── Applications
+
+   1) Maintenance
+   ├── pacman updates
+   ├── Bootloader updates
+   ├── mkinitcpio regeneration
+   ├── Snapshots
+   └── Backups
+
+2. Boot the installer -> i.e. the live environment on the USB
+   SSH into the system from external PC/laptop
+
+   Partition the disk (gdisk)
+   Format partitions (mkfs)
+   Encrypt the Linux partition (LUKS)
+   Create the filesystem (Btrfs)
+   Create Btrfs sub-volumes 
+
+   Mount everything
+   Install the base system (pacstrap)
+   Generate fstab
+
+   Chroot into the new system
+   Configure the system
+   Generate initramfs (mkinitcpio)
+   Install the bootloader (systemd-boot)
+
+   Reboot
+   Install graphics, desktop, applications
+
+3. Set up wifi/internet (just for the live environment
+
+4. ssh into the Arch Linux live environment that was booted from the USB (wifi is required for this)
+
+5. 2 partitions -> the EFI
+                   the Linux LUKS container (btrfs filesystem)
+
+6. root      -> The OS itself
+   home      -> Contains personal files
+   swap      -> Contain 1 file, the swap file (can alter the size of it if I'm using loads of RAM)
+   snapshots -> Create save file/copy of exactly 1 sub-volume at a time (i.e. a git for sub-volumes)
+
+7. A snapshot is actually just a pointer to the same data blocks on disk (i.e. if you had a snapshot of root, it would point to the same data as the root)
+   This means, its not a copy (i.e. duplicating the data)
+
+   Then, when a file is changed, a new block of data is written in & the filesystem points to this block, leaving the snapshot to point to the old one
+
+8. On my 2TB SSD
    
+    ├── p1  EF00
+    │       EFI System Partition
+    │       (unencrypted)
+    │
+    └── p2  8309
+            LUKS encrypted container
+            |
+            └── Btrfs filesystem
+                |
+                ├── @        → root /
+                ├── @home    → /home
+                ├── @swap    → swap file
+                └── @snapshots → snapshots
+
+9. You use this command after the OS is installed
+   It is how you shift from being in the live environment, to the Arch system (on the SSD)
+
+10. mkinitcpio is a tool that builds the initramfs during installation (or when you update the system 'sudo pacman -Syu' mkinitcpio is run
+    which creates a new initramfs-linux.img)
+
+    It gathers everything need for early boot: kernel modules, storage drivers, filesystem drivers, LUKS tools, early /init script
+    Then packs them into 1 compressed image -> initramfs-linux.img (stored in /boot/initramfs-linux.img)
+    The kernel doesn't know: how to unlock LUKS, find btrfs filesystem, which modules need loading first -> it needs the initramfs
+
 
 ** The File System (ADD -> a question on what every directory from root does)
 
 
+** My Desktop Environment (Add questions about what apps I'm using & what they do)
+
+
+
 * Emacs (3 SECTIONS NEED RECAP LISTS)
 
-** Org Mode (ADD)
+** Troubleshooting (SORT)
+
+
+** Org Mode (CHECK)
 
  *Recap List*
 
@@ -1446,6 +1782,7 @@ console.log(reversedInput, userInput)
     (if (> x 10)
         "x is greater than 10"
       "x is less than 10")
+
 
 
 

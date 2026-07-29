@@ -1,6 +1,19 @@
 #+TITLE: Emacs Notes
 
-* TODO To Do list (15 To Dos) 
+Kitty shortcuts:
+
+Ctrl + Shift + c -> copy
+Ctrl + Shift + p -> paste
+
+Emacs shortcuts:
+
+C-d -> jump ~20 lines down
+C-u -> jump ~20 lines up
+
+C-f -> jump down a page
+C-b -> jump up a page
+
+* TODO To Do list (15 To Dos)
 
 1. [X] Reformat this into an actual Org mode To Do list
 2. [ ] Sort issues with Org mode (struggle doing lists, closing headers when in the middle of them, navigation help)
@@ -28,6 +41,7 @@
 20. [ ] Package so I can have mini windows in Emacs for managing multiple buffers (like in VS Code)
 21. [ ] include - & _ to be treated as words (i.e. web-to-day counts as 1 word) so shortcuts like w & dw include hyphens & underscores
 22. [ ] Are there shortcuts to jump to specific headings (i.e. 1.2, 2.7 etc...) in Org mode
+23. Ctrl + / -> comments out in VS Code - what's the equivalent (regardless of language) on here
 
 
 * Packages to sort
@@ -61,6 +75,13 @@ context sensitive actions
 If I did C-x C-f for find file, & the minibuffer gave me options for files to open, usually all I can do is hit enter
 With this, I can use a shortcut to give me options to rename, delete, run grep, etc...
 Also works with M-x (functions) & C-x b (buffers) 
+
+
+* Set up (new machine) -> MOVE THIS WITHIN SUBFOLDER
+
+1. Go to config.org -> check requirements for each section, download what's needed with M-x package-install or to system
+2. Set screen size & font on system *FIRST*, then change fonts & sizes in the config.org file
+3. 
 
 
 * Org mode (ADD NOTES) 

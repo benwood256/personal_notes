@@ -10,6 +10,10 @@
 5. How Tor works
 6. How a PC can be converted to a server
 7. Why do you need to mount partitions
+8. Learn debugging methods, how bug appear & techniques of getting rid of them (complex solutions)
+   Then, on GitHub, using other people's code, go to old versions before they patched bugs & practice patching them manually
+   did I do the same patches as the author? -> which one was shorter/easier
+9. Learn a little bit of regex (used in Bash & Vim) -> really useful skill
 
 
 * Project Workflow
@@ -150,6 +154,7 @@ If I accidentally connected to github & it's requesting my username:
 After I've pushed the notes folder from the laptop to GitHub
 On my PC I use: _git pull_ -> this updates the folder (as both laptop & PC are connected to that specific GitHub page)
 This way I don't need to keep cloning repository
+
 
 * Leetcode
 

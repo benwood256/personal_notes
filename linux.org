@@ -20,9 +20,11 @@
     Also, alternative ways to install packages & how they work
 15. I've made a sub-header in Arch 'Debugging Arch issues' with sub-topics to learn for issues in Arch
     Learn each section, make a new sub-header & fill with notes, then add to recap_list.org
+16. Make a file containing backups for config files (eventually make a bash project to automatically do this)
+    & then link this config file backup to GitHub (store all my configs in one place -> easier)
 
 
-* Terminal Commands 
+* Terminal Commands (ADD LAYOUT TO RECAP LIST)
 
 ** Recap List 
 
@@ -99,6 +101,21 @@
     -c -> count
     -i -> ignore case sensitivity
    
+
+** Layout Shortcuts
+
+SUPER + u, i, o & p -> move window focus (vim keybindings)
+SUPER + tab         -> swap focus between monitors
+SUPER + m, command, period & /   -> move window left, up, down & right
+
+SUPER + q           -> open terminal (kitty)
+SUPER + space       -> open rofi (GUI app search)
+SUPER + Shift + l   -> lock screen
+SUPER + e           -> open file manager
+SUPER + c           -> close active window
+
+SUPER + Shift + s   -> open in own 'special' window
+SUPER + s           -> swap between window & 'special' window
 
 ** Installations, Updates & Executing Scripts
 ** File System and Input & Output
@@ -506,9 +523,34 @@ Level 19-20 =
 
 * Arch
 
+** To Do
+
+1. How do I take a snapshot (@.snapshots)
+2. Add keyboard shortcuts to recap list:
+3. Make short keyboard shortcuts
+4. Organise 03_list_of_software.txt more (more subheaders) in a .org file
+5. Make a list of software commands (hyprctl reload, bluetoothctl, sudo packman -Ss, etc...)
+
+SUPER + h, j, k & l -> move window focus (vim keybindings)
+SUPER + tab         -> swap focus between monitors
+SUPER + , & .       -> move window left & right
+
+SUPER + q           -> open terminal (kitty)
+SUPER + space       -> open rofi (GUI app search)
+SUPER + Shift + l   -> lock screen
+SUPER + e           -> open file manager
+SUPER + c           -> close active window
+
+
 ** Recap List
 
+1. What language are .conf files written in
+2. 
+
 ** Recap Answers
+
+
+1. Each one is in its own language (Hyprland uses Hyprland, kitty.conf uses kitty config syntax)
 
 
 ** Installation
@@ -610,3 +652,43 @@ There is an easy install called “archinstall” -> but it doesn’t allow you 
 
 11. Learn to isolate problems
    
+    
+
+
+** Notes on installation process
+
+SSD Partition breakdown:
+
+(using gdisk), 2 partitions for my SSD
+
+    1 partition: EF00 -> efi system partition
+    2nd partition: 8309 -> Linux LUKS
+
+
+/dev/nvme0n1  (1.8TB SSD)
+
+├── p1  EF00
+│       EFI System Partition
+│       (unencrypted)
+│
+└── p2  8309
+        LUKS encrypted container
+        |
+        └── Btrfs filesystem
+             |
+             ├── @        → root /
+             ├── @home    → /home
+             ├── @swap    → swap file
+             └── @snapshots → snapshots
+
+or
+
+SSD
+   ↓
+Partition
+    ↓
+LUKS encryption
+    ↓
+Btrfs filesystem
+    ↓
+Subvolumes

@@ -826,7 +826,7 @@ Using double square brackets mean you don't need to quote variables (i.e.[ "$nam
 -o  -> or  (if 1 is true, like or in Python)
 
 
-* Deployment of Static Websites (ADD RECAP LIST)
+* Deployment of Static Websites
 
 ** Summary
 
@@ -844,5 +844,502 @@ _Key characteristics_
 2. Faster to load (content is pre-rendered)
 3. Easier to host (you can use GitHub)
 4. Limited interactivity (no real-time updates)
+
+
+* Relational Databases
+
+** Recap List
+
+1. What is normalisation
+2. What are redundancies
+3. What is a primary key (& the alternative name) & a composite key
+4. What are dependencies
+5. Explain partial & transitive dependencies
+6. Use this table, convert it to first normal form (1NF)
+
+   | StudentID | StudentName | CourseID   | Courses       | InstructorNames      | InstructorPhones   |
+   |           |             |            |               |                      |                    |
+   |       101 | Alice       | C001, C003 | Math, History | Mr. Smith, Dr. Brown | 555-1234, 555-9876 |
+   |       102 | Bob         | C002       | Science       | Mrs. Jones           | 555-5678           |
+   
+7. What is the primary key
+8. Convert it further to second normal form (2NF)
+9. Convert it further third normal form (3NF)
+   
+** Recap Answers
+
+1. A way of reformatting a database in an attempt to reduce redundancies
+
+2. Duplicated data stored in many locations, then, as data is unorganised, when data is updated, it leaves the copies out of date
+
+3. The thing that uniquely identifies a row (an ID) -> also know as a prime attribute
+   Composite key -> multiple identifiers are needed
+
+4. A way of connecting attributes, i.e. StudentID is 6, so you know that StudentName is "Bob" (StudentName is dependent on StudentID)
+
+5. Partial    -> only occurs when the key is composite
+                 partial dependency is when 1 of the columns of the composite key, links to an attribute
+                 example: composite key is ProductID & NameID, but Product name can be found if you have the ProductID (partial dependency)
+
+   Transitive -> can occur if the key is simple or composite
+                 when a non-prime attribute depends on another non-prime attribute, which in turn depends on the primary key
+                 example: key is ProductID, ProductName is dependent on ProductID & ProductPrice is dependent on ProductName
+                          but you can't get the ProductPrice from the ProductID                 
+
+6. Split up cells into new rows which contain multiple items/values
+   
+   | StudentID | StudentName | CourseID | Courses | InstructorNames | InstructorPhones |
+   |           |             |          |         |                 |                  |
+   |       101 | Alice       | C001     | Math    | Mr. Smith       |         555-1234 |
+   |       101 | Alice       | C003     | History | Dr. Brown       |         555-9876 |
+   |       102 | Bob         | C002     | Science | Mrs. Jones      |         555-5678 |
+
+7. StudentID & CourseID
+
+8. Remove partial dependency by creating new tables
+
+   Students-Course Table:
+   | StudentID | StudentName | CourseID | 
+   |           |             |          |
+   |       101 | Alice       | C001     |
+   |       101 | Alice       | C003     |
+   |       102 | Bob         | C002     |
+
+   Courses-Instructors Table (instructor info depends on CourseID):
+   | CourseID | CourseName | Instructor | InstructorPhone |
+   |          |            |            |                 |
+   | C001     | Math       | Mr.Smith   |        555-1234 |
+   | C002     | Science    | Mrs. Jones |        555-5678 |
+   | C003     | History    | Dr. Brown  |        555-9876 |
+
+9. Remove transitive dependency
+   InstructorPhone -> Instructor -> CourseID
+   i.e. InstructorPhone depends on Instructor, which depends on CourseID
+
+   Students-Course Table, same as the above
+
+   Courses Table:
+   | CourseID | CourseName | InstructorID |
+   |          |            |              |
+   |        1 | Math       |            1 |
+   |        2 | History    |            2 |
+   |        3 | Science    |            3 |
+
+   Instructors Table:
+   | InstructorID | InstructorName | InstructorPhone |
+   |              |                |                 |
+   |            1 | Mr. Smith      |        555-1234 |
+   |            2 | Dr. Brown      |        555-9876 |
+   |            3 | Mrs. Jones     |        555-5678 |
+
+   StudentsCourses Table:
+   | StudentID | CourseID |
+   |           |          |
+   |       101 |        1 |
+   |       101 |        2 |
+   |       102 |        3 |
+
+   
+** Summary
+
+A relational database organises data into tables linked by defined relationships
+Then users, can combine information from multiple tables using a single query (for data analysis)
+
+Tables in a relation database contain a *primary key* -> a column or group of columns used as a unique identifier for each row
+For example: a column called ~customerID~ that is unique for every row
+
+Tables may also contain *foreign keys* -> columns that link to primary key columns in other tables
+
+
+*Data Redundancy*
+
+Occurs when identical information is stored in multiple locations
+This duplication can lead to scattered data locations containing inconsistent versions of the same data
+
+Uncontrolled data redundancy can cause these issues:
+
+- Data inconsistency
+- Poor data security
+- Data anomalies
+  
+To combat issues with data redundancy, designer employ a technique called *normalisation*
+
+
+*Normalisation*
+
+A process of restructuring database tables to minimise redundancies
+It works through a series of stages called *normal forms*
+
+- First normal form  (1NF)
+- Second normal form (2NF)
+- Third normal form  (3NF)
+
+2NF is structured better than 1NF & 3NF is structured better than 2NF
+
+The object of normalisation is to create table with the following characteristics:
+
+- Each table represents a single subject
+- No data item will be unnecessarily stored in more than 1 table
+- All attributes in a table are functionality dependent on the primary key
+  (each attribute/column in the table can be uniquely identified by the primary key of the table
+
+** Conversion to first normal form (1NF)
+
+There are 3 steps
+
+*Step 1: Eliminate the repeating groups*
+
+Data must be presented in a tabular format where each cell contains a single value
+
+
+*Step 2: Identify the primary key*
+
+Ensure there's a column for a primary key, where each row has their unique value/number
+
+
+*Step 3: identify all dependencies*
+
+Create a diagram to identify how all of the dependencies connect
+
+** Conversion to second normal form (2NF)
+
+*Step 1: Write each key component on a separate line*
+
+
+*Step 2: Assign corresponding dependent attributes*
+
+Use the dependency diagram (from 1NF) to determine the attributes that are dependent on the 3 primary keys identified in Step 1
+
+** Conversion to third normal form (3NF)
+
+*Step 1: Identify each new determinant*
+
+A determinant is any attribute whose value determines other values within a row
+Write out determinants found in the dependency diagram (the one created in an earlier step)
+
+
+*Step 2: Identify the dependent attributes*
+
+Identify the attributes that are dependent on each determinant, write a note of which ones link
+
+
+*Step 3: Remove the dependent attributes from transitive dependencies*
+
+Eliminate all dependent attributes from each of the tables 
+
+** Potential pitfalls
+
+1. Performance issues         -> normalisation leads to data being spread across multiple tables, which can impact performance
+2. Increased complexity
+3. Redundancy elimination     -> some redundancy may still exist
+4. Update anomalies           -> normalisation can introduce anomalies (if dependencies are not properly identified & addressed)
+5. Loss of business semantics -> normalisation focuses on the structure of data, not the business processes
+
+** Design implementation
+
+Once you have designed/improved for your relational database, you will implement using a relational Data-Base Management System (DBMS)
+This is a software used for creating, manipulating & administering a database
+
+Common  DBMSs -> MySQL, MariaDB & PostgreSQL
+
+A query language is used to communicate with the DBMS
+Most commercial relational DBMSs use the Structured Query Language (SQL)
+
+** Task
+
+*1. What is normalisation?*
+
+Normalisation is a way of reformatting databases in an attempt to reduce redundancies
+Redundancies are when identical information is stored is many locations
+This can lead to scattered, unorganised data, so when some of it is updated, you have copies which are inaccurate
+
+
+*2. When is a table in 1NF?*
+
+When every column contains only 1 value in each cell
+You have primary key, where in a column each row has a unique identifier
+There is a diagram that's been made of the database to identify how the dependencies connect
+
+
+*3. When is a table in 2NF?*
+
+It is already in 1NF
+Each key component is written on a separate line
+Every non-key attribute is fully dependent on the entire primary key (i.e. no partial dependencies)
+
+
+*4. When is a table in 3NF?*
+
+It is already in 2NF
+No non-key attribute depends on another non-key attribute
+
+
+*Notes during this exercise -> convert into recap list*
+
+- A primary key -> the thing that uniquely identifies a row
+
+| StudentID | Name  |
+|           |       |
+|       101 | Alice |
+|       102 | Bob   |
+
+Here ~StudentID~ is the primary key
+
+
+- non-key attribute -> everything that is not part of the primary key
+
+  | StudentID | Name  | Age |
+  |           |       |     |
+  |       101 | Alice |  20 |
+  
+  StudentID -> key attribute
+  Name      -> non-key attribute
+  Age       -> non-key attribute
+
+
+- functionality dependent -> If I know the key, I can determine the value
+
+  | StudentID | Name  |
+  |           |       |
+  |       101 | Alice |
+
+If you say:
+StudentID = 101
+
+You know:
+Name = Alice
+
+So you say:
+StudentID = Name
+
+Or you say: StudentID _determines_ Name
+
+
+- Fully dependent on the entire primary key
+
+  | StudentID | ModuleID | StudentName | ModuleName  | Grade |
+  |           |          |             |             |       |
+  |       101 | CS101    | Alice       | Databases   | A     |
+  |       101 | CS102    | Alice       | Programming | B     |
+  |       102 | CS101    | Bob         | Databases   | C     |
+
+  The _primary key_ here is the combination of StudentID & ModuleID
+  because you need both to identify a data point (i.e. 101 & CS101 -> grade = A)
+
+  StudentName -> does StudentName depend on both columns?
+  No, if I know StudentID is 101, name = Alice
+  So, StudentID -> StudentName (this is called partial dependency)
+
+  ModuleID is also a partial dependency for ModuleName
+
+
+* SQL
+
+** Recap List
+
+1. What is SQL
+2. What is DDL
+3. What is DML
+4. What's the difference between Schema SQL & Query SQL
+5. Use SQL to make an empty table with 3 columns (1 being the primary key one)
+6. Insert in 2 rows of data to each column
+7. How do I retrieve the FirstName & LastName attributes from the table
+8. How do I retrieve, all the data
+9. Sort the FirstName attributes in descending order
+10. Using the following table, select all items, filter by the genre 'rock' & sales in millions are less than 50 & sort in ascending order
+
+    | Artist          | Album         | Released | Genre | sales_in_millions |
+    |                 |               |          |       |                   |
+    | Michael Jackson | Thriller      |     1982 | pop   |                70 |
+    | AC/DC           | Back in Black |     1980 | rock  |                50 |
+    | Whitney Houston | The Bodyguard |     1992 | soul  |                44 |
+
+11. Mini Project Begin: Create a table called 'Characters' with CharacterID (make this the primary key), FirstName, SecondName 
+12. Insert 3 rows (John Snow, Theon Greyjoy, Ned Stark)
+   
+** Recap Answers
+
+1. A language for creating databases or tables as well as performing manipulations on the data
+
+2. Data definition language   -> for editing & deleting data structures
+
+3. Data manipulation language -> for accessing, modifying & manipulation data
+
+4. Schema -> defines & populates the database
+   Query  -> modifies its data after its been created
+
+5. ~CREATE TABLE Employee (
+       EmployeeID int NOT NULL,~
+       ~LastName varchar(255),~
+       ~FirstName varchar(255)~
+   ~);~
+
+6. ~INSERT INTO Employee (EmployeeID, LastName, FirstName)~
+   ~VALUES
+       (34, 'Smith', 'John', ...);~
+       ~(06, 'Roberts, 'Jeff, ...);~
+
+7. ~SELECT FirstName LastName~
+   ~FROM Employee;~
+
+8. ~SELECT * FROM Employee~
+
+9. ~SELECT FirstName~
+   ~FROM Employee~
+   ~ORDER BY FirstName DESC~
+
+10. ~SELECT *~             
+    ~FROM albums~           
+    ~WHERE Genre = 'rock' AND sales_in_millions <= 50~  
+    ~ORDER BY Released~      
+
+
+** Summary
+
+Structured Query Language (SQL) -> A language for creating databases or table structures as well as performing manipulations on the data
+
+2 categories for SQL functions: Data definition language (DDL) & Data manipulation language (DML)
+
+*Data definition language (DDL)*
+
+commands that enable users to _edit & delete data structures_
+commands include: CREATE, ALTER & DROP
+
+
+*Data manipulation language (DML)*
+
+commands that enable user to _access, modify & manipulate data_ stored in a database
+commands include: SELECT, INSERT, UPDATE & DELETE
+
+** Creating tables
+
+You use the CREATE TABLE statement
+
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ...
+);
+
+*Constraints*
+
+Constraint -> optional arguments, they specify rules for the data inputted
+Constraints commonly used:
+
+NOT NULL -> ensure a column can't contain null values (create a primary key)
+UNIQUE   -> ensure a column can't contain duplicates
+DEFAULT  -> specify a value that is placed into a column if no other value is provided
+INDEX    -> creates an index that can be used to create or retrieve data from this column later
+
+CREATE TABLE Employee (
+    ~EmployeeID int NOT NULL,~
+    ~LastName varchar(255),~
+    ~FirstName varchar(255)~
+);
+
+int      -> holds integer value
+varchar  -> hold characters (max number 255 characters in this cell)
+NOT NULL -> items here can't contain nothing
+
+This will create an empty table that looks like this:
+
+| EmployeeID | LastName | FirstName |
+|            |          |           |
+
+** Inserting rows
+
+Command -> INSERT INTO
+There are 2 methods, inserting into specific columns or inserting into all columns
+
+_Inserting values into specific columns_
+
+~INSERT INTO Employee (EmployeeID, FirstName, ...)~
+~VALUES
+       (34, 'John', ...),~    -> 1st row inserted
+       ~(26, 'Robert', ...);~  -> 2nd row inserted
+
+_Inserting values for all columns_
+
+A value must be provided for every column
+It is considered best practise to always specify the column names, for readability
+So, there is essentially only 1 way of inserting info -> name the columns
+
+~INSERT INTO Employee (EmployeeID, LastName, FirstName)~
+~VALUES
+       (34, 'Smith', 'John', ...);~
+
+** Retrieving data from a table
+
+~SELECT FirstName LastName~
+~FROM Employee;~
+
+or, to select all the columns & rows
+
+~SELECT * FROM Employee~
+
+** Order by
+
+ORDER BY commands to sort the results in ascending or descending order
+
+The below sorts the names in descending order
+
+~SELECT FirstName~
+~FROM Employee~
+~ORDER BY FirstName DESC~
+
+*Where*
+
+The WHERE clause allows you to add a condition
+
+~SELECT *~                                           -> select all columns in the table
+~FROM albums~                                        -> Select the table named 'albums'
+~WHERE Genre = 'rock' AND sales_in_millions <= 50~   -> select only rows in the column 'Genre' with the name 'rock' & rows in the columns 'sales_in_millions' that are less than 50
+~ORDER BY Released~                                  -> Sort the rows by oldest to newest
+
+** Using aggregate functions
+
+SQL has built in functions:
+
+COUNT()     -> returns the number of rows
+SUM()       -> returns the total sum of a numeric column
+AVG()       -> returns the average set of values
+MIN()/MAX() -> min or max value in a column
+
+Get the most recent year in the 'album' table
+
+~SELECT MAX(Released)~
+~FROM albums~
+
+** Using aliases
+
+When using multiple tables, there can be overlap between names, which can cause confusion
+You can create an alias to give a table or column a temporary name (massively helps readability)
+
+~SELECT column_name AS alias_name~
+~FROM table_name~
+
+** Updating data
+
+The UPDATE command is used to modify existing rows in a table
+
+~UPDATE table_name~
+~SET column1 = value1, column2 = value2, ...~
+~WHERE condition~
+
+
+*Deleting rows*
+
+~DELETE FROM table_name~
+~WHERE condition~
+
+or, to delete all the data in a table -> but keep the column names
+
+~DELETE FROM table_name~
+
+
+*Deleting tables*
+
+~DROP TABLE table_name~ -> this removes the table entirely
 
 
