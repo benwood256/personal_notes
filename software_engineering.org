@@ -1343,3 +1343,56 @@ or, to delete all the data in a table -> but keep the column names
 ~DROP TABLE table_name~ -> this removes the table entirely
 
 
+
+
+
+* MariaDB
+
+A DataBase Management System (DBMS)
+
+SQL is the language -> MariaDB is the engine that understands & executes it
+
+Here, I can create a database & manipulate a database, all in 1 place
+
+** Set Up
+
+sudo mysql -> opens the MariaDB environment
+
+
+* NodeJS
+
+    Allows you to test & execute code that can be run on a server
+    It has a File System module -> which allows for reading, writing & managing files
+
+    *NPM* -> Node Package Manager is a tool for downloaded packages specific to NodeJS
+
+** Using Modules
+
+*Module* -> a reusable piece of code that has been organised into a separate file
+
+To use a module you use require:
+
+~const mathUtils = require('./mathUtils');~
+
+*Create my own module*
+
+1. Create a directory for the package
+2. Navigate into directory
+3. Initialise directory (~npm init~)
+
+
+** Lodash
+
+This is a NPM package that contains functions for simplifying JavaScript data structures
+
+*Adding Lodash to the module*
+
+1. Go back to the directory (where ~npm init~ was run)
+2. ~npm install lodash~
+
+*In the module code*
+
+~const lodash = require('lodash')~
+
+* React
+
