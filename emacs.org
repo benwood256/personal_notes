@@ -1,9 +1,5 @@
 #+TITLE: Emacs Notes
 
-Kitty shortcuts:
-
-Ctrl + Shift + c -> copy
-Ctrl + Shift + p -> paste
 
 Emacs shortcuts:
 
@@ -13,35 +9,25 @@ C-u -> jump ~20 lines up
 C-f -> jump down a page
 C-b -> jump up a page
 
-* TODO To Do list (15 To Dos)
+* TODO To Do list 
 
-1. [X] Reformat this into an actual Org mode To Do list
-2. [ ] Sort issues with Org mode (struggle doing lists, closing headers when in the middle of them, navigation help)
-3. [ ] When I boot Emacs open in full screen (it currently opens in a mini window)
-4. [ ] Make a lot of notes on Org mode, look into links -> link all my notes/org files together (links at top of every page)
+1. Download & make notes on 'packages to sort' -> just below
+2. [ ] Make a lot of notes on Org mode, look into links -> link all my notes/org files together (links at top of every page)
    Link to each recap list (for subheaders) too, so I can quickly open the recap list & answers depending on what I'm recapping
-5. [ ] Emacs dired mode -> i.e. file manager built into Emacs (check Org Mode (temp folder) for a video on it)
-6. [ ] In Web Development notes, add links for each section for the test file I made
+3. [ ] In Web Development notes, add links for each section for the test file I made
    Then also the task file -> so I can open the code while I reread my notes
    This way I won't need to rely on screenshots as I can see the code as I read
-7. [ ] Make notes on what are the buffers that are automatically opened when booting Emacs
-8. When I ignore a spellcheck -> where are these saved (if it's a file, I need to add it to my GitHub containing my
+4. [ ] Make notes on what are the buffers that are automatically opened when booting Emacs
+5. When I ignore a spellcheck -> where are these saved (if it's a file, I need to add it to my GitHub containing my
    init.el file -> so I can replicate my Emacs on different machines Laptop and PC)
-9. [ ] Is there a package to manage buffers better (i.e. one where I can have windows like in VS Code)
-10. [ ] Customize evil-undo system -> redo isn't working
-11. [ ] Create homepage that opens on boot
-12. [ ] Can I open specific buffers when I boot Emacs (init.el, Emacs notes -> here I will have links to all other notes)
-13. [ ] Package: org agenda -> Look into this, download, make notes on it
-14. [ ] Package: Consult -> look into it more, make notes & start using it's features in my workflow
-15. [ ] Look into many Emacs themes, find one I like, make notes on how themes work (are downloaded & remembered) update init.el file
-16. [ ] Package to get emails on Emacs
-17. [ ] Package: Magit (Git for Emacs)
-18. [ ] Package to get the file manager in Emacs (no longer need to use the file system/terminal)
-19. [ ] Add Python, Web Server, etc... environments, like the one's in VS Code
-20. [ ] Package so I can have mini windows in Emacs for managing multiple buffers (like in VS Code)
-21. [ ] include - & _ to be treated as words (i.e. web-to-day counts as 1 word) so shortcuts like w & dw include hyphens & underscores
-22. [ ] Are there shortcuts to jump to specific headings (i.e. 1.2, 2.7 etc...) in Org mode
-23. Ctrl + / -> comments out in VS Code - what's the equivalent (regardless of language) on here
+6. [ ] Customize evil-undo system -> redo isn't working
+7. [ ] Package: Consult -> look into it more, make notes & start using it's features in my workflow
+8. [ ] Package to get emails on Emacs
+9. [ ] Add Python, Web Server, etc... environments, like the one's in VS Code
+10. [ ] Package so I can have mini windows in Emacs for managing multiple buffers (like in VS Code)
+11. [ ] include - & _ to be treated as words (i.e. web-to-day counts as 1 word) so shortcuts like w & dw include hyphens & underscores
+12. Ctrl + / -> comments out in VS Code - what's the equivalent (regardless of language) on here
+13. Set up Org-agenda so I can send myself daily reminders (i.e. tuesday do an SSD backup, at 12 -> do personal recap lists, etc...)
 
 
 * Packages to sort
@@ -54,15 +40,10 @@ Makes things look nicer - purely cosmetic
 
 Create a personalised wikipedia
 
-
 ** orderless
 
 When searching, recommendations come up out of order
 i.e. typing 'org' wouldn't reveal agenda-org on vanilla, with orderless it would give that option in the mini-buffer
-
-** corfu
-
-auto-complete whilst I'm typing (similar to VSCode suggestions)
 
 ** marginalia
 
@@ -836,9 +817,30 @@ Vertico changes how this looks & behaves by:
 
 * Dired Mode
 
-** Recap List
-
-** Recap Answers
-
-
 ** Introduction
+
+C-x C-j -> open default directory (file manager)
+
+C-x d   -> swap to a different directory
+
+s       -> swap sorting files alphabetically or by timestamp
+S-9     -> hide/reveal all but file names
+
+o       -> open file in new buffer with vertical split
+C-o     -> same as above but keep focus in file manager buffer
+
+S-=     -> create directory
+
+S-m     -> change file permissions
+S-o     -> change file owner
+S-g     -> change file group
+
+S-m     -> mark current file
+u       -> un-mark current file
+S-u     -> un-mark all files
+S-c     -> copy marked files
+S-r     -> rename/move marked files
+S-d     -> delete marked files
+S-a     -> search marked files with grep
+
+w       -> copy file name (or at top line copy the file path)

@@ -2,18 +2,19 @@
 
 * To Do's (complete in any order)
 
-1. Look into clever/fantastic software design (start on very simple programs & work up), then make a rule list based on the clever ways
+1. Sort My Programming Manifesto (3rd title below)
+2. Look into clever/fantastic software design (start on very simple programs & work up), then make a rule list based on the clever ways
    they worked/designed the program -> so I have a cheat sheet for ordering my code/system
-2. Make a list of rules to follow for readability of code (i.e. avoid nesting where possible, split functions up if they're too complex, etc...)
-3. Make (complex) notes on how compiler & interpreters work & how they differ
-4. Make (complex) notes on hard drives & SSDs -> how they works, partitions, how partitions work, etc...
-5. How Tor works
-6. How a PC can be converted to a server
-7. Why do you need to mount partitions
-8. Learn debugging methods, how bug appear & techniques of getting rid of them (complex solutions)
+3. Make a list of rules to follow for readability of code (i.e. avoid nesting where possible, split functions up if they're too complex, etc...)
+4. Make (complex) notes on how compiler & interpreters work & how they differ
+5. Make (complex) notes on hard drives & SSDs -> how they works, partitions, how partitions work, etc...
+6. How Tor works
+7. How a PC can be converted to a server
+8. Why do you need to mount partitions
+9. Learn debugging methods, how bug appear & techniques of getting rid of them (complex solutions)
    Then, on GitHub, using other people's code, go to old versions before they patched bugs & practice patching them manually
    did I do the same patches as the author? -> which one was shorter/easier
-9. Learn a little bit of regex (used in Bash & Vim) -> really useful skill
+10. Learn a little bit of regex (used in Bash & Vim) -> really useful skill
 
 
 * Project Workflow
@@ -23,6 +24,75 @@
 3. Add descriptions of what each file is for & what it's doing
 4. In a subheader for a file (i.e. main.js) add notes to the markdown explaining what sections of code are doing
 5. Do this on top of comments within the code
+
+
+* My Programming Manifesto
+
+** To Dos
+
+1. Make a new GitHub repo -> notes on programming books I have read & a big manifesto on programming design & code rules (for myself)
+   check subsection below for more details
+2. Look into splitting up scripts (i.e. if I'm making a game on pygame, would it be better to have 2 or 3 scripts for specific things
+                                        rather than 1 huge script)
+3. 
+
+
+
+** The Manifesto
+
+Whenever I write a program or make a piece of software, check & ensure these rules are followed
+
+Subsections in manifesto: variable naming rules, commenting rules, structuring classes rules
+
+Rules in manifesto: use a variable document (i.e. like Caelestia -> rather than 4 webpages with bg_colour = red, all have bg_colour = input_colour
+                                                                    & in a variables.py have input_colour = red)
+
+                                                                    
+** Notes from 'A Philosophy of Software Design'
+
+Add this to the Manifesto
+
+*Variable naming when they have units*
+
+Variables with units (size, time, height, etc...) should include the unit in the variable name (i.e. time_in_seconds, megabyte_size)
+
+
+*Deep Modules/classes*
+
+Make larger classes that are very easy to understand (i.e. deep modules) compared to many small classes (that are shallow)
+   Deep modules can do a lot (large in functionality) but its clear what they do & how they do it, they are easy to understand
+   Shallow modules do very little but can still be confusing
+
+For the above, here's an example:
+   In an OS you need to open & close a file so you can write in it
+   In Unix its 1 command (i.e. echo "hello" > test.txt) -> this hides the complexity by opening & closing the file without you manually doing it
+   As someone using a terminal, I already know the file needs to be opened & closed, so hiding this with 1 command is perfectly fine
+
+   However, in Java, you need 3 command/lines to write to a file -> open file, write to it & close the file
+   This makes code messier as it's common to write to a file & this doesn't make it any easier to understand than in Unix
+
+I need to develop the skill of looking ahead & work out what classes will be used often (make these deep)
+Ones that will be used less often, make them smaller but they should still be easier to understand & use
+
+
+*Temporal Decomposition*
+
+If, I had a game & when a goal was scored in it, this would trigger the goal class, this gives the user 1 point
+The class also then creates a goal animation, resets the ball position & resets the player position -> the order matters
+
+If this was separated into multiple classes, it might get confusing when writing the code what order each of these needs to be called
+When writing the code, I'd have to remember each time, what order each of these functions needs to be called in
+(for this example its obvious, but with others it would not be as clear)
+
+So, all of these should be called at once, to make it simpler for me
+   
+
+* Backup List
+
+1. Backup files to SSD: .config, .emacs.d, .ssh, personal files
+2. Backup of bookmarks, also save to backup SSD
+3. GitHub push:  02_org_notes, .emacd.d, ~/.config/hypr/
+4.  
 
 
 * Terms & Keywords 
@@ -166,6 +236,19 @@ This way I don't need to keep cloning repository
 ** Complex Problems
 ** Tips & Tricks
 
+
+* Regex
+
+Regex -> short for regular expression, is a sequence of characters that specifies a search pattern in text
+         Its used for searching, validating & manipulating strings based of search patterns
+
+Regex was made for _Unix Systems_ (the idea is older but they first made it popular)
+
+Bash also uses it -> grep (search text), sed (search & replace) & awk (pattern matching) all uses regex
+Emacs & Vim have their own flavours (i.e. ~:%s/let/const/g~ -> replace all instances of 'let' with 'const')
+Programming languages can also use Regex, you import a library (i.e. import re -> then you can search in a .py file)
+
+Use the websites in 'Personal Projects' to slowly learn it
 
 * Assembly (6502)
 

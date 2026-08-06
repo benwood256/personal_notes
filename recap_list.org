@@ -1,6 +1,6 @@
 #+TITLE: Recap List Page
 
-* Web Development (CURRENT RECAP - DOM)
+* Web Development 
 
 ** HTML
 
@@ -43,7 +43,7 @@
 7. <details> with a <summary> inside
    
 
-** CSS
+** CSS (ADD WAY MORE)
 
  *Recap List*
 
@@ -118,7 +118,7 @@
    Display  -> how does this element interact with surrounding elements (block, flex, grid & inline)
 
 
-** Responsive Design (~***~ 5 & 6)
+** Responsive Design
 
  *Recap List*
 
@@ -177,7 +177,7 @@
 3. required aria-required="true" -> lets screen readers know this needs to be filled in
 
 
-** Bootstrap (~**~ 7, 11)
+** Bootstrap
 
  *Recap List*
 
@@ -226,8 +226,7 @@
    Adding it to the column, also means the border is between the rows, but it means if the screen goes to narrow & the columns are stacked, it'll add the border between them as well
    So, for <main> add it to the column but for <form> add it to the row (as each item should be on it's own row)
    
-8. What is in a column class, use the following class within the <img>
-   class="img-fluid"
+8. class="img-fluid"
    
 9. Within a <div class="col-md-4">
    <button class="btn btn-danger">Buy</button>
@@ -238,7 +237,7 @@
 11. class="col-form-label" -> ensures labels align nicely inside Bootstraps grid forms
 
     
-** JavaScript Syntax (~**~ 4)
+** JavaScript Syntax
 
  *Recap List*
 
@@ -267,7 +266,7 @@
 8. String(number_variable)
 
 
-** JavaScript Loops (~***~ 1, 6, 7, 8, 9 & 10) 
+** JavaScript Loops
 
  *Recap List*
 
@@ -369,7 +368,7 @@ while (counter >= 0) {
 console.log(reversedInput, userInput)
 
 
-** JavaScript Functions (~***~ 3, 4)
+** JavaScript Functions
 
  *Recap List*
 
@@ -397,7 +396,7 @@ console.log(reversedInput, userInput)
    console.log(multiplyByThree(5));    
 
 
-** JavaScript OOP (~***~ 2, 3 & 4) -> ADD FUNCTIONS USED IN TASKS, EXPLAIN THEM, THEN RECREATE THEM
+** JavaScript OOP
 
  *Recap List*
 
@@ -405,6 +404,10 @@ console.log(reversedInput, userInput)
 2. Create a basic inheritance using Dog & Animal classes
 3. What are getters & setters
 4. Create a simple example of a class Person, use a getter & setter for the name
+5. Create an object from the Person class
+6. Use the getter to display the persons name
+7. Use the setter to change the name & then display the new name
+   
 
 
  *Recap Answers*
@@ -454,11 +457,20 @@ console.log(reversedInput, userInput)
             console.log("Invalid name");
          }
       }
+   }
 
-   the name can only be returned using the get method & the name can only be changed using the set method
+   ~The getter returns the person's name, and the setter changes the person's name after checking that the new name is valid~
+
+5. const new_person = new Person("Geoff");
+
+6. console.log(new_person.name); output -> Geoff
+
+7. new_person.name = "Mark";
+   // then call the getter again
+   console.log(new_person.name); 
 
    
-** DOM Manipulation (~***~ 4 & 5)
+** DOM Manipulation
 
  *Recap List*
 
@@ -491,7 +503,7 @@ console.log(reversedInput, userInput)
    ~grabList.appendChild("li");                          #appendChild()~
 
    
-** Event Handling (~***~ 2, 3, 4, 8, 11 & 12)
+** Event Handling
 
  *Recap List*
 
@@ -519,14 +531,14 @@ console.log(reversedInput, userInput)
 
 2. This is where you put the tag next to the element in HTML & assign it an outcome
 
-        <div id="box" onclick('hey dude')"></div>
+        <div id="box" onclick="alert('hey dude')"></div>
 
     However, don't use this method as it's very limited & you can't do a whole lot (stick to creating the elements in JavaScript)
 
 3. The html script, its a way of using querySelector & getElementById by doing document.querySelector()
 
 4. let boxDiv = document.getElementById("box");
-   boxDiv.addEventListener("click", function(e) {
+   boxDiv.addEventListener("click", function() {
        alert("hey dude");
    })
 
@@ -550,7 +562,7 @@ console.log(reversedInput, userInput)
 
 11. ~document.addEventListener("keydown", function(e) {~
 
-    ~if (event.key ===== "Enter") {~
+    ~if (e.key ===== "Enter") {~
         ~runFunction();                             # if Enter is clicked, run a function (i.e. add this text to a box)~
 
 12. .innerHTML   -> lets you set HTML elements (i.e. <b> or <li>) & create text
@@ -558,13 +570,122 @@ console.log(reversedInput, userInput)
 
     element.innerHTML = "<h1>Hello</h1>";  # if the element was an empty <div></div> it would now be:
     <div><h1>hello</h1></div>
-    
+
 
 ** Promises, Async & Await
 
+*Recap List*
 
-* Software Engineering
+1. What is a Promise in JavaScript?
+2. What are the three states of a Promise?
+3. How do you create a new Promise?
+4. What does the resolve() function do?
+5. What does the reject() function do?
+6. What is the purpose of the .then() method?
+7. What is the purpose of the .catch() method?
+8. What is the purpose of the .finally() method?
+9. What is promise chaining, and why is it useful?
+10. How do you run multiple promises at the same time using Promise.all()?
+11. What happens if one promise fails when using Promise.all()?
+12. What is the difference between Promise.all() and Promise.allSettled()?
+13. What is the purpose of the async keyword?
+14. What does an async function always return?
+15. What is the purpose of the await keyword?
+16. Where can the await keyword be used?
+17. How do you handle errors when using async and await?
+18. What is the difference between using .then() and using async/await?
+19. Why is await often easier to read than chaining multiple .then() calls?
+20. Write an async function that fetches data from an API using fetch() and await, then logs the JSON response.
 
+*Recap Answers*
+
+1. A Promise is an object that represents the eventual completion (success) or failure of an asynchronous operation and its resulting value
+
+2. Pending – The operation is still in progress
+   Fulfilled – The operation completed successfully
+   Rejected – The operation failed
+
+3. const promise = new Promise((resolve, reject) => {
+        if (true) {
+            resolve("Success");
+        } else {
+            reject("Error");
+        }
+   });
+
+4. resolve() marks the Promise as fulfilled and returns a successful result
+
+5. reject() marks the Promise as rejected and returns an error or reason for failure.
+
+6. .then() runs code after a Promise has been fulfilled and receives the resolved value
+
+7. .catch() handles errors if a Promise is rejected
+
+8. .finally() runs code after a Promise finishes, whether it succeeds or fails
+
+9. Promise chaining links multiple .then() methods together so each step waits for the previous one to finish
+
+10. Promise.all([promise1, promise2, promise3])
+        .then(results => {
+            console.log(results);
+        });
+
+11. Promise.all() immediately rejects, and the remaining results are ignored
+
+12. Promise.all() stops if any Promise rejects
+    Promise.allSettled() waits for all Promises to finish, regardless of whether they succeed or fail
+
+13. The async keyword declares a function as asynchronous, allowing the use of await inside it
+
+    async function getData() {
+    }
+
+14. An async function always returns a Promise, even if it returns a normal value
+
+        async function example() {
+            return 10;
+        }
+
+    Returns:
+
+        Promise.resolve(10);
+
+15. await pauses the execution of an async function until a Promise has been fulfilled or rejected
+
+    const response = await fetch(url);
+
+16. await can only be used inside an async function (or at the top level of supported JavaScript modules)
+
+17. Use a try...catch block
+
+        async function getData() {
+            try {
+                const response = await fetch(url);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+18. async/await makes asynchronous code look more like synchronous code, making it easier to read
+    .then() uses callbacks to handle Promise results
+
+19. await allows code to be written in a top-to-bottom order, reducing nested callbacks
+    and making complex asynchronous code easier to understand and debug
+
+20. async function getUsers() {
+        try {
+            const response = await fetch("https://jsonplaceholder.typicode.com/users");
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    getUsers();
+
+
+* Software Engineering (SORT 2.6, 2.7, 2.8 & 2.9)
 ** System Architecture
 
  *Recap List*
@@ -591,7 +712,7 @@ console.log(reversedInput, userInput)
    cons -> very complicated system, therefore also expensive & difficult to maintain
 
 
-** Network Protocols & HTTP Messages (STUDY)
+** Network Protocols & HTTP Messages
 
  *Recap List*
 
@@ -665,7 +786,7 @@ console.log(reversedInput, userInput)
     PATCH  -> partially update a resource
 
 
-** JSON & Web Storage APIs (STUDY)
+** JSON & Web Storage APIs
 
  *Recap List*
 
@@ -739,8 +860,8 @@ console.log(reversedInput, userInput)
 3. Create a user input & print it to the terminal
 4. Create basic layout of an if statement with an else if & else
 5. If statement conditions for equal to, greater than & less than or equal to
-6. & to combine 2 statement & or to say this condition or this condition
-7. What does 'exit 6' line mean
+6. syntax to combine 2 statements & the syntax to do an *or* statement
+7. What does the command 'exit 6' mean
 8. What's used to define a variable in a function
 9. Create a function with 1 argument & call the function & pass an argument
 
@@ -884,9 +1005,21 @@ console.log(reversedInput, userInput)
    |       102 |        3 |
 
 
+
+
+
+
+** SQL (SORT)
+
+** MariaDB (SORT)
+
+** NodeJS (SORT)
+
+** React (SORT)
+
 * Elisp, Bash, JavaScript & Python (EVERYDAY)
 
-** Elisp (REWRITE SOME, CHECK ALL OF THEM)
+** Elisp
 
  *Recap List*
 
@@ -894,17 +1027,19 @@ console.log(reversedInput, userInput)
 2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & 'num2' & code to add them together
 3. Call the function and pass 2 numbers to it
 4. What is true & false in Elisp
-5. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
-6. Create the variable 'y' & pass 10 to it
-7. Return to console y multiplied by 3
-8. What does the ' mean (give 3 examples)
-9. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
-10. Explain what a symbol is & how this line works -> (require 'evil)
-11. What another way to write -> #'flyspell-mode
-12. Create a function that adds a print("hello world") using the shortcut C-S-h
-13. How do Elisp if statements work
-14. Create an if statement to return 'true' or 'false'
-15. Do another one to check if a variable is greater than 10
+5. What does #' mean in Emacs & where would you use it
+6. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
+7. Why would 'create-life work as well as #'create-life in the above key-binding function
+8. Create the variable 'num' & pass 10 to it
+9. Return to console 'num' multiplied by 3
+10. What does the ' mean (give 3 examples)
+11. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
+12. Explain what a symbol is & how this line works -> (require 'evil)
+13. What's another way to write -> #'flyspell-mode
+14. Create a function that returns "hello world" & assign the shortcut C-S-h to this function
+15. How do Elisp if statements work
+16. Create an if statement to return 'true' or 'false'
+17. Do another one to check if a variable is greater than 10
 
 
  *Recap Answers*
@@ -920,65 +1055,70 @@ console.log(reversedInput, userInput)
 4. true  -> t (although technically, anything that is not nil is considered true but t is standard practice)
    false -> nil
 
-5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
+5. #' -> tells Emacs this symbol refers to a function
+   So you put this before the function name to tell emacs I'm passing you a function
+   #'create-life -> refers to the function (like in JavaScript, myFunction -> if you don't put () you're just referring to it, not calling it) 
 
-   (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
+6. (keymap-global-set "C-S-n" #'create-life)         ;; control shift n
 
-6. (setq num 10)   ;; setq -> built-in function meaning 'set variable'
+   (global-set-key (kbd "C-S-n") #'create-life)      ;; identical -> legacy way of setting key-bindings
 
-7. (* num 3)       ;; C-x C-e on the variable & the same on this will return 10
+7. Because keymap-global-set expects a function, so 'create-life is passing Emacs the symbol create-life
+   Emacs then looks up the function attached to that symbol
 
-8. Don't evaluate this section -> known as *quote*
+8. (setq num 10)   ;; setq -> built-in function meaning 'set variable'
 
-   '(1 2 3) -> treats this as a list, the most common use of this key
+9. (* num 3)       ;; C-x C-e on the variable & the same on this will return 30
 
-   (setq x 10)
-    x       -> returns: 10
-   'x       -> returns: x
+10. Don't evaluate this the following expression -> known as a *quote*
 
-   '(+ 1 2) -> returns: (+ 1 2)
+    '(1 2 3) -> treats this as a list, the most common use of this key
 
-   (keymap-global-set "C-S-h" 'my-function) -> without the ', Emacs would try to run the function immediately
+    (setq x 10)
+     x       -> returns: 10
+    'x       -> returns: x
 
-9. (defun greet()
-       (interactive)          -> this has to be the first thing after the function is made
-       (message "hello"))
+    '(+ 1 2) -> returns: (+ 1 2)
 
-   When you do M-x greet RET  -> returns: hello
+    (keymap-global-set "C-S-h" 'my-function) -> without the ', Emacs would try to evaluate my-function instead of treating it as a symbol
 
-10. symbol -> a variable of sorts that acts as a pointer to: variable, function or feature
+11. (defun greet ()            -> note: there's a space after the function name & before the brackets
+        (interactive)          -> this has to be the first thing after the function is made
+        (message "hello"))
+
+    When you do M-x greet RET  -> returns: hello
+
+12. symbol -> a variable of sorts that acts as a pointer to: variable, function or feature
 
     require -> is a built in function which loads this 'feature'
     'evil   -> this is treated as a symbol, not a variable (so it finds the feature named 'evil')
 
-11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+13. (function flyspell-mode)  -> this passes the function it DOESN'T call it
 
-12. (defun print-hello-world ()
+14. (defun print-hello-world ()
         (interactive)                              -> you can call this function from M-x
         (message "hello world"))
         
-    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function (this is not in the function)
+    (keymap-global-set "C-S-h" #'print-hello-world) -> using this key-binding, call the function (this is not in the function)
 
     You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
 
-13. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
+15. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
     (if CONDITION
-        THEN
-      ELSE)
+        THEN              -> the code that runs if the condition is *true*
+        ELSE)             -> the code that runs if the condition is *false*
 
-14. (if t                 -> if I swap this to nil it would return: it-was-false
+16. (if t                 -> if I swap this to nil it would return: it-was-false
         'it-was-true      
         'it-was-false)
 
-    Note -> anything other than nil is considered true, so I can swap the t for anything
-
-15. (setq x 15)
+17. (setq x 15)
     (if (> x 10)
         "x is greater than 10"
         "x is equal to 10 or less")
 
 
-** Bash (~***~ 1, 2, 7, 13, 14, 15)
+** Bash
 
 <<bash-link>>
 
@@ -1095,7 +1235,7 @@ console.log(reversedInput, userInput)
     -x -> executable
    
 
-** JavaScript (~***~ 1, 3, 4)
+** JavaScript
 
  *Recap List*
 
@@ -1111,7 +1251,15 @@ console.log(reversedInput, userInput)
 4. Create a hash map containing 2 pairs
    Access a value
    Add a value to the map
-5. 
+5. Create a for loop that prints numbers 1 to 5
+6. Create a while loop that prints the numbers 5 to 1
+7. Create an if statement that checks if 'age' is 18 or over
+8. Create a function called 'square' that returns the square of a given number
+9. Create an arrow function called 'multiply' that returns the product of 2 numbers
+10. Create an array called 'fruits' & print each element
+11. Create a string variable & print its length
+12. Create 2 strings & then a new variable which combines both of them together
+13. Create an array called 'numbers' & remove the last element
 
 
  *Recap Answers*
@@ -1134,13 +1282,138 @@ console.log(reversedInput, userInput)
    user.name
    user.email = ~"john@gmail.com"~
 
-5. 
+5. for (let i = 1; i <= 5; i++) {
+       console.log(i);
+    }
+
+6. let i = 5;
+
+   while (i >= 1) {
+       console.log(i);
+       i--;
+   }
+
+7. let age = 20;
+
+   if (age >= 18) {
+       console.log("Adult");
+   } else {
+       console.log("Minor");
+   }
+
+8. function square(num) {
+       return num * num;
+   }
+
+9. const multiply = (a, b) => {
+       return a * b;
+   };
+
+10. let fruits = ["apple", "banana", "orange"];
+
+    fruits.forEach(function(fruit) {
+        console.log(fruit);
+    });
+
+11. let name = "Geoff";
+    console.log(name.length);
+
+12. let first = "Hello";
+    let second = " World";
+
+    let message = first + second;
+
+13. let numbers = [1, 2, 3, 4];
+    numbers.pop();
 
 
-** Python (ADD AS I FORGET IN EXERCISM)
+** Python
+
+*Recap List*
+
+1. Create a function called add that takes two parameters and returns their sum
+2. Call the add function with the numbers 5 and 8
+3. Create a list of four numbers
+4. Add a number to the end of the list
+5. Remove the item at index 2
+6. Get the size of the list
+7. Create a dictionary with the keys name and age
+8. Access the value of name
+9. Add an email key to the dictionary
+10. Create an if statement that checks whether age is at least 18
+11. Create a for loop that prints the numbers 1 to 5
+12. Create a while loop that prints the numbers 5 to 1
+13. Create a string called name and print its length
+14. Join two strings together
+15. Loop through a list and print each item
+16. Create a tuple containing three numbers
+17. Create a set containing three colours
+18. Import the math module and print the square root of 25
+
+*Recap Answers*
+
+1. def add(a, b):
+    return a + b
+
+2. add(5, 8)
+
+3. numbers = [2, 6, 1, 4]
+
+4. numbers.append(7)
+
+5. numbers.pop(2)
+
+6. len(numbers)
+
+7. user = {
+       "name": "John",
+       "age": 25
+   }
+
+8. user["name"]
+
+9. user["email"] = "john@gmail.com"
+
+10. age = 20
+
+   if age >= 18:
+       print("Adult")
+   else:
+       print("Minor")
+
+11. for i in range(1, 6):
+        print(i)
+
+12. i = 5
+
+    while i >= 1:
+        print(i)
+        i -= 1
+
+13. name = "Geoff"
+
+    print(len(name))
+
+14. first = "Hello"
+    second = " World"
+
+    message = first + second
+
+15. fruits = ["apple", "banana", "orange"]
+
+    for fruit in fruits:
+        print(fruit)
+
+16. numbers = (1, 2, 3)
+
+17. colours = {"red", "green", "blue"}
+
+18. import math
+
+    print(math.sqrt(25))
 
 
-** Terminal Commands (~***~ 4, 6, 9, 12, 13, 14, 15, 17, 18, 20)
+** Terminal Commands
 
  *Recap List*
 
@@ -1224,70 +1497,6 @@ console.log(reversedInput, userInput)
 ** Troubleshooting (SORT WHOLE SECTION)
 
 
-** Bandit Game
-
- *Recap List*
-
-1. Explain the ssh command
-2. Why can't you open a file beginning with '-'
-3. Why can't you cd into a file with spaces
-4. Command to check file type
-5. What does ./* mean
-6. Command to search for files & directories
-7. Command to search by word
-8. Command to sort data alphabetically
-9. Command to print only human-readable letters
-10. What is base64 & why would you use it
-11. Command to character remap
-12. What are gzip, bzip2 & tar
-13. Unzip gzip, bzip2 & tar
-14. 
-
-
- *Recap Answers*
-
-1. ssh command runs secure shell client which lets you log into a remote machine
-   You need to specific the port (ssh uses port 22 but the Bandit game runs on port 2220)
-
-   ssh username@hostname -p 2220
-
-2. Linux treats - as a special argument instead of a filename
-   Use ./-<file name> so Linux knows this is a file
-
-3. Linux treats spaces as separators between arguments
-   Use " " as this tells the shell to treat everything as 1 argument
-
-4. file <filename>
-
-5. find <filename> <flags>
-
-6. grep <word> <filename>
-
-7. sort <filename>
-   
-   sorts data by line alphabetically
-
-8. strings <filename>
-
-9. Every file/directory in the current directory
-
-10. base64 is a way of converting binary numbers to text
-    You'd use it if the data was required to be in plain-text format
-    For example, an image is made up of bytes, but email is a text-only system
-    You'd encode the bytes to text, then when you receive your email, the system would encode the letters back to bytes
-
-11. tr 'characters to replace' 'characters to replace them with'
-
-12. gzip & bzip2 -> compress files to make them smaller
-    tar          -> bundle files together to make an archive
-
-13. gunzip file.gz
-    bunzip2 file.bz2
-    tar -xf file.tar
-
-    The extensions on the file names has to be correct
-
-14. 
 
 
 ** Arch Questions before Set Up
@@ -1295,15 +1504,15 @@ console.log(reversedInput, userInput)
  *Recap List*
 
 1. What is the boot process
-2. What does the kernel do & give an example of the progress of typing out a command
+2. What does the kernel do & give an example of the process of typing out a command
 3. What is initramfs
 4. What does systemd do
 5. What is a bootloader & why's it needed
 6. Why choose systemd-boot (instead of GRUB) & how does it work
 
-7. What are the 3 download steps for so you have a bootable Arch environment
+7. What are the 3 download steps so you have a bootable Arch environment
 8. What is on a .iso file specifically
-9. Why do you need to write an .iso file to a USB
+9. Why do you need to write a .iso file to a USB
    
 10. What is gdisk & what is a partition
 11. What does it mean to format a partition
@@ -1387,6 +1596,8 @@ console.log(reversedInput, userInput)
 
 14. Swap -> disk space used as additional virtual memory, to be used when RAM becomes full
 
+    You create a swap partition during the OS installation using a disk partitioning tool (i.e. fdisk)
+
 15. Linux Unified Key Setup (LUKS) -> a standard disk encryption system
     So instead of having your SSD, then files, you have your files in a LUKS (encrypted) container
 
@@ -1410,9 +1621,20 @@ console.log(reversedInput, userInput)
 
     On boot, during systemd -> it reads the /etc/fstab & this tells it to mount root & /boot with their UUIDs
 
-18. /boot is a mount point -> a mount point is like a pointer, saying from here display this file system
+18. /boot is a mount point -> a mount point is like a pointer, saying: from here, 'display this file system'
     So, even though the tree (of files), makes it look like /boot sits in the file tree, it actually points to the EFI file system
     i.e. clicking /boot, Linux knows is a mount point & shows you the contents of the EFI partition instead of files in a directory called 'boot'
+
+19. A Linux utility used to create RAM filesystem (initramfs)
+    mkinitcpio is the tool/program, initramfs is the file that the tool generates
+    The initramfs is loaded into memory by the bootloader before the main OS starts
+    The initramfs is specific to your system, the mkinitcpio gathers the correct:
+        kernel modules
+        firmware
+        filesystem drivers
+        boot script
+        configuration
+
 
 ** Arch Set up
 
@@ -1565,10 +1787,85 @@ console.log(reversedInput, userInput)
     The kernel doesn't know: how to unlock LUKS, find btrfs filesystem, which modules need loading first -> it needs the initramfs
 
 
-** The File System (ADD -> a question on what every directory from root does)
+** Bandit Game
+
+ *Recap List*
+
+1. Explain the ssh command
+2. Why can't you open a file beginning with '-'
+3. Why do files or directories with spaces need quotes
+4. Command to check file type
+5. Command to search for files & directories
+6. Command to search by word
+7. Command to sort data alphabetically
+8. Command to print only human-readable text
+9. What does ./* mean
+10. What is base64 & why would you use it
+11. Command to character remap
+12. What are gzip, bzip2 & tar
+13. Unzip gzip, bzip2 & tar
+14. 
+
+
+ *Recap Answers*
+
+1. ssh command runs secure shell client which lets you log into a remote machine
+   You need to specify the port (ssh uses port 22 but the Bandit game runs on port 2220)
+
+   ssh username@hostname -p 2220
+
+2. Linux treats - as a special argument instead of a filename
+   Use ./-<file name> so Linux knows this is a file
+
+3. Linux treats spaces as separators between arguments
+   Use " " as this tells the shell to treat everything as 1 argument
+
+4. file <filename>
+
+5. find <location> <flags> (i.e. find . -name <filename> -> searches current directory for a specific name)
+
+6. grep <word> <filename>
+
+7. sort <filename>
+   
+   sorts data by line alphabetically
+
+8. strings <filename>
+
+9. ./ -> current directory
+   *  -> matches everything
+
+   So together they mean search every file in the current directory
+
+10. base64 is a way of converting binary data to ASCII text
+    You'd use it if the data was required to be in plain-text format
+    For example, an image is made up of bytes, but email is a text-only system
+    You'd encode the bytes to text, then when you receive your email, the system decode the text back into the original bytes
+
+11. tr 'characters to replace' 'characters to replace them with'
+
+12. gzip & bzip2 -> compress files to make them smaller
+    tar          -> bundle files together to make an archive
+
+13. gunzip file.gz
+    bunzip2 file.bz2
+    tar -xf file.tar
+
+    The extensions on the file names doesn't have to be correct but it really helps me work out what command I need to use to extract this file
+
+14. 
+
+
+** The File System (ADD -> questions on what each directory from root does)
 
 
 ** My Desktop Environment (Add questions about what apps I'm using & what they do)
+
+
+** Caelestia -> how it works (SORT)
+
+
+
 
 
 
@@ -1577,67 +1874,226 @@ console.log(reversedInput, userInput)
 ** Troubleshooting (SORT)
 
 
-** Org Mode (CHECK)
+** Org Mode
 
  *Recap List*
 
-1. How have I set up my init.el to a init.org file & how does it work
-2. Use 'babel' to create a block where I can write Python code, just do a print function (babel is built in, no download required)
-3. What other languages can I use & what do I replace python with for each
-4. How do you make it so a language can run
-5. What is :results output for
-6. What's the shortcut to run this block (between begin & end) & where should the cursor be
-7. How do you move swap with the heading above & below
-8. How do you promote or demote a heading
-9. Syntax to make a link clickable
-10. How do you create & link internal Org links
-11. Click the link with a shortcut
+1. What is tangling
+2. How have I set up my init.el to a config.org file & how does it work
+3. Use 'babel' to create a block where I can write Python code, just do a print function (babel is built in, no download required)
+4. What other languages can I use & what do I replace python with for each
+5. How do you make it so a language can run
+6. What is ':results output' for
+7. What's the shortcut to run this block (between begin & end) & where should the cursor be
+8. How do you move swap with the heading above & below
+9. How do you promote or demote a heading
+10. Syntax to make a link clickable
+11. How do you create & link internal Org links
+12. Click the link with a shortcut
 
    
  *Recap Answers*
 
-1. Have a init.el file with only a line to load my init.org file
-   The init.org file is located next to the init.el (~/.config/emacs/)
-   Then in the init.org, write whatever comments I want & embed the Elisp in #+begin_src emacs-lisp & #+end_src
+1. The process of extracting source code from an Org file & writing it to a normal source file
+   If you had a block of code between #+begin_src emacs-lisp & #+end_src
+   Org mode knows to extract the Emacs Lisp code & convert it to a .el file
 
-2. 
+2. The init.el only contains code needed to load & tangle config.org
+   The config.org file is located next to the init.el (~/.config/emacs/)
+   Then in the config.org, write whatever comments I want & embed the Elisp in #+begin_src emacs-lisp & #+end_src
+
+3. 
     #+begin_src python :results output
-    print("hello me")
+      print("hello me")
     #+end_src
 
-3. I've set up Shell (Bash) & JavaScript in the init.el, Elisp is built in already
+4. I've set up Shell (Bash) & JavaScript in the init.el, Elisp is built in already
    But most languages are supported, I just need to add them to the init.el file
 
    shell
    js
    emacs-lisp
 
-4. I added python, js & shell in the init.el file so babel loads them into Emacs
+5. I have enabled python, js & shell in the config.org file so Org Babel can execute those languages
 
-5. This tells Emacs to capture whatever the program write to stdout (as default it tries to run everything as a function)
-   i.e. it would treat print() as a function & return None
+6. This tells Org Babel to capture whatever the program writes to stdout
+   Without ':results output' Babel returns the value of the final expression, instead of the stdout
 
-6. C-c C-c
+   For example, between a python block if I had -> print("hello")
+   It would return the value of the last expression, which would be 'None' because print() returns None, hence :results output fixes this
+
+7. C-c C-c
    The cursor can be anywhere in the block
 
-7. M-UP
+8. M-UP
    M-DOWN
 
-8. M-LEFT
+9. M-LEFT
    M-RIGHT
 
-9. ~[[https://google.com][Google]]~ -> the only word that will appear is 'Google' underlined & blue 
-   [[https://google.com][Google]]                         -> test this to load Google
+10. ~[[https://google.com][Google]]~ -> the only word that will appear is 'Google' underlined & blue 
+    [[https://google.com][Google]]                         -> test this to load Google
 
-10. ~<<jump-here>>~ -> this is where you jump to
-    ~[[jump-here]]~ -> this is clickable & allow you to jump
+11. ~<<jump-here>>~ -> this is where you jump to
+    ~[[jump-here]]~ -> this is clickable & allows you to jump
     [[bash-link]]     -> test using this to jump to the bash recap list
 
-11. C-c C-o
+12. C-c C-o
 
 
+** Org Mode Shortcuts
 
-** Shortcuts (ADD)
+*Recap List*
+
+1. Toggle sub-tree (open & close current sub-header)
+2. zr
+3. Jump to next heading
+4. Jump to previous heading
+5. Promote & demote heading
+6. Move header (or list item) up & down
+
+*Recap Answers*
+
+1. C-c tab
+2. C-c C-n
+3. C-c C-p
+4. M-left & M-right
+5. M-up   & M-down
+
+
+** Shortcuts
+
+*Recap List*
+
+1. Jump down a page
+2. Jump up a page
+3. Jump 20 lines down
+4. Jump 20 lines up
+5. Pull up mini dashboard evaluate Emacs lisp expression
+6. Evaluate Emacs lisp line
+7. Open Emacs shell
+
+8. List bookmarks
+9. Set bookmarks
+
+10. _Execute all source blocks, assuming document is in babel mode (i.e. to evaluate the config.org)_
+11. _Place source block in its own buffer & edit this section of code_
+12. How do I close the buffer & save the changes
+13. _How does this new buffer work_
+
+
+*Recap Answers*
+
+1. C-f
+2. C-b
+3. C-d
+4. C-u
+5. M-:
+6. C-x C-e
+7. M-x shell
+
+8. C-x r m
+9. C-x r l
+
+10. C-c C-v b
+11. C-c '
+12. C-c ' again
+13. It creates a new buffer of just the source text in the block
+    It will be in the major mode of whatever code is was (python-mode, javascript-mode, etc...)
+    Therefore, Eglot will work in this buffer
+
+
+** Help shortcuts
+
+Each of the below can be used to open a new page which explains what this: shortcut, function, variable, etc... is
+Give an example for each of the below (otherwise it's a little confusing)
+
+*Recap List*
+
+1. Describe this keyboard shortcut 
+2. Describe this built-in Emacs function
+3. Describe this variable
+4. Check current mode (& minor modes)
+5. Show the document that contains all keybindings 
+6. Check mini-buffer messages
+
+
+*Recap Answers*
+
+1. C-h k (hit C-x C-s on the keyboard)
+2. C-h f (type out save-buffer)
+3. C-h v (setq inhibit-startup-message t -> you'd only type out 'inhibit-startup-message')
+          A variable is almost always preceded by setq
+4. C-h m
+5. C-h b
+6. C-h e
+   
+
+** Dired Mode Shortcuts
+
+*Recap List*
+
+1. Open file manager
+2. Swap to a different directory
+3. Swap sorting files (alphabetically or by timestamp)
+4. Hide/reveal all but file names
+   
+5. Open file in a new buffer with vertical split
+6. Same as above but keep focus in dired mode
+7. Create directory
+   
+8. Change file permission
+9. Change file owner
+10. Change file group
+    
+11. Mark current file
+12. Un-mark current file
+13. Un-mark all files
+14. Copy marked filed
+15. Rename/move marked files
+16. Delete marked files
+17. Search marked files with grep
+
+18. Copy file name (or at top line copy the file path)
+
+    
+*Recap Answers*
+
+1. C-x C-j
+
+2. C-x d
+
+3. s
+
+4. S-9
+
+5. o
+
+6. C-o
+
+7. S-=
+
+8. S-m
+
+9. S-o
+
+10. S-g
+
+11. S-m
+
+12. u
+
+13. S-u
+
+14. S-c
+
+15. S-r
+
+16. S-d
+
+17. S-a
+
+18. w
 
 
 ** Functionality (ADD)
@@ -1663,8 +2119,8 @@ console.log(reversedInput, userInput)
 2. Where are the files located
 3. How do you search for & install a package
 4. What are the steps of Emacs downloading a package
-5. What does Consult package do
-6. What does Vertico package do
+5. What does the Consult package do
+6. What does the Vertico package do
 
 
  *Recap Answers*
@@ -1701,90 +2157,98 @@ console.log(reversedInput, userInput)
  *Recap List*
 
 1. How do you call a function in scratch buffer
-2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & num2' & code to add them together
+2. Define the function with name 'adding_together' & pass 2 parameters 'num1' & 'num2' & code to add them together
 3. Call the function and pass 2 numbers to it
 4. What is true & false in Elisp
-5. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
-6. Create the variable 'y' & pass 10 to it
-7. Return to console y times 3
-8. What does the ' mean (give 3 examples)
-9. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
-10. Explain what a symbol is & how this line works -> (require 'evil)
-11. What another way to write -> #'flyspell-mode
-12. Create a function that adds a print("hello world") using the shortcut C-S-h
-13. How do Elisp if statements work
-14. Create an if statement to return 'true' or 'false'
-15. Do another one to check if a variable is greater than 10
+5. What does #' mean in Emacs & where would you use it
+6. Create the key-binding C-S-n & assign it to the made up function 'create-life' (convention is to use hyphens in Elisp)
+7. Why would 'create-life work as well as #'create-life in the above key-binding function
+8. Create the variable 'num' & pass 10 to it
+9. Return to console 'num' multiplied by 3
+10. What does the ' mean (give 3 examples)
+11. Make a function called 'greet', which returns 'hello' & make it interactive (i.e. can be called using M-x)
+12. Explain what a symbol is & how this line works -> (require 'evil)
+13. What's another way to write -> #'flyspell-mode
+14. Create a function that returns "hello world" & assign the shortcut C-S-h to this function
+15. How do Elisp if statements work
+16. Create an if statement to return 'true' or 'false'
+17. Do another one to check if a variable is greater than 10
 
 
  *Recap Answers*
 
 1. Go a line after the function is created -> C-x C-e
-   Go a line after the function call       -> C-x C-x
+   Go a line after the function call       -> C-x C-e
 
-2. (defun adding_together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
+2. (defun adding-together (num1 num2)      -> don't close the other bracket, this is closed at the end of the function 
       (+ num1 num2))
 
-3. (adding_together 23 12)
+3. (adding-together 23 12)
 
-4. true  -> t
+4. true  -> t (although technically, anything that is not nil is considered true but t is standard practice)
    false -> nil
 
-5. (keymap-global-set "C-S-n" 'create-life)         ;; control shift n
+5. #' -> tells Emacs this symbol refers to a function
+   So you put this before the function name to tell emacs I'm passing you a function
+   #'create-life -> refers to the function (like in JavaScript, myFunction -> if you don't put () you're just referring to it, not calling it) 
 
-   (global-set-key (kbd "C-S-n") 'create-life)      ;; identical -> legacy way of setting key-bindings
+6. (keymap-global-set "C-S-n" #'create-life)         ;; control shift n
 
-6. (setq y 10)   ;; setq -> built-in function meaning 'set variable'
+   (global-set-key (kbd "C-S-n") #'create-life)      ;; identical -> legacy way of setting key-bindings
 
-7. (* y 3)       ;; C-x C-e on the variable & the same on this will return 10
+7. Because keymap-global-set expects a function, so 'create-life is passing Emacs the symbol create-life
+   Emacs then looks up the function attached to that symbol
 
-8. Don't evaluate this section -> known as *quote*
+8. (setq num 10)   ;; setq -> built-in function meaning 'set variable'
 
-   '(1 2 3) -> treats this as a list, the most common use of this key
+9. (* num 3)       ;; C-x C-e on the variable & the same on this will return 30
 
-    x       -> returns: 10
-   'x       -> returns: x
+10. Don't evaluate this the following expression -> known as a *quote*
 
-   '(+ 1 2) -> returns: (+ 1 2)
+    '(1 2 3) -> treats this as a list, the most common use of this key
 
-9. (defun greet()
-       (interactive)          -> this has to be the first thing after the function is made
-       (message "hello"))
+    (setq x 10)
+     x       -> returns: 10
+    'x       -> returns: x
 
-   When you do M-x greet RET  -> returns: hello
+    '(+ 1 2) -> returns: (+ 1 2)
 
-10. symbol -> a label that can point to things (variable, function, feature)
+    (keymap-global-set "C-S-h" 'my-function) -> without the ', Emacs would try to evaluate my-function instead of treating it as a symbol
 
-    require -> load this feature
-    'evil   -> the quote means 'evil' is treated as a symbol not a variable (so it can be retrieved by require)
+11. (defun greet ()            -> note: there's a space after the function name & before the brackets
+        (interactive)          -> this has to be the first thing after the function is made
+        (message "hello"))
 
-11. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+    When you do M-x greet RET  -> returns: hello
 
-12. (defun print-hello-world ()
+12. symbol -> a variable of sorts that acts as a pointer to: variable, function or feature
+
+    require -> is a built in function which loads this 'feature'
+    'evil   -> this is treated as a symbol, not a variable (so it finds the feature named 'evil')
+
+13. (function flyspell-mode)  -> this passes the function it DOESN'T call it
+
+14. (defun print-hello-world ()
         (interactive)                              -> you can call this function from M-x
         (message "hello world"))
-    (keymap-global-set "C-S-h" 'print-hello-world) -> using this key-binding, call the function
+        
+    (keymap-global-set "C-S-h" #'print-hello-world) -> using this key-binding, call the function (this is not in the function)
 
     You can do keymap-set which will make the key-binding local (rather than accessible from all modes)
 
-13. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
+15. There are no else if, there's only an if & an else (there can be just an if -> no else statement)
     (if CONDITION
-        THEN
-      ELSE)
+        THEN              -> the code that runs if the condition is *true*
+        ELSE)             -> the code that runs if the condition is *false*
 
-14. (if t                 -> if I swap this to nil it would return: it-was-false
+16. (if t                 -> if I swap this to nil it would return: it-was-false
         'it-was-true      
         'it-was-false)
 
-    Note -> anything other than nil is considered true, so I can swap the t for anything
-
-15. (setq x 15)
+17. (setq x 15)
     (if (> x 10)
         "x is greater than 10"
-      "x is less than 10")
-
-
-
+        "x is equal to 10 or less")
 
 * General Computing (COMPLETE EVERY SECTION)
 
@@ -1829,7 +2293,7 @@ console.log(reversedInput, userInput)
 
  
 
-** GitHub
+** Regex
 
 
 * Python (COMPLETE PYGAME)

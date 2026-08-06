@@ -1394,5 +1394,20 @@ This is a NPM package that contains functions for simplifying JavaScript data st
 
 ~const lodash = require('lodash')~
 
+
 * React
+
+** Introducing React Elements & Components
+
+React -> A JavaScript library to help build user interfaces (front-end)
+
+*Common React Terms*
+
+JSX              -> Stands for JavaScript XML, a JavaScript extension syntax used to easily write HTML & JS together
+React elements   -> The building blocks of React applications 
+React components -> React functions that return a React element to be rendered to the page
+Props            -> Inputs to a React component, they are data passed down from a parent component to a child
+State            -> An object that holds data & info related to a React component
+Hooks            -> Let you use different React features from your components
+
 

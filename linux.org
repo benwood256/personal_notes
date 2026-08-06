@@ -1,26 +1,26 @@
 #+TITLE: Linux Notes
 
+SUPER + SHIFT + L -> Lock screen
+SUPER + h & l     -> left & right arrow keys
+
 * To Do List
 
 1. Rewrite the file system from root -> go into depth on what each file is used for (/usr, /bin, etc...) & create recap list
-2. After moving to Arch -> manually create a boot application folder (i.e. boot these applications on startup)
-3. Make a plan for Hyprland (i.e. in terms of tile layouts -> tile 1 = Emacs, tile 2 = safari, etc...)
-4. Make colour theme for Ricing, i.e. based on Dune poster
-5. Learn how file system mounting works in Linux
-6. Learn how to use systemd to create real permanent network mounts instead of using fstab.
+2. Learn how file system mounting works in Linux
+3. Look into systemd, what is it? how does it work? what's it used for?
+   Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
-7. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
-8. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
-9. Look into popular aliases or clever ones people have made
-10. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
-11. What can go wrong after an update, why this has happened & what topics I need to know about my system to troubleshoot
-12. Troubleshoot order to fix Arch problems (after updates)
-13. Look into systemd, what is it? how does it work? what's it used for?
-14. More advanced understanding of package managers, how they work & Pac-Man specifically 
-    Also, alternative ways to install packages & how they work
-15. I've made a sub-header in Arch 'Debugging Arch issues' with sub-topics to learn for issues in Arch
+4. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+5. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
+6. Look into popular aliases or clever ones people have made
+7. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
+8. What can go wrong after an update, why this has happened & what topics I need to know about my system to troubleshoot
+9. More advanced understanding of package managers, how they work & Pac-Man specifically 
+   Also, alternative ways to install packages & how they work
+10.  Troubleshoot order to fix Arch problems (after updates)
+    I've made a sub-header in Arch 'Debugging Arch issues' with sub-topics to learn for issues in Arch
     Learn each section, make a new sub-header & fill with notes, then add to recap_list.org
-16. Make a file containing backups for config files (eventually make a bash project to automatically do this)
+11. Make a file containing backups for config files (eventually make a bash project to automatically do this)
     & then link this config file backup to GitHub (store all my configs in one place -> easier)
 
 
@@ -172,6 +172,7 @@ message is now -> Hello, World! Have a great day!
 ** Recap List
 ** Recap Answer
 
+
 ** Booting applications (CONVERT TO recap_list.org)
 
 I can save files (in a specific way) in ~/.config/autostart/ so they are opened on boot
@@ -304,20 +305,22 @@ The port number is the apartment number
 
 In the above I don't need to specific IP address, but putting in the hostname, my computer requests the IP address
 
-*** Level 0-1
+*** Level 0
 
 I must exit as bandit0 to access level 1
 Do this by typing 'exit' into the terminal
 
 Then -> ssh bandit1@bandit.labs.overthewire.org -p 2220
 
-*** Level 1-2
+*** Level 1
+
 Linux commands treat - as a special arguments instead of a file name
 cat - -> read from stdin instead of a file (hence why it doesn't work)
 
 ./ tells the terminal to read in the current directory
 
-*** Level 2-3
+*** Level 2
+
 2 issues with this file name, there are spaces & it begins with '--' (which commands can interpret as an option marker)
 ./ -> tells cat that this is a file in the current directory, not a command-line option
 " " -> tells the shell to treat everything as one single argument
@@ -326,16 +329,17 @@ cat - -> read from stdin instead of a file (hence why it doesn't work)
 I.e. if a file was named -n, -n is actually a flag, so Linux would be confused if I put cat -n & ask for a filename
 But if I put cat -- -n, Linux would know I'm finished giving flags & read the file '-n'
 
-*** Level 3-4
+*** Level 3
+
 No issues -> use -a flag to reveal hidden files
 
-*** Level 4-5
+*** Level 4
 
 You can cat into every file
 But, you can use: ~file ./*~
 This checks the type of file for all files, file07 is ASCII text -> so this must be the plain text password file
 
-*** Level 5-6
+*** Level 5
 
 Knowing the fill is exactly 1033bytes in size is the give away
 Use -> find . -type f -size 1033c
@@ -355,7 +359,7 @@ It reveals it's ASCII text, so that's correct
 To check it's not executable, do -> ls -l ./maybehere07/.file2
 This reveals it's not executable & you can also see it's 1033 bytes
 
-*** Level 6-7
+*** Level 6
 
 Find owner, group & size all in one command (doing them one at a time returns hundreds of files, for each command)
 find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
@@ -369,28 +373,28 @@ find        = Search for files that match certain conditions
 2>/dev/null = Hide permission errors -> I'm searching through the entire system, I would be getting a lot of permission denied
                                         (as I don't have permission to see them) for many files, this hides these errors 
 
-*** Level 7-8
+*** Level 7
 
 grep millionth data.txt
 
 grep      = prints any line that contains the search term
 millionth = the line after the word 'millionth' is returned
 
-*** Level 8-9
+*** Level 8
 
 sort data.txt | uniq -u
 
 sort data.txt = sorts all the lines alphabetically & puts identical lines next to each other
 uniq -u       = Only prints lines that appear once
 
-*** Level 9-10
+*** Level 9
 
-strings data.txt | grep "="
+strings DATA.txt | grep "="
 
 strings data.txt -> Same as cat but only returns readable text from the file
 grep "="          -> Will show only lines containing "=="
 
-*** Level 10-11
+*** Level 10
 
 base64 -d data.txt
 
@@ -400,7 +404,7 @@ base64 is a way on converting binary to text
 If you wanted to send an image through email, which is a text-only system
 Images are actually bytes, so you'd convert them via base64 to text, then once receiving the email, is would decode the base64
 
-*** Level 11-12
+*** Level 11
 
 All letters have been rotated by 13 positions means:
 
@@ -424,7 +428,7 @@ tr             -> Translate
 N-ZA-M -> Means, start the alphabet at N go to Z, then carry on at A & go to M
           Then, the same but for lowercase
 
-*** Level 12-13
+*** Level 12
 
 *Explanation*
 
@@ -482,43 +486,45 @@ tar -xf data.tar
 file data
 
 
-*** Level 13-14
+*** Level 13
 
-*** Level 14-15 
 
-*** Level 15-16
 
-*** Level 16-17 
+*** Level 14
 
-*** Level 17-18
+*** Level 15
 
-*** Level 18-19 
+*** Level 16
 
-*** Level 19-20
+*** Level 17
+
+*** Level 18
+
+*** Level 19
 
 ** Passwords
 
-Level 0 = ssh bandit0@bandit.labs.overthewire.org -p 2220
-Level 0-1 = ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
-Level 1-2 = 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
-Level 2-3 = MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
-Level 3-4 = 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
-Level 4-5 = 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
-Level 5-6 = HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
-Level 6-7 = morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
-Level 7-8 = dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEcy
-Level 8-9 = 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
-Level 9-10 = FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
-Level 10-11 = dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
-Level 11-12 = 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
-Level 12-13 = 
-Level 13-14 =
-Level 14-15 =
-Level 15-16 =
-Level 16-17 =
-Level 17-18 =
-Level 18-19 =
-Level 19-20 = 
+Level 0  = ssh bandit0@bandit.labs.overthewire.org -p 2220
+Level 1  = 6y2kwnwK6grgvwvpvLaa2T1cpFEKOhNR
+Level 2  = PK8fYLZg2hnHSz83plBL1iEPKdD3QToB
+Level 3  = 7ZZ2LFrykP2zEyvBl4m3clcL7tGYJPME
+Level 4  = xzTXq1rDJQVVAzdv5cHq1TQytTWufAMq
+Level 5  = 6C7h9GD8M6ai5nr7wo1RonrzFjj9yIrG
+Level 6  = pXa26xhMWaC2SvDotA4r9EgZkulOeSBW
+Level 7  = Bmnnvf82KzQlfxgAI2d1zYbr1u9pr3E3
+Level 8  = VR1ljMayciFxbnUokuQmJFw6QC9VKtub
+Level 9  = EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl
+Level 10 = B0s2khmbT9u0geKuOoVGW3JZKhndE3BG
+Level 11 = pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
+Level 12 = GROozWPO8QyN0mGrjUkID0WCYkZiQxrN
+Level 13 = qQYQiHOBPR8zR61qxYqX45quvihF2uzk
+Level 14 =
+Level 15 =
+Level 16 =
+Level 17 =
+Level 18 =
+Level 19 =
+Level 20 = 
 
 
 * Arch
@@ -654,7 +660,6 @@ There is an easy install called “archinstall” -> but it doesn’t allow you 
    
     
 
-
 ** Notes on installation process
 
 SSD Partition breakdown:
@@ -692,3 +697,39 @@ LUKS encryption
 Btrfs filesystem
     ↓
 Subvolumes
+
+** Caelestia notes
+
+Caelestia shell nexus open -> command to open the appearance/settings panel
+Or toggle over the bottom right, click the settings icon
+ 
+
+*Applications on boot*
+
+~execs.lua~     -> I have a section (-- launch applications) to start applications on boot (firefox & emacs)
+
+
+*Workspaces on boot*
+
+~rules.lua~     -> under Application Workspaces, I have assigned 2 instances of firefox, foot (terminal) & emacs to workspaces
+
+
+*Force monitor to workspaces*
+
+~hypr-user.lua~ -> I have forced workspaces 1 & 2 to be forced to monitor 1 & workspaces 3 & 4 to be forced to monitor 2
+
+
+*How booting windows & workspace management works*
+
+~execs.lua~     -> boots all the applications, emacs & foot have default names but I've set the names for the firefox profiles
+                 the firefox profiles are specifically called (in Firefox I have a profile 'main' & 'extras')
+~rules.lua~     -> here I call the names of the applications & assign the workspaces to them
+~hypr-user.lua~ -> here I force workspaces 1, 2, 3, & 4 to monitors
+
+
+*Firefox automatically open windows*
+
+This is done using Firefox profiles
+I have 2, 1 named 'main' & 1 named 'extras'
+The 'main' is for work, i.e. keyboard practise, YouTube, etc...
+The 'extras' is for pomodoro timer, Reddit, GitHub, etc...
