@@ -1,6 +1,6 @@
 #+TITLE: Recap List Page
 
-* Web Development 
+* Web Development (LEARN 1.12)
 
 ** HTML
 
@@ -572,7 +572,7 @@ console.log(reversedInput, userInput)
     <div><h1>hello</h1></div>
 
 
-** Promises, Async & Await
+** Promises, Async & Await (LEARN)
 
 *Recap List*
 
@@ -601,9 +601,9 @@ console.log(reversedInput, userInput)
 
 1. A Promise is an object that represents the eventual completion (success) or failure of an asynchronous operation and its resulting value
 
-2. Pending – The operation is still in progress
-   Fulfilled – The operation completed successfully
-   Rejected – The operation failed
+2. Pending   –> The operation is still in progress
+   Fulfilled –> The operation completed successfully
+   Rejected  –> The operation failed
 
 3. const promise = new Promise((resolve, reject) => {
         if (true) {
@@ -613,15 +613,15 @@ console.log(reversedInput, userInput)
         }
    });
 
-4. resolve() marks the Promise as fulfilled and returns a successful result
+4. resolve()  -> marks the Promise as fulfilled and returns a successful result
 
-5. reject() marks the Promise as rejected and returns an error or reason for failure.
+5. reject()   -> marks the Promise as rejected and returns an error or reason for failure.
 
-6. .then() runs code after a Promise has been fulfilled and receives the resolved value
+6. .then()    -> runs code after a Promise has been fulfilled and receives the resolved value
 
-7. .catch() handles errors if a Promise is rejected
+7. .catch()   -> handles errors if a Promise is rejected
 
-8. .finally() runs code after a Promise finishes, whether it succeeds or fails
+8. .finally() -> runs code after a Promise finishes, whether it succeeds or fails
 
 9. Promise chaining links multiple .then() methods together so each step waits for the previous one to finish
 
@@ -685,7 +685,7 @@ console.log(reversedInput, userInput)
     getUsers();
 
 
-* Software Engineering (SORT 2.6, 2.7, 2.8 & 2.9)
+* Software Engineering (LEARN 2.2, 2.3, 2.6, 2.7 & 2.8)
 ** System Architecture
 
  *Recap List*
@@ -712,7 +712,7 @@ console.log(reversedInput, userInput)
    cons -> very complicated system, therefore also expensive & difficult to maintain
 
 
-** Network Protocols & HTTP Messages
+** Network Protocols & HTTP Messages (LEARN)
 
  *Recap List*
 
@@ -786,7 +786,7 @@ console.log(reversedInput, userInput)
     PATCH  -> partially update a resource
 
 
-** JSON & Web Storage APIs
+** JSON & Web Storage APIs (LEARN)
 
  *Recap List*
 
@@ -1009,13 +1009,435 @@ console.log(reversedInput, userInput)
 
 
 
-** SQL (SORT)
+** SQL (LEARN)
 
-** MariaDB (SORT)
+*Recap List*
 
-** NodeJS (SORT)
+1. What is SQL, and what is it used for
+2. What is the difference between the WHERE clause and the HAVING clause
+3. What is a primary key in SQL
+4. What is a foreign key in SQL, and why is it used
+5. What is the purpose of the SELECT statement in SQL
+6. What does the DISTINCT keyword do in SQL
+7. What is the difference between DELETE, TRUNCATE, and DROP in SQL
+8. What is the purpose of the ORDER BY clause in SQL
+9. What is the purpose of the GROUP BY clause in SQL
+10. What are aggregate functions in SQL, and what are some examples
+11. What is an INNER JOIN in SQL, and when would you use it
+12. What is a LEFT JOIN in SQL, and how is it different from an INNER JOIN
+13. What is the difference between UNION and UNION ALL in SQL
+14. What does NULL mean in SQL
+15. Why do we use IS NULL instead of = NULL in SQL
+16. What is a subquery in SQL, and when would you use one
+17. What is the difference between IN and EXISTS in SQL
+18. What is an index in SQL, and why is it useful
+19. What is a Common Table Expression (CTE) in SQL
+20. What is the logical order in which SQL clauses are executed
 
-** React (SORT)
+*Recap Answers*
+
+1. SQL stands for Structured Query Language. It is used to communicate with and manage relational databases
+   SQL can be used to retrieve, insert, update, and delete data, as well as create and modify database structures
+
+2. WHERE filters individual rows before grouping takes place, while HAVING filters groups after GROUP BY has been applied
+
+3. A primary key is a column, or combination of columns, that uniquely identifies each row in a table.
+   It must contain unique values and cannot contain NULL values
+
+4. A foreign key is a column that creates a relationship between two tables.
+   It usually references the primary key of another table and helps maintain relationships between tables
+
+5. SELECT is used to retrieve data from a database
+
+6. DISTINCT removes duplicate values from the results returned by a query
+
+7. DELETE removes selected rows and can use a WHERE condition. TRUNCATE removes all rows while keeping the table structure
+   DROP removes the entire table, including its structure
+
+8. ORDER BY is used to sort query results. ASC sorts in ascending order, while DESC sorts in descending order
+
+9. GROUP BY groups rows with the same values. It is commonly used with aggregate functions such as COUNT(), SUM(), and AVG()
+
+10. Aggregate functions perform calculations on multiple rows. Common examples are COUNT(), SUM(), AVG(), MIN(), and MAX()
+
+11. An INNER JOIN combines two tables and returns only the rows where a matching value exists in both tables
+
+12. A LEFT JOIN returns all rows from the left table, including rows that do not have a match in the right table
+    An INNER JOIN only returns rows where a match exists in both tables
+
+13. UNION combines query results and removes duplicates. UNION ALL combines query results but keeps duplicates
+
+14. NULL represents a missing, unknown, or unavailable value. It is not the same as 0, an empty string, or FALSE
+
+15. We use IS NULL because NULL represents an unknown value and cannot be compared using =
+
+    WHERE column_name IS NUL
+
+    To find values that are not NULL
+
+    WHERE column_name IS NOT NUL
+
+16. A subquery is a query inside another query. It is useful when the result of one query is needed by another query
+
+17. IN checks whether a value matches a value in a list or sub-query result
+    EXISTS checks whether a subquery returns at least one row
+
+18. An index is a database structure that helps the database find data more quickly
+    Indexes can improve search performance but require additional storage and can slow down INSERT, UPDATE, and DELETE operations
+
+19. A Common Table Expression (CTE) is a temporary named result set that can be referenced within a query
+    It is created using the WITH keyword and can make complex queries easier to read
+
+20. The logical order of SQL execution is approximately:
+
+    FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
+
+
+** MariaDB (LEARN)
+
+
+*Recap List*
+
+1. What is MariaDB, and how is it related to MySQL
+2. What is the difference between MariaDB and a relational database
+3. How do you create a new database in MariaDB
+4. How do you create a new table in MariaDB
+5. What is the purpose of the AUTO_INCREMENT attribute in MariaDB
+6. How do you insert data into a table in MariaDB
+7. How do you update existing data in a MariaDB table
+8. How do you delete data from a MariaDB table
+9. What is the purpose of the LIMIT clause in MariaDB
+10. How can you find the number of rows in a MariaDB table
+
+*Recap Answers*
+
+1. MariaDB is an open-source relational database management system (RDBMS)
+   It was originally created as a fork of MySQL and is highly compatible with MySQL. It uses SQL to store, manage, and retrieve data
+
+2. MariaDB is a relational database management system, while a relational database is the type of database that
+   stores data in structured tables consisting of rows and columns. MariaDB is the software used to create and manage those databases
+
+3. You can create a new database using the CREATE DATABASE statement
+
+    CREATE DATABASE company;
+
+    You can then select the database using:
+
+    USE company;
+
+4. You can create a new table using the CREATE TABLE statement
+
+    For example:
+
+    CREATE TABLE employees (
+        employee_id INT PRIMARY KEY,
+        name VARCHAR(100),
+        salary DECIMAL(10,2)
+    );
+
+    This creates an employees table with three columns
+
+5. AUTO_INCREMENT automatically generates a new number for a column when a new row is inserted. It is commonly used with primary keys
+
+    For example:
+
+    CREATE TABLE employees (
+        employee_id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100)
+    );
+
+    The database will automatically generate values such as 1, 2, 3, and so on
+
+6. You can insert data into a MariaDB table using the INSERT INTO statement
+
+    For example:
+
+    INSERT INTO employees (name, salary)
+    VALUES ('John', 35000);
+
+    This adds a new employee to the table
+
+7. You can update existing data using the UPDATE statement together with the SET and WHERE clauses
+
+    For example:
+
+    UPDATE employees
+    SET salary = 40000
+    WHERE employee_id = 1;
+
+    The WHERE clause specifies which record should be updated
+
+8. You can delete data using the DELETE FROM statement
+
+    For example:
+
+    DELETE FROM employees
+    WHERE employee_id = 1;
+
+    The WHERE clause specifies which row should be deleted. Without a WHERE clause, the statement can delete all rows from the table
+
+9. The LIMIT clause restricts the number of rows returned by a query
+
+    For example:
+
+    SELECT *
+    FROM employees
+    LIMIT 10;
+
+    This returns a maximum of 10 rows
+
+    It is often useful when you only want to retrieve a small number of records
+
+10. You can use the COUNT() aggregate function to find the number of rows in a table
+
+    For example:
+
+    SELECT COUNT(*)
+    FROM employees;
+
+    This returns the total number of rows in the employees table
+
+
+** NodeJS (LEARN)
+
+
+*Recap List*
+
+1. What is Node.js, and what is it used for
+2. What is the difference between Node.js and JavaScript
+3. What is npm, and what is it used for in Node.js
+4. What is the purpose of the package.json file in a Node.js project
+5. What is a Node.js module, and how can you import one
+6. What is the difference between require() and import in Node.js
+7. What is the Node.js event loop, and why is it important
+8. What is Express.js, and why is it commonly used with Node.js
+9. What is middleware in Node.js and Express.js
+10. How do you create a basic HTTP server using Node.js
+
+*Recap Answers*
+
+1. Node.js is a JavaScript runtime environment that allows you to run JavaScript outside of a web browser
+   It is commonly used to build backend applications, APIs, web servers, and real-time applications
+
+2. JavaScript is a programming language, while Node.js is a runtime environment that allows JavaScript to run outside the browser
+
+   For example, JavaScript can run in a browser to control a webpage, while Node.js can run JavaScript on a server to handle requests,
+   access databases, and create APIs.
+
+3. npm stands for Node Package Manager. It is used to install, manage, and share packages and libraries that can be used in Node.js projects
+
+    For example:
+
+    npm install express
+
+    This installs the Express package into your project
+
+4. package.json contains important information about a Node.js project
+
+    It can include:
+
+    The project name and version.
+    Dependencies.
+    Development dependencies.
+    Scripts.
+    Project configuration.
+
+    For example:
+
+    {
+    "name": "my-app",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node app.js"
+    }
+    }
+
+5. A Node.js module is a reusable piece of code that can be imported and used in another file
+
+    Node.js includes built-in modules such as fs, http, and path
+
+    For example:
+
+    const fs = require('fs');
+
+    You can also create your own modules and install third-party modules using npm
+
+6. require() is the traditional CommonJS way of importing modules in Node.js
+
+    Example:
+
+    const express = require('express');
+
+    import is the ES Module syntax.
+
+    Example:
+
+    import express from 'express';
+
+    Modern Node.js supports both approaches, although they use different module systems and configuration
+
+7. The Node.js event loop allows Node.js to handle many operations asynchronously without blocking the main thread
+
+For example, when Node.js needs to read a file or wait for a database response, it can continue handling other tasks
+instead of stopping and waiting for that operation to finish
+
+   This is one of the reasons Node.js is well suited to applications that handle many simultaneous requests
+
+8. Express.js is a popular web framework for Node.js. It makes it easier to create web servers and APIs
+
+    For example:
+
+    const express = require('express');
+
+    const app = express();
+
+    app.get('/', (req, res) => {
+        res.send('Hello World');
+    });
+
+    app.listen(3000);
+
+    Express provides features such as routing, middleware, request handling, and response handling
+
+9. Middleware is a function that runs between receiving a request and sending a response
+
+    Middleware can be used for things such as:
+
+    Authentication
+    Logging
+    Parsing JSON
+    Error handling
+    Checking permissions
+
+10. You can create a basic HTTP server in Node.js using the built-in http module
+
+    Example:
+
+    const http = require('http');
+
+    const server = http.createServer((req, res) => {
+        res.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+
+        res.end('Hello World');
+    });
+
+    server.listen(3000);
+
+    This creates a server that listens on port 3000 and responds with "Hello World" when a request is received
+
+
+** Setting up React using Vite
+
+*Recap List*
+
+1. What is Vite
+2. What is React
+3. How do you set up a React app with Vite
+4. What does create & vite@latest mean
+5. What configuration do I choose when prompted by Vite
+6. What's the next step
+7. In VS Code, you need to now install dependencies, how & why
+8. Then what
+9. What is Laravel & how does it compare to React
+
+*Recap Answers*
+
+1. A tool used to create a folder structure for building an interactive website (i.e. the front-end)
+   It also configures the folder so I can use a JavaScript library (i.e. React) or a framework
+   It provides a development server -> creates a local version of the website I can view in my browser whilst working (like 'live server' in VS Code)
+
+2. A JavaScript library for building user interfaces -> i.e. interactive websites (front-end)
+   It gives me JavaScript functions but also offers rules for building the website (i.e. so there's structure to it)
+
+3. cd to where I want the Vite folder structure
+   You run: npm create vite@latest <project-name>
+
+4. create      -> tells npm I want to create a new project
+   vite@latest -> tells npm which creation tool to use (vite -> vite project generator; @latest -> newest available version)
+
+5. Framework -> React
+   Variant   -> JavaScript + React Compiler (the compiler automatically optimises my React code)
+   Linter    -> ESLint - this is the default for a JS/React ecosystem (a linter is a tool that checks grammar of programming syntax)
+
+6. Open the project in VS Code
+
+7. npm install (in the <project name> directory)
+   This reads the package.json & download everything the project needs
+
+   So, when you create the files & folder structure with vite, it installs package.json
+   which includes what I need (i.e. React, React DOM, vite, etc...)
+   Then, npm install, reads this package.json & actually downloads those tools in a directory called node_modules/
+
+8. npm run dev -> starts the Vite development server, i.e. the local version of my website
+
+9. Laravel is a back-end framework which uses PHP language
+   React focuses on the front-end & uses JavaScript
+   Laravel is a framework while React is a library
+
+
+** React Introduction
+
+*Recap List*
+
+1. In a Vite & React environment, where do I write code for the index.html & what's in the index.html
+2. What is in the <script> element of the index.html
+3. What's in the main.jsx
+4. What is JSX
+5. Create a function in JSX, which can be called to give the element <h2> & <p> in a <div> container & then export the function
+6. Import & call the new function
+7. Where do each of these lines of code go
+8. What's the HTML rule in JSX 
+9. What's the attribute value rule in JSX
+10. How do you use the image man.png in JSX
+11. What is the 1 parent element rule in JSX
+
+*Recap Answers*
+
+1. The index.html contains a <div id="root"></div> which links to the src/main.jsx using the id
+   This is an empty container where React will place the user interface of the website
+   
+   I write code in src/App.jsx, which is loaded by the src/main.jsx & inserted into the index.html
+
+2. <script type="module" src="/src/main.jsx"></script>
+   This tells the browser to load & run main.jsx
+
+3. It imports the code from App.jsx & also retrieves the code from index.html (so it can insert the App.jsx code)
+   It does this with: document.getElementById('root') -> linking to the id in the <div> element from the index.html
+
+4. JavaScript XML -> allows you to write HTML-like code inside JavaScript
+                     its used in React to describe what the user interface should look like
+                     its pretty much specific to React (or got popularised by it)
+
+5. function ProfileCard() {
+      return (
+         <div>
+            <h2>Alex</h2>
+            <p>Developer</p>
+         </div>
+      )
+   }
+
+   export default ProfileCard
+
+6. import ProfileCard from "./components/ProfileCard"
+   <ProfileCard />      -> will produce the div container with the h2 & p elements inside
+
+7. The components (i.e. the function) should be within a self-made _./components/ directory_ (next to the main.jsx & App.jsx) & exported from here
+   The function is imported & called within _App.jsx_
+
+8. You can use every HTML element & create your own (i.e. <div>, <img> & the function above is a self-made one)
+
+9. Attributes values are usually enclose in speech marks (src="https://www.google.com") but this will be treated as a normal string in JSX
+   You call attributes with curly brackets (i.e. instead of src="https://www.google.com" you do src={user.googleLink)
+       Then you can create the 'user' variable & change the link whenever & it will be updated for the html
+   
+10. You must import images by: import profilePicUser from "./profiles/man.png";
+    The variable profilePicUser (can be anything) now associates to this image
+
+11.
+
 
 * Elisp, Bash, JavaScript & Python (EVERYDAY)
 
@@ -1492,11 +1914,48 @@ console.log(reversedInput, userInput)
     -i -> ignore case sensitivity
 
 
-* Linux (ARCH EVERYDAY -> add the file system, my desktop environment & troubleshooting questions)
+* Linux (ARCH EVERYDAY -> LEARN 2 SECTIONS; LEARN 4.5)
 
-** Troubleshooting (SORT WHOLE SECTION)
+** Troubleshooting Workflow (LEARN)
 
+*Recap List*
 
+1. What is the first step after an issue occurs
+2. What questions should you ask to identify the problem? Give an example
+3. Where should you look for error messages
+4. What is journalctl and why would you use it
+5. What are 3 common journalctl commands
+6. After a brief search, there's no clear help, what can I do from here
+7. How do I test this hypothesis
+8. I'm stuck after trying a few changes, what can I do now
+
+*Recap Answers*
+
+1. Narrow down the issue to be as specific as possible
+   For example: 'Spotify crashes immediately after opening' is much clearly than 'Spotify doesn't work'
+
+2. Ask yourself: Can I reproduce the problem? What changed before the issue started?
+   For Example: If Spotify crashes -> Does it crash every time?
+                                      Does it crash when launched with the shortcut & terminal?
+                                      Did the problem start after a system update or configuration change?
+
+3. Check the terminal first
+   Run the application (Spotify) from the terminal, it will return to stdout any errors
+
+4. journalctl -> a command-line tool for viewing the system journal, this is a database of log messages maintained by systemd-jornald
+                 essentially its a history of what your system has been doing
+
+   I can use the command 'journalctl' with flags to search for specific log messages that might indicate what's caused the issue
+
+5. journalctl -b           -> shows everything that has happened since the computer last booted (boot messages, services starting, errors, etc...)
+   journalctl -xe          -> shows the most recent log messages (x = include extra explanations; e = jump to the end, i.e. newest messages)
+   journalctl -u <SERVICE> -> shows only log messages for a specific app (i.e. journalctl -u spotify-launcher -> specifically for this app)
+
+6. From a hypothesis or guess on what has caused the issue
+
+7. Change 1 simple thing each time, test it again -> if it did not work change another thing
+
+8. Google it, use the specific issue (Spotify crashes when I open it using the terminal) & any error messages found
 
 
 ** Arch Questions before Set Up
@@ -1787,7 +2246,7 @@ console.log(reversedInput, userInput)
     The kernel doesn't know: how to unlock LUKS, find btrfs filesystem, which modules need loading first -> it needs the initramfs
 
 
-** Bandit Game
+** Bandit Game (ADD MORE)
 
  *Recap List*
 
@@ -1856,7 +2315,132 @@ console.log(reversedInput, userInput)
 14. 
 
 
-** The File System (ADD -> questions on what each directory from root does)
+** The File System (LEARN)
+
+*Recap List*
+
+1. What is the purpose of the /home directory in Linux
+2. What is the purpose of the /etc directory in Linux
+3. What is the purpose of the /var directory in Linux
+4. What is the purpose of the /tmp directory in Linux
+5. What is the purpose of the /usr directory in Linux
+6. What is the purpose of the /bin directory in Linux
+7. What is the purpose of the /sbin directory in Linux
+8. What is the purpose of the /dev directory in Linux
+9. What is the purpose of the /proc directory in Linux
+10. What is the purpose of the /sys directory in Linux
+11. What is the purpose of the /boot directory in Linux
+12. What is the purpose of the /run directory in Linux
+13. What is the purpose of the /lib directory in Linux
+14. What is the difference between an absolute path and a relative path in Linux
+15. What is the difference between a hard link and a symbolic link in Linux
+16. How do you check if something has a symbolic link (check if /bin is a link to /usr/bin)
+
+*Recap Answers*
+
+1. The /home directory normally contains the personal directories of regular users
+
+    For example:
+
+    /home/alex
+    /home/sam
+
+    A user's home directory typically contains their personal files, documents, downloads, and configuration files
+
+2. The /etc directory contains system-wide configuration files
+
+    Examples include configuration files for services, networking, users, and other system settings
+
+    For example:
+
+    /etc/hosts
+    /etc/passwd
+    /etc/ssh/
+
+3. The /var directory contains variable data, meaning data that is expected to change while the system is running
+
+    It commonly contains things such as:
+
+    Log files
+    Spool files
+    Caches
+    Application data
+
+    For example:
+
+    /var/log/
+
+    contains many system and application log files
+
+4. The /tmp directory is used to store temporary files.
+
+    Programs can use /tmp when they need somewhere to temporarily store data. Files in /tmp may be removed automatically
+    when the system is restarted or according to system cleanup policies
+
+5. The /usr directory contains many user-space programs, libraries, documentation, and other read-only/shareable data
+
+    Common directories include:
+
+    /usr/bin
+    /usr/lib
+    /usr/share
+
+    On modern Linux systems, /usr often contains much of the software that used to be placed directly in /bin, /sbin, and related directories
+
+6. Traditionally, /bin contains essential executable programs required for basic system operation
+
+    Examples of commands historically found there include:
+
+    ls
+    cp
+    mv
+    cat
+
+    On many modern Linux distributions, /bin is a symbolic link to /usr/bin
+
+7. The /sbin directory traditionally contains system-administration executables, many of which are intended for system management
+   On many modern Linux distributions, /sbin is a symbolic link to /usr/sbin
+
+8. The /dev directory contains device files that represent hardware and virtual devices
+   For example, disks, terminals, and other devices can be represented here
+
+9. The /proc directory is a virtual filesystem that provides information about running processes and the Linux kernel
+   For example, /proc/cpuinfo provides information about the CPU
+
+10. The /sys directory is another virtual filesystem that provides information about hardware, devices, drivers, and the Linux kernel
+
+11. The /boot directory contains files required to boot the Linux operating system
+    This can include the Linux kernel, initial RAM filesystem files, and bootloader-related files
+
+12. The /run directory contains temporary runtime data created since the system booted
+    This can include process IDs, sockets, and other information used by running services
+
+13. The /lib directory traditionally contains essential shared libraries and kernel modules required by programs and the operating system
+    On many modern Linux systems, /lib is a symbolic link into /usr/lib
+
+14. An absolute path starts from the root directory / and gives the complete path of a file or directory.
+
+     Example:
+     ~/home/alex/documents/file.txt~
+
+     A relative path starts from your current directory
+
+     Example:
+     ~cd documents~ -> uses a relative path as it knows to include the path your currently in & add /documents
+
+15. A hard link is another directory entry that refers to the same underlying file data
+
+     A symbolic link, or symlink, is a special file that points to another file or directory
+
+     You can create a symbolic link using:
+
+     ~ln -s original.txt shortcut.txt~
+
+     If the original file is removed, a symbolic link can become a broken link because it points to something that no longer exists
+
+16. ls -ls /bin
+    lrwxrwxrwx 1 root root 7 ... /bin -> usr/bin
+    This shows /bin is a symbolic link to usr/bin
 
 
 ** My Desktop Environment (Add questions about what apps I'm using & what they do)
@@ -1869,9 +2453,112 @@ console.log(reversedInput, userInput)
 
 
 
-* Emacs (3 SECTIONS NEED RECAP LISTS)
 
-** Troubleshooting (SORT)
+
+* Emacs (SORT 1 SECTIONS; LEARN 5.1)
+
+** Troubleshooting (LEARN)
+
+*Recap List*
+
+1. How do you check which version of Emacs is installed
+2. What should you check if Emacs cannot find a file
+3. What should you do if Emacs freezes or becomes unresponsive
+4. How do you check if a package is installed in Emacs
+5. What should you check if an Emacs package is not working
+6. How do you reload your Emacs configuration file
+7. What should you check if Emacs keybindings are not working
+8. How do you find out what a keyboard shortcut does in Emacs
+9. What should you do if Emacs opens in the wrong mode or major mode
+10. How do you troubleshoot Emacs startup errors
+
+
+*Recap Answers*
+
+1. emacs --version
+
+    Displays the version of Emacs currently installed
+
+2. Check:
+    The file path is correct
+    The file actually exists
+    You have permission to access it
+
+3. Try: Ctrl + g
+
+    This cancels the current command
+
+    If Emacs is still frozen, close it from another terminal:
+        pkill emacs
+
+4. Open Emacs and run:
+        M-x list-packages
+
+    This displays installed packages and available packages
+
+5. Check:
+
+    The package is installed
+    The package is enabled in your configuration file
+    Required dependencies are installed
+    Emacs has been restarted
+
+    Refresh package information using:
+        M-x package-refresh-contents
+
+6. Reload the configuration file using:
+
+        M-x load-file
+
+    Then select your configuration file, usually:
+        ~/.emacs
+
+    or:
+        ~/.emacs.d/init.el
+
+7. Check:
+
+    You are using the correct key combination
+    The current mode has not changed the shortcut
+    Another package has not overwritten the keybinding
+    Your configuration file does not contain conflicting settings
+
+    Check the current mode using:
+        M-x describe-mode
+
+8. Use: Ctrl + h k
+
+    Then press the keyboard shortcut you want to investigate
+
+    Emacs will display the command linked to that key combination
+
+    Example:
+        Ctrl + h k Ctrl + x Ctrl + s
+
+    shows the command used for saving a file
+
+9. Check the current major mode using:
+
+        M-x describe-mode
+
+    You can manually change the mode using:
+        M-x mode-name
+
+    Example:
+        M-x python-mode
+
+    switches the file into Python mode
+
+10. Start Emacs without loading your configuration:
+
+        emacs -q
+
+    If Emacs works normally, the issue is likely in your configuration file
+
+    For detailed startup errors:
+        emacs --debug-init
+
+    This displays errors that occur while Emacs is starting
 
 
 ** Org Mode
@@ -2096,7 +2783,7 @@ Give an example for each of the below (otherwise it's a little confusing)
 18. w
 
 
-** Functionality (ADD)
+** Functionality (SORT)
 
  *Recap List*
 
@@ -2111,7 +2798,7 @@ Give an example for each of the below (otherwise it's a little confusing)
    package-install -> installs a package from a package repository
  
    
-** Packages
+** Packages (ADD MORE)
 
  *Recap List*
 
@@ -2250,15 +2937,118 @@ Give an example for each of the below (otherwise it's a little confusing)
         "x is greater than 10"
         "x is equal to 10 or less")
 
-* General Computing (COMPLETE EVERY SECTION)
 
-** Data Structures & Algorithms
+* General Computing (LEARN 6.1, 6.2, 6.3 & 6.4)
+
+** Data Structures & Algorithms (LEARN)
+
+*Recap List*
 
 
-** Terms & Keywords
+
+*Recap List*
 
 
-** Git
+** Terms & Keywords (LEARN)
+
+*Recap List*
+
+1. What is API
+2. What is TCP
+3. What is UDP
+4. What is DNS
+5. What is FTP
+6. What is SMTP
+7. What does parse mean
+8. What is XML
+
+*Recap Answers*
+
+1. An API (Application Programming Interface) is a way for different software applications to communicate with each other
+
+    It defines a set of rules and methods that allow one program to request data or services from another program
+
+    Example:
+        A weather application uses an API to request weather information from a weather service and display it to the user
+
+2. TCP (Transmission Control Protocol) is a networking protocol that provides reliable communication between devices over a network
+
+    TCP:
+        Ensures data arrives correctly
+        Checks for errors
+        Resends missing data
+        Keeps packets in the correct order
+
+    Examples of TCP usage:
+        Web browsing
+        Email
+        File transfers
+
+    TCP focuses on accuracy and reliability rather than speed
+
+3. UDP (User Datagram Protocol) is a networking protocol that sends data quickly without guaranteeing delivery
+
+    UDP:
+        Does not check whether packets arrive
+        Does not resend lost packets
+        Has less overhead than TCP
+        Is faster but less reliable
+
+    Examples of UDP usage:
+        Online gaming.
+        Video streaming
+        Voice calls
+
+    UDP focuses on speed and low delay rather than reliability
+
+4. DNS (Domain Name System) is a system that converts human-readable domain names into IP addresses
+
+    Example:
+        www.google.com
+
+    is translated into an IP address that computers use to locate the correct server
+
+    DNS works like a phonebook for the internet because it allows users to use names instead of remembering numerical IP addresses
+
+5. FTP (File Transfer Protocol) is a protocol used to transfer files between computers over a network
+
+    FTP can be used to:
+        Upload files to a server
+        Download files from a server
+        Manage website files
+
+    Example:
+        A web developer may use FTP to upload website files to a hosting server
+
+    A more secure alternative is SFTP (Secure File Transfer Protocol), which encrypts the connection
+
+6. SMTP (Simple Mail Transfer Protocol) is a protocol used for sending emails between email servers
+
+    SMTP is responsible for transferring outgoing emails from the sender's mail server to the recipient's mail server
+
+    Example:
+        When you send an email, SMTP handles the process of delivering the message to the correct email server
+
+    Other email protocols:
+        IMAP → used for retrieving and managing emails
+        POP3 → used for downloading emails
+
+7. Parsing means analysing and converting data into a structure that a computer program can understand and process
+
+    A program parses data by breaking it down into meaningful parts
+
+    Examples of data that can be parsed:
+        JSON files
+        XML documents
+        User input
+        Log files
+
+8. XML (eXtensible Markup Language) is a markup language used to store, structure, and transfer data between systems
+
+    It uses custom tags to describe the data and its meaning
+
+
+** Git (LEARN)
 
  *Recap List*
 
@@ -2267,6 +3057,11 @@ Give an example for each of the below (otherwise it's a little confusing)
 3. If I have a folder connect to a GitHub remote repository, how do I update the files
 4. What would I do if the local repository is connected to the wrong remote repository
 5. Explain 'git push -u origin main'
+6. What is the purpose of .gitignore in a Git repository
+7. What is the difference between git fetch and git pull
+8. What is a merge conflict in Git, and how do you resolve one
+9. What is the difference between git reset and git revert
+10. Go through the quick memory quide
 
    
  *Recap Answers*
@@ -2291,14 +3086,396 @@ Give an example for each of the below (otherwise it's a little confusing)
    origin   -> name of the remote repository
    main     -> the local branch you're pushing
 
- 
+6. .gitignore is a file that tells Git which files or folders not to track
 
-** Regex
+    It is commonly used for:
+        Passwords/secrets
+        Temporary files
+        Dependencies
+        Configuration files
+
+    Example:
+        node_modules/
+        .env
+
+7. git fetch and git pull both download changes from a remote repository
+
+    git fetch:
+        Downloads changes but does not apply them
+        Lets you review changes before merging
+
+    git pull:
+        Downloads changes and automatically merges them into your current branch
+
+    git pull is basically:
+        git fetch + git merge
+
+8. A merge conflict happens when Git cannot automatically combine changes because two branches have edited the same part of a file differently
+
+    To resolve it:
+        Open the conflicting file
+        Choose which changes to keep
+        Remove the conflict markers
+        Commit the resolved changes
+
+9. git reset and git revert both undo changes, but they work differently
+
+  git reset:
+      Moves the branch backwards
+      Can remove commits from history
+      Mainly used for local changes
+
+  git revert:
+      Creates a new commit that undoes a previous commit
+      Keeps the existing history
+      Safer for shared repositories
+
+10. Quick memory guide:
+
+        git add    → prepare changes
+        git commit → save changes locally
+        git push   → upload changes
+        .gitignore → ignore unwanted files
+        git fetch  → download changes only
+        git pull   → download + merge
+        git reset  → move history backwards
+        git revert → undo with a new commit
 
 
-* Python (COMPLETE PYGAME)
+** Regex (LEARN)
 
-** Mini Problems
+*Recap List*
+
+1. What is a regular expression (Regex), and what is it used for
+2. What is the difference between a literal character and a special character in Regex
+3. What does the . (dot) character mean in Regex
+4. What do the ^ and $ symbols mean in Regex
+5. What are character classes in Regex, and how are they written
+6. What is the difference between [abc] and [^abc] in Regex
+7. What do the Regex quantifiers *, +, and ? mean
+8. What do the quantifiers {n}, {n,}, and {n,m} mean in Regex
+9. What is the difference between greedy and lazy matching in Regex
+10. What are capturing groups in Regex, and how are they created
+11. What is the difference between \d, \w, and \s in Regex
+12. What are Regex flags, and what are some common examples
+13. How would you write a Regex pattern to validate an email address
+14. How would you use Regex to find and replace text
+15. What is the difference between match, search, and replace when using Regex
+
+*Recap Answers*
+
+1. A regular expression (Regex) is a sequence of characters used to define a search pattern
+   It is used to find, validate, extract, or replace text based on specific rules
+
+    Common uses include:
+
+    Validating emails
+    Finding phone numbers
+    Searching logs
+    Replacing text
+    Extracting information from large amounts of data
+
+        Example:
+        cat
+
+    This matches the exact text "cat"
+
+2. A literal character matches itself exactly
+
+        Example:
+        hello
+
+    Matches:
+    hello
+
+    A special character has a special meaning in Regex
+
+    Examples:
+    .  *  +  ?  ^  $  [ ]
+
+        For example:
+        .
+
+    does not mean a literal dot — it means "any character"
+
+    To match a real dot, you escape it:
+    \.
+
+3. The . (dot) character matches any single character except a newline (unless a special flag is enabled)
+
+        Example:
+        h.t
+
+    Matches:
+    hat
+    hot
+    hit
+
+    but not:
+    heat
+
+    because the dot only represents one character
+
+4. The ^ and $ symbols are anchors
+
+    ^ means the beginning of a string
+
+        Example:
+        ^Hello
+
+    Matches:
+    Hello world
+
+    but not:
+    Say Hello
+
+    $ means the end of a string.
+
+        Example:
+        world$
+
+    Matches:
+    Hello world
+
+    but not:
+    world today
+
+5. Character classes allow you to match one character from a set of possible characters
+
+    They are written using square brackets:
+
+    [abc]
+
+    This matches:
+    a
+    b
+    c
+
+        Example:
+        [0-9]
+
+    Matches any single digit from 0 to 9
+
+6. [abc] matches any character listed inside the brackets
+
+        Example:
+        [abc]
+
+    Matches:
+    apple
+    ball
+    cat
+
+    [^abc] means not a, b, or c
+
+        Example:
+        [^0-9]
+
+    Matches any character that is not a number
+
+7. Regex quantifiers specify how many times a character or group can appear
+
+   * = zero or more times
+
+        Example:
+        ab*
+
+    Matches:
+    a
+    ab
+    abb
+    abbb
+
+    + = one or more times
+
+        Example:
+        ab+
+
+    Matches:
+    ab
+    abb
+    abbb
+
+    but not:
+    a
+
+    ? = zero or one time
+
+        Example:
+        colou?r
+
+    Matches:
+    color
+    colour
+
+8. Quantifiers with curly brackets specify exact amounts
+
+    {n} = exactly n times
+
+        Example:
+        \d{4}
+
+    Matches exactly four digits:
+    2026
+
+    {n,} = at least n times
+
+        Example:
+        \d{2,}
+
+    Matches:
+    12
+    123
+    12345
+
+    {n,m} = between n and m times
+
+        Example:
+        \d{2,4}
+
+    Matches:
+    12
+    123
+    1234
+
+9. A greedy match tries to match as much text as possible
+
+        Example:
+        <.*>
+
+        Given:
+        <a>Hello</a>
+
+        It may match:
+        <a>Hello</a>
+
+    A lazy match tries to match as little as possible
+
+    You create it by adding ?
+
+        Example:
+        <.*?>
+
+    It matches:
+    <a>
+
+    then stops at the first possible match
+
+10. Capturing groups allow you to group parts of a Regex and remember the matched text
+
+    They are created using parentheses:
+    (\d{3})-(\d{4})
+
+        Example:
+        123-4567
+
+    The Regex captures:
+    Group 1: 123
+    Group 2: 4567
+
+    Groups are useful when extracting specific parts of text
+
+11. \d matches any digit:
+
+    Equivalent to:
+    [0-9]
+
+        Example:
+        123
+
+    \w matches word characters:
+    letters
+    numbers
+    underscore
+
+        Equivalent to:
+        [A-Za-z0-9_]
+
+        \s matches whitespace
+
+    Examples:
+    space
+    tab
+    newline
+
+12. Regex flags modify how a pattern behaves
+
+    Common flags include:
+    i — case insensitive
+
+        Example:
+        hello/i
+
+    Matches:
+        Hello
+        HELLO
+        hello
+
+    g — global search (find all matches)
+    m — multiline mode
+
+13. A basic email validation Regex could be:
+
+    ^[\w.-]+@[\w.-]+\.\w+$
+
+    Explanation:
+    ^ → start of string
+    [\w.-]+ → username characters
+    @ → required @ symbol
+    [\w.-]+ → domain
+    \. → literal dot
+    \w+ → domain extension
+    $ → end of string
+
+    Example matches:
+    alex@example.com
+    user123@test.co.uk
+
+14. Regex can be used with replace functions to find text and substitute it
+
+        Example in JavaScript:
+        let text = "Hello World";
+
+        text.replace(/World/, "Linux");
+
+        Result:
+        Hello Linux
+
+    Regex makes replacements more powerful by allowing patterns instead of exact text
+
+15. match() finds text that matches a Regex pattern and returns the matches
+
+        Example:
+        "abc123".match(/\d+/);
+
+        Returns:
+        123
+
+    search() finds the position of the first match.
+
+        Example:
+        "hello123".search(/\d/);
+
+        Returns:
+        5
+
+    replace() finds matching text and replaces it.
+
+        Example:
+        "hello123".replace(/\d+/,"456");
+
+        Returns:
+        hello456
+
+    So:
+    match → find and return matches
+    search → find the location
+    replace → find and substitute text
+
+
+* Python
+
+** Mini Problems (ADD MORE)
 
  *Recap List*
 
@@ -2420,7 +3597,7 @@ Give an example for each of the below (otherwise it's a little confusing)
    A class attribute is if the self.name = "max", so every object will have the same name
 
 
-** Magic Methods
+** Magic Methods (ADD MORE)
 
  *Recap List*
 
@@ -2451,7 +3628,7 @@ Give an example for each of the below (otherwise it's a little confusing)
    Think how I embed a console.log("this_function is working) in JavaScript, repr is like that but for a class, to check what's outputted 
 
 
-** Pygame
+** Pygame (ADD MORE)
 
  *Recap List*
 

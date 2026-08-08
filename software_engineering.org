@@ -1411,3 +1411,43 @@ State            -> An object that holds data & info related to a React componen
 Hooks            -> Let you use different React features from your components
 
 
+*Virtual DOM*
+
+In web development you use DOM to add, delete & change HTML elements (i.e. getElementById, textContent, innerHTML, etc...)
+This can be very taxing on the system to re-render the page every time, React has a solution to this
+It uses a _Virtual DOM_ -> efficient in memory representation of the actual HTML document
+
+It acts similar to a .swp Vim file, it has the main document downloaded, when a change occurs, the virtual DOM saves the change
+The virtual DOM then presents the webpage by comparing its change with the main document -> know as _reconciliation_
+
+So, you no longer reload the entire page, the virtual DOM records changes & compares changes to the original document to only change those parts
+
+
+*Reasons to use React*
+
+1. Build interactive websites easily
+2. Reusable pieces   -> it has built in functions (called components) for complicated thing
+3. Efficient updates -> i.e. the virtual DOM (it doesn't refresh the entire page every time there's a change)
+4. Large community
+5. Good for big projects -> React provides a structure to keep organised in a large project
+6. Learn once, use everywhere -> React can also be used to create mobile apps
+7. Job market demand -> Many companies use React
+8. Backed by Meta    -> React was created & is maintained by Meta
+
+
+*Setting up a React app with Vite*
+
+I need to download Vite -> through NPM
+
+Vite creates the folder structure & configures this structure to use React
+Now, I can access the React library (more specifically the JavaScript library) to build user interfaces (i.e. frontend)
+
+
+*Understanding & creating React elements*
+
+A React element is a plain JavaScript object that represents the DOM tree
+
+What is JSX -> JavaScript syntax expression
+               Its used so we can make React applications a lot quicker & easier
+
+** 

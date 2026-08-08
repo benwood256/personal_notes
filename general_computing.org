@@ -94,7 +94,6 @@ So, all of these should be called at once, to make it simpler for me
 3. GitHub push:  02_org_notes, .emacd.d, ~/.config/hypr/
 4.  
 
-
 * Terms & Keywords 
 
 ** Recap List
