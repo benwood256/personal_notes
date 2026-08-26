@@ -5,20 +5,25 @@ SUPER + h & l     -> left & right arrow keys
 
 * To Do List
 
-1. What is TTY (M-C-F2 at Login screen)
-2. Fix the lock screen crashing
 3. Find a nice looking login screen -> current one looks like its from the 2000s
 4. Add mouse goes invisible after 1 second of not using it
-5. Learn how file system mounting works in Linux
-6. Look into systemd, what is it? how does it work? what's it used for?
+5. Change temperature to celcius
+6. Rewrite the file system from root -> go into depth on what each file is used for (/usr, /bin, etc...) & create recap list
+7. Learn how file system mounting works in Linux
+8. Look into systemd, what is it? how does it work? what's it used for?
    Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
-7. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
-8. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
-9. Look into popular aliases or clever ones people have made
-10. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
-11. Understand AUR packages for Arch (why can yay, paru & others)
-12. Make a file containing backups for config files (eventually make a bash project to automatically do this)
+9. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+10. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
+11. Look into popular aliases or clever ones people have made
+12. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
+13. What can go wrong after an update, why this has happened & what topics I need to know about my system to troubleshoot
+14. More advanced understanding of package managers, how they work & Pac-Man specifically 
+    Also, alternative ways to install packages & how they work
+15. Troubleshoot order to fix Arch problems (after updates)
+   I've made a sub-header in Arch 'Debugging Arch issues' with sub-topics to learn for issues in Arch
+   Learn each section, make a new sub-header & fill with notes, then add to recap_list.org
+16. Make a file containing backups for config files (eventually make a bash project to automatically do this)
     & then link this config file backup to GitHub (store all my configs in one place -> easier)
 
 

@@ -1450,4 +1450,29 @@ A React element is a plain JavaScript object that represents the DOM tree
 What is JSX -> JavaScript syntax expression
                Its used so we can make React applications a lot quicker & easier
 
-** 
+** Conditional Rendering
+
+Allows you to use JavaScript expressions to render elements based on a condition
+It works similar to the way conditional statements in JavaScript work (i.e. if statements)
+
+const element = (
+    <div>
+        {person === "Dave" ? (       // if statement
+            <p>Hi, Dave!</p>       // if condition
+        ) : (
+            <p>Hi, John!</p>       // else condition
+        )}
+    </div>
+);
+
+If the person is Dave, output -> Hi Dave
+If the person isn't Dave      -> Hi John
+
+** Functional Components
+
+A JavaScript function that accepts properties as an argument & returns a React element
+I.e. it's just making your own function that can be export & then imported and called in a .jsx script
+
+
+** Event handling
+

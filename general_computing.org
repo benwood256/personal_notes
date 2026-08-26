@@ -15,6 +15,7 @@
    Then, on GitHub, using other people's code, go to old versions before they patched bugs & practice patching them manually
    did I do the same patches as the author? -> which one was shorter/easier
 10. Learn a little bit of regex (used in Bash & Vim) -> really useful skill
+11. Explain how a terminal emulator work (differences between kitty, VSCode emulator & running a command in Emacs with :! vs Emacs terminal)
 
 
 * Project Workflow
@@ -86,6 +87,10 @@ When writing the code, I'd have to remember each time, what order each of these 
 
 So, all of these should be called at once, to make it simpler for me
    
+
+** Variable Naming Conventions
+
+Don't add an 's' to the end of variables (i.e. making them plural)
 
 * Backup List
 
