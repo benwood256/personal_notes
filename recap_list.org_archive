@@ -1,0 +1,56 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/john-doe/02_org_notes/recap_list.org
+
+
+* MongoDB Database
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-02 Wed 13:03
+:ARCHIVE_FILE: ~/02_org_notes/recap_list.org
+:ARCHIVE_OLPATH: Back-end Web Development
+:ARCHIVE_CATEGORY: recap_list
+:END:
+
+*Recap List*
+
+1. How is a Database Management System useful
+2. What type of database is MongoDB
+3. What is Mongoose
+4. What is the MERN stack
+5. What is each tool used for in the MERN stack
+6. Why is the Express & Node API in between the React app & the MongoDB database, why not just skip it
+7. How do Express & Node.js work together
+8. What is CRUD
+9. 
+
+
+*Recap Answers*
+
+1. It acts as an intermediary between the user & the database, handling requests & translating them into operations
+
+2. NoSQL -> a type of database designed to store & manage data in ways that doesn't rely on traditional relational table model used by SQL databases
+   Data in MongoDB is stored as JSON-like documents
+
+3. A library that sits on top of MongoDB's Node.js driver & abstracts some of the boilerplate code for you
+
+4. A stack of tools not a framework, its a full stack set of tools to create full web applications (front-end & back-end)
+   MongoDB + Express + React + Node.js
+
+5. React             -> create & manage the front-end (its a library)
+   Express & Node.js -> create the back-end API which we interact with from the front-end (i.e. authenticate logging in or out a user)
+   MongoDB           -> NoSQL database to store application data in (user data, blogs, etc...)
+
+6. The API layer essentially acts as a security layer, preventing anyone from accessing the data in the MongoDB database
+   Express checks: is the email valid, is the password strong enough, does this email already exist?
+                   without it, every single piece of data is immediately sent to MongoDB 
+
+7. Node.js is what runs your JavaScript server
+   Express is a library that makes building the server much easier
+   Express is installed into the Node.js project using: ~npm install express~
+
+8. Create Read Update & Delete
+
+9. 
+
+

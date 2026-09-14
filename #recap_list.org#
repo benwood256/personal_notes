@@ -2510,7 +2510,6 @@ Answer each of these broken down like this:
 14. Can the front-end and back-end run on different ports
 15. What is the difference between a library, framework, runtime & database in the MERN stack
 16. What role does npm play in a MERN project
-17. What is the overall flow between React, Express, Node.js, Mongoose & MongoDB
 
 
 *Recap Answers*
@@ -2616,8 +2615,6 @@ Answer each of these broken down like this:
         MongoDB
 
 ** Project Architecture
-
-Based on the To Do list project (Level 3 -> task 7)
 
 *Recap List*
 
