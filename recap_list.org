@@ -47,6 +47,7 @@
 10. Understand AUR packages for Arch (why can yay, paru & others)
 11. Make a file containing backups for config files (eventually make a bash project to automatically do this)
     & then link this config file backup to GitHub (store all my configs in one place -> easier)
+12. Watch & make notes on 'How the Shell Works' YouTube video
 
 ** Config File
 
@@ -1955,6 +1956,7 @@ function App() {
 3. Explain useState with an example
 4. Explain useRef with an example
 
+
 *Recap Answers*
 
 1. Allows you to build navigation menus & links -> the user can access different sections or view without having to load entirely new pages
@@ -2191,7 +2193,7 @@ function App() {
     It will display this via a table 
     
 
-** React Overview (ADD CONFUSING THINGS -> INCLUDING DUPLICATE QUESTIONS)
+** React Overview
 
 *Recap List*
 
@@ -2205,18 +2207,24 @@ function App() {
         ~</ThemeContext.Provider>~
 
 6. Some code or a file is highlighted yellow by the lint, how do we check what's wrong
-7. What is useNavigate() & how do I use it (SORT)
+7. What is useNavigate() & how do I use it
 8. Explain <> & </>
-9. Explain this code: (SORT)
+9. Explain this code:
         ~setTodos((currentTodos) => [~
                     ~...currentTodos,~
                     ~newTodo~
                 ~]);~
 
 10. Add a comment within the return() statement
-
-11. 
-
+11. What is the difference between <Link> and useNavigate()
+12. What does ${variable} do inside a template literal, e.g. className={`app ${theme}`}
+13. Write an if statement, if user exists, display the Dashboard element & if user doesn't exist display the Login element
+14. Write an if statement, if user exists, display Welcome back & if user doesn't exist display Please log in
+15. Explain using {}
+16. What is the difference between a React component and a normal JavaScript function
+17. Why does React require a key when using .map() to display a list
+18. What does event.preventDefault() do when submitting a form
+19. What is the purpose of onClick, onChange, and onSubmit
 
 *Recap Answers*
 
@@ -2225,8 +2233,9 @@ function App() {
                 setBalance on the left is the prop name, on the right is the function
                 Then in Deposit.jsx to bring in the function -> ~function Deposit ({ setBalance })~
    hook -> A react function that gives components special abilities (i.e. useState or useEffect)
+           All hooks start with 'use' (i.e. useState, useRef, etc...) any React functions not starting with 'use' are normal React functions
 
-2. A React hook which is imported from 'React'
+2. A React function which is imported from 'React'
    It allows you to create a context object (i.e. ~export const ThemeContext = createContext();~)
 
    This would be created within a 'context/' directory which contains functions to maintain context (i.e. theme to remain consistent across pages)
@@ -2234,6 +2243,10 @@ function App() {
 
 3. This is a React hook which is imported in from 'React'
    It lets a component access shared data from a 'Context' (i.e. for my workflow, a 'context/' component that used 'createContext')
+
+   createContext() -> creates the context
+   .Provider       -> provides the data
+   useContext()    -> reads the data
 
 4. You have the ThemeContext.jsx which has the ThemeContext content object which can retain what the theme has been set to
 
@@ -2246,13 +2259,20 @@ function App() {
    Then, the colour are set by css to change the colours displayed on the page
 
 5. ThemeContext was created earlier (~ThemeContext = createContext()~)
-   & .Provider is what allows you to provide data through that Context to components
+   .Provider is what allows you to provide data through that Context to components
    ~value={{ theme, setTheme }}~ -> you're making it so the variable theme & the function setTheme are both available to the children
    ~{children}~                  -> Render whatever is placed inside of ~<ThemeProvider>~
 
 6. npm run lint
 
-7. 
+7. A hook from React Router that allows JavaScript code to send the user to another route/page
+
+   First you import useNavigate
+   Then you create the navigate function (~const navigate = useNavigate();~)
+   Then in a function you can call navigate (~navigate("/dashboard");~)
+
+   useNavigate();          -> give you the navigation function
+   navigate("/dashboard"); -> runs the function (causing the change in page)
 
 8. This is known as a fragment, when React creates the DOM it disappears leaving only the elements
    It's used when you only need to group elements (i.e. in App.jsx, you are just adding /pages elements)
@@ -2260,24 +2280,72 @@ function App() {
    To note, in App.jsx, if it's contained in <> & </>, you can use #root to style the entire page
    As #root refers to the entire page, with <div> around the elements in App.jsx, #root would have no effect
 
-9. 
+9. This updates the React variable called 'todos' (i.e. was set with useState([]) earlier)
+   You pass the argument of 'currentTodos' when this is called (i.e. an array containing all the todos)
+   ...currentTodos -> 3 dots is known as a 'spread' it takes the contents of an array & copies then into another array
+   newTodo         -> add the newest todo to the currentTodos
 
-10. 
+   i.e. this whole function adds the newest todo to the end of the currentTodos array
 
-11. 
+10. ~{/* This is a comment /}~ -> I have missed off the extra star to the left of the / as it makes them go invisible
+
+11. <link> is used when the user clicks a link to navigate somewhere
+
+    useNavigate() is used when your JavaScript code needs to cause the navigation
+    For example: after a successful login, send the user to the /dashboard
+
+12. ${} inserts a JavaScript value into a template literal
+    template literal -> JavaScript string written using tilda keys (i.e. const message = `Hello ${name}`;)
+
+    The {} means run JavaScript inside JSX
+    ${theme} means insert theme into the template literal
+
+13. {user ? <Dashboard /> : <Login />}
+
+14. {user ? (
+        <h1>Welcome back</h1>
+    ) : (
+        <h1>Please log in</h1>
+    )}
+
+15. Allows you to switch from writing JSX to JavaScript
+    Essentially, whatever is in {} is JavaScript code
+
+16. A normal JavaScript function performs an operation (i.e. function addNumbers(a, b) { return a + b;)
+
+    A React function component is a JavaScript function specifically used to render part of the UI
+    i.e. there is always a 'return' statement, as your creating a HTML elements with built in JavaScript functions
+
+17. .map() is commonly used to turn an array into JSX elements
+    For example: todos.map() -> takes each todo individually & creates it's own HTML element (i.e. <p key={todo.id}>{todo.text}</p>)
+
+    The key gives each rendered item a unique identifier
+    This allows you to add, remove & change each individual todo
+    It's essentially React's alternative to an index used in an array
+
+18. HTML forms reloads the page when the form is submitted, as they expect you to redirect them elsewhere (this is built in to the <form> element)
+
+    In React, you don't want this because you want JavaScript code to handle the submission
+    This is because, often, if a user clicks to add a task (i.e. submits the form), there's no need to reload the entire webpage
+    as the elements will be rendered by React variables created with useState()
+
+    So, in a function which is handling the submission of a form (i.e. function handleSubmit(event))
+    you want to prevent his re-render, at the top of the function put: ~event.preventDefault();~
+    This stops the page reloading & allows my JavaScript function to handle what happens
+
+19. These are all React event handlers, which are built in React functions (or event props)
+    Each connects user actions on the website to JavaScript functions
+
+    onClick  -> run code when clicked
+    onChange -> run code when an input changes
+    onSubmit -> run code when a form is submitted
 
 
 ** Practical Examples (SORT)
 
-Answer each of these broken down like this:
-
-    - Packages
-    - Files/directories required
-    - Steps in each file (including imports)
-
 *Recap List*
 
-1. Create a React router (SORT)
+1. Create a React router
 2. Style it in CSS
 3. Create a basic to-do list, where you add to do's & sort them in a viewing page
 4. Create a button that can delete an item
@@ -2335,24 +2403,58 @@ Answer each of these broken down like this:
 
         font-weight: bold;
         font-size: var(--spacing-md);
+   }
 
-3. 
+3. _Before the function_
+   ~const [todos, setTodos] = useState([]);~ -> store each todo in the 'todos' array
+   ~const [text, setText] = useState;~       -> for the 'newTodo' it needs a variable which can track what text is in the body of todo
 
-4. 
+   _handleCreate() function_
+   ~event.preventDefault();~ -> stops the page reloading when the submit button is clicked
+   Create a object called 'newTodo' to store the new to do with text & a unique id (so it's identifiable when it's in the array)
+   Call the setTodos function with the argument currentTodos & create an arrow function
+      pass the ...currentTodos (3 dots required for an array) & add on the 'newTodo' at the end of the currentTodos array
 
-5. ~const [editingId, setEditingId] = useState(null);~ ->
+   _Return Statement -> input the todo's_ 
+   In the return statement there needs to be a form with an input (for typing the to do & a button to submit the to do)
+   ~<form onSubmit={handleCreate}>~ -> when the button is clicked, run the handleCreate function
+   ~<button type="submit">~         -> allows the above 'onSubmit' to know the button was clicked
 
-    ~function editTodo(todo) {~
-            ~setText(todo.text);~
-            ~setEditingId(todo.id);~
-    ~}~
+   _Return Statement -> display the todo's_ 
+   Create an if statement to check if the todos.length is equal to 0
+   if it's true, display a message saying, you need to add some todo's
+   if there are events: ~todos.map((todo) => ( <div key={todo.id}> <span>{todo.text}</span> )~
+      todos.map -> takes the todos variable created before the function & .map() loops through each item
+      todo      -> this is an argument (you can call it anything) & it represents the individual current 'todo' item from the array
+      todo.id   -> id was created in the newTodo object, it lets you keep track (like an index) of the event after an individual item
+
+4. _deleteTodo(id) function_
+   Pass id as an argument when creating the function, so you can have access to the specific todo item
+   It will retrieve the id from the delete button, the button when clicked will call onClick & pass the todo id
+
+   ~setTodos((currentTodos) =>~
+       ~currentTodos.filter((todo) => todo.id !==_id)~ -> /ignore the _ score here, it stops Emacs removing characters/
+   ~);~
+   .filter()      -> goes through every item & asks if the item should be kept in the array
+   todo.id !== id -> remove any item from the array that matches the id we passed as an argument
+
+   _delete button_
+   ~<button onClick={() => deleteTodo(todo.id)}>~ -> the deleteTodo button receives the value in the id & can identify the specific todo item
+
+5. _creating the editingId variable_
+   ~const [editingId, setEditingId] = useState(null);~ -> null means we're not currently editing a job
+   This allows us to have a variable that can be used in an if statement, if I'm editing an item do this, if I'm not (null) do this
+
+   _editTodo(todo)_
+   ~function editTodo(todo) {~   -> the edit button will have an onClick, which calls this function & passes the todo into it 
+        ~setText(todo.text);~    -> puts the text of the to do into the input box (so you can see what the todo currently is)
+        ~setEditingId(todo.id);~ -> sets the editingId variable, so React has stored which item we're currently editing
+   ~}~
 
     Set the 'Create' button so it can change it's name to 'Update'
 
     Currently clicking 'Update' creates a new entry, so you need to update the handleCreate(event) function to check if the editingId is null
     You need to add an if statement: if (editingId !== null) with the new code & put the original code in the else statement
-
-
 
 
 ** Set Up Components & Style
@@ -2449,45 +2551,86 @@ Answer each of these broken down like this:
 
 *Recap List*
 
-1. What are the 3 things that make up the back-end of a website
-2. What are the 2 types of frameworks used by developers
-3. What are the 2 types of servers & define them
-4. What types of servers are required for a static & dynamic server
-5. What is the client-server model
-6. What is an API
-7. What is a web server listening for when it is running
-8. What does localhost mean
-9. What is the general flow from a user performing an action to receiving a response
+1. Define Node.js & Express.js
+2. Define the backend, the server, server.js & the API
+3. Define routes, middleware, controllers & models
+4. What is the order of a request being received in the front-end, data being stored in the database & then the response being sent back
+5. What are the 3 things that make up the back-end of a website
+6. What are the 2 types of frameworks used by developers
+7. What are the 2 types of servers & define them
+8. What types of servers are required for a static & dynamic server
+9. What is the client-server model
+10. What is an API
+11. What is a web server listening for when it is running
+12. What does localhost mean
 
 
 *Recap Answers*
 
-1. A server, an application & a database
+1. Node.js    -> the runtime, that actually runs the JavaScript code
+   Express.js -> a framework running on Node.js that makes it easier to build the server & API
 
-2. Testing & development
+2. Backend    -> the entire server-side part of the application (i.e. server.js, routes, controllers, middleware & models)
+   Server     -> the running backend application that listens for HTTP requests & sends HTTP responses
+                 Node.js runs server.js & Express is used to create the server
+   server.js  -> the file that starts everything
+   API        -> the routes/endpoints that the front-end communicates with & receives responses from
 
-3. Web Servers         -> A computer with an internet connection & the necessary software stored on it to make web pages available to clients
+3. routes      -> determines what should happen when a particular request arrives, i.e. ~app.post("/register", validateUser, registerUser);~
+   middleware  -> authenticates requests before they reach the controller (i.e. the function ~validateUser~ called in routes)
+   controllers -> contain the logic for handling a request (i.e. the function ~registerUser~ called in routes)
+   models      -> structure the data before putting it into the database using Mongoose library
+                  the controller imports the model so it knows how to structure the data correctly in MongoDB
+
+   If the request is to input the data, the controller function (after it was ran in 'routes' & passed the middleware validation)
+   will use the model & then put the data into the MongoDB database (or is the last step of the whole process)
+
+4. React/Axios
+      ↓
+   HTTP request
+      ↓
+   Route matched
+      ↓
+   Middleware validation
+      ↓
+   Controller function
+      ↓
+   Uses Model
+      ↓
+   Mongoose
+      ↓
+   MongoDB stores data
+      ↓
+   Controller sends response
+      ↓
+   React receives response
+
+5. A server, an application & a database
+
+6. Testing & development
+
+7. Web Servers         -> A computer with an internet connection & the necessary software stored on it to make web pages available to clients
    Application Servers -> Contain the business logic (code) needed to build resources to be dynamically passed back to the browser
 
-4. Static  -> only requires a Web Server
+8. Static  -> only requires a Web Server
    Dynamic -> Requires a Web Server & an Application Server
 
-5. A structure where a client sends requests to a server, and the server processes those requests and sends responses back
-                            Client -> Request -> Server
-                            Server -> Response -> Client
+9. A structure where a client sends requests to a server, and the server processes those requests and sends responses back
+
+                                        Client -> Request -> Server
+                                        Server -> Response -> Client
+
    For a web application, the browser/React application can act as the client and the Node/Express backend acts as the server
 
-6. A way for two pieces of software to communicate with each other
-   In a web application, the front-end can send HTTP requests to the back-end API, and the API sends responses back
+10. A way for two pieces of software to communicate with each other
+    In a web application, the front-end can send HTTP requests to the back-end API, and the API sends responses back
 
-7. A running web server listens for incoming HTTP requests on a particular port
+11. A running web server listens for incoming HTTP requests on a particular port
 
-   Example:
-       app.listen(8080); -> server listens for requests arriving on port 8000
+    Example:
+        app.listen(8080); -> server listens for requests arriving on port 8000
 
-8. localhost refers to the computer you are currently using
-
-9. User action → Front-end → HTTP request → Back-end API → Server processes request → Database (if needed) → HTTP response → Front-end → UI updates
+12. localhost refers to the computer you are currently using
 
 
 ** MERN & Back-end Architecture
@@ -2559,20 +2702,20 @@ Answer each of these broken down like this:
                         React → HTTP request → Express/Node.js
                         React ← HTTP response ← Express/Node.js 
 
-10. Usually JSON
+9. Usually JSON
 
-    For example, React could send:
-        {
-            "text": "Complete assignment"
-        }
+   For example, React could send:
+       {
+           "text": "Complete assignment"
+       }
 
-    Express can convert the incoming JSON request body into a JavaScript object so the backend can work with it:
-        req.body
+   Express can convert the incoming JSON request body into a JavaScript object so the backend can work with it:
+       req.body
 
-    The backend can also send JSON back to React:
-        res.json({ message: "Task created" });
+   The backend can also send JSON back to React:
+       res.json({ message: "Task created" });
 
-11. Because the browser is controlled by the user and shouldn't be trusted with direct database access or database credentials
+10. Because the browser is controlled by the user and shouldn't be trusted with direct database access or database credentials
 
     The backend provides a controlled layer between the user and the database:
             React → Express/Node.js → Mongoose → MongoDB
@@ -2580,22 +2723,22 @@ Answer each of these broken down like this:
     This means the backend can authenticate the user, validate their input, enforce permissions and decide which database operations
     they are allowed to perform
 
-12. Primarily in the Node.js/Express backend
+11. Primarily in the Node.js/Express backend
     Business logic is the application's rules for deciding what should happen
 
     For example:
         Request arrives -> Check user is authorised -> Check supplied data -> Perform required operation -> Return response
 
-13. React    → user interface
+12. React    → user interface
     Express  → web/API framework
     Node.js  → runs the backend JavaScript
     MongoDB  → permanently stores application data
 
     Mongoose is then used by your Node backend to interact with that MongoDB data
 
-14. The server continues running and listening for incoming requests
+13. The server continues running and listening for incoming requests
 
-15. Yes, during development you could have:
+14. Yes, during development you could have:
 
         React       → localhost:5173
         Node/Express → localhost:8080
@@ -2603,7 +2746,7 @@ Answer each of these broken down like this:
     They are separate applications/processes, so they can listen on different ports
     React can then send HTTP requests from its port to the Express server's port
 
-16. Runtime -> provides the environment needed to execute code
+15. Runtime -> provides the environment needed to execute code
         Node.js
 
     Framework -> provides a structure and tools for building an application
@@ -2614,6 +2757,7 @@ Answer each of these broken down like this:
 
     Database -> stores and manages persistent application data
         MongoDB
+
 
 ** Project Architecture
 
@@ -2664,7 +2808,7 @@ Based on the To Do list project (Level 3 -> task 7)
     i.e. what should happen when a route is reached
 
 11. React      -> user creates a POST request to /api/tasks
-    ROUTE      -> where should this request go (Express receives the request, checks it's routes
+    ROUTE      -> where should this request go, Express receives the request, checks it's routes
                   finds the function ~router.post("/api/tasks", function);~ & then runs the function
     MIDDLEWARE -> is this request allowed (i.e. is the user logged in, is the user a @gmail.com user, etc...)
     CONTROLLER -> what should we do with this request (i.e. create a new task)
@@ -2786,13 +2930,122 @@ Based on the To Do list project (Level 3 -> task 7)
 
 *Recap List*
 
-
+1. What is Postman
+2. Why is Postman useful when developing a backend
+3. What is an API endpoint
+4. What is the request body
+5. What is the difference between request headers and the request body
+6. What happens in the Express backend when you click Send in Postman
+7. How does middleware affect a request sent from Postman
+8. How does the controller access data sent from Postman using req.body
+9. What does res.status() do in Express
+10. What does res.json() do
+11. How can Postman help identify whether an error is in the frontend or backend
+12. How would you test a POST /register endpoint using Postman
+13. How would you test creating a task
+14. How would you test retrieving tasks
+15. How would you test updating a task
+16. What is the full flow when Postman sends a request
 
 
 *Recap Answers*
 
+1. A tool (app) used to send HTTP requests to an API & view the responses
+   It allows you to test your backend
 
+2. It lets you test API endpoints directly, meaning you can check wether your routes, middleware, controllers & database operations work
+   before connecting React
 
+3. A specific HTTP method & a URL, that the backend uses for receiving requests (i.e. POST & /register)
+
+4. The data sent with a HTTP request
+
+   Example:
+        {
+            "email": "test@gmail.com",
+            "password": "password123"
+        }
+
+5. Headers contain information about the request (such as content type or authentication token)
+   Body contains the actual data being sent (such as email & password)
+
+6. Postman sends a HTTP request to the Express server, Express matches it's route (/routes), runs any middleware (/middleware)
+   then runs the controller function (/controller) in the route
+
+7. Middleware runs before the controller & checks the request, if it passes, middleware calls next() to continue
+   If it fails, middleware will return a fail code & an explanation
+
+8. Express places the parsed request-body data into req.body (i.e. ~const { email, password } = req.body~)
+
+9. Sets the HTTP static code that the server sends back in it's response (i.e. ~res.status(201);~ -> successful & a resource was created)
+
+10. Sends JSON data from the backend to the client as an HTTP response
+
+    Example:
+            res.status(201.json({
+                message: "User created"
+            });
+
+11. You can send a request directly to the backend using postman, if it works in Postman but fails through React
+    then the problem is likely with the frontend or how it sends the request
+
+12. Select POST, enter the /register URL (i.e. http://localhost:8080/register), select a JSON request body & enter the required data
+    8080 -> the port number being listened to by the server.js
+
+    Example (of JSON request body):
+        {
+            "firstName": "John",
+            "surname": "Smith",
+            "email": "john@gmail.com",
+            "password": "password123"
+        }
+
+13. Send a POST request to the task endpoint with the new task in the request body
+
+    POST http://localhost:8080/tasks
+    body -> raw -> JSON:
+         {
+             "text": "Complete Java assignment"
+         }
+
+    If successful you'd expect a 201 created response (depending on the controller) & a success message in JSON (or id & task body)
+
+14. GET /tasks (no request body required)
+
+    If successful you'd expect a 200 OK response & an array of tasks in the JSON body (200 -> data successfully returned)
+
+15. Send a PUT request containing the task's ID & the new data
+
+    PUT /tasks/123
+    body -> raw -> JSON:
+        {
+            "text": "Complete the assignment tonight"
+        }
+
+   If successful you'd expect the same response as the GET task (200 -> resource successfully updated)
+
+16. Postman
+       ↓
+    HTTP Request
+       ↓
+    Express Server
+       ↓
+    Route matches request
+       ↓
+    Middleware checks request
+       ↓
+    Controller handles request
+       ↓
+    Mongoose Model
+       ↓
+    MongoDB
+       ↓
+    Controller creates response
+       ↓
+    Express sends HTTP response
+       ↓
+    Postman displays response
+   
 ** MongoDB & Mongoose (SORT)
 
 *Recap List*
@@ -3012,10 +3265,10 @@ Based on the To Do list project (Level 3 -> task 7)
 3. 
 
 
-** Task CRUD
+** Task CRUD (SORT)
 
 
-** Full request flow
+** Full request flow (SORT)
 
 
 * Java
@@ -3057,7 +3310,7 @@ Based on the To Do list project (Level 3 -> task 7)
    }
 
 5. public -> this method can be accessed from other classes
-   static -> this method can be called without creating an object (i.e. int answer = Calculator.add(5, 10) -> here your calling the class
+   static -> this method can be called without creating an object (i.e. int answer = Calculator.add(5, 10) -> here your calling the class)
              Calculator & then the function add, without doing Calculator newCalcObject = new Calculator(); int answer = newCalcObject.add(5, 10))
    void   -> this method returns nothing (i.e. the 1st example prints hello world but doesn't actually return anything)
 
@@ -3162,6 +3415,126 @@ Based on the To Do list project (Level 3 -> task 7)
 11. numbers.length returns the number of rows (i.e. 3)
 
     numbers[0].length returns the number of columns in row 0 (i.e. 4)
+
+
+** Methods
+
+*Recap List*
+
+1. What is the main() method
+2. Explain what a static method is with an example (addition)
+3. Explain what a non-static method is with an example (bark)
+4. Why is there both: static & non-static methods
+5. What type is the main() method & why
+6. What is a predefined vs user-defined method
+7. What do you use instead of = in a conditional statement (i.e. player1 ==== 0)
+
+
+*Recap Answers*
+
+1. Its automatically called when the .java file is ran, it's the first method to be executed when a .java file starts
+   The main method is mandatory in every Java program
+
+2. The key is to check if the word 'public' is followed by 'static'
+   
+   A static method belongs to the class itself -> you don't need to create an object before using it
+
+        class Calculator {
+            public static int add(int a, int b) {
+                return a + b;
+
+   int answer = Calculator.add(5, 3); -> add() is static so you call it using the class
+
+3. A non-static method belongs to an object created from the class
+
+   class Dog {
+       public void bark() {
+           System.out.println("woof");
+
+   Dog myDog = new Dog();
+   myDog.bark();           -> there is no word 'static' in the function name so you must create an object first
+
+4. If you had a class which created players in a game (i.e. player1, player2, player3) then you'd need to create objects for each one
+   That way player1.showScore(), player2.showScore(), etc... each can have different attributes & therefore different scores
+
+   Whereas, if you made a method/function to add 2 numbers, you don't need to create an object just to run that function
+
+5. It's static because Java needs to be able to start your program before you have created any objects
+
+6. pre-defined  -> a method/function that someone else has already written for you (usually libraries)
+   user-defined -> a method/function I have created myself
+
+7. player1.equals(0)
+
+
+** Files IO
+
+*Recap List*
+
+1. What is java.util.Formatter used for
+2. Why would you embed creating, writing to or reading from a file in a try catch block
+3. After creating/opening a file, why does it need to be closed
+4. Create a new file called test.txt in my home directory
+5. Add 2 lines to the above code to write to this file
+
+
+*Recap Answers*
+
+1. It's imported at the top of the .java file
+
+   It's used to create a file that can be written to
+
+2. File operations can fail for reasons outside of the program's control & this allows Java to handle them without crashing
+
+   Potential reasons for a fail: file doesn't exist, directory doesn't exist, program doesn't have permission to access file, etc...
+
+3. When a file is opened in Java, my OS has to keep information in memory so it can manage the program's access to that file 
+
+   It assigns something called a file descriptor to the opened file, which my program uses to communicate with the file
+   So, you should close the file so that the file descriptor can be reused for something else
+
+4. try {
+       Formatter newFile = new Formatter("~/test.txt"); -> create & open file
+   }
+   catch (Exception error) {
+       System.out.println("Error");
+
+5. After the Formatter newFile line:
+
+   newFile.format("Hello World");  -> write to file
+   f.close();                      -> close file
+
+
+** Object-Oriented Programming
+
+*Recap List*
+
+1. Where is interface used in java & how does it work
+2. What's the difference between public & abstract
+
+
+*Recap Answers*
+
+1. With a superclass (or a parent class, i.e. one that's used to create methods that children classes inherit from)
+   You would create an 'interface' method, which would be left blank, example:
+
+            public interface Animal {
+                String makeSound();
+            }
+
+   Then, when you create a dog & a cat class, you fill in this method (after you have inherited the Animal class methods)
+   i.e. Dog.makeSound() -> returns "Woof"
+        Cat.makeSound() -> returns "Meow"
+
+2. They are both methods
+
+   A public method can be called from any other class
+   i.e. public void makeSound() {
+            System.out.println("woof");
+        }
+
+   An abstract class has no body
+   i.e. public abstract void makeSound();
 
 
 * Elisp, Bash, JavaScript & Python (CURRENT)
