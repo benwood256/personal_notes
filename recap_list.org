@@ -1632,25 +1632,6 @@ instead of stopping and waiting for that operation to finish
 
 
 * React
-** My React Template (SORT)
-
-*Recap List*
-
-1. How do you create a copy & set up the template project
-2. How does npm install know what dependencies to install
-
-
-*Recap Answers*
-
-_Maybe change the answer below instead to git clone the GitHub repo_
-
-1. Create a copy from    -> ~/01_coding/05_personal_projects/02_website_templates/routing-template
-   npm install           -> download dependencies (i.e. node_modules/)
-   npm install bootstrap -> install bootstrap
-
-2. 
-
-   
 ** Setting up React using Vite
 
 *Recap List*
@@ -1664,7 +1645,7 @@ _Maybe change the answer below instead to git clone the GitHub repo_
 7. In VS Code, you need to now install dependencies, how & why
 8. Then what
 9. Where do I open the 'server'
-10. What is Laravel & how does it compare to React
+
 
 *Recap Answers*
 
@@ -1672,11 +1653,13 @@ _Maybe change the answer below instead to git clone the GitHub repo_
    It also configures the folder so I can use a JavaScript library (i.e. React) or a framework
    It provides a development server -> creates a local version of the website I can view in my browser whilst working (like 'live server' in VS Code)
 
+   You wouldn't use it for the backend -> just ~npm init~
+
 2. A JavaScript library for building user interfaces -> i.e. interactive websites (front-end)
    It gives me JavaScript functions but also offers rules for building the website (i.e. so there's structure to it)
 
 3. cd to where I want the Vite folder structure
-   You run: npm create vite@latest <project-name>
+   You run: ~npm create vite@latest <project-name>~
 
 4. create      -> tells npm I want to create a new project
    vite@latest -> tells npm which creation tool to use (vite -> vite project generator; @latest -> newest available version)
@@ -1699,11 +1682,107 @@ _Maybe change the answer below instead to git clone the GitHub repo_
 9. http://localhost:5173/
    This is a local store of the website which will update automatically
 
-10. Laravel is a back-end framework which uses PHP language
-    React focuses on the front-end & uses JavaScript
-    Laravel is a framework while React is a library
+
+** Packages recap (SORT Q6)
+
+_Axios is not included here, it would be installed & used in the Frontend but it's for connecting the frontend & backend by making HTTP requests_
 
 
+*Recap List*
+
+1. What is the React Router & how do I install it
+2. What is Formik & how do I install it & use it
+3. How do I install Bootstrap & use it
+4. What is Vitest & what packages are installed
+5. Explain each package
+6. How do I set it up (pseudo-code)
+
+
+*Recap Answers*
+
+1. A library that allows you to create pages for your website without doing a browser re-render
+   i.e. http://localhost:5173/ http://localhost:5173/login http://localhost:5173/dashboard
+
+   ~npm install react-router-dom~
+
+   _Then define the routes -> in App.jsx_
+        import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+        function App() {
+            return (
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                    </Routes>
+                </BrowserRouter>
+            );
+        }
+
+   _Then navigate using -> i.e. in a handleLogin() function_
+        import { Link } from "react-router-dom";
+
+        <Link to="/login">Login</Link>
+
+2. A library for managing forms in React
+
+   ~npm install formik~
+
+   _In Login.jsx_
+        import { useFormik } from "formik";
+
+        function Login() {
+
+            const formik = useFormik({
+                initialValues: {
+                    email: "",
+                    password: ""
+                },
+
+                onSubmit: (values) => {
+                    console.log(values);
+                }
+            });
+
+    _In the return statement_
+        Form element  -> ~<form onSubmit={formik.handleSubmit}>~
+        Input element -> ~<input~
+                             ~name="email"~
+                             ~value={formik.values.email}~
+                             ~onChange={formik.handleChange}~
+                         ~/>~
+        Button element -> ~<button type="submit">~
+   
+    _formik.values_
+        This contains the object data, so it's used to retrieve the data
+        Example:
+            {
+                email: "john@example.com",
+                password: "hello123"
+            }
+
+3. A CSS framework used for styling
+
+   ~npm install bootstrap~
+
+   Then import it in main.jsx -> ~import "bootstrap/dist/css/bootstrap.min.css";~
+
+4. A framework (built by the same ecosystem as Vite) for testing JavaScript/TypeScript applications
+
+   ~npm install --save-dev vitest @testing-library/react jsdom~ ~@testing-library/jest-dom~
+
+5. --save-dev                -> tells npm to install these packages as development dependencies (devDependencies in package.json)
+                                this is the folder for dependencies that are specific to testing the app (eslint is saved here too)
+
+   vitest                    -> the testing framework
+   @testing-library/react    -> utilities to test React components by simulating user interactions
+   jsdom                     -> run tests involving DOM manipulation without requiring a real browser
+   @testing-library/jest-dom -> provides custom 'matchers' that extend the built-in assertions (makes tests more readable when interacting with DOM)
+
+6. 
+
+   
 ** Introduction
 
 *Recap List*
@@ -1717,7 +1796,7 @@ _Maybe change the answer below instead to git clone the GitHub repo_
 7. Import & call the new function
 8. Where do each of these lines of code go
 9. How do you include bootstrap in the application
-10. What's the HTML rule in JSX 
+10. How does HTML work in React
 11. What's the attribute value rule in JSX
 12. How do you use the image man.png in JSX
 13. What is the 1 parent element rule in JSX
@@ -1725,6 +1804,7 @@ _Maybe change the answer below instead to git clone the GitHub repo_
 15. What is in the node_modules/ & why do I delete it before submitting a task
 16. What does deleting it mean & how would someone recover the project if node_modules/ was missing
 17. What's the difference between index.css & App.css
+18. When should I use a prop vs context & give examples
 
 
 *Recap Answers*
@@ -1763,9 +1843,9 @@ _Maybe change the answer below instead to git clone the GitHub repo_
    The alternative way to write this: ~export { ProfileCard }~ & you'd need to: ~import { profileCard } from './ProfileCard'~
    
 7. import ProfileCard from "./components/ProfileCard"
-  <ProfileCard />      -> will produce the div container with the h2 & p elements inside
+   <ProfileCard />      -> will produce the div container with the h2 & p elements inside
 
-8. The components (i.e. the function) should be within a self-made _./components/ directory_ (next to the main.jsx & App.jsx) & exported from here
+8. The components (i.e. the function) should be within a self-made _./components/directory_ (next to the main.jsx & App.jsx) & exported from here
    The function is imported & called within _App.jsx_
 
 9. ~npm install bootstrap~
@@ -1811,7 +1891,22 @@ _Maybe change the answer below instead to git clone the GitHub repo_
     App.css   -> styling related to App.jsx
 
     It's common to break up styling to each component as a project gets bigger (i.e. Contact.css, Login.css, Dashboard.css, Navbar.css, etc...)
+
+18. A prop is when you pass a variable & or function down to a child, so it can change a variable
     
+    Use a prop when your passing the variable/function to 1 child (i.e. it's simple)
+    use context when many components need the data & it would be repetitive to keep passing props around
+    (i.e. useContext("theme") -> it's too annoying to pass the theme many times)
+
+    Examples:
+        Card title              → prop
+        Button text             → prop
+        Individual todo         → prop
+        onDelete function       → prop
+
+        Logged-in user          → context
+        login/logout functions  → context
+        Application theme       → context
 
 
 ** Events
@@ -1847,6 +1942,7 @@ _Refer to the below block of code_
 6. How would you use setBalance in Deposit.jsx
 7. Sometimes functions will be written with a gap between them & the curly brackets: ~{ useState }~ why
 
+
 *Recap Answers*
 
 1. In the App.jsx, then the App function is imported by main.jsx to be rendered
@@ -1859,6 +1955,8 @@ _Refer to the below block of code_
 
 3. Imports the feature 'useState' function from React which lets a script remember information that can change
    i.e. when this component (i.e. variable) changes, immediately update the page
+
+   useState is a React hook (hooks always start with the word 'use')
 
 4. This has to come after useState was imported
    useState(100) -> keep track of a value, starting at 100
@@ -1874,6 +1972,7 @@ _Refer to the below block of code_
    ~function Deposit({ setBalance })~ -> now Deposit function has access to the function to change the balance
 
 7. This is entirely for readability & has no effect on the code, you can remove the spaces if you want
+
 
 
 ** Events: Part 2
@@ -1909,8 +2008,8 @@ function App() {
 
 *Recap Answers*
 
-1. Run this code, after the website has been re-rendered
-   i.e. a side-effect after the UI has been updated
+1. Run this code, after this variable(s) changes 
+   i.e. a side-effect after the UI has been updated (variable coming from useState())
 
    2 arguments, the 1st is -> run this code after the component renders
                     2nd is -> the dependency array (i.e. when this value changes, run the code/this function)
@@ -1932,14 +2031,13 @@ function App() {
 6. useRef doesn't store the value as a variable but as an object containing the value
 
    It would look like this: ~previousBalance = { current: balance }~
-   This is because useRef stores itself as an object not a variable
+   This is because useRef stores itself as an object not a variable (as a variable isn't persistent)
 
-7. Check if the previous balance is above 0 & if the balance is below 0
+7. Check if the previous balance was above 0 & if the balance is below 0
    This is because, if you're in the negative & adding deposits that keep you below 0 it will keep sending this alert
    This specifically checks if you have just dropped below 0 (not if you're still below 0)
 
-8. This line is still in the useEffect function & you are passing it an argument
-   You are saying, when balance changes (i.e. re-render caused by useState because balance changed), run this condition
+8. This is the dependency array -> when balance changes (& re-renders the page) run this function
 
 9. The useEffect() function is called, because [balance] went from 200 to 500 (i.e. in another component)
    Now the function runs & ~previousBalance = 200~ & ~balance = 500~, the code is run with these 2 value (i.e. the if statement)
@@ -1960,7 +2058,7 @@ function App() {
 *Recap Answers*
 
 1. Allows you to build navigation menus & links -> the user can access different sections or view without having to load entirely new pages
-   i.e. 1 website which has many pages (i.e. home, products, contact, faqs, etc...)
+   i.e. 1 website which has many pages (i.e. home, products, contact, FAQs, etc...)
 
 2. npm install react-router-dom (in the cd <location of project>)
    Create the pages (i.e. home, help, login, events, etc...)
@@ -2220,7 +2318,7 @@ function App() {
 12. What does ${variable} do inside a template literal, e.g. className={`app ${theme}`}
 13. Write an if statement, if user exists, display the Dashboard element & if user doesn't exist display the Login element
 14. Write an if statement, if user exists, display Welcome back & if user doesn't exist display Please log in
-15. Explain using {}
+15. Explain code inside of {}
 16. What is the difference between a React component and a normal JavaScript function
 17. Why does React require a key when using .map() to display a list
 18. What does event.preventDefault() do when submitting a form
@@ -2544,7 +2642,7 @@ function App() {
 
 6. 
 
-           
+
 * Back-end Web Development
 
 ** Introduction
@@ -2633,6 +2731,23 @@ function App() {
 12. localhost refers to the computer you are currently using
 
 
+** Packages Recap (SORT)
+
+*Recap List*
+
+1. What is Axios
+
+2. 
+
+
+*Recap Answers*
+
+1. The only here that is used in the frontend
+
+
+
+2. 
+
 ** MERN & Back-end Architecture
 
 *Recap List*
@@ -2640,20 +2755,21 @@ function App() {
 1. What is each tool used for in the MERN stack
 2. Why is the Express & Node API in between the React app & the MongoDB database, why not just skip it
 3. How do Express & Node.js work together
-4. How does Node.js create the server for the website
-5. What is the difference between Node.js & Express
-6. What is the difference between the back-end API & the database
-7. Does Express communicate directly with MongoDB, or how does Mongoose fit between them
-8. How does React communicate with the Express/Node.js back-end
-9. What type of data is normally transferred between the React front-end & Express back-end
-10. Why should React not connect directly to MongoDB
-11. Where does business logic normally run in a MERN application
-12. Which part of the MERN stack is responsible for permanently storing data
-13. What happens to the Node/Express server when nobody is making a request
-14. Can the front-end and back-end run on different ports
-15. What is the difference between a library, framework, runtime & database in the MERN stack
-16. What role does npm play in a MERN project
-17. What is the overall flow between React, Express, Node.js, Mongoose & MongoDB
+4. What is the difference between Node.js & Express
+5. What is Axios
+6. What is Mongoose
+7. What is Nodemon & how does it work
+8. What is the difference between the back-end API & the database
+9. Does Express communicate directly with MongoDB
+10. How does React communicate with the Express/Node.js back-end
+11. What type of data is normally transferred between the React front-end & Express back-end
+12. Why should React not connect directly to MongoDB
+13. Where does business logic normally run in a MERN application
+14. Which part of the MERN stack is responsible for permanently storing data
+15. What happens to the Node/Express server when nobody is making a request
+16. Can the front-end and back-end run on different ports
+17. What is the difference between a library, framework, runtime & database in the MERN stack
+18. What is the overall flow when creating a task
 
 
 *Recap Answers*
@@ -2670,14 +2786,31 @@ function App() {
    Express is a library that makes building the server much easier
    Express is installed into the Node.js project using: ~npm install express~
 
-4. It acts as an intermediary between the user & the database, handling requests & translating them into operations
+4. Node.js -> A JavaScript runtime that allows JavaScript to run outside of a web browser.
 
-5. Node.js -> A JavaScript runtime that allows JavaScript to run outside of a web browser.
+   Express -> A framework that runs on Node.js and makes it easier to build web servers and APIs
+              by providing features for:
+                  routing, middleware and handling HTTP requests/responses
 
-   Express -> A framework that runs on Node.js and makes it easier to build web servers and APIs by providing features for:
-   routing, middleware and handling HTTP requests/responses
+5. A JavaScript library used to send HTTP requests
+   In a MERN project you use it in the React frontend to communicate with the Express backend
 
-6. Back-end API -> receives requests, runs application logic, checks/validates requests and decides what should happen
+   Example: ~axios.post("http://localhost:8080/login", values);~
+            This sends a POST request from React to your backend
+
+6. A library that lets your Node.js/Express backend communicate with MongoDB using JS objects, schemas & models
+
+7. A development tool that automatically restarts your Node.js application (the server)
+   when you save a change in your backend (i.e. making a change to the code you don't need to rerun your server
+
+   Its configured in package.json:
+        "scripts": {
+            "dev": "nodemon app.js"
+        }
+
+   ~npm run dev~ -> runs Node.js server using Nodemon
+
+8. Back-end API -> receives requests, runs application logic, checks/validates requests and decides what should happen
    Database     -> permanently stores and retrieves the application's data
 
                         React → Back-end API → Database
@@ -2685,37 +2818,39 @@ function App() {
    For example, React doesn't decide how something should be stored in MongoDB. It sends a request to the API,
    which processes the request and interacts with the database
 
-7. In your MERN application, Mongoose sits between your Node/Express code and MongoDB:
+9. In your MERN application, Mongoose sits between your Node/Express code and MongoDB:
 
                         Express/Node.js → Mongoose → MongoDB
 
-    Express handles the HTTP request, your backend code uses a Mongoose model to perform a database operation, and Mongoose communicates with MongoDB
+    Express handles the HTTP request, your backend code uses a Mongoose model to perform a database operation,
+    i.e. something your backend asks the database to do with its data
+    and Mongoose communicates with MongoDB
 
-8. React sends HTTP requests to endpoints provided by the Express API
+10. React sends HTTP requests to endpoints provided by the Express API
 
-    For example, using Axios:
-        axios.get("/api/tasks");
+     For example, using Axios:
+         axios.get("/api/tasks");
 
-    Express can have a matching route:
-        router.get("/api/tasks", getTasks);
+     Express can have a matching route:
+         router.get("/api/tasks", getTasks);
 
-                        React → HTTP request → Express/Node.js
-                        React ← HTTP response ← Express/Node.js 
+                         React → HTTP request → Express/Node.js
+                         React ← HTTP response ← Express/Node.js 
 
-9. Usually JSON
+11. Usually JSON
 
-   For example, React could send:
-       {
-           "text": "Complete assignment"
-       }
+    For example, React could send:
+        {
+            "text": "Complete assignment"
+        }
 
-   Express can convert the incoming JSON request body into a JavaScript object so the backend can work with it:
-       req.body
+    Express can convert the incoming JSON request body into a JavaScript object so the backend can work with it:
+        req.body
 
-   The backend can also send JSON back to React:
-       res.json({ message: "Task created" });
+    The backend can also send JSON back to React:
+        res.json({ message: "Task created" });
 
-10. Because the browser is controlled by the user and shouldn't be trusted with direct database access or database credentials
+12. Because the browser is controlled by the user and shouldn't be trusted with direct database access or database credentials
 
     The backend provides a controlled layer between the user and the database:
             React → Express/Node.js → Mongoose → MongoDB
@@ -2723,22 +2858,22 @@ function App() {
     This means the backend can authenticate the user, validate their input, enforce permissions and decide which database operations
     they are allowed to perform
 
-11. Primarily in the Node.js/Express backend
+13. Primarily in the Node.js/Express backend
     Business logic is the application's rules for deciding what should happen
 
     For example:
         Request arrives -> Check user is authorised -> Check supplied data -> Perform required operation -> Return response
 
-12. React    → user interface
+14. React    → user interface
     Express  → web/API framework
     Node.js  → runs the backend JavaScript
     MongoDB  → permanently stores application data
 
     Mongoose is then used by your Node backend to interact with that MongoDB data
 
-13. The server continues running and listening for incoming requests
+15. The server continues running and listening for incoming requests
 
-14. Yes, during development you could have:
+16. Yes, during development you could have:
 
         React       → localhost:5173
         Node/Express → localhost:8080
@@ -2746,7 +2881,7 @@ function App() {
     They are separate applications/processes, so they can listen on different ports
     React can then send HTTP requests from its port to the Express server's port
 
-15. Runtime -> provides the environment needed to execute code
+17. Runtime -> provides the environment needed to execute code
         Node.js
 
     Framework -> provides a structure and tools for building an application
@@ -2758,10 +2893,28 @@ function App() {
     Database -> stores and manages persistent application data
         MongoDB
 
+18. User clicks "Add Task"
+            ↓
+    React sends POST /tasks
+            ↓
+    Node.js runs the backend
+            ↓
+    Express receives/routes the request
+            ↓
+    Middleware checks the request
+            ↓
+    Controller processes the request
+            ↓
+    Mongoose model creates the document
+            ↓
+    MongoDB stores the document
+            ↓
+    Backend sends a response (e.g. 201 Created)
+            ↓
+    React receives the response and updates the UI
+
 
 ** Project Architecture
-
-Based on the To Do list project (Level 3 -> task 7)
 
 *Recap List*
 
@@ -2926,7 +3079,7 @@ Based on the To Do list project (Level 3 -> task 7)
     I've essentially created an alias for nodemon server.js
 
 
-** Postman (SORT)
+** Postman
 
 *Recap List*
 
@@ -3046,7 +3199,8 @@ Based on the To Do list project (Level 3 -> task 7)
        ↓
     Postman displays response
    
-** MongoDB & Mongoose (SORT)
+
+** MongoDB & Mongoose
 
 *Recap List*
 
@@ -3166,15 +3320,28 @@ Based on the To Do list project (Level 3 -> task 7)
     -> MongoDB jobs collection -> Job document stored
 
 
-** Authentication with JWT (SORT)
+** Authentication with JWT
 
 *Recap List*
 
 1. What is JWT
 2. What 3 components make up JWT
 3. Does the signature provide encryption
-4. What is a use of this
-5. 
+4. Why does it need to be encoded
+5. What is JWT used for in authentication
+6. What information is normally stored in the JWT payload
+7. What's the difference between encoding & encrypting
+8. What is the purpose of the JWT signature
+9. What is a JWT_SECRET
+10. Why should the JWT_SECRET be stored in .env
+11. How is a JWT created
+12. Give a workflow after user logs in to returning the JWT to the frontend
+13. When should the backend create and return a JWT
+14. What does jwt.verify() do
+15. What is the difference between signing and verifying a JWT & what file/directory is this made in
+16. How does the frontend receive the JWT after login
+17. Where can the frontend store a JWT
+18. How is a JWT sent from the frontend to the backend with later requests
 
 
 *Recap Answers*
@@ -3189,10 +3356,76 @@ Based on the To Do list project (Level 3 -> task 7)
 
 3. No, payloads are normally readable -> the signature provides integrity not encryption
 
-4. After logging into a website, you have a JWT (i.e. a digital password for this website)
-   so now you don't need to constantly request authority to do things, like going on your profile or using premium features
+4. A payload is normally in JSON (i.e. { "userID": "1234" }) but that can be complex for a HTTP request 
+   So you encode it to 1 string, that is now more simple to be sent in a request
 
-5. 
+5. After logging into a website, you have a JWT (i.e. a digital password for this website)
+   so now you don't need to constantly request authority to do things
+   like going on your profile or using premium features
+
+6. Information identifying the user (i.e. email & userID)
+   It should not contain sensitive information (i.e. a password) because they are encoded not encrypted
+
+7. Encoding   -> changes data into another format so it can be stored or transferred conveniently
+   Encrypting -> changes data so it can't be understood without the key
+
+8. The signature allows the backend to authenticate the JWT & check it hasn't been modified
+
+9. A secret value known by the backend that can be used to verify the JWT when using
+   an algorithm (such as HS256) -> ~JWT_SECRET=mySecretKey~
+
+10. To ensure I don't push it to GitHub & therefore everyone can't access/view it
+
+11. In the user controller, the jsonwebtoken package can create one using jwt.sign()
+
+    Example:
+        const token = jwt.sign(
+            { userId: user._id },  -> 1st argument = the payload
+            process.env.JWT_SECRET -> 2nd argument = provides the secret used to sign in
+        );
+
+12. After the user successfully logged in & they were verified
+
+13. User submits email/password
+            ↓
+    Backend finds user
+            ↓
+    bcrypt checks password
+            ↓
+    Credentials correct
+            ↓
+    Create JWT
+            ↓
+    Return JWT to frontend
+
+14. It checks that a JWT signature is valid, if it succeeds, it returns the decoded payload
+
+15. jwt.sign()    → creates/signs the token
+    jwt.verify()  → checks the token
+
+    Login controller → jwt.sign()
+    Authentication middleware → jwt.verify()
+
+16. The login controller includes it in the HTTP response:
+
+        res.status(200).json({
+            token: token
+        });
+
+    React receives that response through Axios (in the Login form, i.e. onSubmit())
+
+        const response = await axios.post("/login", values);
+        const token = response.data.token;
+
+17. In localStorage: ~localStorage.setItem("token", token);~
+
+18. A common API approach is sending it in the HTTP Authorization header:
+
+        axios.get("/tasks", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
 
 
 ** Express -> Middleware
@@ -3209,7 +3442,12 @@ Based on the To Do list project (Level 3 -> task 7)
 7. What happens at the response stage
 8. Repeat these JWT authentication process steps
 
-9. 
+9. What arguments does an Express middleware function normally receive (req, res, next)
+10. What happens if middleware does not call next()
+11. How do you attach middleware to a specific Express route
+12. What is the difference between route-specific and application-level middleware
+13. What does app.use() do
+14. What does express.json() middleware do
 
 
 *Recap Answers*
@@ -3243,26 +3481,115 @@ Based on the To Do list project (Level 3 -> task 7)
 
    ~All the above assumes that the sign-up, log-in & page are all correct with the right information supplied at each stage~
 
-9. 
+9. An Express middleware function usually receives 3 arguments:
+
+        function middleware(req, res, next) {
+            // middleware code
+        }
+
+    req  -> request, contains information about the HTTP request received by the backend
+    res  -> response, used to send a HTTP response back to the frontend
+    next -> a function that tells Express to continue to the next middleware or move on to the controller
+
+10. Express WONT continue to the next middleware/controller
+    This is useful when you want to reject a request (i.e. the email wasn't valid, return an error message)
+
+11. Put the middleware function between the route path & the controller function
+
+    Example: ~app.post("/tasks", checkAuth, createTask);~
+
+12. Route-specific middleware only runs for specific routes
+    Example: ~app.post("/tasks", checkAuth, createTask);~
+
+    Application-level middleware can be registered across the application with app.use()
+    Example: ~app.use(express.json());~
+
+13. Tells Express to use this function for incoming requests
+    Writing a middleware function doesn't automatically means Express will run it, you need to call it
+
+    Example:
+        function logger(req, res, next) {
+            console.log("Request received");
+            next();
+        }
+
+    Then you register it:
+        app.use(logger);
+
+14. Reads an incoming request body containing JSON & allows you to retrieve the body with req.body
+
+    Example, the HTTP request body contains JSON:
+        {
+            "email": "user@gmail.com",
+            "password": "hello"
+        }
+
+    Your middleware/controller can access email & password with:
+        const { email, password } = req.body;
 
 
-** React -> Back-End Integration (SORT)
+** React -> Back-End Integration
 
 *Recap List*
 
-1. What does a proxy do
-2. 
+1. Describe the backend in relation to the frontend & the database
+2. What does a proxy do
+3. What does back-end integration mean in a React application
+4. Why does a React front end need to communicate with a back end
+5. What is the purpose of fetch() in React
+6. When a React application sends a request to an Express server, what happens to that request
+7. What does the back end normally return to React after processing a request
+8. What does response.json() do when using fetch()
+9. What does axios.get() return
+10. How does React use the data returned by the back end
+11. What is CORS, and why can it cause problems when React and Express are running on different ports
 
 
 *Recap Answers*
 
-1. Acts as a middleman between a user & the internet
+1. It acts as the middleman between the user interface & the database
+
+2. Acts as a middleman between a user & the internet
    If you make a request from 1 server to another, instead of your app directly making a request to another server (security risk implications),
    the proxy forwards it for you
 
-2. 
+3. Connecting the React frontend to the backend server so they can exchange data
 
-3. 
+4. React needs the backend when it needs to: store, retrieve, modify or delete persistent data
+   Without a backend, data stored only in React's state wouldn't persist after refreshing the page
+
+5. A function used to send HTTP requests to a server
+   Essentially, it allows React to communicate with the backend over HTTP
+
+6. The request travels to the Express server & Express finds the matching route (i.e ~app.get("/tasks", ...)~)
+
+7. The backend returns a HTTP response (i.e. a status code, JSON data & sometimes an error message)
+
+8. Fetch() gives you a response object
+   response.json() reads the response body and converts the JSON into a JavaScript value that you can work with
+
+9. Returns a promise that resolves to an Axios response object
+
+   Example:
+       ~const response = await axios.get("http://localhost:8080/tasks");~
+       The actual data returned by the server is found in ~response.data~
+       so ~console.log(response.data)~ returns the Axios response object
+
+10. React can store the data in state & then display it on the UI
+
+    Example:
+        const [tasks, setTasks] = useState([]);
+        const response = await axios.get("/tasks");
+        setTasks(response.data);
+
+    React then renders the tasks (that were retrieved from the server)
+
+11. Cross-Origin Resource Sharing (CORS)
+    a browser considers different ports to be different origins
+    so When React is on port 5173 & Express is on 8080, the browser may block the React app from accessing
+    the Express server unless the Express server allows it
+
+    This is why you import cors & do ~app.use(cors());~ -> to the Express application
 
 
 ** Task CRUD (SORT)
@@ -4110,6 +4437,137 @@ I can make these as I go through Exercism & google other awkward ones
 
 * Linux
 
+** General Questions
+
+*Recap List*
+
+1. What is a Hard Link in a file
+2. What is a Symlink
+3. When would you use a hard link vs a symlink
+4. What 2 things make up a file
+5. What is an inode
+6. What is a directory
+7. Why is a package manager do you need to install
+
+
+*Recap Answers*
+
+1. A separate file that points to the same inode as another file (& therefore the same data)
+
+   Example:
+        file1.txt ──┐
+                    ├──> inode 1234 ──> file data
+        file2.txt ──┘
+
+   Deleting a hard link doesn't actually delete the file data, as long as another hard link
+   points to the inode
+
+2. A symbolic link is a file that stores the path/name of another file (essentially a pointer)
+
+   Example:
+        link.txt ──> "file1.txt" ──> inode 1234 ──> file data
+
+   Unlike a hard link, the symlink has its own inode
+   If you delete file1.txt, the symlink remains but points to something that no longer exists
+   This is known as a broken/dangling symlink
+
+   The symlinks data only contains the path to the new directory
+   The symlinks inode contains the symlinks metadata
+
+3. For a _hard link_, if you had a file but you wanted to access it by another name, you'd create a hard link with a new name
+   Changing the file from either name would change it for both (as it's only 1 file on disk)
+   You might want to do this if a software/app expected a specific name of the file but you wanted to name it something else
+
+   For a _symlink_, its useful for redirecting from 1 location to another
+   If your photos are stored here: ~/mnt/storage/photos/~ but you wanted to access them from home directory
+   You can create a symlink ~~/Photos~ to the actual location
+   So, when you do ~cd ~/Photos~ you're actually going to ~/mnt/storage/photos~
+
+4. Data     -> the actual contents of the file
+   Metadata -> stored in the _inode_ (the file name is not stored in the inode, it doesn't know the file name)
+
+5. Index Node -> is a filesystem structure that stores the metadata needed to describe & locate a file
+
+   You can see a files inode number by doing ~ls -i~ (2 hard links will have the same inode number) 
+
+6. A special type of file that maps filenames to inode numbers
+
+        /Documents directory
+
+         Filename        Inode
+         ---------------------
+         notes.txt   →   1234
+         work.txt    →   5678
+         photo.jpg   →   9012
+
+   The filesystem looks inside the Documents directory to find the inode associated with notes.txt,
+   then uses that inode to locate the actual file data
+
+
+** Package Managers
+
+*Recap List*
+
+1. What is a package repository
+2. What is a package manager actually doing when you install a package
+3. How does a package manager know where to download packages from
+4. What is a package database
+5. What does it mean to synchronise your package database
+6. Why does your local package database need to be synchronised
+7. What information is downloaded when you synchronise the package database
+8. How does the package manager determine which dependencies a package needs
+9. What happens if a package has dependencies that aren't installed
+10. How does a package manager know whether an installed package has an update available
+11. Why do you need the local database
+ 
+
+*Recap Answers*
+
+1. A server location containing software packages & information about those packages
+   Pacman -> connects to these repositories (i.e. firefox, emacs, git, etc...) to find & download the software
+
+2. Finds the package in the repository
+   Checks what dependencies it needs
+   Downloads the package & required dependencies
+   Verifies them
+   Extracts/installs the files locally
+   Records information about the installation
+
+3. It has a configuration file containing repository information
+   This configuration tells Pacman which repositories to use & which mirror servers are available
+
+4. Information that the package manager uses to keep track of packages
+
+5. Update your local copy of the repositories package information
+   ~sudo pacman -Sy~
+ 
+6. Because packages get updates & my local machine doesn't know about them until synced
+   i.e. local package database -> firefox V14.1
+        package repository     -> firefox V16.3
+
+7. Package metadata -> package names, available versions, dependencies, descriptions, package sizes & checksums
+
+8. The packages metadata contains the dependency information
+
+9. The package manager will install it automatically for you
+   This is the big advantage of using a package manager, you don't have to hunt down dependencies yourself
+
+10. It compares the repository database & your installed packages
+
+11. As that's how Pacman works -> it downloads it & then compares what version is available vs what's installed on the system
+    Then it can update or download extra dependencies
+
+** Useful Arch package commands
+
+*Recap List*
+
+
+
+
+*Recap Answers*
+
+
+
 ** Troubleshooting Workflow
 
 *Recap List*
@@ -4883,7 +5341,7 @@ _Explain what the flags do for the command_
    After it's been a week, the snapper-weekly.timer says to run the snapper-weekly.service, which creates a snapshot
    
 
-* Emacs (SORT 1 SECTIONS)
+* Emacs
 
 ** Troubleshooting
 
