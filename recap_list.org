@@ -1,28 +1,5 @@
 #+TITLE: Recap List Page
 
-* Help
-
-    M-x count-org-questions -> work out all the numbered (i.e. list) lines & divide by 2 (assuming every question has a numbered answer)
-
-    Links, whilst working on a section (C-c C-o):
-    Or use ("ly -> yank to register 'l'
-            "lp -> paste from register 'l')
-
-*Recap List*
-
-
-[[bottom-0]]
-<<top-0>>
-
-
-*Recap Answers*
-
-
-
-[[top-0]]
-<<bottom-0>>
-    
-
 * To Dos
 
 ** General
@@ -75,7 +52,6 @@
 
 
 * Front-end Web Development
-
 ** HTML
 
 *Recap List*
@@ -390,7 +366,7 @@
 
  *Recap List*
 
-1. Create a loop to print a every 3rd number up to 20
+1. Create a loop to print every 3rd number up to 20
 2. To the same loop, add a break when i is 12
 3. Create a while loop that counts to 10
 4. When should you use switch statements & when should you use if statements
@@ -523,11 +499,10 @@ console.log(reversedInput, userInput)
 1. What is the difference between a class & an object
 2. Create a basic inheritance using Dog & Animal classes
 3. What are getters & setters
-4. Create a simple example of a class Person, use a getter & setter for the name
+4. Create a simple example of a class Person, use a getter & setter for the name & how do you call them
 5. Create an object from the Person class
 6. Use the getter to display the persons name
 7. Use the setter to change the name & then display the new name
-   
 
 
  *Recap Answers*
@@ -566,11 +541,11 @@ console.log(reversedInput, userInput)
          this._name = name;
       }
 
-      get name() {
+      get getName() {
          return this._name;
       }
 
-      set name(newName) {
+      set setName(newName) {
          if (newName.length > 0) {
             this._name = newName;
          } else {
@@ -580,14 +555,15 @@ console.log(reversedInput, userInput)
    }
 
    ~The getter returns the person's name, and the setter changes the person's name after checking that the new name is valid~
+   getters & setters don't need to be called, i.e. object.getName -> no need for ()
 
 5. const new_person = new Person("Geoff");
 
-6. console.log(new_person.name); output -> Geoff
+6. console.log(new_person.getName); output -> Geoff
 
-7. new_person.name = "Mark";
+7. new_person.setName = "Mark";
    // then call the getter again
-   console.log(new_person.name); output -> Mark 
+   console.log(new_person.getName); output -> Mark 
 
    
 ** DOM Manipulation
@@ -902,7 +878,7 @@ console.log(reversedInput, userInput)
                       so they can be accessed quickly without needing to re-download them from the server
 
 
-* Software Engineering
+* Software Engineering (CURRENT)
 ** System Architecture
 
  *Recap List*
@@ -2748,6 +2724,7 @@ function App() {
 
 2. 
 
+
 ** MERN & Back-end Architecture
 
 *Recap List*
@@ -2928,8 +2905,8 @@ function App() {
 8. What is the 'routes' folder for
 9. What is the 'middleware' folder for
 10. What is the 'controllers' folder for
-11. What is the workflow of a user clicking 'add task' button
-12. What is the 'models' folder for
+11. What is the 'models' folder for
+
 
 *Recap Answers*
 
@@ -2960,17 +2937,10 @@ function App() {
 10. Contains the functions that perform the work when a request reaches a route
     i.e. what should happen when a route is reached
 
-11. React      -> user creates a POST request to /api/tasks
-    ROUTE      -> where should this request go, Express receives the request, checks it's routes
-                  finds the function ~router.post("/api/tasks", function);~ & then runs the function
-    MIDDLEWARE -> is this request allowed (i.e. is the user logged in, is the user a @gmail.com user, etc...)
-    CONTROLLER -> what should we do with this request (i.e. create a new task)
-    DATABASE   -> saves the task (& will return the task to the controller, which in turn gives it to React so it can render)
-
-12. Create the functions for how my data will be structured in the database
+11. Create the functions for how my data will be structured in the database
 
 
-** Express & routing
+** Express & routing (CURRENT)
 
 *Recap List*
 
@@ -3599,7 +3569,6 @@ function App() {
 
 
 * Java
-
 ** Basics
 
 *Recap List*
@@ -3862,6 +3831,108 @@ function App() {
 
    An abstract class has no body
    i.e. public abstract void makeSound();
+
+
+** Sorting & Searching
+
+*Recap List*
+
+1. What is a Queue
+2. What is a Stack
+3. What are Graphs
+4. What are Trees
+5. What is an array list & how do you create one
+6. What is a Linked List
+7. What is a bubble sort
+8. What is quick sort
+9. What is a merge sort
+10. What are the 2 main searching algorithms
+11. What's the difference
+
+
+*Recap Answers*
+
+1. It's a type of linked list, which follows FIFO -> First In, First Out
+   You add items in a similar way to an array & then doing list.remove(), will remove the first item added
+
+2. LIFO -> Last In, First Out, like a stack of papers, the most recent item added is removed when you do list.pop()
+
+3. It's like connecting people via social media, you have connections to others & they have their own connections
+   So data forms a graph like shape, when certain pieces point to one another
+
+4. Trees are like the Linux files system, you start with a 'root' & everything connects to that through nodes
+   i.e. root contains 2 nodes, those 2 nodes have their own children nodes off of them
+
+5. A normal array you have to specify the size of it when creating it
+   An array list automatically resizes itself as you add items (it starts with 10 slots, if you add another it double & so on)
+
+   ~List<String> stringList = new ArrayList<>();~ -> stringList is the name of this array
+
+6. A list is made up of nodes, in each node you have the data (actual value) & a pointer to the next node
+   Unlike an array or an array list, each element does not need to be next to each other in memory
+
+7. To sort an array, i.e. in numerical or alphabetical order, you'd carry out a bubble sort
+   You go through each item, compare it to the next along, if it's bigger, you swap their position, then this same index is compared to the next number
+
+   Therefore this is O(n^2) as you have to iterate through the entire list with each index (i.e. 2 embedded for loops are required)
+
+        list = [8, 3, 1, 4]
+
+        compare 8 & 3, 3 is smaller so move the index of 8 over
+        compare 8 & 1, 1 is smaller so move the index of 8 over
+        compare 8 & 4, 4 is smaller so move the index of 8 over
+
+        list = [3, 1, 4, 8]
+
+        compare 3 & 1, 1 is smaller so move the index of 3 over
+        ... & so on
+
+8. You take a pivot point (usually the first index) & place all items lower to the left & all higher to the right
+   Then you break it down so the left & right side each have a new pivot point to move around (divide & conquer)
+
+   This is O(log n) as it only requires an if statement
+
+        list = [4, 3, 2, 8, 7, 5, 1]
+        pivot point = 4
+
+        new divided list = [3, 2, 1, *4*, 8, 7, 5] -> value have been move either side of the pivot point based on if they're smaller or not
+        now there's 2 lists: [3, 2, 1] & [8, 7, 5] -> pivot point of 2 for the 1st & pivot point of 7 for the second
+
+        rinse & repeat 
+
+9. Also a divide & conquer method
+   You take each individual item & pair them up, then compare the pair & swap the order if needed, then you compare against another pair
+   (i.e. you know this second time which is the smallest & largest in each pair)
+
+   This is O(n log n)
+
+        list = [4, 3, 2, 8]
+
+        4 vs 3 -> 3 is smaller so you swap the order
+        2 vs 8 -> 2 is smaller so don't swap
+
+        list = [3, 4, 2, 8]
+
+        3 vs 2 -> 2 is smaller so you move it's index before 3
+        3 vs 8 -> 3 is smaller so it remains
+        4 vs 8 -> 4 is smaller so it remains
+
+        list = [2, 3, 4, 8]
+
+10. Linear & Binary search
+
+11. Linear search -> looking through each item systematically
+    Binary search -> check the middle item, see if its larger or smaller & half the list (divide & conquer), this only works with sorted lists
+
+** Database programming, Testing & Documentation
+
+*Recap List*
+
+
+
+
+*Recap Answers*
+
 
 
 * Elisp, Bash, JavaScript & Python (CURRENT)
@@ -4436,7 +4507,6 @@ I can make these as I go through Exercism & google other awkward ones
 
 
 * Linux
-
 ** General Questions
 
 *Recap List*
@@ -4556,6 +4626,7 @@ I can make these as I go through Exercism & google other awkward ones
 
 11. As that's how Pacman works -> it downloads it & then compares what version is available vs what's installed on the system
     Then it can update or download extra dependencies
+
 
 ** Useful Arch package commands
 
