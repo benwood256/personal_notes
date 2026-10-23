@@ -12,19 +12,18 @@
 
 1. Fix the lock screen crashing (when idle too long)
 2. Home screen looks weird when booting in -> film it, is it doing the correct thing
-3. Add mouse goes invisible after 1 second of not using it
-4. Learn how file system mounting works in Linux
-5. Look into systemd, what is it? how does it work? what's it used for?
+3. Learn how file system mounting works in Linux
+4. Look into systemd, what is it? how does it work? what's it used for?
    Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
-6. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
-7. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
-8. Look into popular aliases or clever ones people have made
-9. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
-10. Understand AUR packages for Arch (why can yay, paru & others)
-11. Make a file containing backups for config files (eventually make a bash project to automatically do this)
+5. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+6. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
+7. Look into popular aliases or clever ones people have made
+8. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
+9. Understand AUR packages for Arch (why can yay, paru & others)
+10. Make a file containing backups for config files (eventually make a bash project to automatically do this)
     & then link this config file backup to GitHub (store all my configs in one place -> easier)
-12. Watch & make notes on 'How the Shell Works' YouTube video
+11. Watch & make notes on 'How the Shell Works' YouTube video
 
 ** Config File
 
@@ -878,7 +877,7 @@ console.log(reversedInput, userInput)
                       so they can be accessed quickly without needing to re-download them from the server
 
 
-* Software Engineering (CURRENT)
+* Software Engineering
 ** System Architecture
 
  *Recap List*
@@ -1064,6 +1063,27 @@ console.log(reversedInput, userInput)
     greet Alex          # output -> Hello Alex
 
 
+
+
+** Relation vs Non-Relational
+
+*Recap List*
+
+1. Explain Relational databases
+2. Explain Non-Relational databases
+
+
+*Recap Answers*
+
+1. Store data in tables, which contain rows & columns
+   SQL is the standard library used to interact with them, but other libraries can generate SQL for you
+   Example: MariaDB -> a Relational Database Management System that uses SQL
+
+2. Doesn't require data to be organised into related tables to insert it (it doesn't require you to define how data is formatted at all)
+   You can store data as 'documents', key-values pairs or graphs
+   Example: MongoDB -> you can write code to tell the backend how I want the data formatted before putting it into the database
+                       Mongoose allows you to define a schema, validate data & interact with MongoDB easier
+   
 
 
 ** Relational Databases
@@ -1556,10 +1576,6 @@ instead of stopping and waiting for that operation to finish
     This creates a server that listens on port 3000 and responds with "Hello World" when a request is received
 
 
-
-    
-
-
 ** Git Workflows
 
 *Recap List*
@@ -1607,8 +1623,8 @@ instead of stopping and waiting for that operation to finish
 10. git remote add origin repo-url
 
 
-* React
-** Setting up React using Vite
+* React (CURRENT)
+** Setting up React using Vite (SORT)
 
 *Recap List*
 
@@ -1617,10 +1633,7 @@ instead of stopping and waiting for that operation to finish
 3. How do you set up a React app with Vite
 4. What does create & vite@latest mean
 5. What configuration do I choose when prompted by Vite
-6. What's the next step
-7. In VS Code, you need to now install dependencies, how & why
-8. Then what
-9. Where do I open the 'server'
+6. What is a Linter & why ESLint
 
 
 *Recap Answers*
@@ -1644,19 +1657,9 @@ instead of stopping and waiting for that operation to finish
    Variant   -> JavaScript + React Compiler (the compiler automatically optimises my React code)
    Linter    -> ESLint - this is the default for a JS/React ecosystem (a linter is a tool that checks grammar of programming syntax)
 
-6. Open the project in VS Code
-
-7. npm install (in the <project name> directory)
-   This reads the package.json & download everything the project needs
-
-   So, when you create the files & folder structure with vite, it installs package.json
-   which includes what I need (i.e. React, React DOM, vite, etc...)
-   Then, npm install, reads this package.json & actually downloads those tools in a directory called node_modules/
-
-8. npm run dev -> starts the Vite development server, i.e. the local version of my website
-
-9. http://localhost:5173/
-   This is a local store of the website which will update automatically
+6. A Linter is a tool that checks for syntax errors, potential bugs & violation of coding rules
+   ESLint is one of the most widely used linters for JavaScript & React (& is the industry standard)
+   OXLint is written in Rust & doesn't have as much support for React & has a smaller plugin ecosystem
 
 
 ** Packages recap (SORT Q6)
@@ -1676,10 +1679,21 @@ _Axios is not included here, it would be installed & used in the Frontend but it
 
 *Recap Answers*
 
-1. A library that allows you to create pages for your website without doing a browser re-render
+1. A library that allows you to create pages for your website without doing a browser page reload
    i.e. http://localhost:5173/ http://localhost:5173/login http://localhost:5173/dashboard
 
    ~npm install react-router-dom~
+
+   _React Router Components_
+
+   BrowserRouter -> Wraps the application & manages navigation using the browser's URL (acts similar to context)
+   Routes        -> You embed each 'route' inside, at a current URL (i.e. /login), Routes reads each embedded Route & decided where to navigate
+   Route         -> Defines a URL path & the React component to display when the path matches
+   
+   Link          -> Navigate when clicking an element (i.e. in the Navbar, click Home to jump to the respective URL)
+   NavLink       -> Same as Link but also detects & styles the active route (with a CSS class -> home-header.active { color: orange; } )
+   useNavigate() -> Navigate through JavaScript logic (i.e. after clicking the register, the function runs & at the bottom it navigates you to /home)
+
 
    _Then define the routes -> in App.jsx_
         import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -1695,6 +1709,16 @@ _Axios is not included here, it would be installed & used in the Frontend but it
                 </BrowserRouter>
             );
         }
+
+   _Then create navigation for a Navbar -> in Navbar.jsx_
+
+       <nav>
+           <NavLink to="/">Home</NavLink>
+           <NavLink to="/login"</NavLink>
+       </nav>
+
+   *Now, clicking the Navbar link relocates to that URL & App.jsx then detects the path & renders the HTML element*
+
 
    _Then navigate using -> i.e. in a handleLogin() function_
         import { Link } from "react-router-dom";
@@ -1800,7 +1824,7 @@ _Axios is not included here, it would be installed & used in the Frontend but it
                      its used in React to describe what the user interface should look like
                      its pretty much specific to React (or got popularised by it)
 
-5. function ProfileCard() {
+5. export function ProfileCard() {
       return (
          <div>                  // JSX elements must have 1 single parent element, so everything must be wrapped in a div
             <h2>Alex</h2>
@@ -1809,8 +1833,6 @@ _Axios is not included here, it would be installed & used in the Frontend but it
       )
    }
 
-   export default ProfileCard
-
 6. default -> this is the main function of this file & it means you don't need the {} to export & import
    Then you can import with: ~import ProfileCard from './ProfileCard'~ -> you don't need curly brackets
    You technically don't need to specify the actual function name after exporting with default, you can name it whatever as JSX knows
@@ -1818,7 +1840,7 @@ _Axios is not included here, it would be installed & used in the Frontend but it
    
    The alternative way to write this: ~export { ProfileCard }~ & you'd need to: ~import { profileCard } from './ProfileCard'~
    
-7. import ProfileCard from "./components/ProfileCard"
+7. import { ProfileCard } from "./components/ProfileCard"
    <ProfileCard />      -> will produce the div container with the h2 & p elements inside
 
 8. The components (i.e. the function) should be within a self-made _./components/directory_ (next to the main.jsx & App.jsx) & exported from here
@@ -1885,7 +1907,7 @@ _Axios is not included here, it would be installed & used in the Frontend but it
         Application theme       → context
 
 
-** Events
+** Events (CURRENT)
 
 _Refer to the below block of code_
 
@@ -2029,6 +2051,7 @@ function App() {
 2. Set up a router in a React project
 3. Explain useState with an example
 4. Explain useRef with an example
+5. What is useParams
 
 
 *Recap Answers*
@@ -2057,6 +2080,10 @@ function App() {
 
   Then, in the input, you put the ref={inputRef}
   Now you have a variable that is stored after a re-render
+
+5. A hook that lets you retrieve dynamic values from the current URL
+   i.e. if someone clicks 'Emacs' on my practice page, they are redirected to /practice/emacs
+   In a sub-category component, you import useParams & then can retrieve 'Emacs' as the category
    
 
 ** Form Validation
@@ -2173,7 +2200,7 @@ function App() {
 4. What is Vitest
 5. What is Jest & what is the advantage in using Vitest over Jest
 6. Break down this code to set up the testing environment:
-       ~npm install --save-dev vitest @testing-library/react jsdom~ ~@testing-library/jest-dom~
+       ~npm install -D vitest @testing-library/react jsdom~ ~@testing-library/jest-dom~
 
 7. Which should I use it() or test()
 8. What is environment: 'jsdom' for & where does it go
@@ -2224,7 +2251,7 @@ function App() {
    Vitest is preferred (at least in this workflow) as its very fast, its created by vite so it integrates easily in this workflow
    Uses built-in vi APIs & its fairly easy to use & learn
 
-6. --save-dev                -> tells npm to install these packages as development dependencies (devDependencies in package.json)
+6. --save-dev or -D          -> tells npm to install these packages as development dependencies (devDependencies in package.json)
                                 this is the folder for dependencies that are specific to testing the app (eslint is saved here too)
 
    vitest                    -> the testing framework
@@ -2266,6 +2293,134 @@ function App() {
     It shows what percentage of your code is being tested, breaking it down via: statements, branches, functions & lines
     It will display this via a table 
     
+
+** Using Vitest
+
+*Recap List*
+
+1. What is devDependencies & why install here
+2. Set up Vitest
+3. Explain 'test' & 'test:run' in scripts
+4. Difference between package.json & package-lock.json
+5. What is vite.config.js
+6. How do I ensure Vite uses jsdom when testing
+7. Which files should be tested for (with examples)
+8. Explain describe, test (or it) & expect, how would you use them
+9. When would you create a new test()
+10. Explain render & screen, how would you use them
+11. Create a simple test to check for the correct category from my CategorySelector.jsx component
+12. What is a regression
+13. Why is the above test useful, when I can just open the page with npm run dev & confirm its working
+14. What are worthwhile tests for the above example
+15. What is fireEvent for
+16. What is toHaveBeenCalledTimes() & toHaveBeenCalledWith() for
+
+
+*Recap Answers*
+
+1. npm packages required during development, but not needed when the application is complete (i.e. in production)
+   i.e. packages that are used to develop & test your application (but aren't needed when the application is complete)
+   examples: Vitest, ESLint, Vite
+
+   Dependencies are still required when the application is in production (i.e. router, bootstrap, axios, etc...)
+
+2. ~npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom~ -> remember the -D
+
+   In package.json, in "scripts", after the default ones add:
+      "test": "vitest",
+      "test:run": "vitest run"
+
+   Create a new folder for the tests (i.e. '/tests') inside /src (if a project becomes very large, you can put each test next to its component
+   i.e. components/Navbar.jsx & components/Navbar.test.jsx
+
+3. 'test' allows you to do ~npm test~ -> this runs vitest & tracks file changes, so this is useful as it can run in the background
+                                       whilst I code the tests 
+
+   'test:run' allows you to do ~npm run test:run~ -> runs vitest once & exits
+
+4. Both files are used by npm to manage my project's dependencies
+   package.json      -> Defines information about the project (name, version, etc...), lists the packages required (dependencies & devDependencies),
+                        defines npm scripts (npm run dev & npm test) & specifies version ranges (so npm can install different compatible versions)
+   package-lock.json -> Automatically generated & maintained by npm, it records exact versions of packages installed & their dependencies,
+                        therefore it ensures everyone working on the project installs the same dependency version
+                        It also contains additional information such as package download locations
+                        Generally, leave this alone & do not manually edit
+
+5. A configuration file for Vite -> used to customise how my React application is developed & built
+   It's created automatically when you initialise a React project
+   Vite reads this file when I run commands such as: npm run dev, npm run build, npm test, etc...
+
+6. Add it to the vite.config.js file in plugins, add it after the babel entry:
+        test: { environment: 'jsdom' }
+        
+   If it's not added, Node doesn't know how to 'render' my components but jsdom does
+   Side note: when I run npm run dev, Vite processes my code, not Node & the *browser renders it* based on the code provided
+
+7. Login/registration form, Navbar, pages (dependent on functionality), a search component & any other component with a lot of functionality
+   This is because they contain complex logic for the website & will be used the most by a user (i.e. if they break/don't work it will be obvious
+   to a user.) So they should be tested thoroughly to check for errors & then edge cases
+
+   In my website, Flashcard, Progress & Feedback do provide functionality but they aren't complex or the main focus of the website
+   So, it is suggested to unit test them, but it's not as high a priority as the aforementioned
+
+8. These are functions from the 'vitest' library, you would import them at the top of each .test.jsx file
+
+   describe() -> groups related tests together, pass a name & then call the function
+   test()     -> define an individual test (these go inside the describe() function & you can add multiple test() blocks inside 1 describe()
+   expect()   -> make an assertion (i.e. results should return 'emacs'), you can add multiple of these inside 1 test()
+
+9. When you're testing a different behaviour
+   For example, test("displays all categories, <code>) & then test("allows a category to be selected", <code>)
+         & then test("highlights the selected category, <code>)
+
+10. These are functions from the '@testing-library/react' library, you would import them at the top of each .test.jsx file
+    render() -> takes 1 argument, a component (i.e. render(<CategorySelector />) & then vitest can render this component using jsdom
+                you would render the component being tested as the first line of the test() function
+    screen   -> provides methods to search for an element & is inside an expect function, as that verifies the result
+                i.e. expect(screen.getByText("Emacs")).toBeTruthy(); -> this checks if the rendered component produced the text 'Emacs'
+
+11. import { describe, it, expect } from "vitest";
+    import { render, screen } from "@testing-library/react";
+
+    import { CategorySelector } from "../components/CategorySelector";
+
+    describe("CategorySelector", () => {
+
+        it("displays the correct categories", () => {
+
+            // Render the component
+            render(<CategorySelector />);
+
+            // Find the elements and check they exist
+            expect(screen.getByText("Emacs")).toBeTruthy();
+            expect(screen.getByText("JavaScript")).toBeTruthy();
+
+        });
+
+    });
+
+12. When a code change accidentally breaks something that previously worked
+
+13. If a few weeks down the line I modify CategorySelector.jsx to add category filtering, the changes might mean I accidentally cause categories
+    to disappear, I would not notice until I reloaded the page again, with automated tests running in the background, it would immediately let me know
+
+    However, this is still a poor test for my workflow as I always have the browser open checking, it would be better to make tests for functionality
+
+14. I should test for functionality:
+
+        Can the user select a category
+        Was the correct category passed to the parent component
+        Did this update the selected category's styling
+
+    As I'm making changes down the line, I might not check these after saving my code, if I just edited multiple components I won't want to
+    go on the website & carry out a bunch of manual tests, I can run npm test & check it all passes (or have it running whilst I'm editing code)
+
+15. Its to simulate a user clicking something (i.e. you'd assign it to a button you know will get clicked)
+    You could do: ~fireEvent.click(screen.getByText("Emacs"));~ -> then in 'expect', what should happen when 'Emacs' is clicked
+
+16. toHaveBeenCalledTimes() -> checks this function was called x number of times (usually you set it to 1)
+    toHaveBeenCalledWith()  -> checks which arguments were passed to a function (i.e. { name: emacs} was expected to be received)
+
 
 ** React Overview
 
@@ -3924,18 +4079,121 @@ function App() {
 11. Linear search -> looking through each item systematically
     Binary search -> check the middle item, see if its larger or smaller & half the list (divide & conquer), this only works with sorted lists
 
+
 ** Database programming, Testing & Documentation
 
 *Recap List*
 
+1. What is JDBC
+2. What are the requirements of using it
+3. What is JDK
+4. How do you start MariaDB & why start it this way
+5. Stop the server
+6. Steps involved for a JDBC program to connect to MariaDB
+7. What is a DriverManager
+8. What does it mean to write code in Java & connect it to the MariaDB server
+9. What's the connection between Java application (i.e. Main.java) & MariaDB
+10. What are the fundamental operations I can carry out in the database & what's the SQL command for each
+11. What does ~import java.sql*~ do
+12. Sum up: Connection, DriverManager, Statement, ResultSet & SQLException
+13. What do you need to do at the ends of the script
+14. What's the difference between executeQuery() & executeUpdate()
+15. Why run executeQuery() & ResultSet before executeUpdate() 
+16. Walk through the execution of a Java script in this context
+17. What would be the next step of a program like this to make it easier to use
+    
 
+*Recap Answers*
+
+1. Java Database Connectivity -> a standard Java API that enables Java applications to connect & interact with relational databases
+
+2. Download the JDBC driver to link to the specific database (i.e. MariaDB JDBC driver to access a MariaDB database)
+
+3. Java Development Kit -> its equivalent to Node.js, acting as a runtime environment for Java code
+
+4. ~sudo systemctl start mariadb~
+   This starts the MariaDB database server in the background (systemctl), the server can then wait for connections from applications
+   such as Java programs using JDBC
+
+5. ~sudo systemctl stop mariadb~
+
+6. Connect to the MariaDB server by allocating a Connection object (typically a driver)
+   Allocate a Statement object (created from the Connection) -> for holding a SQL command
+   Write & execute SQL queries using the Statement & Connection objects
+   Process the results returned from the query (usually via a ResultSet object)
+   Close the Statement & Connection objects to free resources when finished 
+
+7. A class that manages the list of database drivers, it matches connection requests from the Java application with the correct database driver
+
+8. Your writing SQL but using Java
+   This allows you to create queries & interact with a database but within a Java project
+
+9. You write your code in Main.java -> connect to the database & then your SQL queries
+   JDBC -> connects Java to the database using a driver
+   MariaDB -> Database containing the connected library
+
+10. Create -> INSERT
+    Read   -> SELECT
+    Update -> UPDATE
+    Delete -> DELETE
+
+11. Imports the classes & interfaces from Java's SQL package (* means each library is imported)
+    i.e. Connection, DriverManager, Statement, ResultSet & SQLException functions can now be used in my program
+
+12. Connection    -> Set a new object, that is used to create a connection to the database
+    DriverManager -> Used to connect to the database (i.e. ~Connection connection = DriverManager.getConnection("database", "user", "password")~)
+    Statement     -> Sends SQL commands to the database (i.e. ~Statement statement = connection.createStatement();~)
+    ResultSet     -> Holds results return by a SELECT query (i.e. ~ResultSet results;~ & then ~results = statement.executeQuery("<query>");~)
+    SQLException  -> Represent an error involving SQL or database access (i.e. ~catch (SQLException e)~ -> the rest of the code is in the try() block)
+
+13. Close all the resources above (i.e. ~results.close()~ & ~statement.close()~ & ~connection.close~)
+
+14. executeQuery()  -> used for SELECT                 & returns ResultSet
+    executeUpdate() -> used for INSERT, UPDATE, DELETE & returns int (i.e. Java returns the number of rows effected)
+
+15. So you can print to the terminal what's in the database
+    & then as you carry out updates on the database, you can return the results from ResultSet to see what's changed
+    It's not required but makes it clear to the user what's been changed/modified
+
+16. Java script starts        -> SQL imports required
+    Connects to MariaDB       -> Using Connection & DriverManager
+    Create a Statement        -> Using Statement & then writing SQL code inside
+    Execute Select            -> Retrieve the database & store it in ResultSet
+    Read rows using ResultSet -> Display the current database to the user/me
+    Execute INSERT, UPDATE or DELETE -> executeUpdate(), i.e. change the database
+    Close resources
+    Program ends
+
+17. Add a Scanner -> to make the program more interactive, allowing the user to add, search, update or delete an item
+
+
+** Logical Problem Solving
+
+*Recap List*
+
+1. What is the top-down approach to solving a problem
+2. What is the bottom-up approach
+3. What is a Karnaugh map (K-map)
+4. What is white-box testing
+5. What is black-box testing
 
 
 *Recap Answers*
 
+1. Start with the big picture & progressively break a complex system down into more manageable subsystems
+
+2. Start by developing small, individual components, then combine them to create larger subsystems until the complete system is built
+
+3. A visual method to simplify Boolean expressions (i.e. reduce the number of logic gates required when designing logic circuits)
+   As you chain logic gates together, it gets very complex & confusing, using A'B or AB or B instead, is a lot easier to read & understand
+
+4. Testing the app by looking at the code (i.e. if there's an if statement, calling the code to check if the output is correct)
+
+5. Testing the app without looking at the code (i.e. if there's a website, try to log in to check if its successful,
+   try entering wrong details to ensure it gives an error message, leave fields empty, etc...)
 
 
-* Elisp, Bash, JavaScript & Python (CURRENT)
+* Elisp, Bash & JavaScript
 
 Eventually, swap this into 1 section which has 30+ generic questions (i.e. check the length of this variable) & answers for all 4 lanaguages
 Then, have a section for of many mini-problems (like the section in Python) & alternate the language I answer them in
@@ -4195,7 +4453,7 @@ I can make these as I go through Exercism & google other awkward ones
     -x -> executable
 
 
-** JavaScript (CURRENT)
+** JavaScript
 
  *Recap List*
 
@@ -4304,92 +4562,6 @@ I can make these as I go through Exercism & google other awkward ones
 
 15. let numbers = [1, 2, 3, 4];
     numbers.pop();
-
-
-** Python
-
-*Recap List*
-
-1. Create a function called add that takes two parameters and returns their sum
-2. Call the add function with the numbers 5 and 8
-3. Create a list of four numbers
-4. Add a number to the end of the list
-5. Remove the item at index 2
-6. Get the size of the list
-7. Create a dictionary with the keys name and age
-8. Access the value of name
-9. Add an email key to the dictionary
-10. Create an if statement that checks whether age is at least 18
-11. Create a for loop that prints the numbers 1 to 5
-12. Create a while loop that prints the numbers 5 to 1
-13. Create a string called name and print its length
-14. Join two strings together
-15. Loop through a list and print each item
-16. Create a tuple containing three numbers
-17. Create a set containing three colours
-18. Import the math module and print the square root of 25
-
-*Recap Answers*
-
-1. def add(a, b):
-    return a + b
-
-2. add(5, 8)
-
-3. numbers = [2, 6, 1, 4]
-
-4. numbers.append(7)
-
-5. numbers.pop(2)
-
-6. len(numbers)
-
-7. user = {
-       "name": "John",
-       "age": 25
-   }
-
-8. user["name"]
-
-9. user["email"] = "john@gmail.com"
-
-10. age = 20
-
-   if age >= 18:
-       print("Adult")
-   else:
-       print("Minor")
-
-11. for i in range(1, 6):
-        print(i)
-
-12. i = 5
-
-    while i >= 1:
-        print(i)
-        i -= 1
-
-13. name = "Geoff"
-
-    print(len(name))
-
-14. first = "Hello"
-    second = " World"
-
-    message = first + second
-
-15. fruits = ["apple", "banana", "orange"]
-
-    for fruit in fruits:
-        print(fruit)
-
-16. numbers = (1, 2, 3)
-
-17. colours = {"red", "green", "blue"}
-
-18. import math
-
-    print(math.sqrt(25))
 
 
 ** Terminal Commands
@@ -6148,6 +6320,30 @@ _Explain what each of the below packages does_
     
 * General Computing (SORT 6.2, 6.3, 6.4, 6.5 & 6.6)
 
+** General Questions
+
+*Recap List*
+
+1. What actually is a framework & how does it work
+2. Give a brief comparison of library & framework
+
+
+*Recap Answers*
+
+1. In a library, I use functions that I then call to carry out what's needed
+   In a framework, I define the behaviour & the framework calls my code -> a framework provides a structured way to build something
+
+   For example, React acts like a framework, I create .jsx files & in them, create a function (i.e. export function Practice() { <code> })
+   The React hooks are good examples, I create a variable & a function, for example deposit & setDeposit, I never actually call them but
+   instead pass them to a function, then if a button is clicked, React detects this & calls the function for me
+   i.e. the event handler calls setCount(), React detects the change in state & changes count for me automatically
+
+   Bootstrap is an awkward example because it is a framework but it doesn't control the entire application's workflow, just small parts
+   It provides a predefined way of structuring & therefore styling the document & I build within this structure
+
+2. Library   -> I need something done, so I'll use this tool
+   Framework -> I'll build my application using this system's structure & rules
+
 ** Data Structures
 
 *Recap List*
@@ -7103,6 +7299,7 @@ src/
 │   │   ├── QuestionCard.jsx
 │   │   ├── KeybindingInput.jsx
 │   │   ├── TextInput.jsx
+|   |   |-- Flashcard.jsx
 │   │   ├── ImageQuestion.jsx
 │   │   ├── Feedback.jsx
 │   │   └── Progress.jsx
@@ -7156,8 +7353,11 @@ Everything involved in displaying and answering questions
 QuestionCard.jsx     → Main container for a question
 KeybindingInput.jsx  → Handles keyboard/key combination answers     (1st question type of 3)
 TextInput.jsx        → Handles typed answers                        (2nd question type of 3)
-ImageQuestion.jsx    → Displays an image alongside a question/input (3rd question type of 3)
+Flashcard.jsx        -> shows a question & then a click reveals answer (3rd question type of 4)
+ImageQuestion.jsx    → Displays an image alongside a question/input (4th question type of 4)
 Feedback.jsx         → Shows correct/incorrect feedback
+
+// Category is decided, then progress is shown above card
 Progress.jsx         → Shows progress, e.g. 7 / 20
 CategorySelector.jsx → Re-useable component for selecting a category
                        i.e. Emacs -> Org-mode, Treemacs, etc...
@@ -7173,8 +7373,6 @@ TopicEditor.jsx    -> UI for creating or editing a topic/sub-topic
 QuestionEditor.jsx -> UI for creating or editing specific questions
 
 ~components/CategorySelector.jsx~
-
-kkkkkkkkkkkkkkkkkk
 
 Can be used in practice or manage to swap modes
 
@@ -7262,3 +7460,29 @@ i.e. data will look like this with 3 possibly types (text, keypress or image)
         question: "What method handles a fulfilled Promise?",
         answer: ".then()"
     }
+
+** Backend & SQLite database
+
+To store questions I will need a backend
+The 'manage' page will send a request to my backend, which will store/retrieve items from SQLite database
+
+*SQLite database*
+
+It doesn't require a server, it communicates with a library to store data
+Using SQL commands, to input data into a .db file
+
+I would create a questions.db file in the backend folder & SQLite would add questions there
+SQLite makes it easier to manage the database (than doing it all manually)
+
+
+*Workflow*
+
+React (Frontend)
+       |
+       | HTTP request
+       v
+Express (Backend)
+       |
+       | SQL query
+       v
+SQLite (questions.db)
