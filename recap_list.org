@@ -2,28 +2,20 @@
 
 * To Dos
 
-** General
-
-1. Google Docs -> sort CV to dos
-2. Make GitHub profile really nice
-3. Big CSS Recap List -> cover loads of different properties, best practices, center text, etc...)
-
 ** Linux
 
-1. Fix the lock screen crashing (when idle too long)
-2. Home screen looks weird when booting in -> film it, is it doing the correct thing
-3. Learn how file system mounting works in Linux
-4. Look into systemd, what is it? how does it work? what's it used for?
+1. Learn how file system mounting works in Linux
+2. Look into systemd, what is it? how does it work? what's it used for?
    Learn how to use systemd to create real permanent network mounts instead of using fstab.
    Then also learn how to set up any program you want as a background service, again with systemd
-5. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
-6. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
-7. Look into popular aliases or clever ones people have made
-8. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
-9. Understand AUR packages for Arch (why can yay, paru & others)
-10. Make a file containing backups for config files (eventually make a bash project to automatically do this)
-    & then link this config file backup to GitHub (store all my configs in one place -> easier)
-11. Watch & make notes on 'How the Shell Works' YouTube video
+3. ssh from my laptop to my PC (& vice versa) -> I need my pc to be running an ssh server
+4. Make notes on aliasing (making custom commands -> 'e' means 'emacsclient -c -a &') 
+5. Look into popular aliases or clever ones people have made
+6. Explain X11 & Wayland vs GUI Toolkits -> what is the workflow for making an app, what's the difference between these 2 things
+7. Understand AUR packages for Arch (why can yay, paru & others)
+8. Make a file containing backups for config files (eventually make a bash project to automatically do this)
+   & then link this config file backup to GitHub (store all my configs in one place -> easier)
+9. Watch & make notes on 'How the Shell Works' YouTube video
 
 ** Config File
 
@@ -92,7 +84,7 @@
 7. <details> with a <summary> inside
    
 
-** CSS (ADD WAY MORE)
+** CSS
 
  *Recap List*
 
@@ -176,12 +168,23 @@
                            otherwise, on a very small screen the input box would be wider than the screen
 
 
-** CSS - Advanced (SORT)
+** CSS - Advanced
 
 *Recap List*
 
-1. I have a to-do item next to an 'edit' & 'delete' button, how do I get them to sit next to each other
-2. 
+1. I have a to-do item with a 'edit' & 'delete' button, how do I get them to sit next to each other
+2. What's the difference between relative, absolute, fixed, and sticky positioning
+3. What's the difference between all items in the Box Model
+4. What's the difference between em, rem, vw, vh & %
+5. What's the difference between display: block, inline & inline-block
+6. What's the difference between display: none, visibility: hidden & opacity: 0
+7. What is are pseudo-classes & pseudo-elements, with examples
+8. What is is:(), :where() & :has() & how would you use them
+9. What is CSS specificity & how does it decide styles are applied
+10. What's the difference between CSS transition & animations
+11. What is the purpose of the transform property
+12. What's the difference between width, min-width & max-width
+13. What's the difference between :hover, :focus & :active
 
 
 *Recap Answers*
@@ -204,8 +207,86 @@
             gap: var(--spacing-sm);
         }
 
-2. 
+2. CSS positioning determines how elements are positioned within a webpage
+   relative -> positioned relative to its normal position (the element remains in the document flow)
+   absolute -> removed from normal flow & positioned to its nearest anchor (i.e. initial containing block)
+   fixed    -> typically position relative to the browser viewport but remains in place when scrolling
+   sticky   -> behaves similar to relative until a specified scroll threshold is reached, then sticks within its scrolling container 
 
+3. CSS Box Model: Content, Padding, Border, Margin
+   
+   content  -> the content of the box (i.e. text & images)
+   padding  -> space inside an elements border (i.e. inside the border)
+   border   -> border around the padding & content
+   margin   -> space outside an elements border (i.e. outside the border)
+
+   gap      -> space between items in a flexbox or grid without adding space around the container's edge
+               this isn't part of the Box Model, it's a layout spacing property
+
+4. CSS units detemine how element sizes & spacing are calculated
+   
+   em       -> relative to the element's font size
+   rem      -> relative to the root (html) element's font size
+   vw       -> 1% of the viewport's width
+   vh       -> 1% of the viewport's height
+   %        -> relative to another value, usually the containing element's dimensions
+
+5. CSS display properties control how elements behave within the document layout
+
+   block        -> starts on a new line & takes up the available width, width & heigh can be specified
+   inline       -> flows alongside text without starting a new line, can't specify width & height
+   inline-block -> flows alongside other inline elements but allows with & height to be specified
+
+6. Element visibility controls whether an element is displayed & whether is occupies space
+
+   display: none      -> removes the element from layout, so it occupies no space
+   visibility: hidden -> hides the element but preserves the layout
+   opacity: 0         -> makes the element fully transparent while preserving its space & normal interactions
+
+7. psuedo-class & elements allow styling behaviour based on an element's state or a specific part of an element
+
+   pseudo-class (:)    -> selects elements based on their state or position (i.e. :hover, :focus or :first-child)
+   pseudo-element (::) -> selects a specific part of an element or creates generated content (i.e. ::before, ::after or ::first-letter)
+
+8. Functional pseudo-classes for advanced element selection
+
+   :is()        -> groups multiple selectors together, i.e. :is(h1, h2) { color: orange; } 
+   :where()     -> similar to :is() but doesn't require specificity, i.e :where(section, article) { margin: 20px; }
+   :has()       -> select an element based on whether is contain another element, i.e. .card:has(img) { border: 2px solid orange; }
+
+9. CSS specificity determines which competing CSS declarations take priority when multiple selectors target the same element
+   The order:
+
+   inline styles (written in HTML)
+   IDs (#header)
+   classes, attributes & pseudo-classes (.card, :hover)
+   Elements & pseudo-elements (div, ::before)
+
+10. Transition  -> smoothly change a property when its value changes (usually used with :hover)
+    Animation   -> uses @keyframes to define multiple stage of an animation & can run automatically
+
+11. The transform property visually changes an element's position, size, rotation or shape without changes its position in the document layout
+
+    translate() -> moves an element, i.e. transform: translateY(-5px)
+    scale()     -> enlarges/shrinks element
+    rotate() 
+    skew()      -> slants an element
+
+    You can combine multiple on 1 transform line -> transform: translateY(-5px) scale(1.05);
+
+12. Width, min-width & max-width control an element's horizontal sizing
+
+    width       -> sets the preferred width of an element
+    min-width   -> sets minimum width an element can't shrink below
+
+    You can combine them: .container { width: 100%; max-width: 1200px; }
+        This example allows the container to shrink on smaller screens, but stops it getting too large on bigger ones
+
+13. These are pseudo-classes that target different interaction states
+
+    :hover      -> applied when the mouse is over the element
+    :focus      -> applied when an element receives focus (i.e. clicking into an input box)
+    :active     -> applied while an element is being activated (i.e. clicking & holding down on a button)
 
 ** Responsive Design
 
@@ -4193,6 +4274,47 @@ function App() {
    try entering wrong details to ensure it gives an error message, leave fields empty, etc...)
 
 
+** Defensive Programming
+
+*Recap List*
+
+1. What is defensive programming
+2. What are the 3 common problems
+3. How can you handle exceptions in code
+4. When should you not use a try, catch block
+
+
+*Recap Answers*
+
+1. An approach to writing code where the programmer tries to anticipate problems that could occur in the project & take steps to prevent them
+   I've accidentally been doing this, i.e. if (num1 < 1) { throw new Exeception ("cannot divide by zero"); } 
+
+2. User errors         -> The people using the program will act unexpectedly (i.e. input a string when you expect an int)
+   Environment errors  -> Errors from the development environment (i.e. the IDE might struggle to interact with a database on a certain server)
+   Logical errors    
+
+3. Create try, catch & finally blocks of code
+   Try     -> contains the code that may cause a runtime error (i.e. read x file -> if file isn't found it would cause a runtime error)
+   Catch   -> pass a FileNotFoundException e & print to the terminal a custom error message that this file couldn't be found
+   Finally -> this is optional, this code will always be executed whether the try or the catch block code is ran
+              it's a good way to ensure no further data loss, i.e. you can close a Scanner object whether the code was successful or not
+
+4. Initially, your code should be focused on preventing errors from happening, before catching them, i.e. with validation
+   If you were requesting a user to input their age, it might be tempting to do a try, catch block
+   However, it would be more logically, to do an if statement, & force the user to reenter their age if a string is passed
+
+
+** Refactoring
+
+*Recap List*
+
+
+
+
+*Recap Answers*
+
+
+
 * Elisp, Bash & JavaScript
 
 Eventually, swap this into 1 section which has 30+ generic questions (i.e. check the length of this variable) & answers for all 4 lanaguages
@@ -6344,6 +6466,7 @@ _Explain what each of the below packages does_
 2. Library   -> I need something done, so I'll use this tool
    Framework -> I'll build my application using this system's structure & rules
 
+
 ** Data Structures
 
 *Recap List*
@@ -6397,18 +6520,76 @@ _Explain what each of the below packages does_
     Its two main operations are find (identify a group's representative) and union (merge groups)
     With path compression and union by rank/size, operations are effectively O(1) amortized
 
-   
-
 ** Algorithms (SORT)
 
 *Recap List*
 
+1. What is Bubble Sort
+2. What is Selection Sort
+3. What is Insertion Sort
+4. What is Merge Sort
+5. What is Quick Sort
+6. What is Heap Sort
+7. What is Counting Sort
+8. What is Radix Sort
+9. What is Bucket Sort
+10. What is the difference between stable and unstable sorting algorithms
 
 
 *Recap Answers*
 
+1. Repeatedly compare adjacent elements & swap them if they're in the wrong order, continue until list is sorted
+   Big O notation -> O(n^2)
+
+2. Repeatedly find the smallest element in the unsorted portion of an array & movee it to the next sortde position
+   Big O notation -> O(n^2)
+
+3. Build a sorted portion of an array by taking each new element & inserting it into its correct position
+   Big O notation -> O(n^2)
+
+4. Divide & conquer to split an array into smaller halves, recursively sort them & then merge them back together
+   Big O notation -> O(n log n)
+
+5. Divide & conquer by selecting a pivot, partitioning elements around it & then sorting the partitions
+   Big O notation -> O(n log n)
+
+6. Build a heap from an array & repeatedly remove the highest-priority element to place it in its correct sorted position
+   Big O notation -> O(n log n)
+
+7. Counts the occurrences of each integer value & uses these counts to construct a sorted array
+   Big O notation -> O(n + k) where k is the range of possible values
+
+8. Sorted values digit by digit (or character by character), typically using a stable sorting alogirthm such as counting sort
+   Big O notation -> O(d(n + k)) where d is the number of digits & k is the digit range
+
+9. Distributes elements into separate buckets, sorts each bucket & then combines them into a sorted array
+   Big O notation -> O(n + k)
+
+10. Stable   -> preserves the original relative order of elements with equals keys (merge sort or insertion sort)
+    Unstable -> does not guarantee that equal elements retain their original order (quick sort or heap sort)
+
+    Stability is important when sorting objects by multiple properties
 
 ** Tree Algorithms (SORT)
+
+*Recap List*
+
+1. What is Tree Traversal
+2. What is Depth-First Search (DFS) in a tree
+3. What is Breadth-First Search (BFS) in a tree
+4. What is Preorder Traversal
+5. What is Inorder Traversal
+6. What is Postorder Traversal
+7. What is Level-Order Traversal
+8. How do you calculate the height and depth of a tree
+9. What is a Balanced Binary Tree
+10. What is the Lowest Common Ancestor (LCA)
+11. How do you search for an element in a Binary Search Tree (BST)
+12. How do you insert and delete nodes in a Binary Search Tree (BST)
+
+
+*Recap Answers*
+
 
 
 ** Graph Algorithms (SORT)
