@@ -4308,12 +4308,59 @@ function App() {
 
 *Recap List*
 
-
+1. What is refactoring
+2. How do you rename a variable in Eclipse
+3. Turn a section of code into a method in Eclipse
+4. How do you convert a complex piece of code into a variable (i.e. hash_map[index].get(value))
+5. What does a cohesion in classes mean
+6. What is coupling in classes
+7. Explain encapsulation
+8. What does it mean to hide helper methods
+9. What can I do instead of using a boolean & if statement to break a loop
 
 
 *Recap Answers*
 
+1. Taking code that works logically & making it more readable (i.e. removing duplicated code,
+   simplifying logic, breaking up a large function into multiple smaller ones)
 
+2. If a variable has a bad name or doesn't contain a unit (i.e. weight), you want to rename it
+   Go to where the variable is created (i.e. int d = 0), highlight & right click it
+   Click refactor & then rename, this renames the variable through the whole document
+
+3. Highlight the function, right click, refactor, extract method & then type out a name
+
+4. Highlight the section of code, right click, refactor, extract local variable
+
+5. It describes how closely related the methods are within a class
+   high cohesion is good, as the class has *one* clear responsibility
+   low cohesion is bad, as a class is handling multiple unrelated roles
+
+   i.e. each class should have 1 role, with multiple methods that serve this role
+
+6. How dependent classes are on one another
+   high coupling is bad, as many classes interact/change one another, so if you went to change a class
+   down the line, it will effect other classes & they might not work any more
+
+   i.e. have clear interfaces, which make it obvious when a class effects another one
+        sometimes an extra class is needed to remove coupling
+
+7. Keeping an object/variables data private & controlling how other classes interact with it
+
+   i.e. if you had a BankAccount class, rather than changing the balance variable manually
+        create a 'deposit' method, so you have to call that method directly to change the balance
+        you can then add conditions to the method, i.e. if balance < 0, don't decrease it
+        also, if a variable shouldn't change, i.e. initialBalance, don't provide a setter method for it
+
+8. Methods that are only needed from within the class should be made private
+
+   If you had a BankAccount class, you might methods for withdraw & isValidWithdraw
+   The withdraw method would be public, as you'd want to call that after creating an object of the class
+   But the isValidWithdraw checks if the withdraw should go through, the user never needs to call it,
+   so it can stay private
+
+9. Instead of using boolean checker = false, if (checker == false)
+   Use break or return statement to exit a loop
 
 * Elisp, Bash & JavaScript
 
